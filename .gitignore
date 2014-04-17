@@ -1,2 +1,26 @@
-# Compiled
+session*
+tramp
+backups/*
+auto-save-list
+.places
+places
+url/cookies
+thumbs/*
+.newsrc-dribble
+.nnmail-cache
+image-dired/
+elim/
+elpa-to-submit/nxhtml/etc/schema/xhtml-loader.rnc~
+history
+elpa/*
+*.smex-items
+
+# OS generated files #
+######################
+.DS_Store*
+Icon?
+Thumbs.db
+.places
+
+# Compiled #
 *.elc
