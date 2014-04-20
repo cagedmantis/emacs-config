@@ -30,7 +30,8 @@
 
 ;; (add-to-list 'flymake-allowed-file-name-masks '("\\.php$" flymake-php-init))
 
-
+(setq tab-width 8
+      indent-tabs-mode nil)
 (setq-default c-basic-offset 8)
 ;; (setq-default php-mode-force-pear)
 
