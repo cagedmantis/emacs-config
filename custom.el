@@ -16,10 +16,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(background-color "#042028")
- '(background-mode dark)
- '(cursor-color "#708183")
- '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "007b69ffec046a5842e34fea287b23c49175dfd6c6d5a0d9cdf150a2e8a8979f" default)))
+ '(custom-safe-themes (quote ("4a60f0178f5cfd5eafe73e0fc2699a03da90ddb79ac6dbc73042a591ae216f03" default)))
  '(erc-auto-query (quote bury))
  '(erc-autojoin-mode nil)
  '(erc-beep-match-types (quote (current-nick keyword)))
@@ -50,8 +47,7 @@
  '(erc-timestamp-format "[%H:%M:%S] ")
  '(erc-timestamp-only-if-changed-flag nil)
  '(erc-track-exclude-types (quote ("JOIN" "KICK" "NICK" "PART" "QUIT" "MODE" "333" "353")))
- '(erc-truncate-buffer-on-save t)
- '(foreground-color "#708183"))
+ '(erc-truncate-buffer-on-save t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
