@@ -52,6 +52,7 @@
 (require 'xscheme)
 (require 'config-columnmarker)
 (require 'config-mode-php)
+(require 'config-elpy)
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
@@ -141,3 +142,5 @@ with a Windows external keyboard from time to time."
 
 ;; Experimental
 (add-hook 'after-init-hook #'global-flycheck-mode)
+;; (require 'powerline)
+;; (powerline-center-evil-theme)

@@ -18,12 +18,15 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-ruby starter-kit-eshell tramp solarized-theme zenburn-theme web-mode yasnippet ir-black-theme underwater-theme)
+(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-ruby starter-kit-eshell tramp solarized-theme zenburn-theme web-mode yasnippet ir-black-theme underwater-theme powerline elpy)
   "A list of packages to ensure are installed at launch.")
 
 ;; disabled packages
 ;;  php-mode
 ;;  yasnippet-bundle
+;; flycheck
+;; flycheck-google-cpplint
+;; google-c-style 
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
