@@ -34,6 +34,7 @@
 
 
 ;;(load-theme 'solarized-dark t)
-(load-theme 'zenburn t)
+;;(load-theme 'zenburn t)
+(load-theme 'ample-dark t)
 
 (provide 'config-colortheme)
