@@ -52,6 +52,7 @@
 (require 'xscheme)
 (require 'config-columnmarker)
 (require 'config-mode-php)
+(require 'config-elpy)
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
@@ -135,11 +136,8 @@ with a Windows external keyboard from time to time."
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-
-;; Experimental
 (which-function-mode)
 
-;; Experimental
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Elpy
@@ -150,3 +148,6 @@ with a Windows external keyboard from time to time."
 (define-key global-map (kbd "C-c o") 'iedit-mode)
 
 (setq python-check-command "/usr/local/bin/pyflakes")
+
+;; (require 'powerline)
+;; (powerline-center-evil-theme)
