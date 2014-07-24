@@ -14,6 +14,8 @@ elpa-to-submit/nxhtml/etc/schema/xhtml-loader.rnc~
 history
 elpa/*
 *.smex-items
+ac-comphist.dat
+custom.el
 
 # OS generated files #
 ######################
