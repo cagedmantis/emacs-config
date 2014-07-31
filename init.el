@@ -53,6 +53,7 @@
 (require 'config-columnmarker)
 (require 'config-mode-php)
 (require 'config-elpy)
+(require 'config-jsmode)
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
@@ -120,8 +121,22 @@ with a Windows external keyboard from time to time."
 ;; doxymacs
 
 ;; Change the font and size
-(set-default-font "DejaVu Sans Mono")
-(set-face-attribute 'default nil :height 121)
+
+(setq preferred-font "Fira Mono")
+;;(setq preferred-font "Source Code Pro")
+
+;; Does a font exist?
+(defun font-existsp (font)
+    (if (null (x-list-fonts font))
+        nil t))
+
+(if (font-existsp preferred-font)
+    (set-default-font preferred-font)
+  (set-default-font "DejaVu Sans Mono"))
+
+;;(set-default-font "DejaVu Sans Mono")
+;;(set-default-font "Source Code Pro")
+(set-face-attribute 'default nil :height 100)
 
 (setq tex-dvi-view-command "xdvi")
 
@@ -136,12 +151,19 @@ with a Windows external keyboard from time to time."
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-
-;; Experimental
 (which-function-mode)
 
-;; Experimental
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; Elpy
+(elpy-enable)
+;; Fixing a key binding bug in elpy
+(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
+;; Fixing another key binding bug in iedit mode
+(define-key global-map (kbd "C-c o") 'iedit-mode)
+
+(setq python-check-command "/usr/local/bin/pyflakes")
+
 ;; (require 'powerline)
 ;; (powerline-center-evil-theme)
 
