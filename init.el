@@ -53,6 +53,7 @@
 (require 'config-columnmarker)
 (require 'config-mode-php)
 (require 'config-elpy)
+(require 'config-jsmode)
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
