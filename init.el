@@ -144,3 +144,11 @@ with a Windows external keyboard from time to time."
 (add-hook 'after-init-hook #'global-flycheck-mode)
 ;; (require 'powerline)
 ;; (powerline-center-evil-theme)
+
+(getenv "PATH")
+ (setenv "PATH"
+(concat
+ "/usr/texbin" ":"
+
+(getenv "PATH")))
+
