@@ -179,3 +179,4 @@ with a Windows external keyboard from time to time."
 
 (getenv "PATH")))
 
+(setq default-directory "~/")
