@@ -141,10 +141,7 @@ with a Windows external keyboard from time to time."
 
 ;;(set-default-font "DejaVu Sans Mono")
 ;;(set-default-font "Source Code Pro")
-(set-face-attribute 'default nil :height 100)
-
-
-
+(set-face-attribute 'default nil :height 110)
 
 (setq tex-dvi-view-command "xdvi")
 
