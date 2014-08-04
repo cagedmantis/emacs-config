@@ -121,8 +121,13 @@ with a Windows external keyboard from time to time."
 ;; doxymacs
 
 ;; Change the font and size
-(set-default-font "DejaVu Sans Mono")
+;;(set-default-font "DejaVu Sans Mono")
+;;(set-default-font "Source Code Pro")
+(set-default-font "Fira")
 (set-face-attribute 'default nil :height 121)
+
+
+
 
 (setq tex-dvi-view-command "xdvi")
 
