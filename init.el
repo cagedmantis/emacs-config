@@ -9,6 +9,7 @@
 (add-to-list 'load-path dotfiles-dir)
 (add-to-list 'load-path "~/bin/")
 (add-to-list 'load-path (concat dotfiles-dir "/configs"))
+(add-to-list 'load-path (concat dotfiles-dir "/system_type"))
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
@@ -54,6 +55,12 @@
 (require 'config-mode-php)
 (require 'config-elpy)
 (require 'config-jsmode)
+
+;; Enable system-type specific behaviour
+(if (eq system-type 'gnu/linux)
+    (require 'gnu_linux))
+(if (eq system-type 'darwin)
+    (require 'darwin))
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
