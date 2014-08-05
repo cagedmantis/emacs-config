@@ -101,7 +101,7 @@ with a Windows external keyboard from time to time."
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(shell)
+;;(shell)
 
 ;;****************************
 ;; TODO
