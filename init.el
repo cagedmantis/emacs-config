@@ -123,6 +123,35 @@ with a Windows external keyboard from time to time."
 ;; django 
 ;; convert items to autoload
 ;; doxymacs
+;; Change the font and size
+
+
+
+
+;;(set-default-font "DejaVu Sans Mono")
+;;(set-default-font "Fira")
+
+(setq preferred-font "Fira Mono")
+;;(setq preferred-font "Source Code Pro")
+
+;; Does a font exist?
+(defun font-existsp (font)
+    (if (null (x-list-fonts font))
+        nil t))
+
+(if (font-existsp preferred-font)
+    (set-default-font preferred-font)
+  (set-default-font "DejaVu Sans Mono"))
+
+;;(set-default-font "DejaVu Sans Mono")
+;;(set-default-font "Source Code Pro")
+(set-face-attribute 'default nil :height 100)
+
+
+
+
+
+
 
 (setq tex-dvi-view-command "xdvi")
 
@@ -158,3 +187,58 @@ with a Windows external keyboard from time to time."
 (message (prin1-to-string system-type))
 
 (setq default-directory "~/")
+
+
+
+
+
+(require 'cc-mode)
+
+(setq-default c-basic-offset 4 c-default-style "linux")
+(setq-default tab-width 4 indent-tabs-mode t)
+(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+
+;; (require 'autopair)
+;; (autopair-global-mode 1)
+;; (setq autopair-autowrap t)
+
+(require 'auto-complete-clang)
+(define-key c++-mode-map (kbd "C-S-<return>") 'ac-complete-clang)
+;; replace C-S-<return> with a key binding that you want
+
+;; (require 'member-function)
+;; (setq mf--source-file-extension "cpp")
+
+
+
+
+
+(require 'auto-complete)
+(ac-config-default)
+(yas-global-mode 1)
+
+
+
+
+
+; turn on Semantic
+(semantic-mode 1)
+; let's define a function which adds semantic as a suggestion backend to auto complete
+; and hook this function to c-mode-common-hook
+(defun my:add-semantic-to-autocomplete() 
+  (add-to-list 'ac-sources 'ac-source-semantic)
+)
+(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
+; turn on ede mode 
+(global-ede-mode 1)
+; create a project for our program.
+
+;; (ede-cpp-root-project "my project" :file "~/demos/my_program/src/main.cpp"
+;; 					  :include-path '("/../my_inc"))
+; you can use system-include-path for setting up the system header file locations.
+; turn on automatic reparsing of open buffers in semantic
+(global-semantic-idle-scheduler-mode 1)
+
+
+
+

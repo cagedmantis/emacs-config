@@ -17,6 +17,8 @@ elpa/*
 ac-comphist.dat
 eshell/
 custom.el
+ede-projects.el
+semanticdb/
 
 # OS generated files #
 ######################
