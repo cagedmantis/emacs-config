@@ -57,10 +57,17 @@
 (require 'config-jsmode)
 
 ;; Enable system-type specific behaviour
-(if (eq system-type 'gnu/linux)
-    (require 'gnu_linux))
-(if (eq system-type 'darwin)
-    (require 'darwin))
+;; (if (eq system-type 'gnu/linux)
+;;     (require 'gnu_linux))
+;; (if (eq system-type 'darwin)
+;;     (require 'darwin))
+
+(cond
+ ((eq system-type 'gnu/linux)
+  (require 'gnu_linux))
+ ((eq system-type 'darwin)
+  (require 'darwin))
+ )
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
@@ -70,11 +77,6 @@
 (setq os-specific-config (concat dotfiles-dir (prin1-to-string system-type) ".el"))
 (if (file-exists-p os-specific-config) (load os-specific-config))
 
-;convert fn key on macbook pro to ctl key
-(setq ns-function-modifier 'control)
-
-(setq mac-command-modifier 'super)
-(setq mac-option-modifier 'meta)
 
 (defun swap-meta-and-super ()
   "Swap the mapping of meta and super. Very useful for people using their Mac
@@ -97,9 +99,6 @@ with a Windows external keyboard from time to time."
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
-;;misc
-(message system-name)
-(message (prin1-to-string system-type))
 
 ;;utf-8
 (setq locale-coding-system 'utf-8)
@@ -107,8 +106,6 @@ with a Windows external keyboard from time to time."
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-
-;;(shell)
 
 ;;****************************
 ;; TODO
@@ -126,29 +123,6 @@ with a Windows external keyboard from time to time."
 ;; django 
 ;; convert items to autoload
 ;; doxymacs
-
-;; Change the font and size
-
-
-
-;;(set-default-font "DejaVu Sans Mono")
-;;(set-default-font "Fira")
-
-(setq preferred-font "Fira Mono")
-;;(setq preferred-font "Source Code Pro")
-
-;; Does a font exist?
-(defun font-existsp (font)
-    (if (null (x-list-fonts font))
-        nil t))
-
-(if (font-existsp preferred-font)
-    (set-default-font preferred-font)
-  (set-default-font "DejaVu Sans Mono"))
-
-;;(set-default-font "DejaVu Sans Mono")
-;;(set-default-font "Source Code Pro")
-(set-face-attribute 'default nil :height 110)
 
 (setq tex-dvi-view-command "xdvi")
 
@@ -176,14 +150,11 @@ with a Windows external keyboard from time to time."
 
 (setq python-check-command "/usr/local/bin/pyflakes")
 
-;; (require 'powerline)
+(require 'powerline)
 ;; (powerline-center-evil-theme)
 
-(getenv "PATH")
- (setenv "PATH"
-(concat
- "/usr/texbin" ":"
-
-(getenv "PATH")))
+;;misc
+(message system-name)
+(message (prin1-to-string system-type))
 
 (setq default-directory "~/")
