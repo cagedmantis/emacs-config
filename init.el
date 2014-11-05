@@ -9,6 +9,7 @@
 (add-to-list 'load-path dotfiles-dir)
 (add-to-list 'load-path "~/bin/")
 (add-to-list 'load-path (concat dotfiles-dir "/configs"))
+(add-to-list 'load-path (concat dotfiles-dir "/lisp"))
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
@@ -54,6 +55,14 @@
 (require 'config-mode-php)
 (require 'config-elpy)
 (require 'config-jsmode)
+
+;; Experimental
+;;(require 'config-gnus)
+
+;; Refactor
+(require 'init-sql)
+(require 'init-php)
+
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
@@ -180,3 +189,6 @@ with a Windows external keyboard from time to time."
 (getenv "PATH")))
 
 (setq default-directory "~/")
+
+
+(require 'rainbow-delimiters)
