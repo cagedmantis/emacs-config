@@ -38,7 +38,9 @@
                       ;; php-mode
                       ;; flycheck
                       ;; flycheck-google-cpplint
-                      ;; google-c-style 
+                      ;; google-c-style
+                      auto-complete
+                      auto-complete-c-headers
                       yasnippet
                       django-snippets
                       go-snippets
