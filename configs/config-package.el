@@ -43,6 +43,7 @@
                       auto-complete-c-headers
                       flymake-cursor
                       iedit
+                      cedit
                       yasnippet
                       django-snippets
                       go-snippets
