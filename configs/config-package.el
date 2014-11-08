@@ -37,10 +37,11 @@
                       magit
                       ;; php-mode
                       ;; flycheck
-                      ;; flycheck-google-cpplint
-                      ;; google-c-style
+                      flycheck-google-cpplint
+                      google-c-style
                       auto-complete
                       auto-complete-c-headers
+                      flymake-cursor
                       iedit
                       yasnippet
                       django-snippets

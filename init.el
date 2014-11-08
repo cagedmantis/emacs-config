@@ -66,6 +66,7 @@
 (require 'init-font)
 (require 'init-auto-complete)
 (require 'init-iedit)
+(require 'init-flymake-google-cpplint)
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
