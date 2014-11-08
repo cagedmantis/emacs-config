@@ -41,6 +41,7 @@
                       ;; google-c-style
                       auto-complete
                       auto-complete-c-headers
+                      iedit
                       yasnippet
                       django-snippets
                       go-snippets

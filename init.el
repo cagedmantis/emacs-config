@@ -65,6 +65,7 @@
 (require 'init-php)
 (require 'init-font)
 (require 'init-auto-complete)
+(require 'init-iedit)
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
