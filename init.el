@@ -62,6 +62,7 @@
 ;; Refactor
 (require 'init-sql)
 (require 'init-php)
+;;(require 'init-powerline)
 
 
 ;system specific configs
