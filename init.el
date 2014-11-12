@@ -6,7 +6,8 @@
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
-(add-to-list 'load-path dotfiles-dir)
+;;(add-to-list 'load-path dotfiles-dir)
+(add-to-list 'load-path (concat dotfiles-dir "/starter_kit"))
 (add-to-list 'load-path "~/bin/")
 (add-to-list 'load-path (concat dotfiles-dir "/configs"))
 (add-to-list 'load-path (concat dotfiles-dir "/lisp"))
