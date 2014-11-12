@@ -38,6 +38,16 @@
 (setq-default fill-column 80)
 (add-hook 'php-mode-hook 'turn-on-auto-fill)
 
+
+(add-hook 'php-mode-hook 'my-php-mode-hook)
+(defun my-php-mode-hook ()
+  "My PHP mode configuration."
+  (setq indent-tabs-mode nil
+        tab-width 8
+        c-basic-offset 8
+		fill-column 80))
+
+
 ;; ;; Pear coding standards : http://pear.php.net/manual/en/standards.indenting.php
 ;; (defun pear/php-mode-init ()
 ;;   "Set some buffer-local variables."
