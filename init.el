@@ -55,6 +55,7 @@
 (require 'config-mode-php)
 (require 'config-elpy)
 (require 'config-jsmode)
+(require 'rainbow-delimiters)
 
 ;; Experimental
 ;;(require 'config-gnus)
@@ -62,8 +63,11 @@
 ;; Refactor
 (require 'init-sql)
 (require 'init-php)
-;;(require 'init-powerline)
-
+(require 'init-font)
+(require 'init-auto-complete)
+(require 'init-iedit)
+(require 'init-flymake-google-cpplint)
+(require 'init-cedit)
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
@@ -130,29 +134,6 @@ with a Windows external keyboard from time to time."
 ;; convert items to autoload
 ;; doxymacs
 
-;; Change the font and size
-
-
-
-;;(set-default-font "DejaVu Sans Mono")
-;;(set-default-font "Fira")
-
-(setq preferred-font "Fira Mono")
-;;(setq preferred-font "Source Code Pro")
-
-;; Does a font exist?
-(defun font-existsp (font)
-    (if (null (x-list-fonts font))
-        nil t))
-
-(if (font-existsp preferred-font)
-    (set-default-font preferred-font)
-  (set-default-font "DejaVu Sans Mono"))
-
-;;(set-default-font "DejaVu Sans Mono")
-;;(set-default-font "Source Code Pro")
-(set-face-attribute 'default nil :height 120)
-
 (setq tex-dvi-view-command "xdvi")
 
 ;; Experimental
@@ -183,13 +164,9 @@ with a Windows external keyboard from time to time."
 ;; (powerline-center-evil-theme)
 
 (getenv "PATH")
- (setenv "PATH"
-(concat
- "/usr/texbin" ":"
-
-(getenv "PATH")))
+(setenv "PATH"
+        (concat
+         "/usr/texbin" ":"
+         (getenv "PATH")))
 
 (setq default-directory "~/")
-
-
-(require 'rainbow-delimiters)
