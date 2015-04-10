@@ -77,7 +77,6 @@
 (setq os-specific-config (concat dotfiles-dir (prin1-to-string system-type) ".el"))
 (if (file-exists-p os-specific-config) (load os-specific-config))
 
-
 (defun swap-meta-and-super ()
   "Swap the mapping of meta and super. Very useful for people using their Mac
 with a Windows external keyboard from time to time."
@@ -98,7 +97,6 @@ with a Windows external keyboard from time to time."
 (prefer-coding-system 'utf-8)
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
-
 
 ;;utf-8
 (setq locale-coding-system 'utf-8)
@@ -125,9 +123,6 @@ with a Windows external keyboard from time to time."
 ;; doxymacs
 ;; Change the font and size
 
-
-
-
 ;;(set-default-font "DejaVu Sans Mono")
 ;;(set-default-font "Fira")
 
@@ -143,15 +138,7 @@ with a Windows external keyboard from time to time."
     (set-default-font preferred-font)
   (set-default-font "DejaVu Sans Mono"))
 
-;;(set-default-font "DejaVu Sans Mono")
-;;(set-default-font "Source Code Pro")
 (set-face-attribute 'default nil :height 120)
-
-
-
-
-
-
 
 (setq tex-dvi-view-command "xdvi")
 
@@ -188,10 +175,6 @@ with a Windows external keyboard from time to time."
 
 (setq default-directory "~/")
 
-
-
-
-
 (require 'cc-mode)
 
 (setq-default c-basic-offset 4 c-default-style "linux")
@@ -206,20 +189,9 @@ with a Windows external keyboard from time to time."
 (define-key c++-mode-map (kbd "C-S-<return>") 'ac-complete-clang)
 ;; replace C-S-<return> with a key binding that you want
 
-;; (require 'member-function)
-;; (setq mf--source-file-extension "cpp")
-
-
-
-
-
 (require 'auto-complete)
 (ac-config-default)
 (yas-global-mode 1)
-
-
-
-
 
 ; turn on Semantic
 (semantic-mode 1)
@@ -233,12 +205,38 @@ with a Windows external keyboard from time to time."
 (global-ede-mode 1)
 ; create a project for our program.
 
-;; (ede-cpp-root-project "my project" :file "~/demos/my_program/src/main.cpp"
-;; 					  :include-path '("/../my_inc"))
-; you can use system-include-path for setting up the system header file locations.
 ; turn on automatic reparsing of open buffers in semantic
 (global-semantic-idle-scheduler-mode 1)
 
+(setq default-major-mode 'c-mode)
+(setq inhibit-default-init t)
 
+(defun my-c-mode-common-hook ()
+        (setq-default c-style-variables-are-local-p t)
+        (setq-default c-basic-offset 8)
+		(setq-default indent-tabs-mode t)
+		(setq-default tab-width 8)
+		(setq c-basic-offset 8)
+		(setq c-basic-indent 8)
+		)
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+(add-hook 'c++-mode-common-hook 'my-c-mode-common-hook)
 
+(setq inhibit-default-init t)
+(setq default-major-mode 'c-mode)
+
+(add-to-list 'auto-mode-alist '("\\.php$" . c++-mode))
+
+(my-c-mode-common-hook)
+
+;; highlight the current line
+(global-hl-line-mode +1)
+
+(require 'volatile-highlights)
+(volatile-highlights-mode t)
+(diminish 'volatile-highlights-mode)
+
+(require 'whitespace)
+(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-style '(face tabs empty trailing lines-tail))
 

@@ -47,6 +47,36 @@
         c-basic-offset 8
 		fill-column 80))
 
+;; (eval-after-load 'php-mode
+;;   add-hook 'php-mode-hook 'my-php-mode-hook)
+;; (defun my-php-mode-hook ()
+;;   (setq indent-tabs-mode t)
+;;   (let ((my-tab-width 8))
+;;     (setq tab-width my-tab-width)
+;;     (setq c-basic-indent my-tab-width)
+;;     (set (make-local-variable 'tab-stop-list)
+;;          (number-sequence my-tab-width 200 my-tab-width))))
+
+
+;; (defun php-enable-wordpress-coding-style ()
+;;   "Makes php-mode use coding styles that are preferable for
+;; working with Wordpress."
+;;   (interactive)
+;;   (setq indent-tabs-mode t
+;;         fill-column 78
+;;         tab-width 4
+;;         c-indent-comments-syntactically-p t)
+;;   (c-set-style "wordpress")
+
+;;   ;; Undo drupal coding style whitespace effects
+;;   (setq show-trailing-whitespace nil)
+;;   (remove-hook 'before-save-hook 'delete-trailing-whitespace))
+
+;; (c-add-style
+;;   "symfony2"
+;;   '("php"
+;;     (c-offsets-alist . ((statement-cont . php-lineup-hanging-semicolon)))))
+
 
 ;; ;; Pear coding standards : http://pear.php.net/manual/en/standards.indenting.php
 ;; (defun pear/php-mode-init ()
