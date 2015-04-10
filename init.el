@@ -49,7 +49,6 @@
 (require 'config-yasnippet)
 (require 'config-tex)
 (require 'config-colortheme)
-(require 'config-tramp)
 (require 'xscheme)
 (require 'config-columnmarker)
 (require 'config-mode-php)
@@ -68,7 +67,7 @@
 (require 'init-iedit)
 (require 'init-flymake-google-cpplint)
 (require 'init-cedit)
-
+(require 'init-tramp)
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
 (if (file-exists-p system-specific-config) (load system-specific-config))
