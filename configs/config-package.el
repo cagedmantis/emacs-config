@@ -18,7 +18,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-ruby starter-kit-eshell tramp solarized-theme zenburn-theme web-mode yasnippet ir-black-theme underwater-theme powerline elpy ample-theme flymake js2-mode ac-js2 auto-complete-clang cedet auto-complete auto-complete-c-headers volatile-highlights diminish)
+(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-ruby starter-kit-eshell tramp solarized-theme zenburn-theme web-mode yasnippet ir-black-theme underwater-theme powerline elpy ample-theme flymake js2-mode ac-js2 auto-complete-clang cedet auto-complete auto-complete-c-headers volatile-highlights diminish fill-column-indicator projectile company fix-ido)
 
   "A list of packages to ensure are installed at launch.")
 
@@ -27,7 +27,7 @@
 ;;  yasnippet-bundle
 ;; flycheck
 ;; flycheck-google-cpplint
-;; google-c-style 
+;; google-c-style
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))

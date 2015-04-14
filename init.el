@@ -56,6 +56,10 @@
 (require 'config-mode-php)
 (require 'config-elpy)
 (require 'config-jsmode)
+(require 'config-fill-line)
+(require 'config-company)
+(require 'config-projectile)
+(require 'config-magit)
 
 ;; Enable system-type specific behaviour
 ;; (if (eq system-type 'gnu/linux)
@@ -108,7 +112,7 @@ with a Windows external keyboard from time to time."
 
 ;;****************************
 ;; TODO
-;; 
+;;
 ;; Python custom
 ;; Haskell custom
 ;; os specific config
@@ -119,7 +123,7 @@ with a Windows external keyboard from time to time."
 ;; python
 ;; c++
 ;; c
-;; django 
+;; django
 ;; convert items to autoload
 ;; doxymacs
 ;; Change the font and size
@@ -198,11 +202,11 @@ with a Windows external keyboard from time to time."
 (semantic-mode 1)
 ; let's define a function which adds semantic as a suggestion backend to auto complete
 ; and hook this function to c-mode-common-hook
-(defun my:add-semantic-to-autocomplete() 
+(defun my:add-semantic-to-autocomplete()
   (add-to-list 'ac-sources 'ac-source-semantic)
 )
 (add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
-; turn on ede mode 
+; turn on ede mode
 (global-ede-mode 1)
 ; create a project for our program.
 
@@ -241,3 +245,7 @@ with a Windows external keyboard from time to time."
 (setq whitespace-line-column 80) ;; limit line length
 (setq whitespace-style '(face tabs empty trailing lines-tail))
 
+;; Experimental
+(setq-default show-trailing-whitespace t)
+(setq-default indicate-empty-lines t)
+(global-whitespace-mode t)
