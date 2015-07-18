@@ -10,7 +10,7 @@
 (add-to-list 'load-path "~/bin/")
 (add-to-list 'load-path (concat dotfiles-dir "/starter_kit"))
 (add-to-list 'load-path (concat dotfiles-dir "/configs"))
-(add-to-list 'load-path (concat dotfiles-dir "/system_type"))
+(add-to-list 'load-path (concat dotfiles-dir "/lisp"))
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
@@ -74,6 +74,21 @@
   (require 'darwin))
  )
 
+(require 'rainbow-delimiters)
+
+;; Experimental
+;;(require 'config-gnus)
+
+;; Refactor
+(require 'init-sql)
+(require 'init-php)
+(require 'init-font)
+(require 'init-auto-complete)
+(require 'init-iedit)
+(require 'init-flymake-google-cpplint)
+(require 'init-cedit)
+
+
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
 (if (file-exists-p system-specific-config) (load system-specific-config))
@@ -126,6 +141,7 @@ with a Windows external keyboard from time to time."
 ;; django
 ;; convert items to autoload
 ;; doxymacs
+
 ;; Change the font and size
 
 ;;(set-default-font "DejaVu Sans Mono")
@@ -177,6 +193,12 @@ with a Windows external keyboard from time to time."
 ;;misc
 (message system-name)
 (message (prin1-to-string system-type))
+
+(getenv "PATH")
+(setenv "PATH"
+        (concat
+         "/usr/texbin" ":"
+         (getenv "PATH")))
 
 (setq default-directory "~/")
 
