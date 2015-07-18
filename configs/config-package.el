@@ -16,7 +16,6 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-
 ;; disabled packages
 ;; php-mode
 ;; yasnippet-bundle
@@ -70,6 +69,7 @@
                       php-auto-yasnippets
                       fill-column-indicator
                       diminish
+                      ;;projectile
                       textmate-to-yas)
   "A list of packages to ensure are installed at launch.")
 

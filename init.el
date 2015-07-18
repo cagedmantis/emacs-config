@@ -50,13 +50,11 @@
 (require 'config-yasnippet)
 (require 'config-tex)
 (require 'config-colortheme)
-(require 'config-tramp)
 (require 'xscheme)
 (require 'config-columnmarker)
-;;(require 'config-mode-php)
 (require 'config-elpy)
 (require 'config-jsmode)
-(require 'config-fill-line)
+;;(require 'config-fill-line)
 (require 'config-company)
 ;;(require 'config-projectile)
 (require 'config-magit)
@@ -67,7 +65,8 @@
 ;; (if (eq system-type 'darwin)
 ;;     (require 'darwin))
 
-;;TODO fix
+
+;; TODO fix
 ;; (cond
 ;;  ((eq system-type 'gnu/linux)
 ;;   (require 'gnu_linux))
@@ -88,7 +87,7 @@
 (require 'init-iedit)
 (require 'init-flymake-google-cpplint)
 (require 'init-cedit)
-
+(require 'init-tramp)
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
