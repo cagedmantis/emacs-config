@@ -58,7 +58,7 @@
 (require 'config-jsmode)
 (require 'config-fill-line)
 (require 'config-company)
-(require 'config-projectile)
+;;(require 'config-projectile)
 (require 'config-magit)
 
 ;; Enable system-type specific behaviour
@@ -171,7 +171,7 @@ with a Windows external keyboard from time to time."
 
 (setq python-check-command "/usr/local/bin/pyflakes")
 
-(require 'powerline)
+;; (require 'powerline)
 ;; (powerline-center-evil-theme)
 
 ;;misc
