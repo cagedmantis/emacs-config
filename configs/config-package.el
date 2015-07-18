@@ -12,11 +12,6 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-
-;; (defvar my-packages '(starter-kit starter-kit-lisp starter-kit-ruby starter-kit-eshell tramp solarized-theme zenburn-theme web-mode yasnippet ir-black-theme underwater-theme powerline elpy ample-theme flymake js2-mode ac-js2 auto-complete-clang cedet auto-complete auto-complete-c-headers volatile-highlights diminish fill-column-indicator projectile company fix-ido)
-
-  "A list of packages to ensure are installed at launch.")
-
 ;; disabled packages
 ;;  php-mode
 ;;  yasnippet-bundle
@@ -64,6 +59,7 @@
                       django-snippets
                       go-snippets
                       php-auto-yasnippets
+                      projectile
                       textmate-to-yas)
   "A list of packages to ensure are installed at launch.")
 
