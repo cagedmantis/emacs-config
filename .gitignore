@@ -19,6 +19,8 @@ eshell/
 custom.el
 ede-projects.el
 semanticdb/
+ido.last
+recentf
 
 # OS generated files #
 ######################

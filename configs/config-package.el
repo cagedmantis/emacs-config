@@ -1,3 +1,4 @@
+(require 'cl)
 (require 'package)
 (add-to-list 'package-archives
    '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -7,6 +8,16 @@
     '("gnu" . "http://elpa.gnu.org/packages/")))
 
 (package-initialize)
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+;; disabled packages
+;;  php-mode
+;;  yasnippet-bundle
+;; flycheck
+;; flycheck-google-cpplint
+;; google-c-style
 
 (defvar my-packages '(starter-kit
                       starter-kit-lisp
@@ -48,6 +59,7 @@
                       django-snippets
                       go-snippets
                       php-auto-yasnippets
+                      projectile
                       textmate-to-yas)
   "A list of packages to ensure are installed at launch.")
 

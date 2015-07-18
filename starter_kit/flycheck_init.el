@@ -6,11 +6,10 @@
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
-;;(add-to-list 'load-path dotfiles-dir)
+(add-to-list 'load-path dotfiles-dir)
 (add-to-list 'load-path "~/bin/")
-(add-to-list 'load-path (concat dotfiles-dir "/starter_kit"))
 (add-to-list 'load-path (concat dotfiles-dir "/configs"))
-(add-to-list 'load-path (concat dotfiles-dir "/lisp"))
+(add-to-list 'load-path (concat dotfiles-dir "/system_type"))
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
@@ -50,14 +49,12 @@
 (require 'config-yasnippet)
 (require 'config-tex)
 (require 'config-colortheme)
+(require 'config-tramp)
 (require 'xscheme)
 (require 'config-columnmarker)
+(require 'config-mode-php)
 (require 'config-elpy)
 (require 'config-jsmode)
-;;(require 'config-fill-line)
-(require 'config-company)
-(require 'config-projectile)
-(require 'config-magit)
 
 ;; Enable system-type specific behaviour
 ;; (if (eq system-type 'gnu/linux)
@@ -72,21 +69,6 @@
   (require 'darwin))
  )
 
-(require 'rainbow-delimiters)
-
-;; Experimental
-;;(require 'config-gnus)
-
-;; Refactor
-(require 'init-sql)
-(require 'init-php)
-(require 'init-font)
-(require 'init-auto-complete)
-(require 'init-iedit)
-(require 'init-flymake-google-cpplint)
-(require 'init-cedit)
-(require 'init-tramp)
-
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
 (if (file-exists-p system-specific-config) (load system-specific-config))
@@ -94,6 +76,7 @@
 ;os specific configs
 (setq os-specific-config (concat dotfiles-dir (prin1-to-string system-type) ".el"))
 (if (file-exists-p os-specific-config) (load os-specific-config))
+
 
 (defun swap-meta-and-super ()
   "Swap the mapping of meta and super. Very useful for people using their Mac
@@ -116,6 +99,7 @@ with a Windows external keyboard from time to time."
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
+
 ;;utf-8
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -125,7 +109,7 @@ with a Windows external keyboard from time to time."
 
 ;;****************************
 ;; TODO
-;;
+;; 
 ;; Python custom
 ;; Haskell custom
 ;; os specific config
@@ -136,11 +120,13 @@ with a Windows external keyboard from time to time."
 ;; python
 ;; c++
 ;; c
-;; django
+;; django 
 ;; convert items to autoload
 ;; doxymacs
-
 ;; Change the font and size
+
+
+
 
 ;;(set-default-font "DejaVu Sans Mono")
 ;;(set-default-font "Fira")
@@ -157,7 +143,15 @@ with a Windows external keyboard from time to time."
     (set-default-font preferred-font)
   (set-default-font "DejaVu Sans Mono"))
 
+;;(set-default-font "DejaVu Sans Mono")
+;;(set-default-font "Source Code Pro")
 (set-face-attribute 'default nil :height 120)
+
+
+
+
+
+
 
 (setq tex-dvi-view-command "xdvi")
 
@@ -192,13 +186,11 @@ with a Windows external keyboard from time to time."
 (message system-name)
 (message (prin1-to-string system-type))
 
-(getenv "PATH")
-(setenv "PATH"
-        (concat
-         "/usr/texbin" ":"
-         (getenv "PATH")))
-
 (setq default-directory "~/")
+
+
+
+
 
 (require 'cc-mode)
 
@@ -214,58 +206,39 @@ with a Windows external keyboard from time to time."
 (define-key c++-mode-map (kbd "C-S-<return>") 'ac-complete-clang)
 ;; replace C-S-<return> with a key binding that you want
 
+;; (require 'member-function)
+;; (setq mf--source-file-extension "cpp")
+
+
+
+
+
 (require 'auto-complete)
 (ac-config-default)
 (yas-global-mode 1)
+
+
+
+
 
 ; turn on Semantic
 (semantic-mode 1)
 ; let's define a function which adds semantic as a suggestion backend to auto complete
 ; and hook this function to c-mode-common-hook
-(defun my:add-semantic-to-autocomplete()
+(defun my:add-semantic-to-autocomplete() 
   (add-to-list 'ac-sources 'ac-source-semantic)
 )
 (add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
-; turn on ede mode
+; turn on ede mode 
 (global-ede-mode 1)
 ; create a project for our program.
 
+;; (ede-cpp-root-project "my project" :file "~/demos/my_program/src/main.cpp"
+;; 					  :include-path '("/../my_inc"))
+; you can use system-include-path for setting up the system header file locations.
 ; turn on automatic reparsing of open buffers in semantic
 (global-semantic-idle-scheduler-mode 1)
 
-(setq default-major-mode 'c-mode)
-(setq inhibit-default-init t)
 
-(defun my-c-mode-common-hook ()
-        (setq-default c-style-variables-are-local-p t)
-        (setq-default c-basic-offset 8)
-		(setq-default indent-tabs-mode t)
-		(setq-default tab-width 8)
-		(setq c-basic-offset 8)
-		(setq c-basic-indent 8)
-		)
-(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
-(add-hook 'c++-mode-common-hook 'my-c-mode-common-hook)
 
-(setq inhibit-default-init t)
-(setq default-major-mode 'c-mode)
 
-(add-to-list 'auto-mode-alist '("\\.php$" . c++-mode))
-
-(my-c-mode-common-hook)
-
-;; highlight the current line
-(global-hl-line-mode +1)
-
-(require 'volatile-highlights)
-(volatile-highlights-mode t)
-(diminish 'volatile-highlights-mode)
-
-(require 'whitespace)
-(setq whitespace-line-column 80) ;; limit line length
-(setq whitespace-style '(face tabs empty trailing lines-tail))
-
-;; Experimental
-(setq-default show-trailing-whitespace t)
-(setq-default indicate-empty-lines t)
-(global-whitespace-mode t)
