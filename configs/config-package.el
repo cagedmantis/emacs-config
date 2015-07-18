@@ -59,7 +59,7 @@
                       django-snippets
                       go-snippets
                       php-auto-yasnippets
-                      projectile
+                      ;;projectile
                       textmate-to-yas)
   "A list of packages to ensure are installed at launch.")
 

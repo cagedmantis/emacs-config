@@ -56,7 +56,7 @@
 (require 'config-jsmode)
 ;;(require 'config-fill-line)
 (require 'config-company)
-(require 'config-projectile)
+;;(require 'config-projectile)
 (require 'config-magit)
 
 ;; Enable system-type specific behaviour
@@ -65,12 +65,13 @@
 ;; (if (eq system-type 'darwin)
 ;;     (require 'darwin))
 
-(cond
- ((eq system-type 'gnu/linux)
-  (require 'gnu_linux))
- ((eq system-type 'darwin)
-  (require 'darwin))
- )
+;; TODO fix
+;; (cond
+;;  ((eq system-type 'gnu/linux)
+;;   (require 'gnu_linux))
+;;  ((eq system-type 'darwin)
+;;   (require 'darwin))
+;;  )
 
 (require 'rainbow-delimiters)
 
