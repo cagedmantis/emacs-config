@@ -67,12 +67,13 @@
 ;; (if (eq system-type 'darwin)
 ;;     (require 'darwin))
 
-(cond
- ((eq system-type 'gnu/linux)
-  (require 'gnu_linux))
- ((eq system-type 'darwin)
-  (require 'darwin))
- )
+;;TODO fix
+;; (cond
+;;  ((eq system-type 'gnu/linux)
+;;   (require 'gnu_linux))
+;;  ((eq system-type 'darwin)
+;;   (require 'darwin))
+;;  )
 
 (require 'rainbow-delimiters)
 
