@@ -53,7 +53,7 @@
 (require 'config-tramp)
 (require 'xscheme)
 (require 'config-columnmarker)
-(require 'config-mode-php)
+;;(require 'config-mode-php)
 (require 'config-elpy)
 (require 'config-jsmode)
 (require 'config-fill-line)
