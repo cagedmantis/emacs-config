@@ -88,6 +88,7 @@
 (require 'init-flymake-google-cpplint)
 (require 'init-cedit)
 (require 'init-tramp)
+;;(require 'init-python)
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
