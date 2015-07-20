@@ -55,16 +55,19 @@
 (require 'config-columnmarker)
 (require 'config-elpy)
 (require 'config-jsmode)
-;;(require 'config-fill-line)
 (require 'config-company)
 (require 'config-projectile)
 (require 'config-magit)
-
-;; Enable system-type specific behaviour
-;; (if (eq system-type 'gnu/linux)
-;;     (require 'gnu_linux))
-;; (if (eq system-type 'darwin)
-;;     (require 'darwin))
+(require 'rainbow-delimiters)
+(require 'prelude-ruby)
+;; Refactor
+(require 'init-sql)
+;;(require 'init-php)
+(require 'init-font)
+(require 'init-auto-complete)
+(require 'init-iedit)
+(require 'init-flymake-google-cpplint)
+(require 'init-cedit)
 
 (cond
  ((eq system-type 'gnu/linux)
@@ -72,21 +75,6 @@
  ((eq system-type 'darwin)
   (require 'darwin))
  )
-
-(require 'rainbow-delimiters)
-
-;; Experimental
-;;(require 'config-gnus)
-
-;; Refactor
-(require 'init-sql)
-(require 'init-php)
-(require 'init-font)
-(require 'init-auto-complete)
-(require 'init-iedit)
-(require 'init-flymake-google-cpplint)
-(require 'init-cedit)
-
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
@@ -139,7 +127,9 @@ with a Windows external keyboard from time to time."
 ;; c
 ;; django
 ;; convert items to autoload
-;; doxymacs
+
+
+
 
 ;; Change the font and size
 
@@ -186,9 +176,6 @@ with a Windows external keyboard from time to time."
 
 (setq python-check-command "/usr/local/bin/pyflakes")
 
-(require 'powerline)
-;; (powerline-center-evil-theme)
-
 ;;misc
 (message system-name)
 (message (prin1-to-string system-type))
@@ -234,39 +221,5 @@ with a Windows external keyboard from time to time."
 ; turn on automatic reparsing of open buffers in semantic
 (global-semantic-idle-scheduler-mode 1)
 
-(setq default-major-mode 'c-mode)
-(setq inhibit-default-init t)
-
-(defun my-c-mode-common-hook ()
-        (setq-default c-style-variables-are-local-p t)
-        (setq-default c-basic-offset 8)
-		(setq-default indent-tabs-mode t)
-		(setq-default tab-width 8)
-		(setq c-basic-offset 8)
-		(setq c-basic-indent 8)
-		)
-(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
-(add-hook 'c++-mode-common-hook 'my-c-mode-common-hook)
-
-(setq inhibit-default-init t)
-(setq default-major-mode 'c-mode)
-
-(add-to-list 'auto-mode-alist '("\\.php$" . c++-mode))
-
-(my-c-mode-common-hook)
-
 ;; highlight the current line
 (global-hl-line-mode +1)
-
-(require 'volatile-highlights)
-(volatile-highlights-mode t)
-(diminish 'volatile-highlights-mode)
-
-(require 'whitespace)
-(setq whitespace-line-column 80) ;; limit line length
-(setq whitespace-style '(face tabs empty trailing lines-tail))
-
-;; Experimental
-(setq-default show-trailing-whitespace t)
-(setq-default indicate-empty-lines t)
-(global-whitespace-mode t)
