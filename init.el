@@ -182,15 +182,3 @@ with a Windows external keyboard from time to time."
 (define-key global-map (kbd "C-c o") 'iedit-mode)
 
 (setq python-check-command "/usr/local/bin/pyflakes")
-
-;;misc
-(message system-name)
-(message (prin1-to-string system-type))
-
-;; (require 'powerline)
-;; (powerline-center-evil-theme)
-
-;;misc
-(message system-name)
-(message (prin1-to-string system-type))
-
