@@ -1,11 +1,15 @@
 (require 'cl)
 (require 'package)
+
 (add-to-list 'package-archives
    '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives
     '("gnu" . "http://elpa.gnu.org/packages/")))
+
+;; (add-to-list 'package-archives
+;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (package-initialize)
 
@@ -18,6 +22,12 @@
 ;; flycheck
 ;; flycheck-google-cpplint
 ;; google-c-style
+;; php-mode
+;; yasnippet-bundle
+;; flycheck
+;; flycheck-google-cpplint
+;; google-c-style
+;; powerline
 
 (defvar my-packages '(starter-kit
                       starter-kit-lisp
@@ -52,6 +62,9 @@
                       google-c-style
                       auto-complete
                       auto-complete-c-headers
+                      auto-complete-clang
+                      cedet
+                      company
                       flymake-cursor
                       iedit
                       cedit
@@ -59,8 +72,11 @@
                       django-snippets
                       go-snippets
                       php-auto-yasnippets
-                      projectile
                       yaml-mode
+                      fill-column-indicator
+                      diminish
+                      ;;projectile
+                      python-mode
                       textmate-to-yas)
   "A list of packages to ensure are installed at launch.")
 

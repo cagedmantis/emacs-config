@@ -50,14 +50,31 @@
 (require 'config-yasnippet)
 (require 'config-tex)
 (require 'config-colortheme)
-(require 'config-tramp)
 (require 'xscheme)
 (require 'config-columnmarker)
 (require 'config-elpy)
 (require 'config-jsmode)
+;;(require 'config-fill-line)
 (require 'config-company)
-(require 'config-projectile)
+;;(require 'config-projectile)
 (require 'config-magit)
+
+;; Enable system-type specific behaviour
+;; (if (eq system-type 'gnu/linux)
+;;     (require 'gnu_linux))
+;; (if (eq system-type 'darwin)
+;;     (require 'darwin))
+
+
+;; TODO fix
+;; (cond
+;;  ((eq system-type 'gnu/linux)
+;;   (require 'gnu_linux))
+;;  ((eq system-type 'darwin)
+;;   (require 'darwin))
+;;  )
+
+
 (require 'rainbow-delimiters)
 (require 'prelude-ruby)
 ;; Refactor
@@ -69,12 +86,17 @@
 (require 'init-flymake-google-cpplint)
 (require 'init-cedit)
 
-(cond
- ((eq system-type 'gnu/linux)
-  (require 'gnu_linux))
- ((eq system-type 'darwin)
-  (require 'darwin))
- )
+
+;; (cond
+;;  ((eq system-type 'gnu/linux)
+;;   (require 'gnu_linux))
+;;  ((eq system-type 'darwin)
+;;   (require 'darwin))
+;;  )
+
+(require 'init-tramp)
+;;(require 'init-python)
+
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
@@ -129,8 +151,7 @@ with a Windows external keyboard from time to time."
 ;; convert items to autoload
 
 
-
-
+;; doxymacs
 ;; Change the font and size
 
 ;;(set-default-font "DejaVu Sans Mono")
@@ -180,6 +201,13 @@ with a Windows external keyboard from time to time."
 (message system-name)
 (message (prin1-to-string system-type))
 
+;; (require 'powerline)
+;; (powerline-center-evil-theme)
+
+;;misc
+(message system-name)
+(message (prin1-to-string system-type))
+
 (getenv "PATH")
 (setenv "PATH"
         (concat
@@ -223,3 +251,16 @@ with a Windows external keyboard from time to time."
 
 ;; highlight the current line
 (global-hl-line-mode +1)
+
+(require 'volatile-highlights)
+(volatile-highlights-mode t)
+(diminish 'volatile-highlights-mode)
+
+(require 'whitespace)
+(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-style '(face tabs empty trailing lines-tail))
+
+;; Experimental
+(setq-default show-trailing-whitespace t)
+(setq-default indicate-empty-lines t)
+(global-whitespace-mode t)
