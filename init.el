@@ -58,45 +58,31 @@
 (require 'config-company)
 ;;(require 'config-projectile)
 (require 'config-magit)
-
-;; Enable system-type specific behaviour
-;; (if (eq system-type 'gnu/linux)
-;;     (require 'gnu_linux))
-;; (if (eq system-type 'darwin)
-;;     (require 'darwin))
-
-
-;; TODO fix
-;; (cond
-;;  ((eq system-type 'gnu/linux)
-;;   (require 'gnu_linux))
-;;  ((eq system-type 'darwin)
-;;   (require 'darwin))
-;;  )
-
-
 (require 'rainbow-delimiters)
 (require 'prelude-ruby)
-;; Refactor
-(require 'init-sql)
-;;(require 'init-php)
-(require 'init-font)
+
+;; New configs
 (require 'init-auto-complete)
-(require 'init-iedit)
-(require 'init-flymake-google-cpplint)
+(require 'init-auto-complete-clang)
+(require 'init-cc)
 (require 'init-cedit)
-
-
-;; (cond
-;;  ((eq system-type 'gnu/linux)
-;;   (require 'gnu_linux))
-;;  ((eq system-type 'darwin)
-;;   (require 'darwin))
-;;  )
-
-(require 'init-tramp)
+(require 'init-font)
+(require 'init-flymake-google-cpplint)
+(require 'init-iedit)
+;;(require 'init-php)
 ;;(require 'init-python)
+(require 'init-semantic)
+(require 'init-sql)
+(require 'init-tramp)
+(require 'init-volatile-highlights)
+(require 'init-whitespace)
 
+(cond
+ ((eq system-type 'gnu/linux)
+  (require 'gnu_linux))
+ ((eq system-type 'darwin)
+  (require 'darwin))
+ )
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
@@ -208,59 +194,3 @@ with a Windows external keyboard from time to time."
 (message system-name)
 (message (prin1-to-string system-type))
 
-(getenv "PATH")
-(setenv "PATH"
-        (concat
-         "/usr/texbin" ":"
-         (getenv "PATH")))
-
-(setq default-directory "~/")
-
-(require 'cc-mode)
-
-(setq-default c-basic-offset 4 c-default-style "linux")
-(setq-default tab-width 4 indent-tabs-mode t)
-(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-
-;; (require 'autopair)
-;; (autopair-global-mode 1)
-;; (setq autopair-autowrap t)
-
-(require 'auto-complete-clang)
-(define-key c++-mode-map (kbd "C-S-<return>") 'ac-complete-clang)
-;; replace C-S-<return> with a key binding that you want
-
-(require 'auto-complete)
-(ac-config-default)
-(yas-global-mode 1)
-
-; turn on Semantic
-(semantic-mode 1)
-; let's define a function which adds semantic as a suggestion backend to auto complete
-; and hook this function to c-mode-common-hook
-(defun my:add-semantic-to-autocomplete()
-  (add-to-list 'ac-sources 'ac-source-semantic)
-)
-(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
-; turn on ede mode
-(global-ede-mode 1)
-; create a project for our program.
-
-; turn on automatic reparsing of open buffers in semantic
-(global-semantic-idle-scheduler-mode 1)
-
-;; highlight the current line
-(global-hl-line-mode +1)
-
-(require 'volatile-highlights)
-(volatile-highlights-mode t)
-(diminish 'volatile-highlights-mode)
-
-(require 'whitespace)
-(setq whitespace-line-column 80) ;; limit line length
-(setq whitespace-style '(face tabs empty trailing lines-tail))
-
-;; Experimental
-(setq-default show-trailing-whitespace t)
-(setq-default indicate-empty-lines t)
-(global-whitespace-mode t)

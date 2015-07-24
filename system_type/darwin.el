@@ -23,7 +23,6 @@
 
 (set-face-attribute 'default nil :height 130)
 
-
 ;; Latex hacks
 (getenv "PATH")
  (setenv "PATH"
@@ -32,7 +31,6 @@
 
 (getenv "PATH")))
 
-(message "IT WORKED!!!")
-
+(setq default-directory "~/")
 
 (provide 'darwin)
