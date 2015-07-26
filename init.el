@@ -74,10 +74,12 @@
 ;;(require 'init-php)
 ;;(require 'init-python)
 (require 'init-semantic)
+(require 'init-saveplace)
 (require 'init-sql)
 (require 'init-tramp)
 (require 'init-volatile-highlights)
 (require 'init-whitespace)
+(require 'init-which-mode)
 
 (cond
  ((eq system-type 'gnu/linux)
@@ -110,18 +112,7 @@
 ;; django
 ;; convert items to autoload
 
-;; Experimental
-;; From: http://whattheemacsd.com/
-;; Save point position between sessions
-(require 'saveplace)
-(setq-default save-place t)
-(setq save-place-file (expand-file-name ".places" user-emacs-directory))
-
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
-
-(which-function-mode)
-
-(add-hook 'after-init-hook #'global-flycheck-mode)
 
 (message "=== Emacs Init Concluded ===")
