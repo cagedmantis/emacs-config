@@ -66,9 +66,11 @@
 (require 'init-auto-complete-clang)
 (require 'init-cc)
 (require 'init-cedit)
+(require 'init-elpy)
 (require 'init-font)
 (require 'init-flymake-google-cpplint)
 (require 'init-iedit)
+(require 'init-latex)
 ;;(require 'init-php)
 ;;(require 'init-python)
 (require 'init-semantic)
@@ -108,8 +110,6 @@
 ;; django
 ;; convert items to autoload
 
-(setq tex-dvi-view-command "xdvi")
-
 ;; Experimental
 ;; From: http://whattheemacsd.com/
 ;; Save point position between sessions
@@ -117,7 +117,6 @@
 (setq-default save-place t)
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
 
-(message "YO, MTV RAPS! MY CONFIG LOADED!")
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
@@ -125,11 +124,4 @@
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; Elpy
-(elpy-enable)
-;; Fixing a key binding bug in elpy
-(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
-;; Fixing another key binding bug in iedit mode
-(define-key global-map (kbd "C-c o") 'iedit-mode)
-
-(setq python-check-command "/usr/local/bin/pyflakes")
+(message "=== Emacs Init Concluded ===")
