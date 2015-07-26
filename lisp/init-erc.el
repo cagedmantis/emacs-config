@@ -150,4 +150,4 @@
  '(erc-server-coding-system (quote utf-8))
  )
 
-(provide 'config-erc)
+(provide 'init-erc)

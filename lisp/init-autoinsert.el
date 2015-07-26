@@ -10,5 +10,4 @@
 (define-auto-insert "\\.mk$" "insert.mk")
 (define-auto-insert "\\.sh$" "insert.sh")
 
-(provide 'config-autoinsert)
-
+(provide 'init-autoinsert)

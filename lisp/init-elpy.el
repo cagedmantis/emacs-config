@@ -1,3 +1,5 @@
+;; pip install elpy rope jedi
+
 ;; Elpy
 (elpy-enable)
 ;; Fixing a key binding bug in elpy
@@ -6,3 +8,5 @@
 (define-key global-map (kbd "C-c o") 'iedit-mode)
 
 (setq python-check-command "/usr/local/bin/pyflakes")
+
+(provide 'init-elpy)

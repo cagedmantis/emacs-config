@@ -7,4 +7,4 @@
 (setq yas-snippet-dirs (append yas-snippet-dirs
                                '("~/.emacs.d/modelib/snippets")))
 
-(provide 'config-yasnippet)
+(provide 'init-yasnippet)

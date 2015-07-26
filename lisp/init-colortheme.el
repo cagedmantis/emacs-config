@@ -2,9 +2,6 @@
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
-
-
-
 (add-to-list 'load-path
 	     "~/.emacs.d/plugins/color-theme-6.6.0/")
 
@@ -37,4 +34,4 @@
 ;;(load-theme 'zenburn t)
 (load-theme 'ample t)
 
-(provide 'config-colortheme)
+(provide 'init-colortheme)
