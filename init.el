@@ -96,23 +96,4 @@
 (setq os-specific-config (concat dotfiles-dir (prin1-to-string system-type) ".el"))
 (if (file-exists-p os-specific-config) (load os-specific-config))
 
-;;****************************
-;; TODO
-;;
-;; Python custom
-;; Haskell custom
-;; os specific config
-;; client specific config
-;; markdown mode
-;; css
-;; html
-;; python
-;; c++
-;; c
-;; django
-;; convert items to autoload
-
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-
 (message "=== Emacs Init Concluded ===")
