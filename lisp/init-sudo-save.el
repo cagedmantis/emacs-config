@@ -32,6 +32,4 @@
 
 (add-hook 'before-save-hook 'sudo-before-save-hook)
 
-
-
-;;; (>>FILE<<) ends here
+(provide 'init-sudo-save)

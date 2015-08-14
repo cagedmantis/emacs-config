@@ -8,3 +8,5 @@
 (setq org-agenda-files (list "~/Dropbox/work_ps/org/work.org"
                              "~/Dropbox/work_ps/org/school.org" 
                              "~/Dropbox/work_ps/org/home.org"))
+
+(provide 'init-org)

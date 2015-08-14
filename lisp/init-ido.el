@@ -11,4 +11,4 @@
         ido-use-filename-at-point 'guess
         ido-max-prospects 10))
 
-(provide 'config-ido)
+(provide 'init-ido)

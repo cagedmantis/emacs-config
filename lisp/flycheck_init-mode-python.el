@@ -117,5 +117,5 @@
 
 
 ;;(provide 'init_python)
-(provide 'config-mode-python)
+(provide 'init-mode-python)
 

@@ -11,4 +11,4 @@
       "/usr/bin/mit-scheme")
 (require 'xscheme)
 
-
+(provide 'init-scheme)

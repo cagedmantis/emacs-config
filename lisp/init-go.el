@@ -46,4 +46,4 @@ Add this to .emacs to run gofmt on the current buffer when saving:
 
 ;;;***
 
-(provide 'go-mode-load)
+(provide 'init-go)

@@ -96,4 +96,4 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-(provide 'config-package)
+(provide 'init-package)

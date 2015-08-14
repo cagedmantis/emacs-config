@@ -1,3 +1,3 @@
 (require 'magit)
 
-(provide 'config-magit)
+(provide 'init-magit)
