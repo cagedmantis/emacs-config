@@ -75,7 +75,7 @@
                       yaml-mode
                       fill-column-indicator
                       diminish
-                      ;;projectile
+                      projectile
                       python-mode
                       textmate-to-yas)
   "A list of packages to ensure are installed at launch.")

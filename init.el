@@ -62,6 +62,7 @@
 (require 'init-jsmode)
 (require 'init-latex)
 ;;(require 'init-php)
+(require 'init-projectile)
 ;;(require 'init-python)
 ;;(require 'init-semantic)
 (require 'init-rainbow-delimiters)
