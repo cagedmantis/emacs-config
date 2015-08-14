@@ -19,7 +19,7 @@
 (add-to-list 'load-path "~/.emacs.d/modes/")
 
 ;; call the package file
-(require 'config-package)
+(require 'init-package)
 
 ;; general configuration
 (require 'config-default)
@@ -28,13 +28,13 @@
 (require 'config-ext)
 
 ;; ido configuration
-(require 'config-ido)
+(require 'init-ido)
 
 ;; hooks configuration
 (require 'config-hook)
 
-;; modes
-(require 'go-mode)
+;; refactor
+(require 'init-go)
 (require 'markdown-mode)
 
 ;; remove these!
@@ -73,6 +73,13 @@
 (require 'init-whitespace)
 (require 'init-which-mode)
 (require 'init-yasnippet)
+
+;; review
+(require 'init-org)
+;;(require 'init-magit)
+(require 'init-scheme)
+(require 'init-sudo-save)
+;;(require 'init-mode-python)
 
 (cond
  ((eq system-type 'gnu/linux)
