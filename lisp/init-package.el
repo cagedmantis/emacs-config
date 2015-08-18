@@ -33,6 +33,9 @@
                       starter-kit-lisp
                       starter-kit-ruby
                       starter-kit-eshell
+                      go-mode
+                      go-eldoc
+                      go-autocomplete
                       solarized-theme
                       zenburn-theme
                       ir-black-theme
@@ -43,7 +46,6 @@
                       smarty-mode
                       haskell-mode
                       markdown-mode
-                      go-mode
                       rust-mode
                       tramp
                       yasnippet
@@ -77,7 +79,9 @@
                       diminish
                       projectile
                       python-mode
-                      textmate-to-yas)
+                      textmate-to-yas
+                      ;;company-mode
+                      company-emoji)
   "A list of packages to ensure are installed at launch.")
 
 ;;grabbed from Emacs Prelude

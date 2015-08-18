@@ -21,6 +21,7 @@ ede-projects.el
 semanticdb/
 ido.last
 recentf
+projectile-bookmarks.eld
 
 # OS generated files #
 ######################
