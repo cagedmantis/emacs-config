@@ -11,33 +11,17 @@
 
 (defvar preferred-fonts '("Fira Mono"
                           "Source Code Pro"
-                          "DejaVu Sans Mono"))
+                          "DejaVu Sans Mono"
+						  "Monaco"
+						  "Ubuntu Mono"))
 
 ;; Set font for linux and misc.
 (if (eq system-type 'gnu/linux)
     (if (font-existsp "Ubuntu Mono")
         (set-default-font "Ubuntu Mono")
       (set-default-font "Monaco"))
-  (set-default-font "Fira Mono"))
+  (set-default-font  "Source Code Pro"))
 
-(set-face-attribute 'default nil :height 120)
-
-;; ;; Change the font and size
-;; ;;(set-default-font "DejaVu Sans Mono")
-;; ;;(set-default-font "Fira")
-
-;; (setq preferred-font "Fira Mono")
-;; ;;(setq preferred-font "Source Code Pro")
-
-;; ;; Does a font exist?
-;; (defun font-existsp (font)
-;;     (if (null (x-list-fonts font))
-;;         nil t))
-
-;; (if (font-existsp preferred-font)
-;;     (set-default-font preferred-font)
-;;   (set-default-font "DejaVu Sans Mono"))
-
-;; (set-face-attribute 'default nil :height 120)
+;;(set-face-attribute 'default nil :height 120)
 
 (provide 'init-font)
