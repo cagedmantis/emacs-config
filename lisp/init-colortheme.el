@@ -29,9 +29,9 @@
 ;; blackboard
 ;; wombat
 
-
 ;;(load-theme 'solarized-dark t)
 ;;(load-theme 'zenburn t)
-(load-theme 'ample t)
+;;(load-theme 'ample t)
+(load-theme 'monokai t)
 
 (provide 'init-colortheme)

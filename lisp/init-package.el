@@ -39,6 +39,7 @@
                       solarized-theme
                       zenburn-theme
                       ir-black-theme
+					  monokai-theme
                       underwater-theme
                       ample-theme
                       web-mode
@@ -101,3 +102,5 @@
       (package-install p))))
 
 (provide 'init-package)
+;;; init-package ends here 
+
