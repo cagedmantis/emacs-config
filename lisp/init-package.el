@@ -28,9 +28,15 @@
                       starter-kit-lisp
                       starter-kit-ruby
                       starter-kit-eshell
+
                       go-mode
                       go-eldoc
                       go-autocomplete
+                      go-snippets
+					  go-projectile
+					  go-errcheck
+					  flymake-go
+					  
                       solarized-theme
                       zenburn-theme
                       ir-black-theme
@@ -67,7 +73,7 @@
                       cedit
                       yasnippet
                       django-snippets
-                      go-snippets
+
                       php-auto-yasnippets
                       yaml-mode
                       fill-column-indicator
@@ -76,7 +82,9 @@
                       python-mode
                       textmate-to-yas
                       ;;company-mode
-                      company-emoji
+
+
+					  company-emoji
 					  exec-path-from-shell
 					  ace-window)
   "A list of packages to ensure are installed at launch.")
