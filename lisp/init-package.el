@@ -17,17 +17,12 @@
   (package-refresh-contents))
 
 ;; disabled packages
-;;  php-mode
-;;  yasnippet-bundle
-;; flycheck
-;; flycheck-google-cpplint
-;; google-c-style
 ;; php-mode
 ;; yasnippet-bundle
-;; flycheck
 ;; flycheck-google-cpplint
 ;; google-c-style
-;; powerline
+;; flycheck-google-cpplint
+;; google-c-style
 
 (defvar my-packages '(starter-kit
                       starter-kit-lisp
@@ -50,7 +45,6 @@
                       rust-mode
                       tramp
                       yasnippet
-                      powerline
                       elpy
                       flymake
                       ac-js2
@@ -60,7 +54,7 @@
                       gist
                       magit
                       ;; php-mode
-                      ;; flycheck
+                      flycheck
                       flycheck-google-cpplint
                       google-c-style
                       auto-complete
@@ -82,7 +76,9 @@
                       python-mode
                       textmate-to-yas
                       ;;company-mode
-                      company-emoji)
+                      company-emoji
+					  exec-path-from-shell
+					  ace-window)
   "A list of packages to ensure are installed at launch.")
 
 ;;grabbed from Emacs Prelude
