@@ -34,7 +34,7 @@
 (require 'config-hook)
 
 ;; refactor
-(require 'init-go)
+ (require 'init-go)
 (require 'markdown-mode)
 
 ;; remove these!
@@ -45,6 +45,19 @@
 (require 'starter-kit-eshell)
 (require 'starter-kit-perl)
 (require 'starter-kit-ruby)
+
+;; ~~~~~ Reafactored ~~~~~
+(require 'init-exec-path-from-shell)
+(require 'init-flycheck)
+(require 'init-projectile)
+(require 'init-yaml-mode)
+(require 'init-ace-window)
+
+(require 'init-go-eldoc)
+;;(require 'init-go-autocomplete)
+(require 'init-go-projectile)
+;; ~~~~~~~~~~~~~~~~~~~~~~~
+
 
 (require 'init-auto-complete)
 (require 'init-autoinsert)
@@ -62,7 +75,6 @@
 (require 'init-jsmode)
 (require 'init-latex)
 ;;(require 'init-php)
-(require 'init-projectile)
 ;;(require 'init-python)
 ;;(require 'init-semantic)
 (require 'init-rainbow-delimiters)
