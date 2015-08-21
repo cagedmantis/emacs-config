@@ -29,13 +29,6 @@
                       starter-kit-ruby
                       starter-kit-eshell
 
-                      go-mode
-                      go-eldoc
-                      go-autocomplete
-                      go-snippets
-					  go-projectile
-					  go-errcheck
-					  flymake-go
 					  
                       solarized-theme
                       zenburn-theme
@@ -82,11 +75,7 @@
                       python-mode
                       textmate-to-yas
                       ;;company-mode
-
-
-					  company-emoji
-					  exec-path-from-shell
-					  ace-window)
+)
   "A list of packages to ensure are installed at launch.")
 
 ;;grabbed from Emacs Prelude

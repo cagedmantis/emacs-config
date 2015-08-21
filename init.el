@@ -48,14 +48,14 @@
 
 ;; ~~~~~ Reafactored ~~~~~
 (require 'init-exec-path-from-shell)
-(require 'init-flycheck)
-(require 'init-projectile)
-(require 'init-yaml-mode)
 (require 'init-ace-window)
-
+(require 'init-docean)
+(require 'init-flycheck)
 (require 'init-go-eldoc)
 ;;(require 'init-go-autocomplete)
 (require 'init-go-projectile)
+(require 'init-projectile)
+(require 'init-yaml-mode)
 ;; ~~~~~~~~~~~~~~~~~~~~~~~
 
 
