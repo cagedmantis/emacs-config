@@ -14,8 +14,11 @@
 
 ;; Does a font exist?
 (defun font-existsp (font)
-    (if (null (x-list-fonts font))
-        nil t))
+  (if (window-system)
+	  (if (null (x-list-fonts font))
+		  nil t)
+	)
+  )
 
 (if (font-existsp preferred-font)
     (set-default-font preferred-font)

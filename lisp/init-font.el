@@ -2,8 +2,10 @@
 
 ;; Does a font exist?
 (defun font-existsp (font)
-    (if (null (x-list-fonts font))
-        nil t))
+  (if (window-system)
+	  (if (null (x-list-fonts font))
+		  nil t))
+  )
 
 ;; (if (font-existsp preferred-font)
 ;;     (set-default-font preferred-font)
@@ -13,14 +15,17 @@
                           "Source Code Pro"
                           "DejaVu Sans Mono"
 						  "Monaco"
-						  "Ubuntu Mono"))
+						  "Ubuntu Mono"
+						  "Hack"))
 
 ;; Set font for linux and misc.
 (if (eq system-type 'gnu/linux)
-    (if (font-existsp "Ubuntu Mono")
-        (set-default-font "Ubuntu Mono")
-      (set-default-font "Monaco"))
-  (set-default-font  "Source Code Pro"))
+	(if (window-system)
+		(if (font-existsp "Ubuntu Mono")
+			(set-default-font "Ubuntu Mono")
+		  (set-default-font "Monaco"))
+	  (set-default-font  "Source Code Pro"))
+  )
 
 ;;(set-face-attribute 'default nil :height 120)
 
