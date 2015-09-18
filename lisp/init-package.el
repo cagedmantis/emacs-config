@@ -66,7 +66,7 @@
                       cedit
                       yasnippet
                       django-snippets
-
+					  neotree
                       php-auto-yasnippets
                       yaml-mode
                       fill-column-indicator
