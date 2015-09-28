@@ -11,7 +11,7 @@
 (add-to-list 'load-path (concat dotfiles-dir "/starter_kit"))
 (add-to-list 'load-path (concat dotfiles-dir "/configs"))
 (add-to-list 'load-path (concat dotfiles-dir "/lisp"))
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
+;;(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
 (add-to-list 'load-path (concat dotfiles-dir "/system_type"))
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
