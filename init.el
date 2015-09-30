@@ -11,7 +11,6 @@
 (add-to-list 'load-path (concat dotfiles-dir "/starter_kit"))
 (add-to-list 'load-path (concat dotfiles-dir "/configs"))
 (add-to-list 'load-path (concat dotfiles-dir "/lisp"))
-;;(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
 (add-to-list 'load-path (concat dotfiles-dir "/system_type"))
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
@@ -34,7 +33,7 @@
 (require 'config-hook)
 
 ;; refactor
- (require 'init-go)
+(require 'init-go)
 (require 'markdown-mode)
 
 ;; remove these!
@@ -51,13 +50,15 @@
 (require 'init-ace-window)
 (require 'init-docean)
 (require 'init-flycheck)
+(require 'init-go-complete)
 (require 'init-go-eldoc)
 ;;(require 'init-go-autocomplete)
 (require 'init-go-projectile)
+(require 'init-golint)
 (require 'init-projectile)
+(require 'init-rainbow-delimiters)
 (require 'init-yaml-mode)
 ;; ~~~~~~~~~~~~~~~~~~~~~~~
-
 
 (require 'init-auto-complete)
 (require 'init-autoinsert)
@@ -77,7 +78,6 @@
 ;;(require 'init-php)
 ;;(require 'init-python)
 ;;(require 'init-semantic)
-(require 'init-rainbow-delimiters)
 (require 'init-saveplace)
 (require 'init-sql)
 (require 'init-tramp)

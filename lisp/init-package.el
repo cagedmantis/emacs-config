@@ -75,6 +75,8 @@
                       python-mode
                       textmate-to-yas
                       ;;company-mode
+					  go-complete
+					  golint
 )
   "A list of packages to ensure are installed at launch.")
 
