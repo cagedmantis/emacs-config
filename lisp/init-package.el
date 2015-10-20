@@ -29,7 +29,10 @@
                       starter-kit-ruby
                       starter-kit-eshell
 
-					  
+                      exec-path-from-shell
+                      go-eldoc
+                      go-projectile
+                                            
                       solarized-theme
                       zenburn-theme
                       ir-black-theme
