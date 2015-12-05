@@ -32,6 +32,7 @@
                       exec-path-from-shell
                       go-eldoc
                       go-projectile
+                      go-autocomplete
                                             
                       solarized-theme
                       zenburn-theme
@@ -80,7 +81,8 @@
                       ;;company-mode
 					  go-complete
 					  golint
-)
+					  switch-window
+					  )
   "A list of packages to ensure are installed at launch.")
 
 ;;grabbed from Emacs Prelude

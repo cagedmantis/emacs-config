@@ -52,11 +52,12 @@
 (require 'init-flycheck)
 (require 'init-go-complete)
 (require 'init-go-eldoc)
-;;(require 'init-go-autocomplete)
+(require 'init-go-autocomplete)
 (require 'init-go-projectile)
 (require 'init-golint)
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
+(require 'init-switch-window)
 (require 'init-yaml-mode)
 ;; ~~~~~~~~~~~~~~~~~~~~~~~
 

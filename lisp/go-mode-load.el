@@ -47,4 +47,6 @@ Add this to .emacs to run gofmt on the current buffer when saving:
 
 ;;;***
 
+(add-hook 'before-save-hook #'gofmt-before-save)
+
 (provide 'go-mode-load)
