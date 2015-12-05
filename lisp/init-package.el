@@ -33,13 +33,16 @@
                       go-eldoc
                       go-projectile
                       go-autocomplete
-                                            
+
+					  color-theme
                       solarized-theme
                       zenburn-theme
                       ir-black-theme
 					  monokai-theme
                       underwater-theme
                       ample-theme
+					  busybee-theme
+					  
                       web-mode
                       js2-mode
                       smarty-mode
