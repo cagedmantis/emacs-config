@@ -109,4 +109,6 @@
 (setq os-specific-config (concat dotfiles-dir (prin1-to-string system-type) ".el"))
 (if (file-exists-p os-specific-config) (load os-specific-config))
 
+(server-start)
+
 (message "=== Emacs Init Concluded ===")

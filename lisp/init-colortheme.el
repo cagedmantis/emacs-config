@@ -11,7 +11,7 @@
 ;;(load-theme 'solarized-dark t)
 ;;(load-theme 'zenburn t)
 ;;(load-theme 'ample t)
-;;(load-theme 'ir-black t)
-(load-theme 'monokai t)
+;;(load-theme 'monokai t)
+(load-theme 'ir-black t)
 
 (provide 'init-colortheme)

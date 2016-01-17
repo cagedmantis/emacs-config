@@ -22,6 +22,7 @@ semanticdb/
 ido.last
 recentf
 projectile-bookmarks.eld
+.gitconfig
 
 # OS generated files #
 ######################
