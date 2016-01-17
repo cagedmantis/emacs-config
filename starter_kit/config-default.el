@@ -13,6 +13,11 @@
 (column-number-mode t)                         ; Show column number in mode-line
 (global-font-lock-mode t)		       ; fonts are automatically highlighted
 (setq visible-bell t)                          ; No beep when reporting errors
+
+;;El Capitan fix
+(setq visible-bell nil) ;; The default
+(setq ring-bell-function 'ignore)
+
 (defalias 'yes-or-no-p 'y-or-n-p)              ; y/n instead of yes/no
 (setq ispell-dictionary "english")             ; Set ispell dictionary
 (setq make-backup-files t)                     ; backup files ~
