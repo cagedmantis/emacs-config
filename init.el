@@ -49,6 +49,7 @@
 (require 'init-exec-path-from-shell)
 (require 'init-ace-window)
 (require 'init-docean)
+(require 'init-dockerfile-mode)
 (require 'init-flycheck)
 (require 'init-go-complete)
 (require 'init-go-eldoc)

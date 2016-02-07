@@ -22,31 +22,48 @@
 ;;;;;;  (19917 17808))
 ;;; Generated autoloads from go-mode.el
 
-(autoload 'go-mode "go-mode" "\
-Major mode for editing Go source text.
 
-This provides basic syntax highlighting for keywords, built-ins,
-functions, and some types.  It also provides indentation that is
-\(almost) identical to gofmt.
+;;======================================================================
 
-\(fn)" t nil)
+;; (autoload 'go-mode "go-mode" "\
+;; Major mode for editing Go source text.
 
-(add-to-list 'auto-mode-alist (cons "\\.go$" #'go-mode))
+;; This provides basic syntax highlighting for keywords, built-ins,
+;; functions, and some types.  It also provides indentation that is
+;; \(almost) identical to gofmt.
 
-(autoload 'gofmt "go-mode" "\
-Pipe the current buffer through the external tool `gofmt`.
-Replace the current buffer on success; display errors on failure.
+;; \(fn)" t nil)
 
-\(fn)" t nil)
+;; (add-to-list 'auto-mode-alist (cons "\\.go$" #'go-mode))
 
-(autoload 'gofmt-before-save "go-mode" "\
-Add this to .emacs to run gofmt on the current buffer when saving:
- (add-hook 'before-save-hook #'gofmt-before-save)
+;; (autoload 'gofmt "go-mode" "\
+;; Pipe the current buffer through the external tool `gofmt`.
+;; Replace the current buffer on success; display errors on failure.
 
-\(fn)" t nil)
+;; \(fn)" t nil)
 
-;;;***
+;; (autoload 'gofmt-before-save "go-mode" "\
+;; Add this to .emacs to run gofmt on the current buffer when saving:
+;;  (add-hook 'before-save-hook #'gofmt-before-save)
 
-(add-hook 'before-save-hook #'gofmt-before-save)
+;; \(fn)" t nil)
+
+;; ;;;***
+
+;; (add-hook 'before-save-hook #'gofmt-before-save)
+
+
+
+
+
+;;=======================================================================
+
+;; (add-hook 'go-mode-hook
+;;           (lambda ()
+;;             (go-eldoc-setup)
+;;             (add-hook 'before-save-hook 'gofmt-before-save)))
+
+(load "$GOPATH/src/code.google.com/p/go.tools/cmd/oracle/oracle.el")
+(add-hook 'go-mode-hook 'go-oracle-mode)
 
 (provide 'go-mode-load)

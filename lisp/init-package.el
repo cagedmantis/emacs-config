@@ -2,14 +2,11 @@
 (require 'package)
 
 (add-to-list 'package-archives
-   '("melpa" . "http://melpa.milkbox.net/packages/") t)
+			 '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives
-    '("gnu" . "http://elpa.gnu.org/packages/")))
-
-;; (add-to-list 'package-archives
-;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+			   '("gnu" . "http://elpa.gnu.org/packages/")))
 
 (package-initialize)
 
@@ -33,16 +30,19 @@
                       go-eldoc
                       go-projectile
                       go-autocomplete
-
-					  color-theme
+                      go-mode
+                      company-go
+                      go-errcheck
+					  
+                      color-theme
                       solarized-theme
                       zenburn-theme
                       ir-black-theme
-					  monokai-theme
+                      monokai-theme
                       underwater-theme
                       ample-theme
-					  busybee-theme
-					  
+                      busybee-theme
+
                       web-mode
                       js2-mode
                       smarty-mode
@@ -73,7 +73,7 @@
                       cedit
                       yasnippet
                       django-snippets
-					  neotree
+                      neotree
                       php-auto-yasnippets
                       yaml-mode
                       fill-column-indicator
@@ -81,12 +81,12 @@
                       projectile
                       python-mode
                       textmate-to-yas
-                      ;;company-mode
-					  go-complete
-					  golint
-					  switch-window
-					  terraform-mode
-					  )
+                      go-complete
+                      golint
+                      switch-window
+                      terraform-mode
+					  dockerfile-mode
+                      )
   "A list of packages to ensure are installed at launch.")
 
 ;;grabbed from Emacs Prelude
