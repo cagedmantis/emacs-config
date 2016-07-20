@@ -11,6 +11,7 @@
 
 ;;(setq preferred-font "Fira Mono")
 (setq preferred-font "Source Code Pro")
+;;(setq preferred-font "ANONYMOUS PRO")
 
 ;; Does a font exist?
 (defun font-existsp (font)

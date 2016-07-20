@@ -11,8 +11,9 @@
 (setq sentence-end-double-space nil)           ; Sentences end with one space
 (setq-default indent-tabs-mode nil)            ; Use spaces instead of tabs
 (column-number-mode t)                         ; Show column number in mode-line
-(global-font-lock-mode t)		       ; fonts are automatically highlighted
+(global-font-lock-mode t)		               ; fonts are automatically highlighted
 (setq visible-bell t)                          ; No beep when reporting errors
+(size-indication-mode t)
 
 ;;El Capitan fix
 (setq visible-bell nil) ;; The default
@@ -69,16 +70,21 @@
   (mouse-wheel-mode t)
   (blink-cursor-mode -1))
 
-
 ;; Backup files go into a backup dir
-(setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat dotfiles-dir "backups")))))
+(setq
+ backup-by-copying t      ; don't clobber symlinks
+ backup-directory-alist
+ '(("." . "~/.emacs.d/backups"))    ; don't litter my fs tree
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)       ; use versioned backups
 
 ;; disable line mode for listed modes
-(setq linum-disabled-modes-list '(shell-mode eshell-mode wl-summary-mode compilation-mode fundamental-mode))
-    (defun linum-on ()
-      (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
-        (linum-mode 1)))
+(setq linum-disabled-modes-list '(shell-mode ansi-term term-mode eshell-mode wl-summary-mode compilation-mode fundamental-mode))
+(defun linum-on ()
+  (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
+    (linum-mode 1)))
 
 
 (set-keyboard-coding-system 'utf-8)
@@ -89,5 +95,12 @@
 
 ;; Enable proper color interpretation in emacs shell mode
 ;;(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+
+;; Experimental Disable autosave
+;;(setq auto-save-default nil)
+
+;;store all autosave files
+(setq auto-save-file-name-transforms
+      `((".*" ,"~/.emacs.d/auto-save-list" t)))
 
 (provide 'config-default)

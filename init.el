@@ -26,8 +26,10 @@
 ;; extension hooks
 (require 'config-ext)
 
+;; TODO Compare ido vs helm
 ;; ido configuration
 (require 'init-ido)
+;;(require 'init-helm)
 
 ;; hooks configuration
 (require 'config-hook)
@@ -35,15 +37,6 @@
 ;; refactor
 (require 'init-go)
 (require 'markdown-mode)
-
-;; remove these!
-(require 'starter-kit-defuns)
-(require 'starter-kit-bindings)
-(require 'starter-kit-misc)
-(require 'starter-kit-registers)
-(require 'starter-kit-eshell)
-(require 'starter-kit-perl)
-(require 'starter-kit-ruby)
 
 ;; ~~~~~ Reafactored ~~~~~
 (require 'init-exec-path-from-shell)
@@ -94,6 +87,8 @@
 (require 'init-scheme)
 (require 'init-sudo-save)
 ;;(require 'init-mode-python)
+(require 'init-direnv)
+(require 'init-powerline)
 
 (cond
  ((eq system-type 'gnu/linux)
@@ -109,6 +104,44 @@
 ;os specific configs
 (setq os-specific-config (concat dotfiles-dir (prin1-to-string system-type) ".el"))
 (if (file-exists-p os-specific-config) (load os-specific-config))
+
+;;experimental
+;;===================
+(global-auto-revert-mode t)
+
+;; (require 'go-gopath)
+;; (define-key go-mode-map (kbd "C-c C-e") #'go-gopath-set-gopath)
+
+;;(desktop-save-mode 1)
+(require 'autopair)
+;;(global-aggressive-indent-mode 1)
+;;(add-to-list 'aggressive-indent-excluded-modes 'python-mode)
+
+(setq scroll-margin 0
+      scroll-conservatively 100000
+      scroll-preserve-screen-position 1)
+;;===================
+
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+(setq make-backup-files nil)
+
+(setq-default indicate-empty-lines t)
+(when (not indicate-empty-lines)
+  (toggle-indicate-empty-lines))
+
+(require 'auto-complete-config)
+(ac-config-default)
+
+
+;; EXPERIMENTAL
+(defun auto-complete-for-go ()
+  (auto-complete-mode 1))
+(add-hook 'go-mode-hook 'auto-complete-for-go)
+
+(with-eval-after-load 'go-mode
+  (require 'go-autocomplete))
+
 
 (server-start)
 

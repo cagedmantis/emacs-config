@@ -14,7 +14,6 @@
   (package-refresh-contents))
 
 ;; disabled packages
-;; php-mode
 ;; yasnippet-bundle
 ;; flycheck-google-cpplint
 ;; google-c-style
@@ -33,16 +32,12 @@
                       go-mode
                       company-go
                       go-errcheck
+					  ;;go-gopath
 					  
                       color-theme
-                      solarized-theme
-                      zenburn-theme
-                      ir-black-theme
-                      monokai-theme
-                      underwater-theme
-                      ample-theme
-                      busybee-theme
 
+					  powerline
+					  autopair
                       web-mode
                       js2-mode
                       smarty-mode
@@ -59,7 +54,6 @@
                       sql-indent
                       gist
                       magit
-                      ;; php-mode
                       flycheck
                       flycheck-google-cpplint
                       google-c-style
@@ -79,13 +73,38 @@
                       fill-column-indicator
                       diminish
                       projectile
+					  ;;projectile-direnv
                       python-mode
                       textmate-to-yas
                       go-complete
                       golint
                       switch-window
                       terraform-mode
-					  dockerfile-mode
+                      dockerfile-mode
+                      fish-mode
+                      rubocop
+                      helm
+                      aggressive-indent
+
+                      ;; Approved
+                      ido
+                      flx-ido
+                      ido-ubiquitous
+                      ido-vertical-mode
+
+                      ;; Themes
+                      solarized-theme
+                      zenburn-theme
+                      ir-black-theme
+                      monokai-theme
+                      underwater-theme
+                      ample-theme
+                      busybee-theme
+                      danneskjold-theme
+					  dracula-theme
+					  
+                      ;; Experimental
+                      ;;auto-reload-mode
                       )
   "A list of packages to ensure are installed at launch.")
 
@@ -107,4 +126,3 @@
 
 (provide 'init-package)
 ;;; init-package ends here 
-
