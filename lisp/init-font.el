@@ -27,6 +27,8 @@
 	  (set-default-font  "Source Code Pro"))
   )
 
+(set-default-font "Source Code Pro for Powerline")
+
 ;;(set-face-attribute 'default nil :height 120)
 
 (provide 'init-font)

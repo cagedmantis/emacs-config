@@ -23,6 +23,9 @@ ido.last
 recentf
 projectile-bookmarks.eld
 .gitconfig
+.emacs.desktop
+.emacs.desktop.lock
+.envrc
 
 # OS generated files #
 ######################
