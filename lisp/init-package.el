@@ -85,6 +85,7 @@
                       rubocop
                       helm
                       aggressive-indent
+					  column-marker
 
                       ;; Approved
                       ido
