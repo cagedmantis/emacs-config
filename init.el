@@ -3,6 +3,13 @@
 ;; Carlos Amedee
 
 ;;set configuration directory
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
@@ -15,7 +22,7 @@
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
-(add-to-list 'load-path "~/.emacs.d/modes/")
+;;(add-to-list 'load-path "~/.emacs.d/modes/")
 
 ;; call the package file
 (require 'init-package)
@@ -26,10 +33,8 @@
 ;; extension hooks
 (require 'config-ext)
 
-;; TODO Compare ido vs helm
 ;; ido configuration
 (require 'init-ido)
-;;(require 'init-helm)
 
 ;; hooks configuration
 (require 'config-hook)
@@ -109,13 +114,7 @@
 ;;===================
 (global-auto-revert-mode t)
 
-;; (require 'go-gopath)
-;; (define-key go-mode-map (kbd "C-c C-e") #'go-gopath-set-gopath)
-
-;;(desktop-save-mode 1)
 (require 'autopair)
-;;(global-aggressive-indent-mode 1)
-;;(add-to-list 'aggressive-indent-excluded-modes 'python-mode)
 
 (setq scroll-margin 0
       scroll-conservatively 100000
@@ -133,7 +132,6 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-
 ;; EXPERIMENTAL
 (defun auto-complete-for-go ()
   (auto-complete-mode 1))
@@ -141,7 +139,6 @@
 
 (with-eval-after-load 'go-mode
   (require 'go-autocomplete))
-
 
 (server-start)
 
