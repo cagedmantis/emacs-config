@@ -12,4 +12,7 @@
             (go-eldoc-setup)
             (add-hook 'before-save-hook 'gofmt-before-save)))
 
+
+(with-eval-after-load 'go-mode
+   (require 'go-autocomplete))
 (provide 'init-go-autocomplete)

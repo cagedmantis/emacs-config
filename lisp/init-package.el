@@ -20,10 +20,10 @@
 ;; flycheck-google-cpplint
 ;; google-c-style
 
-(defvar my-packages '(starter-kit
-                      starter-kit-lisp
-                      starter-kit-ruby
-                      starter-kit-eshell
+(defvar my-packages '(;; starter-kit
+                      ;; starter-kit-lisp
+                      ;; starter-kit-ruby
+                      ;; starter-kit-eshell
 
                       exec-path-from-shell
                       go-eldoc
