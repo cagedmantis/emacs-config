@@ -20,20 +20,17 @@
 ;; flycheck-google-cpplint
 ;; google-c-style
 
-(defvar my-packages '(;; starter-kit
-                      ;; starter-kit-lisp
-                      ;; starter-kit-ruby
-                      ;; starter-kit-eshell
-
-                      exec-path-from-shell
+(defvar my-packages '(exec-path-from-shell
+					  go-mode
+					  company-go
                       go-eldoc
-                      go-projectile
-                      go-autocomplete
-                      go-mode
-                      company-go
-                      go-errcheck
-					  ;;go-gopath
+					  go-errcheck
+					  go-gopath
+					  flycheck
+					  company
 					  
+					  ;;go-projectile
+                      ;;go-autocomplete
                       color-theme
 
 					  powerline
@@ -47,22 +44,20 @@
                       tramp
                       yasnippet
                       elpy
-                      flymake
+                      ;;flymake
                       ac-js2
                       rainbow-delimiters
                       smartparens
                       sql-indent
                       gist
                       magit
-                      flycheck
                       flycheck-google-cpplint
                       google-c-style
                       auto-complete
                       auto-complete-c-headers
                       auto-complete-clang
                       cedet
-                      company
-                      flymake-cursor
+                      ;;flymake-cursor
                       iedit
                       cedit
                       yasnippet

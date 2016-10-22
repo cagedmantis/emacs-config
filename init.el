@@ -40,20 +40,16 @@
 (require 'config-hook)
 
 ;; refactor
-(require 'init-go)
 (require 'markdown-mode)
 
 ;; ~~~~~ Reafactored ~~~~~
 (require 'init-exec-path-from-shell)
+(require 'init-go)
 (require 'init-ace-window)
 (require 'init-docean)
 (require 'init-dockerfile-mode)
 (require 'init-flycheck)
-(require 'init-go-complete)
-(require 'init-go-eldoc)
-(require 'init-go-autocomplete)
 (require 'init-go-projectile)
-(require 'init-golint)
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-switch-window)
@@ -75,7 +71,6 @@
 (require 'init-iedit)
 (require 'init-jsmode)
 (require 'init-latex)
-;;(require 'init-php)
 ;;(require 'init-python)
 ;;(require 'init-semantic)
 (require 'init-saveplace)
@@ -131,14 +126,6 @@
 
 (require 'auto-complete-config)
 (ac-config-default)
-
-;; EXPERIMENTAL
-(defun auto-complete-for-go ()
-  (auto-complete-mode 1))
-(add-hook 'go-mode-hook 'auto-complete-for-go)
-
-(with-eval-after-load 'go-mode
-  (require 'go-autocomplete))
 
 (server-start)
 
