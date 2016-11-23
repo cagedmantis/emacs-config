@@ -27,7 +27,16 @@
 					  go-errcheck
 					  go-gopath
 					  flycheck
+					  flycheck-gometalinter
 					  company
+                      projectile
+
+					  ;; ===========
+					  ;; Disabled until a change is made to the envrc file
+					  ;; s
+					  ;; dash
+					  ;; projectile-direnv
+					  ;; ===========
 					  
 					  ;;go-projectile
                       ;;go-autocomplete
@@ -44,7 +53,6 @@
                       tramp
                       yasnippet
                       elpy
-                      ;;flymake
                       ac-js2
                       rainbow-delimiters
                       smartparens
@@ -57,7 +65,6 @@
                       auto-complete-c-headers
                       auto-complete-clang
                       cedet
-                      ;;flymake-cursor
                       iedit
                       cedit
                       yasnippet
@@ -67,12 +74,10 @@
                       yaml-mode
                       fill-column-indicator
                       diminish
-                      projectile
-					  ;;projectile-direnv
                       python-mode
                       textmate-to-yas
-                      go-complete
-                      golint
+                      ;;go-complete
+                      ;;golint
                       switch-window
                       terraform-mode
                       dockerfile-mode
