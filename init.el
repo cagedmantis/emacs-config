@@ -50,7 +50,6 @@
 (require 'init-dockerfile-mode)
 (require 'init-flycheck)
 (require 'init-go-projectile)
-;;(require 'init-pbcopy)
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-switch-window)
@@ -129,5 +128,3 @@
 (ac-config-default)
 
 (server-start)
-
-(message "=== Emacs Init Concluded ===")
