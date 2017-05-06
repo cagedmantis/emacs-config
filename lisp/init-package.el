@@ -30,7 +30,8 @@
 					  flycheck-gometalinter
 					  company
                       projectile
-
+					  go-add-tags
+					  
 					  ;; ===========
 					  ;; Disabled until a change is made to the envrc file
 					  ;; s
@@ -38,10 +39,14 @@
 					  ;; projectile-direnv
 					  ;; ===========
 					  
-					  ;;go-projectile
+					  go-projectile
                       ;;go-autocomplete
                       color-theme
 
+					  flycheck-color-mode-line
+					  flycheck-pos-tip
+
+					  pbcopy
 					  powerline
 					  autopair
                       web-mode
@@ -92,7 +97,8 @@
                       flx-ido
                       ido-ubiquitous
                       ido-vertical-mode
-
+					  protobuf-mode
+					  
                       ;; Themes
                       solarized-theme
                       zenburn-theme
@@ -103,6 +109,7 @@
                       busybee-theme
                       danneskjold-theme
 					  dracula-theme
+					  color-theme-sanityinc-tomorrow
 					  
                       ;; Experimental
                       ;;auto-reload-mode

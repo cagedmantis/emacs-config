@@ -51,6 +51,12 @@
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
+(require 'go-guru)
+(add-hook `go-mode-hook `go-guru-hl-identifier-mode)
+
+(require 'go-add-tags)
+(global-set-key (kbd "C-c t") 'go-add-tags)
+
 ;;gometalinter
 ;; (require 'flycheck-gometalinter)
 ;; (eval-after-load 'flycheck
