@@ -24,6 +24,9 @@
 (setq custom-file (concat dotfiles-dir "custom.el"))
 ;;(add-to-list 'load-path "~/.emacs.d/modes/")
 
+(auto-fill-mode -1)
+(remove-hook 'text-mode-hook #'turn-on-auto-fill)
+
 ;; call the package file
 (require 'init-package)
 
