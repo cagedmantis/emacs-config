@@ -20,100 +20,91 @@
 ;; flycheck-google-cpplint
 ;; google-c-style
 
-(defvar my-packages '(exec-path-from-shell
-					  go-mode
-					  company-go
-                      go-eldoc
-					  go-errcheck
-					  go-gopath
-					  flycheck
-					  flycheck-gometalinter
-					  company
-                      projectile
-					  go-add-tags
-					  
-					  ;; ===========
-					  ;; Disabled until a change is made to the envrc file
-					  ;; s
-					  ;; dash
-					  ;; projectile-direnv
-					  ;; ===========
-					  
-					  go-projectile
-                      ;;go-autocomplete
-                      color-theme
+(defvar my-packages '( use-package 
+					   exec-path-from-shell
+					   go-gopath
+					   flycheck
+					   projectile
+					   
+					   ;; ===========
+					   ;; Disabled until a change is made to the envrc file
+					   ;; s
+					   ;; dash
+					   ;; projectile-direnv
+					   ;; ===========
+					   
+					   color-theme
 
-					  flycheck-color-mode-line
-					  flycheck-pos-tip
+					   flycheck-color-mode-line
+					   flycheck-pos-tip
 
-					  pbcopy
-					  powerline
-					  autopair
-                      web-mode
-                      js2-mode
-                      smarty-mode
-                      haskell-mode
-                      markdown-mode
-                      rust-mode
-                      tramp
-                      yasnippet
-                      elpy
-                      ac-js2
-                      rainbow-delimiters
-                      smartparens
-                      sql-indent
-                      gist
-                      magit
-                      flycheck-google-cpplint
-                      google-c-style
-                      auto-complete
-                      auto-complete-c-headers
-                      auto-complete-clang
-                      cedet
-                      iedit
-                      cedit
-                      yasnippet
-                      django-snippets
-                      neotree
-                      php-auto-yasnippets
-                      yaml-mode
-                      fill-column-indicator
-                      diminish
-                      python-mode
-                      textmate-to-yas
-                      ;;go-complete
-                      ;;golint
-                      switch-window
-                      terraform-mode
-                      dockerfile-mode
-                      fish-mode
-                      rubocop
-                      helm
-                      aggressive-indent
-					  column-marker
+					   pbcopy
+					   powerline
+					   autopair
+					   web-mode
+					   js2-mode
+					   smarty-mode
+					   haskell-mode
+					   markdown-mode
+					   rust-mode
+					   tramp
+					   yasnippet
+					   elpy
+					   ac-js2
+					   rainbow-delimiters
+					   smartparens
+					   sql-indent
+					   gist
+					   magit
+					   flycheck-google-cpplint
+					   google-c-style
+					   auto-complete
+					   auto-complete-c-headers
+					   auto-complete-clang
+					   cedet
+					   iedit
+					   cedit
+					   yasnippet
+					   django-snippets
+					   neotree
+					   php-auto-yasnippets
+					   yaml-mode
+					   fill-column-indicator
+					   diminish
+					   python-mode
+					   textmate-to-yas
+					   switch-window
+					   terraform-mode
+					   dockerfile-mode
+					   fish-mode
+					   rubocop
+					   helm
+					   aggressive-indent
+					   column-marker
 
-                      ;; Approved
-                      ido
-                      flx-ido
-                      ido-ubiquitous
-                      ido-vertical-mode
-					  protobuf-mode
-					  
-                      ;; Themes
-                      solarized-theme
-                      zenburn-theme
-                      ir-black-theme
-                      monokai-theme
-                      underwater-theme
-                      ample-theme
-                      busybee-theme
-                      danneskjold-theme
-					  dracula-theme
-					  color-theme-sanityinc-tomorrow
-					  
-                      ;; Experimental
-                      ;;auto-reload-mode
-                      )
+					   ;; Approved
+					   ido
+					   flx-ido
+					   ido-ubiquitous
+					   ido-vertical-mode
+					   protobuf-mode
+					   
+					   ;; Themes
+					   solarized-theme
+					   zenburn-theme
+					   ir-black-theme
+					   monokai-theme
+					   underwater-theme
+					   ample-theme
+					   busybee-theme
+					   danneskjold-theme
+					   dracula-theme
+					   color-theme-sanityinc-tomorrow
+					   
+					   ;; Experimental
+					   ;;auto-reload-mode
+					   diminish zoom-frm smooth-scrolling undo-tree
+					   )
   "A list of packages to ensure are installed at launch.")
 
 ;;grabbed from Emacs Prelude

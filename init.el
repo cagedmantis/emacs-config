@@ -15,8 +15,9 @@
 
 ;;(add-to-list 'load-path dotfiles-dir)
 (add-to-list 'load-path "~/bin/")
-(add-to-list 'load-path (concat dotfiles-dir "/starter_kit"))
-(add-to-list 'load-path (concat dotfiles-dir "/configs"))
+;;(add-to-list 'load-path (concat dotfiles-dir "/starter_kit"))
+;;(add-to-list 'load-path (concat dotfiles-dir "/configs"))
+(add-to-list 'load-path (concat dotfiles-dir "/config"))
 (add-to-list 'load-path (concat dotfiles-dir "/lisp"))
 (add-to-list 'load-path (concat dotfiles-dir "/system_type"))
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
@@ -31,16 +32,21 @@
 (require 'init-package)
 
 ;; general configuration
-(require 'config-default)
+;;(require 'config-default)
+
+;; NEW
+(require 'defaults)
+(require 'appearance)
+
 
 ;; extension hooks
-(require 'config-ext)
+;;(require 'config-ext)
 
 ;; ido configuration
 (require 'init-ido)
 
 ;; hooks configuration
-(require 'config-hook)
+;;(require 'config-hook)
 
 ;; refactor
 (require 'markdown-mode)
