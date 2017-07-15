@@ -10,6 +10,8 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+(setq debug-on-quit t)
+
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
@@ -34,16 +36,12 @@
 ;; general configuration
 ;;(require 'config-default)
 
-;; NEW
 (require 'defaults)
 (require 'appearance)
-
+(require 'init-ido)
 
 ;; extension hooks
 ;;(require 'config-ext)
-
-;; ido configuration
-(require 'init-ido)
 
 ;; hooks configuration
 ;;(require 'config-hook)
@@ -58,7 +56,6 @@
 (require 'init-docean)
 (require 'init-dockerfile-mode)
 (require 'init-flycheck)
-(require 'init-go-projectile)
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-switch-window)
@@ -72,7 +69,7 @@
 (require 'init-cedit)
 (require 'init-colortheme)
 (require 'init-columnmarker)
-(require 'init-company)
+;;(require 'init-company)
 (require 'init-elpy)
 (require 'init-erc)
 (require 'init-font)
@@ -84,7 +81,7 @@
 ;;(require 'init-semantic)
 (require 'init-saveplace)
 (require 'init-sql)
-(require 'init-tramp)
+;;(require 'init-tramp)
 ;;(require 'init-volatile-highlights)
 (require 'init-whitespace)
 (require 'init-which-mode)

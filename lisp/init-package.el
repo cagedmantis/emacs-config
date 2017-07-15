@@ -83,10 +83,6 @@
 					   column-marker
 
 					   ;; Approved
-					   ido
-					   flx-ido
-					   ido-ubiquitous
-					   ido-vertical-mode
 					   protobuf-mode
 					   
 					   ;; Themes

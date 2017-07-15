@@ -2,45 +2,52 @@
 
 ;; ido-mode is like magic pixie dust!
 (when (> emacs-major-version 21)
-  (ido-mode t)
-  (setq ido-enable-prefix nil
-        ido-enable-flex-matching t
-        ido-create-new-buffer 'always
-        ido-use-filename-at-point 'guess
-        ido-max-prospects 10))
 
-(ido-everywhere 1)
+  (use-package ido-mode
+	:ensure t
+	:config
+	(ido-mode t)
+	(ido-everywhere 1)
+	(setq ido-enable-prefix nil
+		  ido-enable-flex-matching t
+		  ido-create-new-buffer 'always
+		  ido-use-filename-at-point 'guess
+		  ido-max-prospects 10))
 
-;;ido + ido-ubiquitous + flx-ido + ido-vertical-mode
+  (use-package ido-completing-read+
+	:ensure t
+	:config
+	(ido-mode 1)
+	(ido-everywhere 1)
+	(ido-ubiquitous-mode 1))
 
-;;ido-ubiquitous
-(require 'ido-ubiquitous)
-(ido-ubiquitous-mode 1)
+  (use-package ido-vertical-mode
+	:ensure t
+	:config
+	;;(require 'ido-vertical-mode)
+	(ido-vertical-mode 1)
+	(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+	(setq ido-vertical-show-count t)
 
-;;ido-vertical-mode
-(require 'ido-vertical-mode)
-(ido-mode 1)
-(ido-vertical-mode 1)
-(setq ido-vertical-define-keys 'C-n-and-C-p-only)
-(setq ido-vertical-show-count t)
+	(setq ido-use-faces t)
+	(set-face-attribute 'ido-vertical-first-match-face nil
+						:background "#e5b7c0")
+	(set-face-attribute 'ido-vertical-only-match-face nil
+						:background "#e52b50"
+						:foreground "white")
+	(set-face-attribute 'ido-vertical-match-face nil
+						:foreground "#b00000")
+	(ido-vertical-mode 1)
+	)
 
-(setq ido-use-faces t)
-(set-face-attribute 'ido-vertical-first-match-face nil
-                    :background "#e5b7c0")
-(set-face-attribute 'ido-vertical-only-match-face nil
-                    :background "#e52b50"
-                    :foreground "white")
-(set-face-attribute 'ido-vertical-match-face nil
-                    :foreground "#b00000")
-(ido-vertical-mode 1)
-
-;;flx-ido
-(require 'flx-ido)
-(ido-mode 1)
-(ido-everywhere 1)
-(flx-ido-mode 1)
-;; disable ido faces to see flx highlights.
-(setq ido-enable-flex-matching t)
-(setq ido-use-faces nil)
-
+  (use-package flx-ido
+	:ensure t
+	:config
+	;;(require 'flx-ido)
+	(flx-ido-mode 1)
+	;; disable ido faces to see flx highlights.
+	(setq ido-enable-flex-matching t)
+	(setq ido-use-faces nil)
+	)
+  )
 (provide 'init-ido)
