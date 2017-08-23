@@ -4,9 +4,6 @@
   (use-package go-projectile
     :ensure t)
 
-  ;; (use-package go-autocomplete
-  ;;   :ensure t)
-
   (use-package godoctor
     :ensure t)
 

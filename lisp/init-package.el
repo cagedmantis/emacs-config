@@ -34,19 +34,12 @@
 					   ;; ===========
 					   
 					   color-theme
-
 					   flycheck-color-mode-line
 					   flycheck-pos-tip
-
-					   pbcopy
+					   ;;pbcopy
 					   powerline
 					   autopair
-					   web-mode
-					   js2-mode
 					   smarty-mode
-					   haskell-mode
-					   markdown-mode
-					   rust-mode
 					   tramp
 					   yasnippet
 					   elpy
@@ -68,23 +61,16 @@
 					   django-snippets
 					   neotree
 					   php-auto-yasnippets
-					   yaml-mode
+
 					   fill-column-indicator
 					   diminish
-					   python-mode
 					   textmate-to-yas
 					   switch-window
-					   terraform-mode
-					   dockerfile-mode
-					   fish-mode
 					   rubocop
 					   helm
 					   aggressive-indent
 					   column-marker
 
-					   ;; Approved
-					   protobuf-mode
-					   
 					   ;; Themes
 					   solarized-theme
 					   zenburn-theme
@@ -98,8 +84,7 @@
 					   color-theme-sanityinc-tomorrow
 					   
 					   ;; Experimental
-					   ;;auto-reload-mode
-					   diminish zoom-frm smooth-scrolling undo-tree
+					   smooth-scrolling 
 					   )
   "A list of packages to ensure are installed at launch.")
 

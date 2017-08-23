@@ -39,6 +39,7 @@
 (require 'defaults)
 (require 'appearance)
 (require 'init-ido)
+(require 'lang-modes)
 
 ;; extension hooks
 ;;(require 'config-ext)
