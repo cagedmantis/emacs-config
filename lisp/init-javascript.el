@@ -5,7 +5,7 @@
     :ensure t)
 
   (use-package js2-refactor
-    :ensure t
+	:ensure t
 	:config
 	(autoload 'js2-mode "js2-mode" nil t)
 	(autoload 'js2-jsx-mode "js2-mode" nil t)
