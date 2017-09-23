@@ -1,7 +1,7 @@
 (use-package js2-mode
   :ensure t
   :config
-  (use-package company-mode
+  (use-package company
     :ensure t)
 
   (use-package js2-refactor

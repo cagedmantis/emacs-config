@@ -22,14 +22,14 @@
 	:config
 	(add-hook 'go-mode-hook 'go-eldoc-setup)
 	(set-face-attribute 'eldoc-highlight-function-argument nil
-						:underline t 
+						:underline t
 						:foreground "green"
 						:weight 'bold))
 
   (use-package go-errcheck
     :ensure t)
 
-  (use-package company-go 
+  (use-package company-go
 	;;:disabled
 	:ensure t
 	:init

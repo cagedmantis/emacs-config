@@ -1,3 +1,5 @@
+;;; init.el --- Emacs configuration init
+
 ;; Emacs config
 ;; init.el
 ;; Carlos Amedee
@@ -50,18 +52,24 @@
 ;; refactor
 (require 'markdown-mode)
 
+;; ~~~~~ use-package ~~~~~
+
+(require 'init-flycheck)
+(require 'init-go)
+(require 'init-javascript)
+(require 'init-python)
+
+
 ;; ~~~~~ Reafactored ~~~~~
 (require 'init-exec-path-from-shell)
-(require 'init-go)
 (require 'init-ace-window)
 (require 'init-docean)
 (require 'init-dockerfile-mode)
-(require 'init-flycheck)
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-switch-window)
 (require 'init-yaml-mode)
-(require 'init-javascript)
+
 ;; ~~~~~~~~~~~~~~~~~~~~~~~
 
 (require 'init-auto-complete)
@@ -72,14 +80,12 @@
 (require 'init-colortheme)
 (require 'init-columnmarker)
 ;;(require 'init-company)
-(require 'init-elpy)
 (require 'init-erc)
 (require 'init-font)
 ;;(require 'init-flymake-google-cpplint)
 (require 'init-iedit)
 (require 'init-jsmode)
 (require 'init-latex)
-;;(require 'init-python)
 ;;(require 'init-semantic)
 (require 'init-saveplace)
 (require 'init-sql)
@@ -94,7 +100,6 @@
 ;;(require 'init-magit)
 (require 'init-scheme)
 (require 'init-sudo-save)
-;;(require 'init-mode-python)
 (require 'init-direnv)
 (require 'init-powerline)
 
@@ -148,4 +153,6 @@
 (unless (server-running-p)
   (server-start))
 
-;;(server-start)
+(provide 'init)
+;; init.el ends here
+

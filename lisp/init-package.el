@@ -23,7 +23,6 @@
 (defvar my-packages '( use-package 
 					   exec-path-from-shell
 					   go-gopath
-					   flycheck
 					   projectile
 					   
 					   ;; ===========
@@ -34,8 +33,6 @@
 					   ;; ===========
 					   
 					   color-theme
-					   flycheck-color-mode-line
-					   flycheck-pos-tip
 					   ;;pbcopy
 					   powerline
 					   autopair
