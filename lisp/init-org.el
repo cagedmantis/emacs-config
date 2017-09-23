@@ -9,4 +9,7 @@
                              "~/Dropbox/work_ps/org/school.org" 
                              "~/Dropbox/work_ps/org/home.org"))
 
+(setq org-treat-S-cursor-todo-selection-as-state-change t)
+(setq org-replace-disputed-keys t)
+
 (provide 'init-org)

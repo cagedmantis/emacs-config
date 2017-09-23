@@ -84,6 +84,9 @@
   (add-hook 'go-mode-hook 'my-go-mode-hook)
   )
 
+;; update tools
+;; go-projectile-update-tools
+
 ;; TODO try gometalinter
 
 (provide 'init-go)

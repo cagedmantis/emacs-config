@@ -10,7 +10,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(setq debug-on-quit t)
+;;(setq debug-on-quit t)
 
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
@@ -61,6 +61,7 @@
 (require 'init-rainbow-delimiters)
 (require 'init-switch-window)
 (require 'init-yaml-mode)
+(require 'init-javascript)
 ;; ~~~~~~~~~~~~~~~~~~~~~~~
 
 (require 'init-auto-complete)
@@ -116,6 +117,13 @@
 ;;===================
 (global-auto-revert-mode t)
 
+(setq ido-decorations
+      '("\n-> " "" "\n   " "\n   ..." "[" "]"
+	" [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]"))
+
+;; Use the clipboard, pretty please, so that copy/paste "works"
+(setq x-select-enable-clipboard t)
+
 (require 'autopair)
 
 (setq scroll-margin 0
@@ -134,4 +142,10 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-(server-start)
+
+;; Emacs server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
+;;(server-start)
