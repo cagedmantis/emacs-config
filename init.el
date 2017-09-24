@@ -53,7 +53,7 @@
 (require 'markdown-mode)
 
 ;; ~~~~~ use-package ~~~~~
-
+(require 'init-exec-path-from-shell)
 (require 'init-flycheck)
 (require 'init-go)
 (require 'init-javascript)
@@ -61,7 +61,7 @@
 
 
 ;; ~~~~~ Reafactored ~~~~~
-(require 'init-exec-path-from-shell)
+
 (require 'init-ace-window)
 (require 'init-docean)
 (require 'init-dockerfile-mode)
