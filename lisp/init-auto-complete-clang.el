@@ -1,3 +1,5 @@
+:: TODO: use company mode if possible
+
 (require 'auto-complete-clang)
 (define-key c++-mode-map (kbd "C-S-<return>") 'ac-complete-clang)
 

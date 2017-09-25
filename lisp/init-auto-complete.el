@@ -1,3 +1,5 @@
+;; TODO: migrate over to company mode if possible
+
 (require 'auto-complete)
 
 (ac-config-default)

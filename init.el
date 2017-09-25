@@ -57,6 +57,7 @@
 (require 'init-javascript)
 (require 'init-python)
 (require 'init-colortheme)
+(require 'init-company)
 
 ;; ~~~~~ Reafactored ~~~~~
 
@@ -70,14 +71,12 @@
 
 ;; ~~~~~~~~~~~~~~~~~~~~~~~
 
-(require 'init-auto-complete)
-(require 'init-autoinsert)
+;;(require 'init-auto-complete)
 ;;(require 'init-auto-complete-clang)
+(require 'init-autoinsert)
 (require 'init-cc)
 (require 'init-cedit)
-
 (require 'init-columnmarker)
-;;(require 'init-company)
 (require 'init-erc)
 (require 'init-font)
 ;;(require 'init-flymake-google-cpplint)
