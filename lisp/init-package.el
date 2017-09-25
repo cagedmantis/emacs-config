@@ -19,19 +19,13 @@
 ;; google-c-style
 ;; flycheck-google-cpplint
 ;; google-c-style
+;; s
+;; dash
+;; projectile-direnv
 
 (defvar my-packages '( use-package 
-					   exec-path-from-shell
 					   go-gopath
 					   projectile
-					   
-					   ;; ===========
-					   ;; Disabled until a change is made to the envrc file
-					   ;; s
-					   ;; dash
-					   ;; projectile-direnv
-					   ;; ===========
-					   
 					   color-theme
 					   ;;pbcopy
 					   powerline
@@ -68,18 +62,6 @@
 					   aggressive-indent
 					   column-marker
 
-					   ;; Themes
-					   solarized-theme
-					   zenburn-theme
-					   ir-black-theme
-					   monokai-theme
-					   underwater-theme
-					   ample-theme
-					   busybee-theme
-					   danneskjold-theme
-					   dracula-theme
-					   color-theme-sanityinc-tomorrow
-					   
 					   ;; Experimental
 					   smooth-scrolling 
 					   )

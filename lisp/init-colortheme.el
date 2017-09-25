@@ -1,21 +1,45 @@
-;; Color Theme
+(use-package color-theme
+  :ensure t
+  :config
+  (require 'color-theme)
+  (setq color-theme-is-global t)
+  (color-theme-initialize)
 
-(require 'color-theme)
-(setq color-theme-is-global t)
-(color-theme-initialize)
+  ;; (dolist (theme '(solarized-theme
+  ;; 				   zenburn-theme
+  ;; 				   ir-black-theme
+  ;; 				   monokai-theme
+  ;; 				   underwater-theme
+  ;; 				   ample-theme
+  ;; 				   busybee-theme
+  ;; 				   danneskjold-theme
+  ;; 				   dracula-theme
+  ;; 				   color-theme-sanityinc-tomorrow))
+  ;; 	(use-package theme
+  ;; 	  :ensure t))
 
-;;(load-theme 'busybee t)
-;;(load-theme 'zenburn t)
-;;(load-theme 'blackboard t)
-;;(load-theme 'wombat t
-;;(load-theme 'solarized-dark t)
-;;(load-theme 'ample t)
-;;(load-theme 'monokai t)
-;;(load-theme 'ir-black t)
-;;(load-theme 'ample-zen t)
-;;(load-theme 'danneskjold t)
-;;(load-theme 'dracula-theme t)
-(load-theme 'sanityinc-tomorrow-bright t)
+  
+  (use-package solarized-theme
+  	:ensure t)
+  (use-package zenburn-theme
+  	:ensure t)
+  (use-package ir-black-theme
+  	:ensure t)
+  (use-package monokai-theme
+  	:ensure t)
+  (use-package underwater-theme
+  	:ensure t)
+  (use-package ample-theme
+  	:ensure t)
+  (use-package busybee-theme
+  	:ensure t)
+  (use-package danneskjold-theme
+  	:ensure t)
+  (use-package dracula-theme
+  	:ensure t)
+  (use-package color-theme-sanityinc-tomorrow
+  	:ensure t)
 
-
+  (load-theme 'sanityinc-tomorrow-bright t)
+  )
 (provide 'init-colortheme)

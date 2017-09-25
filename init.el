@@ -12,8 +12,6 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-;;(setq debug-on-quit t)
-
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
@@ -40,7 +38,7 @@
 
 (require 'defaults)
 (require 'appearance)
-(require 'init-ido)
+(require 'init-ido) ;;use-packages
 (require 'lang-modes)
 
 ;; extension hooks
@@ -58,7 +56,7 @@
 (require 'init-go)
 (require 'init-javascript)
 (require 'init-python)
-
+(require 'init-colortheme)
 
 ;; ~~~~~ Reafactored ~~~~~
 
@@ -77,7 +75,7 @@
 ;;(require 'init-auto-complete-clang)
 (require 'init-cc)
 (require 'init-cedit)
-(require 'init-colortheme)
+
 (require 'init-columnmarker)
 ;;(require 'init-company)
 (require 'init-erc)
@@ -144,10 +142,6 @@
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
 
-(require 'auto-complete-config)
-(ac-config-default)
-
-
 ;; Emacs server
 (require 'server)
 (unless (server-running-p)
@@ -155,4 +149,3 @@
 
 (provide 'init)
 ;; init.el ends here
-
