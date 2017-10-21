@@ -51,13 +51,14 @@
 (require 'markdown-mode)
 
 ;; ~~~~~ use-package ~~~~~
-(require 'init-exec-path-from-shell)
+
 (require 'init-flycheck)
 (require 'init-go)
 (require 'init-javascript)
 (require 'init-python)
 (require 'init-colortheme)
 (require 'init-company)
+(require 'init-exec-path-from-shell)
 
 ;; ~~~~~ Reafactored ~~~~~
 
@@ -99,6 +100,8 @@
 (require 'init-sudo-save)
 (require 'init-direnv)
 (require 'init-powerline)
+
+(require 'init-exec-path-from-shell)
 
 (cond
  ((eq system-type 'gnu/linux)

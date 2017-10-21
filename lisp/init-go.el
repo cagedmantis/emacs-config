@@ -8,66 +8,66 @@
     :ensure t)
 
   (use-package go-add-tags
-	:ensure t
-	:config
-	(global-set-key (kbd "C-c t") 'go-add-tags))
+    :ensure t
+    :config
+    (global-set-key (kbd "C-c t") 'go-add-tags))
 
   (use-package go-guru
-	:ensure t
-	:config
-	(add-hook `go-mode-hook `go-guru-hl-identifier-mode))
+    :ensure t
+    :config
+    (add-hook `go-mode-hook `go-guru-hl-identifier-mode))
 
   (use-package go-eldoc
-	:ensure t
-	:config
-	(add-hook 'go-mode-hook 'go-eldoc-setup)
-	(set-face-attribute 'eldoc-highlight-function-argument nil
-						:underline t
-						:foreground "green"
-						:weight 'bold))
+    :ensure t
+    :config
+    (add-hook 'go-mode-hook 'go-eldoc-setup)
+    (set-face-attribute 'eldoc-highlight-function-argument nil
+                        :underline t
+                        :foreground "green"
+                        :weight 'bold))
 
   (use-package go-errcheck
     :ensure t)
 
   (use-package company-go
-	;;:disabled
-	:ensure t
-	:init
-	(use-package company
-	  :config
-	  (setq company-tooltip-limit 20)                      ; bigger popup window
-	  ;;(setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
-	  (setq company-idle-delay nil)
+    ;;:disabled
+    :ensure t
+    :init
+    (use-package company
+      :config
+      (setq company-tooltip-limit 20)                      ; bigger popup window
+      ;;(setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
+      (setq company-idle-delay nil)
 
-	  (setq company-echo-delay 0)                          ; remove annoying blinking
-	  (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+      (setq company-echo-delay 0)                          ; remove annoying blinking
+      (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 
-	  (custom-set-faces
-	   '(company-preview
-		 ((t (:foreground "darkgray" :underline t))))
-	   '(company-preview-common
-		 ((t (:inherit company-preview))))
-	   '(company-tooltip
-		 ((t (:background "lightgray" :foreground "black"))))
-	   '(company-tooltip-selection
-		 ((t (:background "steelblue" :foreground "white"))))
-	   '(company-tooltip-common
-		 ((((type x)) (:inherit company-tooltip :weight bold))
-		  (t (:inherit company-tooltip))))
-	   '(company-tooltip-common-selection
-		 ((((type x)) (:inherit company-tooltip-selection :weight bold))
-		  (t (:inherit company-tooltip-selection)))))
-	  )
+      (custom-set-faces
+       '(company-preview
+         ((t (:foreground "darkgray" :underline t))))
+       '(company-preview-common
+         ((t (:inherit company-preview))))
+       '(company-tooltip
+         ((t (:background "lightgray" :foreground "black"))))
+       '(company-tooltip-selection
+         ((t (:background "steelblue" :foreground "white"))))
+       '(company-tooltip-common
+         ((((type x)) (:inherit company-tooltip :weight bold))
+          (t (:inherit company-tooltip))))
+       '(company-tooltip-common-selection
+         ((((type x)) (:inherit company-tooltip-selection :weight bold))
+          (t (:inherit company-tooltip-selection)))))
+      )
 
-	(add-hook 'go-mode-hook 'company-mode)
-	(add-hook 'go-mode-hook (lambda ()
-							  (set (make-local-variable 'company-backends) '(company-go))
-							  (company-mode)))
+    (add-hook 'go-mode-hook 'company-mode)
+    (add-hook 'go-mode-hook (lambda ()
+                              (set (make-local-variable 'company-backends) '(company-go))
+                              (company-mode)))
 
-	(global-set-key (kbd "C-c M-n") 'company-complete)
-	(global-set-key (kbd "C-c C-n") 'company-complete)
+    (global-set-key (kbd "C-c M-n") 'company-complete)
+    (global-set-key (kbd "C-c C-n") 'company-complete)
 
-	(set (make-local-variable 'company-backends) '(company-go)))
+    (set (make-local-variable 'company-backends) '(company-go)))
 
   (defun my-go-mode-hook ()
     (setq gofmt-command "goimports")
@@ -84,9 +84,36 @@
   (add-hook 'go-mode-hook 'my-go-mode-hook)
   )
 
-;; update tools
-;; go-projectile-update-tools
+;; modified from github.com/dougm/go-projectile
 
-;; TODO try gometalinter
+(defvar go-tools
+  '((gocode      . "github.com/nsf/gocode")
+    (golint      . "github.com/golang/lint/golint")
+    (godef       . "github.com/rogpeppe/godef")
+    (errcheck    . "github.com/kisielk/errcheck")
+    (godoc       . "golang.org/x/tools/cmd/godoc")
+    (gogetdoc    . "github.com/zmb3/gogetdoc")
+    (goimports   . "golang.org/x/tools/cmd/goimports")
+    (gorename    . "golang.org/x/tools/cmd/gorename")
+    (gomvpkg     . "golang.org/x/tools/cmd/gomvpkg")
+    (guru        . "golang.org/x/tools/cmd/guru")
+    (gomegacheck . "honnef.co/go/tools/cmd/megacheck")
+    (gounconvert . "github.com/mdempsky/unconvert")
+    (goflymake   . "github.com/dougm/goflymake")
+    (goimports   . "golang.org/x/tools/cmd/goimports"))
+  "Import paths for My Go tools.")
+
+(defun go-get-tools ()
+  "Install go related tools via go get."
+  (dolist (tool go-tools)
+    (let* ((url (cdr tool))
+           (cmd (concat "go get -u " url))
+           (result (shell-command-to-string cmd)))
+      (message "Go tool %s: %s" (car tool) cmd))))
+
+(defun go-update-tools ()
+  "Update go related tools."
+  (interactive)
+  (go-get-tools))
 
 (provide 'init-go)

@@ -7,12 +7,6 @@
 ;; Requirements: 
 ;; Status: not intended to be distributed yet
 
-
-
-
-;;; (>>FILE<<) ends here
-
-
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))  ; Disable the scrollbar
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))      ; Disable the toolbar
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))      ; Disable the menubar
@@ -178,9 +172,6 @@
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
   (blink-cursor-mode -1))
-
-;; Make zooming affect frame instead of buffers
-(require 'zoom-frm)
 
 ;; Unclutter the modeline
 (require 'diminish)
