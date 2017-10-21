@@ -40,7 +40,7 @@
 					   sql-indent
 					   gist
 					   magit
-					   flycheck-google-cpplint
+					   ;;flycheck-google-cpplint
 					   google-c-style
 					   auto-complete
 					   auto-complete-c-headers

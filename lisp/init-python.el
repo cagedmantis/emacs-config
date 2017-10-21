@@ -13,10 +13,10 @@
 	(require 'py-autopep8)
 	(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
   
-  (use-package ein
-	:ensure t
-	:config
-	(elpy-use-ipython))
+  ;; (use-package ein
+  ;; 	:ensure t
+  ;; 	:config
+  ;; 	(elpy-use-ipython))
 
   ;; flycheck not flymake with elpy
   (when (require 'flycheck nil t)
