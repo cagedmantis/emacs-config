@@ -67,7 +67,12 @@
     (global-set-key (kbd "C-c M-n") 'company-complete)
     (global-set-key (kbd "C-c C-n") 'company-complete)
 
-    (set (make-local-variable 'company-backends) '(company-go)))
+	(add-to-list 'company-backends 'company-go)
+
+	(add-hook 'go-mode-hook 'flycheck-mode)
+
+    ;;(set (make-local-variable 'company-backends) '(company-go))
+	)
 
   (defun my-go-mode-hook ()
     (setq gofmt-command "goimports")
@@ -75,9 +80,9 @@
     (subword-mode t)
     (setq tab-width 4)
     (add-hook 'before-save-hook 'gofmt-before-save)
-    (auto-complete-mode nil)
+    ;;(auto-complete-mode nil)
     (with-eval-after-load 'go-mode
-      (require 'go-autocomplete)
+      ;;(require 'go-autocomplete)
       (require 'godoctor)
       (require 'go-guru)
       (go-guru-hl-identifier-mode)))

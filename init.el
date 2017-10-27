@@ -47,9 +47,6 @@
 ;; hooks configuration
 ;;(require 'config-hook)
 
-;; refactor
-(require 'markdown-mode)
-
 ;; ~~~~~ use-package ~~~~~
 
 (require 'init-flycheck)
@@ -59,6 +56,8 @@
 (require 'init-colortheme)
 (require 'init-company)
 (require 'init-exec-path-from-shell)
+(require 'init-magit)
+(require 'init-powerline)
 
 ;; ~~~~~ Reafactored ~~~~~
 
@@ -90,18 +89,21 @@
 ;;(require 'init-tramp)
 ;;(require 'init-volatile-highlights)
 (require 'init-whitespace)
-(require 'init-which-mode)
+;;(require 'init-which-mode)
 (require 'init-yasnippet)
 
 ;; review
-(require 'init-org)
-;;(require 'init-magit)
+;;(require 'init-org)
 (require 'init-scheme)
 (require 'init-sudo-save)
-(require 'init-direnv)
-(require 'init-powerline)
 
-(require 'init-exec-path-from-shell)
+
+;; --------------------------------------
+;; Do you even work?
+;; --------------------------------------
+(require 'init-direnv)
+
+;; --------------------------------------
 
 (cond
  ((eq system-type 'gnu/linux)

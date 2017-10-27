@@ -1,4 +1,3 @@
-
 (use-package protobuf-mode
   :ensure t)
 
@@ -30,6 +29,9 @@
   :ensure t)
 
 (use-package yaml-mode
+  :ensure t)
+
+(use-package smarty-mode
   :ensure t)
 
 (provide 'lang-modes)

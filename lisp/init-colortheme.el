@@ -20,26 +20,35 @@
 
   
   (use-package solarized-theme
-  	:ensure t)
+    :ensure t)
   (use-package zenburn-theme
-  	:ensure t)
+    :ensure t)
   (use-package ir-black-theme
-  	:ensure t)
+    :ensure t)
   (use-package monokai-theme
-  	:ensure t)
+    :ensure t)
   (use-package underwater-theme
-  	:ensure t)
+    :ensure t)
   (use-package ample-theme
-  	:ensure t)
+    :ensure t)
   (use-package busybee-theme
-  	:ensure t)
+    :ensure t)
   (use-package danneskjold-theme
-  	:ensure t)
+    :ensure t)
   (use-package dracula-theme
-  	:ensure t)
-  (use-package color-theme-sanityinc-tomorrow
-  	:ensure t)
+    :ensure t)
 
-  (load-theme 'sanityinc-tomorrow-bright t)
-  )
+  (use-package atom-one-dark-theme
+	:ensure t
+	;; :config
+	;; (load-theme 'atom-one-dark t)
+)
+
+  (use-package color-theme-sanityinc-tomorrow
+    :ensure t
+     :config
+     (load-theme 'sanityinc-tomorrow-bright t)
+    )
+)
+
 (provide 'init-colortheme)

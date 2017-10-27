@@ -2,7 +2,7 @@
 (require 'package)
 
 (add-to-list 'package-archives
-			 '("melpa" . "http://melpa.milkbox.net/packages/") t)
+			 '("melpa" . "https://melpa.milkbox.net/packages/") t)
 
 ;; (when (< emacs-major-version 24)
 ;;   (add-to-list 'package-archives
@@ -27,10 +27,8 @@
 					   go-gopath
 					   projectile
 					   color-theme
-					   ;;pbcopy
-					   powerline
 					   autopair
-					   smarty-mode
+
 					   tramp
 					   yasnippet
 					   elpy
@@ -39,7 +37,6 @@
 					   smartparens
 					   sql-indent
 					   gist
-					   magit
 					   ;;flycheck-google-cpplint
 					   google-c-style
 					   auto-complete
