@@ -4,6 +4,13 @@
 ;; init.el
 ;; Carlos Amedee
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
@@ -27,29 +34,10 @@
 
 (require 'init-package)
 
-;; === imports ===
-
-(auto-fill-mode -1)
-(remove-hook 'text-mode-hook #'turn-on-auto-fill)
-
-;; call the package file
-
-
-;; general configuration
-;;(require 'config-default)
-
 (require 'defaults)
 (require 'appearance)
 (require 'init-ido) ;;use-packages
 (require 'lang-modes)
-
-;; extension hooks
-;;(require 'config-ext)
-
-;; hooks configuration
-;;(require 'config-hook)
-
-;; ~~~~~ use-package ~~~~~
 
 (require 'init-flycheck)
 (require 'init-go)
@@ -60,16 +48,23 @@
 (require 'init-exec-path-from-shell)
 (require 'init-magit)
 (require 'init-powerline)
-
-;; ~~~~~ Reafactored ~~~~~
-
-(require 'init-ace-window)
-(require 'init-docean)
-(require 'init-dockerfile-mode)
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-switch-window)
-(require 'init-yaml-mode)
+
+;; === imports ===
+
+(auto-fill-mode -1)
+(remove-hook 'text-mode-hook #'turn-on-auto-fill)
+
+;; general configuration
+;;(require 'config-default)
+
+;; extension hooks
+;;(require 'config-ext)
+
+;; hooks configuration
+;;(require 'config-hook)
 
 ;; ~~~~~~~~~~~~~~~~~~~~~~~
 
