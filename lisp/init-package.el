@@ -4,65 +4,55 @@
 (add-to-list 'package-archives
 			 '("melpa" . "https://melpa.milkbox.net/packages/") t)
 
-;; (when (< emacs-major-version 24)
-;;   (add-to-list 'package-archives
-;; 			   '("gnu" . "http://elpa.gnu.org/packages/")))
+(when (< emacs-major-version 24)
+  (add-to-list 'package-archives
+			   '("gnu" . "http://elpa.gnu.org/packages/")))
 
 (package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; disabled packages
+(defvar my-packages '( use-package
+					   ac-js2
+					   aggressive-indent
+					   autopair
+					   cedet
+					   cedit
+					   color-theme
+					   column-marker
+					   diminish
+					   django-snippets
+					   elpy
+					   fill-column-indicator
+					   gist
+					   google-c-style
+					   helm
+					   iedit
+					   neotree
+					   php-auto-yasnippets
+					   projectile
+					   rainbow-delimiters
+					   rubocop
+					   smartparens
+					   sql-indent
+					   switch-window
+					   textmate-to-yas
+					   tramp
+					   yasnippet
+
+					   ;; Experimental
+					   smooth-scrolling
+					   )
+  "A list of packages to ensure are installed at launch.")
+
 ;; yasnippet-bundle
 ;; flycheck-google-cpplint
 ;; google-c-style
 ;; flycheck-google-cpplint
 ;; google-c-style
-;; s
 ;; dash
 ;; projectile-direnv
-
-(defvar my-packages '( use-package 
-					   go-gopath
-					   projectile
-					   color-theme
-					   autopair
-
-					   tramp
-					   yasnippet
-					   elpy
-					   ac-js2
-					   rainbow-delimiters
-					   smartparens
-					   sql-indent
-					   gist
-					   ;;flycheck-google-cpplint
-					   google-c-style
-					   auto-complete
-					   auto-complete-c-headers
-					   auto-complete-clang
-					   cedet
-					   iedit
-					   cedit
-					   yasnippet
-					   django-snippets
-					   neotree
-					   php-auto-yasnippets
-
-					   fill-column-indicator
-					   diminish
-					   textmate-to-yas
-					   switch-window
-					   rubocop
-					   helm
-					   aggressive-indent
-					   column-marker
-
-					   ;; Experimental
-					   smooth-scrolling 
-					   )
-  "A list of packages to ensure are installed at launch.")
 
 ;;grabbed from Emacs Prelude
 (defun my-packages-installed-p ()

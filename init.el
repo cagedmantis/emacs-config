@@ -4,14 +4,6 @@
 ;; init.el
 ;; Carlos Amedee
 
-;;set configuration directory
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
@@ -27,11 +19,21 @@
 (setq custom-file (concat dotfiles-dir "custom.el"))
 ;;(add-to-list 'load-path "~/.emacs.d/modes/")
 
+;; === TODO
+;; company-clang
+;; company-c-headers
+
+;; === imports ===
+
+(require 'init-package)
+
+;; === imports ===
+
 (auto-fill-mode -1)
 (remove-hook 'text-mode-hook #'turn-on-auto-fill)
 
 ;; call the package file
-(require 'init-package)
+
 
 ;; general configuration
 ;;(require 'config-default)
@@ -71,8 +73,6 @@
 
 ;; ~~~~~~~~~~~~~~~~~~~~~~~
 
-;;(require 'init-auto-complete)
-;;(require 'init-auto-complete-clang)
 (require 'init-autoinsert)
 (require 'init-cc)
 (require 'init-cedit)
@@ -152,4 +152,5 @@
   (server-start))
 
 (provide 'init)
-;; init.el ends here
+
+;;; init.el ends here
