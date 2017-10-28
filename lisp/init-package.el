@@ -31,12 +31,9 @@
 					   iedit
 					   neotree
 					   php-auto-yasnippets
-					   projectile
-					   rainbow-delimiters
 					   rubocop
 					   smartparens
 					   sql-indent
-					   switch-window
 					   textmate-to-yas
 					   tramp
 					   yasnippet

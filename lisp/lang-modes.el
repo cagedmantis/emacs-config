@@ -8,7 +8,9 @@
   :ensure t)
 
 (use-package dockerfile-mode
-  :ensure t)
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
 (use-package python-mode
   :ensure t)
@@ -29,7 +31,11 @@
   :ensure t)
 
 (use-package yaml-mode
-  :ensure t)
+  :ensure t
+  :config
+
+  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+)
 
 (use-package smarty-mode
   :ensure t)
