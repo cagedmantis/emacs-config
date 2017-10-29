@@ -52,6 +52,9 @@
 (require 'init-rainbow-delimiters)
 (require 'init-switch-window)
 (require 'init-columnmarker)
+(require 'init-sudo-save)
+(require 'init-org)
+(require 'init-whitespace)
 
 ;; === imports ===
 
@@ -80,19 +83,8 @@
 (require 'init-sql)
 ;;(require 'init-tramp)
 ;;(require 'init-volatile-highlights)
-(require 'init-whitespace)
 ;;(require 'init-which-mode)
 (require 'init-yasnippet)
-
-;; review
-;;(require 'init-org)
-(require 'init-sudo-save)
-
-
-;; --------------------------------------
-;; Do you even work?
-;; --------------------------------------
-(require 'init-direnv)
 
 ;; --------------------------------------
 
