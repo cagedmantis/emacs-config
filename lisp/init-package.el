@@ -17,9 +17,7 @@
 					   ac-js2
 					   aggressive-indent
 					   autopair
-					   cedet
 					   cedit
-					   color-theme
 					   diminish
 					   django-snippets
 					   elpy
@@ -30,9 +28,7 @@
 					   neotree
 					   rubocop
 					   smartparens
-					   textmate-to-yas
 					   tramp
-					   yasnippet
 
 					   ;; Experimental
 					   smooth-scrolling

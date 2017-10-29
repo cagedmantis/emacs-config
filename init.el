@@ -63,28 +63,12 @@
 
 ;; === imports ===
 
-(auto-fill-mode -1)
-(remove-hook 'text-mode-hook #'turn-on-auto-fill)
-
-;; general configuration
-;;(require 'config-default)
-
-;; extension hooks
-;;(require 'config-ext)
-
-;; hooks configuration
-;;(require 'config-hook)
-
-;; ~~~~~~~~~~~~~~~~~~~~~~~
-
 (require 'init-autoinsert)
 (require 'init-cc)
 (require 'init-erc)
 ;;(require 'init-cedit)
 ;;(require 'init-tramp)
 ;;(require 'init-volatile-highlights)
-
-;; --------------------------------------
 
 (cond
  ((eq system-type 'gnu/linux)
@@ -103,6 +87,10 @@
 
 ;;experimental
 ;;===================
+
+(auto-fill-mode -1)
+(remove-hook 'text-mode-hook #'turn-on-auto-fill)
+
 (global-auto-revert-mode t)
 
 (setq ido-decorations

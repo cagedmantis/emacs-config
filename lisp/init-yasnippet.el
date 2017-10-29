@@ -1,15 +1,11 @@
-;; yasnippet
+(use-package yasnippet
+  :ensure t
+  :config
 
-(require 'yasnippet)
+  (use-package yasnippet-snippets
+	:ensure t)
 
-(yas-global-mode 1)
-
-(setq yas-snippet-dirs (append yas-snippet-dirs
-                               '("~/.emacs.d/modelib/snippets")))
-
-;;~/.emacs.d/snippets/yasnippet-go
-
-(add-hook 'term-mode-hook (lambda()
-							(setq yas-dont-activate t)))
+  (yas-global-mode 1)
+)
 
 (provide 'init-yasnippet)
