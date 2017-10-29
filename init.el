@@ -86,7 +86,6 @@
 
 ;; review
 ;;(require 'init-org)
-(require 'init-scheme)
 (require 'init-sudo-save)
 
 
