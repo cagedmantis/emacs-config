@@ -40,4 +40,10 @@
 (use-package smarty-mode
   :ensure t)
 
+(use-package sql-indent
+  :ensure t
+  :config
+  (eval-after-load 'sql
+	'(load-library "sql-indent")))
+
 (provide 'lang-modes)

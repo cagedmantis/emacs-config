@@ -81,7 +81,6 @@
 (require 'init-iedit)
 (require 'init-latex)
 (require 'init-saveplace)
-(require 'init-sql)
 ;;(require 'init-tramp)
 ;;(require 'init-volatile-highlights)
 
