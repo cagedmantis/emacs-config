@@ -27,12 +27,9 @@
 					   gist
 					   google-c-style
 					   helm
-					   iedit
 					   neotree
-					   php-auto-yasnippets
 					   rubocop
 					   smartparens
-					   sql-indent
 					   textmate-to-yas
 					   tramp
 					   yasnippet
