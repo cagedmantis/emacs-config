@@ -20,7 +20,6 @@
 					   cedet
 					   cedit
 					   color-theme
-					   column-marker
 					   diminish
 					   django-snippets
 					   elpy

@@ -36,7 +36,7 @@
 
 (require 'defaults)
 (require 'appearance)
-(require 'init-ido) ;;use-packages
+(require 'init-ido)
 (require 'lang-modes)
 
 (require 'init-flycheck)
@@ -51,6 +51,7 @@
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-switch-window)
+(require 'init-columnmarker)
 
 ;; === imports ===
 
@@ -71,14 +72,10 @@
 (require 'init-autoinsert)
 (require 'init-cc)
 (require 'init-cedit)
-(require 'init-columnmarker)
 (require 'init-erc)
 (require 'init-font)
-;;(require 'init-flymake-google-cpplint)
 (require 'init-iedit)
-(require 'init-jsmode)
 (require 'init-latex)
-;;(require 'init-semantic)
 (require 'init-saveplace)
 (require 'init-sql)
 ;;(require 'init-tramp)
