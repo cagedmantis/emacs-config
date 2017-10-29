@@ -36,6 +36,7 @@
 
 (require 'defaults)
 (require 'appearance)
+(require 'init-font)
 (require 'init-ido)
 (require 'lang-modes)
 
@@ -44,7 +45,6 @@
 (require 'init-company)
 (require 'init-exec-path-from-shell)
 (require 'init-flycheck)
-(require 'init-font)
 (require 'init-go)
 (require 'init-iedit)
 (require 'init-javascript)
