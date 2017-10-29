@@ -55,6 +55,7 @@
 (require 'init-sudo-save)
 (require 'init-org)
 (require 'init-whitespace)
+(require 'init-yasnippet)
 
 ;; === imports ===
 
@@ -83,8 +84,6 @@
 (require 'init-sql)
 ;;(require 'init-tramp)
 ;;(require 'init-volatile-highlights)
-;;(require 'init-which-mode)
-(require 'init-yasnippet)
 
 ;; --------------------------------------
 
