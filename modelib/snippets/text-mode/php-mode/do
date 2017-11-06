@@ -1,7 +1,0 @@
-#contributor : Carlos Amedee <carlos.amedee@gmail.com>
-#name : do (...) { ... } while (...)
-#group : control structure
-# --
-do (${1:condition}) {
-        $2
-} while ($0);

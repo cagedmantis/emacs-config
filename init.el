@@ -1,9 +1,8 @@
 ;;; init.el --- Emacs configuration init
 
-;; Emacs config
-;; init.el
-;; Carlos Amedee
+;;; Commentary:
 
+;;; Code:
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
