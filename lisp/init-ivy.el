@@ -17,9 +17,18 @@
 
   (setq ivy-height 10)
   (setq ivy-virtual-abbreviate 'full) ; Show the full virtual file paths
-  (setq ivy-extra-directories '("./")) ; default value: ("../" "./")
+  (setq ivy-extra-directories 'nil) ; default value: ("../" "./")
   (setq ivy-wrap t)
   (setq ivy-re-builders-alist '((t . ivy--regex-plus)))
+
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-display-style 'fancy)
+  (setq ivy-initial-inputs-alist nil)
+
+(setq ivy-re-builders-alist
+      '((ivy-switch-buffer . ivy--regex-plus)
+        (swiper . ivy--regex-plus)
+        (t . ivy--regex-fuzzy)))
 
   ;; (setq enable-recursive-minibuffers t)
 

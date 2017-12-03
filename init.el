@@ -39,6 +39,7 @@
 ;;(require 'init-ido)  Testing out ivy instead of ido
 (require 'init-ivy)
 (require 'lang-modes)
+(require 'init-powerline)
 
 (require 'init-colortheme)
 (require 'init-columnmarker)
@@ -51,7 +52,6 @@
 (require 'init-latex)
 (require 'init-magit)
 (require 'init-org)
-(require 'init-powerline)
 (require 'init-projectile)
 (require 'init-python)
 (require 'init-rainbow-delimiters)

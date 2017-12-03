@@ -28,9 +28,16 @@
   (use-package zenburn-theme
     :ensure t)
   (use-package ir-black-theme
-    :ensure t)
+    :ensure t
+	;; :config
+	;; (load-theme 'ir-black)
+)
   (use-package monokai-theme
-    :ensure t)
+    :ensure t
+	;; :config
+	;; (load-theme 'monokai)
+)
+
   (use-package underwater-theme
     :ensure t)
   (use-package ample-theme

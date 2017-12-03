@@ -1,5 +1,3 @@
-;;; (>>FILE<<) --- 
-
 ;; Copyright (C) Carlos Amedee
 ;;
 ;; Author: Carlos Amedee <carlos.amedee@gmail.com>
