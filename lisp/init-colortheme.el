@@ -5,6 +5,10 @@
   (setq color-theme-is-global t)
   (color-theme-initialize)
 
+  ;; (use-package color-theme-approximate
+  ;; 	:config
+  ;; 	(color-theme-approximate-on))
+
   ;; (dolist (theme '(solarized-theme
   ;; 				   zenburn-theme
   ;; 				   ir-black-theme
@@ -32,7 +36,10 @@
   (use-package ample-theme
     :ensure t)
   (use-package busybee-theme
-    :ensure t)
+    :ensure t
+	;; :config
+	;; (load-theme 'busybee t)
+	)
   (use-package danneskjold-theme
     :ensure t)
   (use-package dracula-theme
@@ -42,13 +49,13 @@
 	:ensure t
 	;; :config
 	;; (load-theme 'atom-one-dark t)
-)
+	)
 
   (use-package color-theme-sanityinc-tomorrow
     :ensure t
-     :config
-     (load-theme 'sanityinc-tomorrow-bright t)
+	:config
+	(load-theme 'sanityinc-tomorrow-bright t)
     )
-)
+  )
 
 (provide 'init-colortheme)

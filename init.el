@@ -114,6 +114,24 @@
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
 
+(use-package pbcopy
+  :ensure t
+  :config
+  (turn-on-pbcopy))
+
+;; (use-package spaceline
+;;   :ensure t
+;;   :config
+;;   (require 'spaceline-config)
+;;   ;;(spaceline-spacemacs-theme)
+;;   (spaceline-emacs-theme)
+
+;;   ;; (use-package spaceline-all-the-icons
+;;   ;; 	:ensure t
+;;   ;; 	:after spaceline
+;;   ;; 	:config (spaceline-all-the-icons-theme))
+;;   )
+
 ;; Emacs server
 (require 'server)
 (unless (server-running-p)

@@ -218,6 +218,7 @@
 
 ;; Highlight the line number of the current line.
 (use-package hlinum
+  :ensure t
   :config
   (hlinum-activate))
 
@@ -239,12 +240,14 @@
 ;; Highlight matching braces.
 (show-paren-mode 1)
 
-;; Engage Nyan Cat!
-(use-package nyan-mode
-  :config
-  (nyan-mode 1)
-  (setq nyan-bar-length 16
-        nyan-wavy-trail t))
+;; (when (memq window-system '(mac ns x))
+;;   Engage Nyan Cat!
+;;   (use-package nyan-mode
+;;   	:ensure t
+;;   	:config
+;;   	(nyan-mode 1)
+;;   	(setq nyan-bar-length 16
+;;   		  nyan-wavy-trail t)))
 
 ;; Unclutter the modeline
 (use-package diminish)
