@@ -216,11 +216,11 @@
 (global-linum-mode t)
 (setq linum-format (if (not window-system) "%4d " "%4d"))
 
-;; Highlight the line number of the current line.
-(use-package hlinum
-  :ensure t
-  :config
-  (hlinum-activate))
+;; ;; Highlight the line number of the current line.
+;; (use-package hlinum
+;;   :ensure t
+;;   :config
+;;   (hlinum-activate))
 
 ;; Show column numbers in modeline.
 (setq column-number-mode t)

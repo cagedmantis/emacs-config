@@ -36,7 +36,8 @@
 (require 'defaults)
 (require 'appearance)
 (require 'init-font)
-(require 'init-ido)
+;;(require 'init-ido)  Testing out ivy instead of ido
+(require 'init-ivy)
 (require 'lang-modes)
 
 (require 'init-colortheme)
