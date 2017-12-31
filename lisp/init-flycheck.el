@@ -10,13 +10,13 @@
     '(progn
 	   (set-face-attribute 'flycheck-error nil :foreground "pink")))
 
-  (set-face-attribute 'flycheck-warning nil
-					  :foreground "yellow"
-					  :background "#000099")
+  ;; (set-face-attribute 'flycheck-warning nil
+  ;; 					  :foreground "yellow"
+  ;; 					  :background "#000099")
 
-  (set-face-attribute 'flycheck-error nil
-					  :foreground "red"
-					  :background "#000099")
+  ;; (set-face-attribute 'flycheck-error nil
+  ;; 					  :foreground "red"
+  ;; 					  :background "#000099")
 
   (add-to-list 'display-buffer-alist
 			   `(,(rx bos "*Flycheck errors*" eos)

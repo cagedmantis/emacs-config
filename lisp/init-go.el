@@ -26,6 +26,9 @@
                         :foreground "green"
                         :weight 'bold))
 
+  (use-package go-fill-struct
+	:ensure t)
+
   (use-package go-errcheck
     :ensure t)
 
@@ -104,7 +107,8 @@
     (gomegacheck . "honnef.co/go/tools/cmd/megacheck")
     (gounconvert . "github.com/mdempsky/unconvert")
     (goflymake   . "github.com/dougm/goflymake")
-    (goimports   . "golang.org/x/tools/cmd/goimports"))
+    (goimports   . "golang.org/x/tools/cmd/goimports")
+	(fillstruct  . "github.com/davidrjenni/reftools/cmd/fillstruct"))
   "Import paths for My Go tools.")
 
 (defun go-get-tools ()

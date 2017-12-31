@@ -15,15 +15,12 @@
 
 ;;(add-to-list 'load-path dotfiles-dir)
 (add-to-list 'load-path "~/bin/")
-;;(add-to-list 'load-path (concat dotfiles-dir "/starter_kit"))
-;;(add-to-list 'load-path (concat dotfiles-dir "/configs"))
 (add-to-list 'load-path (concat dotfiles-dir "/config"))
 (add-to-list 'load-path (concat dotfiles-dir "/lisp"))
 (add-to-list 'load-path (concat dotfiles-dir "/system_type"))
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
-;;(add-to-list 'load-path "~/.emacs.d/modes/")
 
 ;; === TODO
 ;; company-clang
@@ -38,10 +35,11 @@
 (require 'init-font)
 ;;(require 'init-ido)  Testing out ivy instead of ido
 (require 'init-ivy)
+(require 'init-colortheme)
+
 (require 'lang-modes)
 (require 'init-powerline)
 
-(require 'init-colortheme)
 (require 'init-columnmarker)
 (require 'init-company)
 (require 'init-exec-path-from-shell)
