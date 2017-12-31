@@ -6,17 +6,17 @@
 
   (add-hook 'sh-mode-hook 'flycheck-mode)
 
-  (eval-after-load 'flycheck
-    '(progn
-	   (set-face-attribute 'flycheck-error nil :foreground "pink")))
+  (set-face-attribute 'flycheck-warning nil
+					  :underline `(:style wave :color "yellow")
+					  :foreground "yellow")
 
-  ;; (set-face-attribute 'flycheck-warning nil
-  ;; 					  :foreground "yellow"
-  ;; 					  :background "#000099")
+  (set-face-attribute 'flycheck-error nil
+					  :underline `(:style wave :color "red")
+					  :foreground "red")
 
-  ;; (set-face-attribute 'flycheck-error nil
-  ;; 					  :foreground "red"
-  ;; 					  :background "#000099")
+  (set-face-attribute 'flycheck-info nil
+					  :underline `(:style wave :color "green")
+					  :foreground "green")
 
   (add-to-list 'display-buffer-alist
 			   `(,(rx bos "*Flycheck errors*" eos)

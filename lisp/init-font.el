@@ -27,7 +27,9 @@
 	  (set-default-font  "Source Code Pro"))
   )
 
-(set-default-font "Source Code Pro for Powerline")
+;; depricated
+;;(set-default-font "Source Code Pro for Powerline")
+(set-frame-font "Source Code Pro for Powerline" nil t)
 
 (set-face-attribute 'default nil :height 100)
 
