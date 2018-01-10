@@ -32,15 +32,13 @@
 	(require 'flycheck-color-mode-line)
 
 	(eval-after-load "flycheck"
-	  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
-	)
+	  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)))
 
   (use-package flycheck-pos-tip
 	:ensure t
 	:config
 	(with-eval-after-load 'flycheck
-	  (flycheck-pos-tip-mode))
-	)
+	  (flycheck-pos-tip-mode)))
   )
 
 (provide 'init-flycheck)
