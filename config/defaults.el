@@ -80,7 +80,12 @@
 (setq-default truncate-lines t)
 
 ;; Keep cursor away from edges when scrolling up/down
-(require 'smooth-scrolling)
+(use-package smooth-scrolling
+  :ensure t
+  :config
+  (smooth-scrolling-mode 1)
+  (setq smooth-scroll-margin 5))
+
 
 ;; Allow recursive minibuffers
 (setq enable-recursive-minibuffers t)
@@ -138,5 +143,6 @@
       (make-directory parent-directory t))))
 
 (add-to-list 'find-file-not-found-functions 'my-create-non-existent-directory)
+
 
 (provide 'defaults)
