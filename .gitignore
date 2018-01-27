@@ -25,6 +25,7 @@ session*
 thumbs/*
 tramp
 url/cookies
+#*
 
 # OS generated files #
 ######################
