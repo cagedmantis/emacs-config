@@ -1,9 +1,8 @@
-;; Copyright (C) Carlos Amedee
-;;
-;; Author: Carlos Amedee <carlos.amedee@gmail.com>
-;; Keywords: 
-;; Requirements: 
-;; Status: not intended to be distributed yet
+;;; appearance.el --- appearance configuration
+
+;;; Commentary:
+
+;;; Code:
 
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))  ; Disable the scrollbar
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))      ; Disable the toolbar
@@ -22,7 +21,6 @@
 (setq visible-bell nil) ;; The default
 (setq ring-bell-function 'ignore)
 
-(defalias 'yes-or-no-p 'y-or-n-p)              ; y/n instead of yes/no
 (setq ispell-dictionary "english")             ; Set ispell dictionary
 (setq make-backup-files t)                     ; backup files ~
 (show-paren-mode 1)                            ; turn on paren match highlighting
@@ -44,12 +42,7 @@
 (setq uniquify-buffer-name-style 'forward)
 (setq ffap-machine-p-known 'reject)
 (setq xterm-mouse-mode t)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
 (ansi-color-for-comint-mode-on)
-
-(auto-compression-mode t) ;; Transparently open compressed files
 
 ;; Enable syntax highlighting for older Emacsen that have it off
 (global-font-lock-mode t)
@@ -69,26 +62,18 @@
   (blink-cursor-mode -1))
 
 ;; Backup files go into a backup dir
-(setq
- backup-by-copying t      ; don't clobber symlinks
- backup-directory-alist
- '(("." . "~/.emacs.d/backups"))    ; don't litter my fs tree
- delete-old-versions t
- kept-new-versions 6
- kept-old-versions 2
- version-control t)       ; use versioned backups
+(setq backup-by-copying t                                       ; don't clobber symlinks
+	  backup-directory-alist '(("." . "~/.emacs.d/backups"))    ; don't litter my fs tree
+	  delete-old-versions t
+	  kept-new-versions 6
+	  kept-old-versions 2
+	  version-control t)                                        ; use versioned backups
 
 ;; disable line mode for listed modes
 (setq linum-disabled-modes-list '(shell-mode ansi-term term-mode eshell-mode wl-summary-mode compilation-mode fundamental-mode))
 (defun linum-on ()
   (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
     (linum-mode 1)))
-
-(set-keyboard-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-
-; Share the clipboard with X
-(setq x-select-enable-clipboard t)
 
 ;;store all autosave files
 (setq auto-save-file-name-transforms
@@ -99,14 +84,6 @@
 
 ;; Don't defer screen updates when performing operations
 (setq redisplay-dont-pause t)
-
-;; org-mode colors
-;; (setq org-todo-keyword-faces
-;;       '(
-;;         ("INPR" . (:foreground "yellow" :weight bold))
-;;         ("DONE" . (:foreground "green" :weight bold))
-;;         ("IMPEDED" . (:foreground "red" :weight bold))
-;;         ))
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
@@ -137,10 +114,8 @@
   (eval-after-load "skewer-html" '(diminish 'skewer-html-mode))
   (eval-after-load "skewer-mode" '(diminish 'skewer-mode))
   (eval-after-load "auto-indent-mode" '(diminish 'auto-indent-minor-mode))
-  ;; (eval-after-load "subword" '(diminish 'subword-mode))
   (eval-after-load "cider" '(diminish 'cider-mode))
-  (eval-after-load "smartparens" '(diminish 'smartparens-mode))
-  )
+  (eval-after-load "smartparens" '(diminish 'smartparens-mode)))
 
 (setq linum-format (if (not window-system) "%4d " "%4d"))
 
@@ -156,10 +131,12 @@
 ;; Ensure linum-mode is disabled in certain major modes.
 (setq linum-disabled-modes
       '(term-mode slime-repl-mode magit-status-mode help-mode nrepl-mode
-        mu4e-main-mode mu4e-headers-mode mu4e-view-mode
-        mu4e-compose-mode))
+				  mu4e-main-mode mu4e-headers-mode mu4e-view-mode
+				  mu4e-compose-mode))
 (defun linum-on ()
   (unless (or (minibufferp) (member major-mode linum-disabled-modes))
     (linum-mode 1)))
 
 (provide 'appearance)
+
+;;; appearance.el ends here
