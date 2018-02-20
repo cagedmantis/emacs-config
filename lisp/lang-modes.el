@@ -1,3 +1,9 @@
+;;; lang-modes.el --- appearance configuration
+
+;;; Commentary:
+
+;;; Code:
+
 (use-package protobuf-mode
   :ensure t)
 
@@ -25,7 +31,11 @@
   :ensure t)
 
 (use-package markdown-mode
-  :ensure t)
+  :ensure edit-indirect
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 
 (use-package rust-mode
   :ensure t)
@@ -33,7 +43,6 @@
 (use-package yaml-mode
   :ensure t
   :config
-
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 )
 
@@ -47,3 +56,5 @@
 	'(load-library "sql-indent")))
 
 (provide 'lang-modes)
+
+;;; lang-modes.el ends here

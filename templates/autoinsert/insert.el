@@ -1,13 +1,8 @@
-;;; (>>FILE<<) --- 
+;;; `(buffer-name)` --- blah configuration
 
-;; Copyright (C) Carlos Amedee
-;;
-;; Author: Carlos Amedee <carlos.amedee@gmail.com>
-;; Keywords: 
-;; Requirements: 
-;; Status: not intended to be distributed yet
+;;; Commentary:
+
+;;; Code:
 
 
-
-
-;;; (>>FILE<<) ends here
+;;; `(buffer-name)` ends here

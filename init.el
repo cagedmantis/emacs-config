@@ -83,8 +83,6 @@
 (setq os-specific-config (concat dotfiles-dir (prin1-to-string system-type) ".el"))
 (if (file-exists-p os-specific-config) (load os-specific-config))
 
-;;(require 'experimental)
-
 ;; Emacs server
 (require 'server)
 (unless (server-running-p)

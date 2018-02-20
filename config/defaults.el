@@ -83,7 +83,6 @@
   (smooth-scrolling-mode 1)
   (setq smooth-scroll-margin 5))
 
-
 ;; Allow recursive minibuffers
 (setq enable-recursive-minibuffers t)
 
