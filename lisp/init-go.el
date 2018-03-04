@@ -1,4 +1,4 @@
-;;; init-go.el --- appearance configuration
+;;; init-go.el --- go configuration
 
 ;;; Commentary:
 

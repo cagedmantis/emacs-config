@@ -6,6 +6,14 @@
   (use-package counsel
 	:ensure t
 	:diminish counsel-mode)
+
+  (if (version< emacs-version "26")
+	  (message "version does not support ivy-posframe")
+	(use-package ivy-posframe
+	  :ensure t
+	  :config
+	  (require 'ivy-posframe)
+	  (setq ivy-display-function #'ivy-posframe-display)))
   
   (ivy-mode 1)
 

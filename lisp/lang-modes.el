@@ -30,6 +30,7 @@
 (use-package haskell-mode
   :ensure t)
 
+;; https://jblevins.org/projects/markdown-mode/
 (use-package markdown-mode
   :ensure edit-indirect
   :mode (("README\\.md\\'" . gfm-mode)

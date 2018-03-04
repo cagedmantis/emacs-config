@@ -49,6 +49,7 @@
 (require 'init-javascript)
 (require 'init-latex)
 (require 'init-magit)
+(require 'init-mu)
 (require 'init-org)
 (require 'init-projectile)
 (require 'init-python)
