@@ -1,11 +1,18 @@
-;;; lang-modes.el --- appearance configuration
+;;; lang-modes.el --- various language mode configurations
 
 ;;; Commentary:
 
 ;;; Code:
 
 (use-package protobuf-mode
-  :ensure t)
+  :ensure t
+  :config
+  (defconst my-protobuf-style
+    '((c-basic-offset . 2)
+      (indent-tabs-mode . nil)))
+
+  (add-hook 'protobuf-mode-hook
+			(lambda () (c-add-style "my-style" my-protobuf-style t))))
 
 (use-package fish-mode
   :ensure t)
@@ -38,20 +45,16 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
-(use-package rust-mode
-  :ensure t)
-
 (use-package yaml-mode
   :ensure t
   :config
-  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-)
+  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode)))
 
 (use-package smarty-mode
-  :ensure t)
+  :defer t)
 
 (use-package sql-indent
-  :ensure t
+  :defer t
   :config
   (eval-after-load 'sql
 	'(load-library "sql-indent")))
