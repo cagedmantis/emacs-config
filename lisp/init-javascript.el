@@ -1,3 +1,13 @@
+;;; init-javascript.el --- Flycheck configuration init
+
+;;; Commentary:
+
+;;; Code:
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
 (use-package js2-mode
   :ensure t
   :config
@@ -24,3 +34,5 @@
 	:ensure t))
 
 (provide 'init-javascript)
+
+;;; init-javascript.el ends here

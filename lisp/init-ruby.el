@@ -74,4 +74,6 @@
                                  (run-hooks 'prelude-ruby-mode-hook)))))
 
 (provide 'prelude-ruby)
+
 ;;; prelude-ruby.el ends here
+

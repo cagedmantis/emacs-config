@@ -1,6 +1,13 @@
-;; Emacs config
+;;; init-ido.el --- Flycheck configuration init
 
-;; ido-mode is like magic pixie dust!
+;;; Commentary:
+
+;;; Code:
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
 (when (> emacs-major-version 21)
 
   (use-package ido
@@ -47,3 +54,5 @@
 	  )
 	))
 (provide 'init-ido)
+
+;;; init-ido.el ends here
