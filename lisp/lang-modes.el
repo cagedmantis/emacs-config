@@ -6,6 +6,7 @@
 
 (use-package protobuf-mode
   :ensure t
+  :mode ("\\.proto\\'" . protobuf-mode)
   :config
   (defconst my-protobuf-style
     '((c-basic-offset . 2)
@@ -49,6 +50,14 @@
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode)))
+
+(use-package flycheck-yamllint
+  :ensure t
+  :defer t
+  :init
+  (progn
+    (eval-after-load 'flycheck
+      '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))))
 
 (use-package smarty-mode
   :defer t)

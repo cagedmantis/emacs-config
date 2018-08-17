@@ -38,6 +38,12 @@
   (use-package go-errcheck
     :ensure t)
 
+  (use-package go-gen-test
+	:ensure t)
+
+  (use-package gotest
+	:ensure t)
+
   (use-package company-go
     :ensure company
     :init
@@ -86,6 +92,7 @@
     (gounconvert . "github.com/mdempsky/unconvert")
     (goflymake   . "github.com/dougm/goflymake")
     (goimports   . "golang.org/x/tools/cmd/goimports")
+    (gotests     . "go get -u github.com/cweill/gotests")
     (fillstruct  . "github.com/davidrjenni/reftools/cmd/fillstruct"))
   "Import paths for My Go tools.")
 

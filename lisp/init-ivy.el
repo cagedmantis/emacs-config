@@ -1,11 +1,28 @@
+;;; init-ivy.el --- ivy configuration init
+
+;;; Commentary:
+
+;;; Code:
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+
 (use-package ivy
   :ensure t
   :diminish ivy-mode
+  :bind (("C-c C-r" . ivy-resume)
+         ("C-x b" . ivy-switch-buffer)
+         ("C-x B" . ivy-switch-buffer-other-window))
   :config
 
   (use-package counsel
 	:ensure t
-	:diminish counsel-mode)
+	:diminish counsel-mode
+	:bind (("C-x C-f" . counsel-find-file)
+           ("M-x" . counsel-M-x)
+           ("M-y" . counsel-yank-pop)))
 
   (if (version< emacs-version "26")
 	  (message "version does not support ivy-posframe")
@@ -68,4 +85,16 @@
   ;;(setq projectile-completion-system 'ivy)
   )
 
+;; (use-package ivy-rich
+;;   :after ivy
+;;   :custom
+;;   (ivy-virtual-abbreviate 'full
+;;                           ivy-rich-switch-buffer-align-virtual-buffer t
+;;                           ivy-rich-path-style 'abbrev)
+;;   :config
+;;   (ivy-set-display-transformer 'ivy-switch-buffer
+;;                                'ivy-rich-switch-buffer-transformer))
+
 (provide 'init-ivy)
+
+;;; init-ivy.el ends here

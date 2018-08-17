@@ -10,6 +10,7 @@
 ;; You may delete these explanatory comments.
 (use-package projectile
   :ensure t
+  :diminish
   :config
   (projectile-global-mode)
 

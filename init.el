@@ -55,6 +55,7 @@
 (require 'init-go)
 (require 'init-iedit)
 (require 'init-javascript)
+(require 'init-kubernetes)
 (require 'init-latex)
 (require 'init-magit)
 (require 'init-org)
