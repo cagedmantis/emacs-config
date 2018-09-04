@@ -27,8 +27,8 @@
 	  (set-frame-font "Source Code Pro"))
   )
 
-(set-frame-font "Source Code Pro for Powerline" nil t)
+;;(set-frame-font "Source Code Pro for Powerline" nil t)
 
-(set-face-attribute 'default nil :height 100)
+;;(set-face-attribute 'default nil :height 100)
 
 (provide 'init-font)

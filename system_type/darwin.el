@@ -23,7 +23,7 @@
 
 (if (font-existsp preferred-font)
     (set-default-font preferred-font)
-  (set-default-font "DejaVu Sans Mono"))
+  (set-default-font "Monaco"))
 
 (set-face-attribute 'default nil :height 130)
 

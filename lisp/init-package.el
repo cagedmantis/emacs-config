@@ -21,7 +21,6 @@
 					   diminish
 					   django-snippets
 					   elpy
-					   fill-column-indicator
 					   gist
 					   google-c-style
 					   helm

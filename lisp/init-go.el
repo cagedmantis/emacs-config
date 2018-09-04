@@ -46,6 +46,7 @@
 
   (use-package company-go
     :ensure company
+	:defer t
     :init
 
     (add-hook 'go-mode-hook 'company-mode)
