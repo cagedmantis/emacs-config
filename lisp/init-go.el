@@ -79,7 +79,7 @@
 ;; modified from github.com/dougm/go-projectile
 
 (defvar go-tools
-  '((gocode      . "github.com/nsf/gocode")
+  '((gocode      . "github.com/mdempsky/gocode")
     (golint      . "github.com/golang/lint/golint")
     (godef       . "github.com/rogpeppe/godef")
     (errcheck    . "github.com/kisielk/errcheck")

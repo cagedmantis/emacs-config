@@ -140,6 +140,32 @@
 
 (add-to-list 'find-file-not-found-functions 'my-create-non-existent-directory)
 
+;; ======================================================================
+
+(setq shell-file-name "/bin/bash")             ; Set Shell for M-| command
+(setq sentence-end-double-space nil)           ; Sentences end with one space
+(setq-default indent-tabs-mode nil)            ; Use spaces instead of tabs
+(setq visible-bell t)                          ; No beep when reporting errors
+
+;;El Capitan fix
+(setq visible-bell nil) ;; The default
+(setq ring-bell-function 'ignore)
+
+(setq ispell-dictionary "english")             ; Set ispell dictionary
+(setq make-backup-files t)                     ; backup files ~
+
+;; Save a list of recent files visited.
+(recentf-mode 1)
+
+;; Backup files go into a backup dir
+(setq backup-by-copying t                                       ; don't clobber symlinks
+	  backup-directory-alist '(("." . "~/.emacs.d/backups"))    ; don't litter my fs tree
+	  delete-old-versions t
+	  kept-new-versions 6
+	  kept-old-versions 2
+	  version-control t)                                        ; use versioned backups
+
+
 (provide 'defaults)
 
 ;;; defaults.el ends here

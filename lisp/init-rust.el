@@ -24,7 +24,10 @@
 	(add-hook 'racer-mode-hook #'eldoc-mode)
 
 	(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
-	(setq company-tooltip-align-annotations t)))
+	(setq company-tooltip-align-annotations t))
+
+  (use-package cargo
+	:ensure t))
 
 ;; rustup component add rust-src
 ;; rustup component add rust-docs

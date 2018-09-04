@@ -31,4 +31,8 @@
 
 ;;(set-face-attribute 'default nil :height 100)
 
+
+;; experimental
+(set-frame-font "Fira Code")
+
 (provide 'init-font)
