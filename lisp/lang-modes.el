@@ -29,8 +29,8 @@
 (use-package python-mode
   :ensure t)
 
-(use-package web-mode
-  :ensure t)
+;; (use-package web-mode
+;;   :ensure t)
 
 (use-package js2-mode
   :ensure t)

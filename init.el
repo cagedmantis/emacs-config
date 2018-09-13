@@ -97,6 +97,19 @@
 (unless (server-running-p)
   (server-start))
 
+(use-package whitespace
+  :ensure t
+  :config
+  (require 'whitespace))
+
+(use-package dimmer
+  :ensure t
+  :config
+  (dimmer-mode)
+  (setq dimmer-fraction 0.50))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 (provide 'init)
 
 ;;; init.el ends here
