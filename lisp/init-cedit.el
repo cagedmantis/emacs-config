@@ -1,3 +1,6 @@
+(use-package cedit
+  :ensure t)
+
 ; turn on Semantic
 (semantic-mode 1)
 ; let's define a function which adds semantic as a suggestion backend to auto complete

@@ -10,6 +10,7 @@
 ;; You may delete these explanatory comments.
 (use-package flycheck
   :ensure t
+  :diminish FlyC
   :config
   (global-flycheck-mode)
   (add-hook 'after-init-hook #'global-flycheck-mode)

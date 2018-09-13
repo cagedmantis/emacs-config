@@ -165,6 +165,13 @@
 	  kept-old-versions 2
 	  version-control t)                                        ; use versioned backups
 
+(use-package aggressive-indent
+  :ensure t
+  :config
+  (global-aggressive-indent-mode 1))
+
+(use-package autopair
+  :ensure t)
 
 (provide 'defaults)
 

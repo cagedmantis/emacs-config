@@ -29,7 +29,10 @@
 	(setq js2-indent-level 2)
 	(setq js2-basic-offset 2)
 	)
-  
+
+  (use-package ac-js2
+	:ensure t)
+
   (use-package js-format
 	:ensure t))
 
