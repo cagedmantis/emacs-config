@@ -9,4 +9,7 @@
 
 (setq tex-dvi-view-command "xdvi")
 
+(use-package tex
+  :ensure auctex)
+
 (provide 'init-latex)

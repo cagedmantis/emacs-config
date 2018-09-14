@@ -27,6 +27,7 @@ tramp
 url/cookies
 #*
 #!*
+.last-package-update-day
 
 # OS generated files #
 ######################

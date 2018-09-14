@@ -57,6 +57,7 @@
 (require 'init-switch-window)
 (require 'init-whitespace)
 (require 'init-yasnippet)
+(require 'init-utils)
 (require 'lang-modes)
 
 (cond

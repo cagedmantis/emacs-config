@@ -4,6 +4,9 @@
 (add-to-list 'package-archives
 			 '("melpa" . "https://melpa.milkbox.net/packages/") t)
 
+;; (add-to-list 'package-archives
+;; 			 '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives
 			   '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -13,15 +16,18 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '( use-package
-					   diminish
-					   django-snippets
-					   elpy
-					   gist
-					   google-c-style
-					   rubocop
-					   smartparens
-					   )
+(defvar my-packages '(
+					  auto-package-update
+					  diminish
+					  django-snippets
+					  elpy
+					  gist
+					  google-c-style
+					  rubocop
+					  smartparens
+					  use-package
+					  use-package-ensure-system-package
+					  )
   "A list of packages to ensure are installed at launch.")
 
 ;;grabbed from Emacs Prelude
@@ -40,5 +46,11 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
+(use-package auto-package-update
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
+
 (provide 'init-package)
-;;; init-package ends here 
+;;; init-package ends here

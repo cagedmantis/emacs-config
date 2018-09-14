@@ -1,4 +1,5 @@
-(use-package magit
-  :ensure t)
-
+;; (use-package magit
+;;   :ensure t
+;;   ;;:pin melpa-stable)
+;;   )
 (provide 'init-magit)
