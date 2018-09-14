@@ -1,4 +1,4 @@
-;;; `(buffer-name)` --- blah configuration
+;;; `(buffer-name)` --- `(replace-regexp-in-string "\.el$" "" (buffer-name))` configuration
 
 ;;; Commentary:
 
