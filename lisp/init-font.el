@@ -33,6 +33,6 @@
 
 
 ;; experimental
-(set-frame-font "Fira Code")
+;;(set-frame-font "Fira Code")
 
 (provide 'init-font)

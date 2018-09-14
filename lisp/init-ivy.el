@@ -4,11 +4,6 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-
 (use-package ivy
   :ensure t
   :diminish ivy-mode
@@ -31,7 +26,7 @@
 	  :config
 	  (require 'ivy-posframe)
 	  (setq ivy-display-function #'ivy-posframe-display)))
-  
+
   (ivy-mode 1)
 
   ;; Add recent files and bookmarks to the ivy-switch-buffer
@@ -72,18 +67,17 @@
   (global-set-key (kbd "C-x l") 'counsel-locate)
   (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
 
-  (global-set-key (kbd "C-c C-r") 'ivy-resume)
+  (global-set-key (kbd "C-c C-r") 'ivy-resume))
 
-  ;; Let ivy use flx for fuzzy-matching
-  ;; (use-package flx
-  ;; 	:ensure t
-  ;; 	:config
-  ;; 	(require 'flx)
-  ;; 	(setq ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
+;; Let ivy use flx for fuzzy-matching
+;; (use-package flx
+;; 	:ensure t
+;; 	:config
+;; 	(require 'flx)
+;; 	(setq ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
 
-  ;; Let projectile use ivy
-  ;;(setq projectile-completion-system 'ivy)
-  )
+;; Let projectile use ivy
+;;(setq projectile-completion-system 'ivy)
 
 ;; (use-package ivy-rich
 ;;   :after ivy

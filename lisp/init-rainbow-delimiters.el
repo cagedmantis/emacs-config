@@ -5,7 +5,6 @@
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
   (set-face-attribute 'rainbow-delimiters-unmatched-face nil
 					  :foreground 'unspecified
-					  :inherit 'error)
-  )
+					  :inherit 'error))
 
 (provide 'init-rainbow-delimiters)

@@ -4,10 +4,6 @@
 
 ;;; Code:
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 (use-package js2-mode
   :ensure t
   :config
@@ -27,8 +23,7 @@
 
 	(setq js-indent-level 2)
 	(setq js2-indent-level 2)
-	(setq js2-basic-offset 2)
-	)
+	(setq js2-basic-offset 2))
 
   (use-package ac-js2
 	:ensure t)

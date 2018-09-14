@@ -62,8 +62,7 @@
  ((eq system-type 'gnu/linux)
   (require 'gnu_linux))
  ((eq system-type 'darwin)
-  (require 'darwin))
- )
+  (require 'darwin)))
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
