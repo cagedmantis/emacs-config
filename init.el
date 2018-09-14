@@ -49,16 +49,17 @@
 (require 'init-org)
 (require 'init-powerline)
 (require 'init-projectile)
-(require 'init-python)
 (require 'init-rainbow-delimiters)
 (require 'init-rust)
 (require 'init-saveplace)
 (require 'init-sudo-save)
 (require 'init-switch-window)
+(require 'init-utils)
 (require 'init-whitespace)
 (require 'init-yasnippet)
-(require 'init-utils)
+
 (require 'lang-modes)
+(require 'lang-python)
 
 (cond
  ((eq system-type 'gnu/linux)
