@@ -1,105 +1,70 @@
-;; Emacs config
-;; init.el
-;; Carlos Amedee
+;;; init.el --- Emacs configuration init
 
-;;set configuration directory
+;;; Commentary:
+
+;;; Code:
+
+(package-initialize)
+
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "Emacs ready in %s with %d garbage collections."
+                     (format "%.2f seconds"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done)))
+
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
-;;(add-to-list 'load-path dotfiles-dir)
 (add-to-list 'load-path "~/bin/")
-(add-to-list 'load-path (concat dotfiles-dir "/starter_kit"))
-(add-to-list 'load-path (concat dotfiles-dir "/configs"))
+(add-to-list 'load-path (concat dotfiles-dir "/config"))
 (add-to-list 'load-path (concat dotfiles-dir "/lisp"))
 (add-to-list 'load-path (concat dotfiles-dir "/system_type"))
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
-(add-to-list 'load-path "~/.emacs.d/modes/")
 
-;; call the package file
 (require 'init-package)
 
-;; general configuration
-(require 'config-default)
-
-;; extension hooks
-(require 'config-ext)
-
-;; ido configuration
-(require 'init-ido)
-
-;; hooks configuration
-(require 'config-hook)
-
-;; refactor
-(require 'init-go)
-(require 'markdown-mode)
-
-;; remove these!
-(require 'starter-kit-defuns)
-(require 'starter-kit-bindings)
-(require 'starter-kit-misc)
-(require 'starter-kit-registers)
-(require 'starter-kit-eshell)
-(require 'starter-kit-perl)
-(require 'starter-kit-ruby)
-
-;; ~~~~~ Reafactored ~~~~~
-(require 'init-exec-path-from-shell)
-(require 'init-ace-window)
-(require 'init-docean)
-(require 'init-flycheck)
-(require 'init-go-complete)
-(require 'init-go-eldoc)
-(require 'init-go-autocomplete)
-(require 'init-go-projectile)
-(require 'init-golint)
-(require 'init-projectile)
-(require 'init-rainbow-delimiters)
-(require 'init-switch-window)
-(require 'init-yaml-mode)
-;; ~~~~~~~~~~~~~~~~~~~~~~~
-
-(require 'init-auto-complete)
-(require 'init-autoinsert)
-;;(require 'init-auto-complete-clang)
-(require 'init-cc)
-(require 'init-cedit)
+(require 'defaults)
+(require 'appearance)
+(require 'init-font)
+(require 'init-ivy)
 (require 'init-colortheme)
+
+(require 'init-autoinsert)
+(require 'init-cc)
 (require 'init-columnmarker)
 (require 'init-company)
-(require 'init-elpy)
 (require 'init-erc)
-(require 'init-font)
-(require 'init-flymake-google-cpplint)
+(require 'init-exec-path-from-shell)
+(require 'init-flycheck)
+(require 'init-go)
 (require 'init-iedit)
-(require 'init-jsmode)
+(require 'init-javascript)
+(require 'init-kubernetes)
 (require 'init-latex)
-;;(require 'init-php)
-;;(require 'init-python)
-;;(require 'init-semantic)
-(require 'init-saveplace)
-(require 'init-sql)
-(require 'init-tramp)
-;;(require 'init-volatile-highlights)
-(require 'init-whitespace)
-(require 'init-which-mode)
-(require 'init-yasnippet)
-
-;; review
+(require 'init-magit)
 (require 'init-org)
-;;(require 'init-magit)
-(require 'init-scheme)
+(require 'init-powerline)
+(require 'init-projectile)
+(require 'init-python)
+(require 'init-rainbow-delimiters)
+(require 'init-rust)
+(require 'init-saveplace)
 (require 'init-sudo-save)
-;;(require 'init-mode-python)
+(require 'init-switch-window)
+(require 'init-whitespace)
+(require 'init-yasnippet)
+(require 'init-utils)
+(require 'lang-modes)
 
 (cond
  ((eq system-type 'gnu/linux)
   (require 'gnu_linux))
  ((eq system-type 'darwin)
-  (require 'darwin))
- )
+  (require 'darwin)))
 
 ;system specific configs
 (setq system-specific-config (concat dotfiles-dir system-name ".el"))
@@ -109,4 +74,11 @@
 (setq os-specific-config (concat dotfiles-dir (prin1-to-string system-type) ".el"))
 (if (file-exists-p os-specific-config) (load os-specific-config))
 
-(message "=== Emacs Init Concluded ===")
+;; Emacs server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
+(provide 'init)
+
+;;; init.el ends here

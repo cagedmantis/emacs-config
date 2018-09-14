@@ -11,6 +11,7 @@
 
 ;;(setq preferred-font "Fira Mono")
 (setq preferred-font "Source Code Pro")
+;;(setq preferred-font "ANONYMOUS PRO")
 
 ;; Does a font exist?
 (defun font-existsp (font)
@@ -22,7 +23,7 @@
 
 (if (font-existsp preferred-font)
     (set-default-font preferred-font)
-  (set-default-font "DejaVu Sans Mono"))
+  (set-default-font "Monaco"))
 
 (set-face-attribute 'default nil :height 130)
 

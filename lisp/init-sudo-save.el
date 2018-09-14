@@ -1,12 +1,3 @@
-;;; (>>FILE<<) --- 
-
-;; Copyright (C) Carlos Amedee
-;;
-;; Author: Carlos Amedee <carlos.amedee@gmail.com>
-;; Keywords: 
-;; Requirements: 
-;; Status: not intended to be distributed yet
-
 (defun sudo-before-save-hook ()
   (set (make-local-variable 'sudo:file) (buffer-file-name))
   (when sudo:file
@@ -28,7 +19,6 @@
 		      nil   ;; not append
 		      t	    ;; buffer local hook
 		      )))))))
-
 
 (add-hook 'before-save-hook 'sudo-before-save-hook)
 

@@ -1,98 +1,115 @@
-;;; go-mode-load.el --- Major mode for the Go programming language
+;;; init-go.el --- go configuration
 
 ;;; Commentary:
 
-;; To install go-mode, add the following lines to your .emacs file:
-;;   (add-to-list 'load-path "PATH CONTAINING go-mode-load.el" t)
-;;   (require 'go-mode-load)
-;; After this, go-mode will be used for files ending in '.go'.
-
-;; To compile go-mode from the command line, run the following
-;;   emacs -batch -f batch-byte-compile go-mode.el
-
-;; See go-mode.el for documentation.
-
 ;;; Code:
 
-;; To update this file, evaluate the following form
-;;   (let ((generated-autoload-file buffer-file-name)) (update-file-autoloads "go-mode.el"))
+(use-package go-mode
+  :ensure t
+  :config
+  (use-package go-projectile
+    :ensure t)
 
-;;;### (autoloads (gofmt-before-save gofmt go-mode) "go-mode" "go-mode.el"
-;;;;;;  (19917 17808))
-;;; Generated autoloads from go-mode.el
+  (use-package godoctor
+    :ensure t)
 
-(autoload 'go-mode "go-mode" "\
-Major mode for editing Go source text.
+  (use-package go-add-tags
+    :ensure t
+    :config
+    (global-set-key (kbd "C-c t") 'go-add-tags))
 
-This provides basic syntax highlighting for keywords, built-ins,
-functions, and some types.  It also provides indentation that is
-\(almost) identical to gofmt.
+  (use-package go-guru
+    :ensure t
+    :config
+    (add-hook `go-mode-hook `go-guru-hl-identifier-mode))
 
-\(fn)" t nil)
+  (use-package go-eldoc
+    :ensure t
+    :config
+    (add-hook 'go-mode-hook 'go-eldoc-setup)
+    (set-face-attribute 'eldoc-highlight-function-argument nil
+                        :underline t
+                        :foreground "green"
+                        :weight 'bold))
 
-(add-to-list 'auto-mode-alist (cons "\\.go$" #'go-mode))
+  (use-package go-fill-struct
+	:ensure t)
 
-(autoload 'gofmt "go-mode" "\
-Pipe the current buffer through the external tool `gofmt`.
-Replace the current buffer on success; display errors on failure.
+  (use-package go-errcheck
+    :ensure t)
 
-\(fn)" t nil)
+  (use-package go-gen-test
+	:ensure t)
 
-(autoload 'gofmt-before-save "go-mode" "\
-Add this to .emacs to run gofmt on the current buffer when saving:
- (add-hook 'before-save-hook #'gofmt-before-save)
+  (use-package gotest
+	:ensure t)
 
-\(fn)" t nil)
+  (use-package company-go
+    :ensure company
+	:defer t
+    :init
 
-;;;***
+    (add-hook 'go-mode-hook 'company-mode)
+    (add-hook 'go-mode-hook (lambda ()
+                              (set (make-local-variable 'company-backends) '(company-go))
+                              (company-mode)))
 
-(defun set-exec-path-from-shell-PATH ()
-  (let ((path-from-shell (replace-regexp-in-string
-                          "[ \t\n]*$"
-                          ""
-                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
-    (setenv "PATH" path-from-shell)
-    (setq eshell-path-env path-from-shell) ; for eshell users
-    (setq exec-path (split-string path-from-shell path-separator))))
+    (global-set-key (kbd "C-c M-n") 'company-complete)
+    (global-set-key (kbd "C-c C-n") 'company-complete)
 
-(when window-system (set-exec-path-from-shell-PATH))
+	(add-to-list 'company-backends 'company-go)
 
-;;go path
-(setenv "GOPATH" "/Users/carlos/Dev/Go")
+	(add-hook 'go-mode-hook 'flycheck-mode)
+	)
 
-;;Automatically call gofmt on save
-(setq exec-path (cons "/usr/local/go/bin" exec-path))
-(add-to-list 'exec-path "/Users/carlos/Dev/Go")
-(add-hook 'before-save-hook 'gofmt-before-save)
+  (defun my-go-mode-hook ()
+    (setq gofmt-command "goimports")
+    (linum-mode t)
+    (subword-mode t)
+    (setq tab-width 4)
+    (add-hook 'before-save-hook 'gofmt-before-save)
+    (with-eval-after-load 'go-mode
+      ;;(require 'go-autocomplete)
+      (require 'godoctor)
+      (require 'go-guru)
+      (go-guru-hl-identifier-mode)))
+  (add-hook 'go-mode-hook 'my-go-mode-hook)
+  )
 
-;;go get github.com/rogpeppe/godef
+;; modified from github.com/dougm/go-projectile
 
-;; (defun my-go-mode-hook ()
-;;   ; Call Gofmt before saving
-;;   (add-hook 'before-save-hook 'gofmt-before-save)
-;;   ; Customize compile command to run go build
-;;   (if (not (string-match "go" compile-command))
-;;       (set (make-local-variable 'compile-command)
-;;            "go generate && go build -v && go test -v && go vet"))
-;;   ; Godef jump key binding
-;;   (local-set-key (kbd "M-.") 'godef-jump))
-;; (add-hook 'go-mode-hook 'my-go-mode-hook)
+(defvar go-tools
+  '((gocode      . "github.com/mdempsky/gocode")
+    (golint      . "github.com/golang/lint/golint")
+    (godef       . "github.com/rogpeppe/godef")
+    (errcheck    . "github.com/kisielk/errcheck")
+    (godoc       . "golang.org/x/tools/cmd/godoc")
+    (gogetdoc    . "github.com/zmb3/gogetdoc")
+    (goimports   . "golang.org/x/tools/cmd/goimports")
+    (gorename    . "golang.org/x/tools/cmd/gorename")
+    (gomvpkg     . "golang.org/x/tools/cmd/gomvpkg")
+    (guru        . "golang.org/x/tools/cmd/guru")
+    (gomegacheck . "honnef.co/go/tools/cmd/megacheck")
+    (gounconvert . "github.com/mdempsky/unconvert")
+    (goflymake   . "github.com/dougm/goflymake")
+    (goimports   . "golang.org/x/tools/cmd/goimports")
+    (gotests     . "go get -u github.com/cweill/gotests")
+    (fillstruct  . "github.com/davidrjenni/reftools/cmd/fillstruct"))
+  "Import paths for My Go tools.")
 
+(defun go-get-tools ()
+  "Install go related tools via go get."
+  (dolist (tool go-tools)
+    (let* ((url (cdr tool))
+           (cmd (concat "go get -u " url))
+           (result (shell-command-to-string cmd)))
+      (message "Go tool %s: %s" (car tool) cmd))))
 
-(defun my-go-mode-hook ()
-  ; Use goimports instead of go-fmt
-  (setq gofmt-command "goimports")
-  ; Call Gofmt before saving
-  (add-hook 'before-save-hook 'gofmt-before-save)
-  ; Customize compile command to run go build
-  (if (not (string-match "go" compile-command))
-      (set (make-local-variable 'compile-command)
-           "go build -v && go test -v && go vet"))
-  ; Godef jump key binding
-  (local-set-key (kbd "M-.") 'godef-jump))
-(add-hook 'go-mode-hook 'my-go-mode-hook)
-
-;;(load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
-
+(defun go-update-tools ()
+  "Update go related tools."
+  (interactive)
+  (go-get-tools))
 
 (provide 'init-go)
+
+;;; init-go.el ends here

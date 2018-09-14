@@ -1,5 +1,4 @@
-# Emacs Configuration - Carlos Amedee
+# My Emacs Configuration
 
-This is my Emacs configuration. When I started learning Emacs, I
-started off with a copy of technomancy's [Emacs starter
-kit](https://github.com/technomancy/emacs-starter-kit). 
+This is my Emacs configuration. It's an ever changing collection of configurations. Feel free to use it
+or provide feedback.

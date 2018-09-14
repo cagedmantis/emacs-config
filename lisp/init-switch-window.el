@@ -1,5 +1,7 @@
-(require 'switch-window)
+(use-package switch-window
+  :ensure t
+  :config
 
-(global-set-key (kbd "C-x o") 'switch-window)
+  (global-set-key (kbd "C-x o") 'switch-window))
 
 (provide 'init-switch-window)

@@ -2,90 +2,31 @@
 (require 'package)
 
 (add-to-list 'package-archives
-   '("melpa" . "http://melpa.milkbox.net/packages/") t)
+			 '("melpa" . "https://melpa.milkbox.net/packages/") t)
+
+;; (add-to-list 'package-archives
+;; 			 '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives
-    '("gnu" . "http://elpa.gnu.org/packages/")))
-
-;; (add-to-list 'package-archives
-;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+			   '("gnu" . "http://elpa.gnu.org/packages/")))
 
 (package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; disabled packages
-;; php-mode
-;; yasnippet-bundle
-;; flycheck-google-cpplint
-;; google-c-style
-;; flycheck-google-cpplint
-;; google-c-style
-
-(defvar my-packages '(starter-kit
-                      starter-kit-lisp
-                      starter-kit-ruby
-                      starter-kit-eshell
-
-                      exec-path-from-shell
-                      go-eldoc
-                      go-projectile
-                      go-autocomplete
-
-					  color-theme
-                      solarized-theme
-                      zenburn-theme
-                      ir-black-theme
-					  monokai-theme
-                      underwater-theme
-                      ample-theme
-					  busybee-theme
-					  
-                      web-mode
-                      js2-mode
-                      smarty-mode
-                      haskell-mode
-                      markdown-mode
-                      rust-mode
-                      tramp
-                      yasnippet
-                      elpy
-                      flymake
-                      ac-js2
-                      rainbow-delimiters
-                      smartparens
-                      sql-indent
-                      gist
-                      magit
-                      ;; php-mode
-                      flycheck
-                      flycheck-google-cpplint
-                      google-c-style
-                      auto-complete
-                      auto-complete-c-headers
-                      auto-complete-clang
-                      cedet
-                      company
-                      flymake-cursor
-                      iedit
-                      cedit
-                      yasnippet
-                      django-snippets
-					  neotree
-                      php-auto-yasnippets
-                      yaml-mode
-                      fill-column-indicator
-                      diminish
-                      projectile
-                      python-mode
-                      textmate-to-yas
-                      ;;company-mode
-					  go-complete
-					  golint
-					  switch-window
-					  terraform-mode
+(defvar my-packages '(
+					  auto-package-update
+					  diminish
+					  django-snippets
+					  elpy
+					  gist
+					  google-c-style
+					  rubocop
+					  smartparens
+					  use-package
+					  use-package-ensure-system-package
 					  )
   "A list of packages to ensure are installed at launch.")
 
@@ -105,6 +46,11 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-(provide 'init-package)
-;;; init-package ends here 
+(use-package auto-package-update
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
 
+(provide 'init-package)
+;;; init-package ends here

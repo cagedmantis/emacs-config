@@ -1,17 +1,21 @@
-;; Color Theme
+;;; init-colortheme.el --- Color theme configuration init
 
-(require 'color-theme)
-(setq color-theme-is-global t)
-(color-theme-initialize)
+;;; Commentary:
 
-;;(load-theme 'busybee t)
-;;(load-theme 'zenburn t)
-;;(load-theme 'blackboard t)
-;;(load-theme 'wombat t
-;;(load-theme 'solarized-dark t)
-;;(load-theme 'zenburn t)
-;;(load-theme 'ample t)
-(load-theme 'ir-black t)
-;;(load-theme 'monokai t)
+;;; Code:
+
+(use-package color-theme
+  :ensure t
+  :config
+  (setq color-theme-is-global t)
+  (color-theme-initialize)
+
+  (use-package doom-themes
+    :ensure t
+    :config
+    (load-theme 'doom-vibrant t)
+    (doom-themes-org-config)))
 
 (provide 'init-colortheme)
+
+;;; init-colortheme.el ends here

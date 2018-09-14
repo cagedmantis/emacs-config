@@ -2,7 +2,7 @@
 
 ;; Does a font exist?
 (defun font-existsp (font)
-  (if (window-system)
+  (if (display-graphic-p)
 	  (if (null (x-list-fonts font))
 		  nil t))
   )
@@ -20,13 +20,19 @@
 
 ;; Set font for linux and misc.
 (if (eq system-type 'gnu/linux)
-	(if (window-system)
+	(if (display-graphic-p)
 		(if (font-existsp "Ubuntu Mono")
-			(set-default-font "Ubuntu Mono")
-		  (set-default-font "Monaco"))
-	  (set-default-font  "Source Code Pro"))
+			(set-frame-font "Ubuntu Mono" nil t)
+		  (set-frame-font "Monaco" nil t))
+	  (set-frame-font "Source Code Pro"))
   )
 
-;;(set-face-attribute 'default nil :height 120)
+;;(set-frame-font "Source Code Pro for Powerline" nil t)
+
+;;(set-face-attribute 'default nil :height 100)
+
+
+;; experimental
+;;(set-frame-font "Fira Code")
 
 (provide 'init-font)
