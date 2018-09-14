@@ -51,6 +51,7 @@
 (require 'init-projectile)
 (require 'init-python)
 (require 'init-rainbow-delimiters)
+(require 'init-rust)
 (require 'init-saveplace)
 (require 'init-sudo-save)
 (require 'init-switch-window)
