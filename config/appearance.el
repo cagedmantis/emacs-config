@@ -136,6 +136,19 @@
 
 (setq font-lock-maximum-decoration t)
 
+(use-package whitespace
+  :ensure t
+  :config
+  (require 'whitespace))
+
+(use-package dimmer
+  :ensure t
+  :config
+  (dimmer-mode)
+  (setq dimmer-fraction 0.50))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 (provide 'appearance)
 
 ;;; appearance.el ends here
