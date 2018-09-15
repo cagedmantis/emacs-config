@@ -26,8 +26,8 @@
   :config
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
-(use-package python-mode
-  :ensure t)
+;; (use-package python-mode
+;;   :ensure t)
 
 ;; (use-package web-mode
 ;;   :ensure t)

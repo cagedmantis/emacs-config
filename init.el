@@ -42,16 +42,13 @@
 (require 'init-flycheck)
 (require 'init-go)
 (require 'init-iedit)
-(require 'init-javascript)
 (require 'init-kubernetes)
 (require 'init-latex)
 (require 'init-magit)
 (require 'init-org)
 (require 'init-powerline)
 (require 'init-projectile)
-(require 'init-python)
 (require 'init-rainbow-delimiters)
-(require 'init-rust)
 (require 'init-saveplace)
 (require 'init-sudo-save)
 (require 'init-switch-window)
@@ -61,6 +58,8 @@
 
 (require 'lang-javascript)
 (require 'lang-modes)
+(require 'lang-python)
+(require 'lang-rust)
 
 (cond
  ((eq system-type 'gnu/linux)
