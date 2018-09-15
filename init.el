@@ -47,7 +47,7 @@
 (require 'init-magit)
 (require 'init-org)
 (require 'init-powerline)
-(require 'init-projectile)
+(require 'init-projectile)2
 (require 'init-rainbow-delimiters)
 (require 'init-saveplace)
 (require 'init-sudo-save)
