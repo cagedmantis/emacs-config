@@ -1,4 +1,4 @@
-;;; init-go.el --- go configuration
+;;; lang-go.el --- lang-go configuration
 
 ;;; Commentary:
 
@@ -110,6 +110,6 @@
   (interactive)
   (go-get-tools))
 
-(provide 'init-go)
+(provide 'lang-go)
 
-;;; init-go.el ends here
+;;; lang-go.el ends here

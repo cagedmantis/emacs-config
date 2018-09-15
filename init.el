@@ -40,7 +40,6 @@
 (require 'init-erc)
 (require 'init-exec-path-from-shell)
 (require 'init-flycheck)
-(require 'init-go)
 (require 'init-iedit)
 (require 'init-kubernetes)
 (require 'init-latex)
@@ -56,6 +55,7 @@
 (require 'init-whitespace)
 (require 'init-yasnippet)
 
+(require 'lang-go)
 (require 'lang-javascript)
 (require 'lang-modes)
 (require 'lang-python)
