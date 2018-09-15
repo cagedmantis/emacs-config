@@ -55,9 +55,10 @@
 (require 'init-saveplace)
 (require 'init-sudo-save)
 (require 'init-switch-window)
+(require 'init-utils)
 (require 'init-whitespace)
 (require 'init-yasnippet)
-(require 'init-utils)
+
 (require 'lang-modes)
 
 (cond
