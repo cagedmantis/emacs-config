@@ -64,33 +64,6 @@
 ;; Don't defer screen updates when performing operations
 (setq redisplay-dont-pause t)
 
-;; Unclutter the modeline
-(use-package diminish
-  :ensure t
-  :config
-  (eval-after-load "yasnippet" '(diminish 'yas-minor-mode))
-  (eval-after-load "eldoc" '(diminish 'eldoc-mode))
-  (eval-after-load "paredit" '(diminish 'paredit-mode))
-  (eval-after-load "tagedit" '(diminish 'tagedit-mode))
-  (eval-after-load "elisp-slime-nav" '(diminish 'elisp-slime-nav-mode))
-  (eval-after-load "skewer-mode" '(diminish 'skewer-mode))
-  (eval-after-load "skewer-css" '(diminish 'skewer-css-mode))
-  (eval-after-load "skewer-html" '(diminish 'skewer-html-mode))
-  (eval-after-load "smartparens" '(diminish 'smartparens-mode))
-  (eval-after-load "guide-key" '(diminish 'guide-key-mode))
-  (eval-after-load "whitespace-cleanup-mode" '(diminish 'whitespace-cleanup-mode))
-  (eval-after-load "subword" '(diminish 'subword-mode))
-  (eval-after-load "eldoc" '(diminish 'eldoc-mode))
-  (eval-after-load "autopair" '(diminish 'autopair-mode))
-  (eval-after-load "abbrev" '(diminish 'abbrev-mode))
-  (eval-after-load "js2-highlight-vars" '(diminish 'js2-highlight-vars-mode))
-  (eval-after-load "mmm-mode" '(diminish 'mmm-mode))
-  (eval-after-load "skewer-html" '(diminish 'skewer-html-mode))
-  (eval-after-load "skewer-mode" '(diminish 'skewer-mode))
-  (eval-after-load "auto-indent-mode" '(diminish 'auto-indent-minor-mode))
-  (eval-after-load "cider" '(diminish 'cider-mode))
-  (eval-after-load "smartparens" '(diminish 'smartparens-mode)))
-
 (setq linum-format (if (not window-system) "%4d " "%4d"))
 
 ;; Highlight the line number of the current line.
@@ -139,7 +112,9 @@
 (use-package whitespace
   :ensure t
   :config
-  (require 'whitespace))
+  (setq whitespace-line-column 80) ;; limit line length
+  (setq whitespace-style '(face tabs empty trailing lines-tail))
+  (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
 (use-package dimmer
   :ensure t
@@ -147,23 +122,15 @@
   (dimmer-mode)
   (setq dimmer-fraction 0.50))
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; -- Font --
 ;; ----------
 
-;; Change the font and size
-
-;; Does a font exist?
 (defun font-existsp (font)
   (if (display-graphic-p)
 	  (if (null (x-list-fonts font))
 		  nil t))
   )
-
-;; (if (font-existsp preferred-font)
-;;     (set-default-font preferred-font)
-;;   (set-default-font "DejaVu Sans Mono"))
 
 (defvar preferred-fonts '("Fira Mono"
                           "Source Code Pro"
@@ -181,15 +148,6 @@
 	  (set-frame-font "Source Code Pro"))
   )
 
-;;(set-frame-font "Source Code Pro for Powerline" nil t)
-
-;;(set-face-attribute 'default nil :height 100)
-
-
-;; experimental
-;;(set-frame-font "Fira Code")
-
-
 ;; -- Theme --
 ;; -----------
 
@@ -202,8 +160,13 @@
   (use-package doom-themes
     :ensure t
     :config
-    (load-theme 'doom-vibrant t)
-    (doom-themes-org-config)))
+	(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+		  doom-themes-enable-italic t) ; if nil, italics is universally disabled
+	(load-theme 'doom-vibrant t)
+    (doom-themes-org-config)
+
+	;; Enable flashing mode-line on errors
+	(doom-themes-visual-bell-config)))
 
 (use-package smart-mode-line
   :ensure t

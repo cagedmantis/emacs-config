@@ -49,7 +49,6 @@
 (require 'init-sudo-save)
 (require 'init-switch-window)
 (require 'init-utils)
-(require 'init-whitespace)
 (require 'init-yasnippet)
 
 (require 'lang-go)
