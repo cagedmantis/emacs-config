@@ -59,6 +59,7 @@
 (require 'init-whitespace)
 (require 'init-yasnippet)
 
+(require 'lang-javascript)
 (require 'lang-modes)
 
 (cond
