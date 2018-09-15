@@ -29,9 +29,7 @@
 
 (require 'defaults)
 (require 'appearance)
-(require 'init-font)
 (require 'init-ivy)
-(require 'init-colortheme)
 
 (require 'init-autoinsert)
 (require 'init-cc)
@@ -45,8 +43,7 @@
 (require 'init-latex)
 (require 'init-magit)
 (require 'init-org)
-(require 'init-powerline)
-(require 'init-projectile)2
+(require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-saveplace)
 (require 'init-sudo-save)
