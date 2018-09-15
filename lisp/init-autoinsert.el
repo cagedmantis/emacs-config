@@ -1,4 +1,4 @@
-;;; init.el --- Auto insert configuration init
+;;; init-autoinsert.el --- Auto insert configuration init
 
 ;;; Commentary:
 
