@@ -6,7 +6,7 @@
 
 (use-package flycheck
   :ensure t
-  :diminish FlyC
+  :diminish
   :config
   (global-flycheck-mode)
   (add-hook 'after-init-hook #'global-flycheck-mode)

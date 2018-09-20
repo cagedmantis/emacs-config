@@ -173,6 +173,11 @@
 (use-package autopair
   :ensure t)
 
+(use-package pbcopy
+  :ensure t
+  :config
+  (turn-on-pbcopy))
+
 (provide 'defaults)
 
 ;;; defaults.el ends here

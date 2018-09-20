@@ -1,4 +1,4 @@
-;;; init-javascript.el --- Flycheck configuration init
+;;; lang-javascript.el --- Javascript configuration init
 
 ;;; Commentary:
 
@@ -31,6 +31,6 @@
   (use-package js-format
 	:ensure t))
 
-(provide 'init-javascript)
+(provide 'lang-javascript)
 
-;;; init-javascript.el ends here
+;;; lang-javascript.el ends here
