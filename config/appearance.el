@@ -11,11 +11,11 @@
 (setq inhibit-startup-message t)               ; No message at startup
 (column-number-mode t)                         ; Show column number in mode-line
 (line-number-mode 1)                           ; show line number the cursor is on, in status bar (the mode line)
-(global-linum-mode 1)                          ; always show line numbers
+;;(global-linum-mode 1)                          ; always show line numbers
 (global-font-lock-mode t)		               ; fonts are automatically highlighted
 (size-indication-mode t)
 (show-paren-mode 1)                            ; turn on paren match highlighting
-(setq linum-format " %d ")                     ; fixes bug where line numbers are not buffered in visual-line-mode
+;;(setq linum-format " %d ")                     ; fixes bug where line numbers are not buffered in visual-line-mode
 (global-visual-line-mode 1)                    ; Soft wrap lines
 
 (when window-system
@@ -27,6 +27,11 @@
          (add-to-list 'default-frame-alist '(ns-appearance . dark))
            ;;;(add-to-list 'default-frame-alist '(ns-appearance . light))
          (setq frame-title-format nil)))
+
+
+(global-display-line-numbers-mode t)
+;;(setq display-line-numbers "%4d \u2502 ")
+(setq display-line-numbers " %4d ")
 
 
 (set-default 'indicate-empty-lines t)
@@ -49,10 +54,10 @@
       magit-diff-options "-w")
 
 ;; disable line mode for listed modes
-(setq linum-disabled-modes-list '(shell-mode ansi-term term-mode eshell-mode wl-summary-mode compilation-mode fundamental-mode))
-(defun linum-on ()
-  (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
-    (linum-mode 1)))
+;; (setq linum-disabled-modes-list '(shell-mode ansi-term term-mode eshell-mode wl-summary-mode compilation-mode fundamental-mode))
+;; (defun linum-on ()
+;;   (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
+;;     (linum-mode 1)))
 
 ;;store all autosave files
 (setq auto-save-file-name-transforms
@@ -91,7 +96,7 @@
   (eval-after-load "cider" '(diminish 'cider-mode))
   (eval-after-load "smartparens" '(diminish 'smartparens-mode)))
 
-(setq linum-format (if (not window-system) "%4d " "%4d"))
+;;(setq linum-format (if (not window-system) "%4d " "%4d"))
 
 ;; Highlight the line number of the current line.
 (use-package hlinum
@@ -99,15 +104,15 @@
   :config
   (hlinum-activate))
 
-;; Ensure linum-mode is disabled in certain major modes.
-(setq linum-disabled-modes
-      '(term-mode slime-repl-mode magit-status-mode help-mode nrepl-mode
-				  mu4e-main-mode mu4e-headers-mode mu4e-view-mode
-				  mu4e-compose-mode))
+;; ;; Ensure linum-mode is disabled in certain major modes.
+;; (setq linum-disabled-modes
+;;       '(term-mode slime-repl-mode magit-status-mode help-mode nrepl-mode
+;; 				  mu4e-main-mode mu4e-headers-mode mu4e-view-mode
+;; 				  mu4e-compose-mode))
 
-(defun linum-on ()
-  (unless (or (minibufferp) (member major-mode linum-disabled-modes))
-    (linum-mode 1)))
+;; (defun linum-on ()
+;;   (unless (or (minibufferp) (member major-mode linum-disabled-modes))
+;;     (linum-mode 1)))
 
 ;; Indent guides
 (use-package highlight-indent-guides
