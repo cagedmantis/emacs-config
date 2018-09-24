@@ -11,12 +11,43 @@
 (setq inhibit-startup-message t)               ; No message at startup
 (column-number-mode t)                         ; Show column number in mode-line
 (line-number-mode 1)                           ; show line number the cursor is on, in status bar (the mode line)
-;;(global-linum-mode 1)                          ; always show line numbers
 (global-font-lock-mode t)		               ; fonts are automatically highlighted
 (size-indication-mode t)
 (show-paren-mode 1)                            ; turn on paren match highlighting
-;;(setq linum-format " %d ")                     ; fixes bug where line numbers are not buffered in visual-line-mode
 (global-visual-line-mode 1)                    ; Soft wrap lines
+
+(when (< emacs-major-version 26)
+  ((global-linum-mode 1)
+   (setq linum-format " %d ")
+   (setq linum-format (if (not window-system) "%4d " "%4d"))
+
+   (defun linum-on ()
+     (unless (or (minibufferp) (member major-mode linum-disabled-modes))
+       (linum-mode 1)))
+
+   ;;disable line mode for listed modes
+   (setq linum-disabled-modes-list
+		 '(ansi-term
+		   compilation-mode
+		   eshell-mode
+		   fundamental-mode
+		   help-mode
+		   magit-status-mode
+		   mu4e-headers-mode
+		   mu4e-main-mode
+		   mu4e-view-mode
+		   nrepl-mode
+		   shell-mode
+		   slime-repl-mode
+		   term-mode
+		   term-mode
+		   wl-summary-mode))
+   (defun linum-on ()
+     (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
+       (linum-mode 1)))))
+
+(global-display-line-numbers-mode t)
+(setq display-line-numbers " %4d ")
 
 (when window-system
   (tooltip-mode -1)
@@ -27,12 +58,6 @@
          (add-to-list 'default-frame-alist '(ns-appearance . dark))
            ;;;(add-to-list 'default-frame-alist '(ns-appearance . light))
          (setq frame-title-format nil)))
-
-
-(global-display-line-numbers-mode t)
-;;(setq display-line-numbers "%4d \u2502 ")
-(setq display-line-numbers " %4d ")
-
 
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)
@@ -53,11 +78,6 @@
 (setq diff-switches "-u -w"
       magit-diff-options "-w")
 
-;; disable line mode for listed modes
-;; (setq linum-disabled-modes-list '(shell-mode ansi-term term-mode eshell-mode wl-summary-mode compilation-mode fundamental-mode))
-;; (defun linum-on ()
-;;   (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
-;;     (linum-mode 1)))
 
 ;;store all autosave files
 (setq auto-save-file-name-transforms
@@ -69,23 +89,12 @@
 ;; Don't defer screen updates when performing operations
 (setq redisplay-dont-pause t)
 
-(setq linum-format (if (not window-system) "%4d " "%4d"))
-
 ;; Highlight the line number of the current line.
 (use-package hlinum
   :ensure t
   :config
   (hlinum-activate))
 
-;; ;; Ensure linum-mode is disabled in certain major modes.
-;; (setq linum-disabled-modes
-;;       '(term-mode slime-repl-mode magit-status-mode help-mode nrepl-mode
-;; 				  mu4e-main-mode mu4e-headers-mode mu4e-view-mode
-;; 				  mu4e-compose-mode))
-
-;; (defun linum-on ()
-;;   (unless (or (minibufferp) (member major-mode linum-disabled-modes))
-;;     (linum-mode 1)))
 
 ;; Indent guides
 (use-package highlight-indent-guides
@@ -168,6 +177,7 @@
 	(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
 		  doom-themes-enable-italic t) ; if nil, italics is universally disabled
 	(load-theme 'doom-vibrant t)
+	;;(load-theme 'doom-opera-light t)
     (doom-themes-org-config)
 
 	;; Enable flashing mode-line on errors

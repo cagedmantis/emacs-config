@@ -38,7 +38,7 @@
 (require 'init-erc)
 (require 'init-exec-path-from-shell)
 (require 'init-flycheck)
-(require 'init-iedit)
+;;(require 'init-iedit)
 (require 'init-kubernetes)
 (require 'init-latex)
 (require 'init-magit)

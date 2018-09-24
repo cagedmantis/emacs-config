@@ -64,7 +64,7 @@
 
   (defun my-go-mode-hook ()
     (setq gofmt-command "goimports")
-    (linum-mode t)
+    ;;(linum-mode t)
     (subword-mode t)
     (setq tab-width 4)
     (add-hook 'before-save-hook 'gofmt-before-save)
@@ -79,7 +79,8 @@
 ;; modified from github.com/dougm/go-projectile
 
 (defvar go-tools
-  '((gocode      . "github.com/mdempsky/gocode")
+  '(;;(gocode      . "github.com/mdempsky/gocode")
+	(gocode      . "github.com/stamblerre/gocode")
     (golint      . "github.com/golang/lint/golint")
     (godef       . "github.com/rogpeppe/godef")
     (errcheck    . "github.com/kisielk/errcheck")
