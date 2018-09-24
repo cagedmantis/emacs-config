@@ -60,6 +60,7 @@
 (require 'lang-javascript)
 (require 'lang-modes)
 (require 'lang-python)
+(require 'lang-ruby)
 (require 'lang-rust)
 
 (cond

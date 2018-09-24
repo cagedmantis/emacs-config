@@ -24,7 +24,6 @@
 					  elpy
 					  gist
 					  google-c-style
-					  rubocop
 					  smartparens
 					  use-package
 					  use-package-ensure-system-package
