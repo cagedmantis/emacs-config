@@ -11,19 +11,19 @@
   (add-to-list 'package-archives
 			   '("gnu" . "http://elpa.gnu.org/packages/")))
 
+(setq package-user-dir "~/.emacs.d/packages")
+
 (package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
 
 (defvar my-packages '(
-					  auto-package-update
 					  diminish
 					  django-snippets
 					  elpy
 					  gist
 					  google-c-style
-					  rubocop
 					  smartparens
 					  use-package
 					  use-package-ensure-system-package

@@ -105,13 +105,13 @@
 ;; Modeline - hai2nan
 (when window-system
   (use-package moody
-    :ensure t
-    :config
-    (setq x-underline-at-descent-line t)
-    (setq moody-mode-line-height 24)
-    (setq moody-slant-function #'moody-slant-apple-rgb)
-    (moody-replace-mode-line-buffer-identification)
-    (moody-replace-vc-mode)))
+	:unless (version< emacs-version "25.3")
+	:config
+	(setq x-underline-at-descent-line t)
+	(setq moody-mode-line-height 24)
+	(setq moody-slant-function #'moody-slant-apple-rgb)
+	(moody-replace-mode-line-buffer-identification)
+	(moody-replace-vc-mode)))
 
 (add-hook 'prog-mode-hook (lambda ()
                             (interactive)
