@@ -4,13 +4,6 @@
 
 ;;; Code:
 
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (add-hook 'emacs-startup-hook
           (lambda ()
             (message "Emacs ready in %s with %d garbage collections."
@@ -43,11 +36,11 @@
 (require 'init-erc)
 (require 'init-exec-path-from-shell)
 (require 'init-flycheck)
-;;(require 'init-iedit)
 (require 'init-kubernetes)
 (require 'init-latex)
 (require 'init-magit)
 (require 'init-org)
+(require 'init-plantuml)
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-saveplace)
@@ -55,6 +48,7 @@
 (require 'init-switch-window)
 (require 'init-utils)
 (require 'init-yasnippet)
+;;(require 'init-iedit)
 
 (require 'lang-go)
 (require 'lang-javascript)

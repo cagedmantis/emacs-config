@@ -106,6 +106,7 @@
 (when window-system
   (use-package moody
 	:unless (version< emacs-version "25.3")
+	:ensure t
 	:config
 	(setq x-underline-at-descent-line t)
 	(setq moody-mode-line-height 24)
