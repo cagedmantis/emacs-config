@@ -47,6 +47,7 @@
 
 (use-package rubocop
   :ensure t
+  :diminish
   :config
   (add-hook 'ruby-mode-hook #'rubocop-mode))
 
