@@ -16,38 +16,44 @@
 (show-paren-mode 1)                            ; turn on paren match highlighting
 (global-visual-line-mode 1)                    ; Soft wrap lines
 
-(when (< emacs-major-version 26)
-  ((global-linum-mode 1)
-   (setq linum-format " %d ")
-   (setq linum-format (if (not window-system) "%4d " "%4d"))
+;; (if (version<= "26.0.50" emacs-version )
+;;     ((message "Using linum-mode")
+;;      (global-linum-mode 1)
+;;      (setq linum-format " %d ")
+;;      (setq linum-format (if (not window-system) "%4d " "%4d"))
 
-   (defun linum-on ()
-     (unless (or (minibufferp) (member major-mode linum-disabled-modes))
-       (linum-mode 1)))
+;;      (defun linum-on ()
+;;        (unless (or (minibufferp) (member major-mode linum-disabled-modes))
+;;          (linum-mode 1)))
 
-   ;;disable line mode for listed modes
-   (setq linum-disabled-modes-list
-		 '(ansi-term
-		   compilation-mode
-		   eshell-mode
-		   fundamental-mode
-		   help-mode
-		   magit-status-mode
-		   mu4e-headers-mode
-		   mu4e-main-mode
-		   mu4e-view-mode
-		   nrepl-mode
-		   shell-mode
-		   slime-repl-mode
-		   term-mode
-		   term-mode
-		   wl-summary-mode))
-   (defun linum-on ()
-     (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
-       (linum-mode 1)))))
+;;      ;;disable line mode for listed modes
+;;      (setq linum-disabled-modes-list
+;;            '(ansi-term
+;;              compilation-mode
+;;              eshell-mode
+;;              fundamental-mode
+;;              help-mode
+;;              magit-status-mode
+;;              mu4e-headers-mode
+;;              mu4e-main-mode
+;;              mu4e-view-mode
+;;              nrepl-mode
+;;              shell-mode
+;;              slime-repl-mode
+;;              term-mode
+;;              term-mode
+;;              wl-summary-mode))
+;;      (defun linum-on ()
+;;        (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
+;;          (linum-mode 1))))
+;;   ;; emacs version is greater than 26
+;;   ((message "Using line-numbers-mode")
+;;    (global-display-line-numbers-mode t)
+;;    (setq display-line-numbers " %4d ")))
 
-(global-display-line-numbers-mode t)
-(setq display-line-numbers " %4d ")
+;; (when (not (version<= "26.0.50" emacs-version ))
+;;   (global-display-line-numbers-mode t)
+;;   (setq display-line-numbers " %4d "))
 
 (when window-system
   (tooltip-mode -1)
@@ -103,16 +109,17 @@
   :config (setq highlight-indent-guides-method 'column))
 
 ;; Modeline - hai2nan
-(when window-system
-  (use-package moody
-	:unless (version< emacs-version "25.3")
-	:ensure t
-	:config
-	(setq x-underline-at-descent-line t)
-	(setq moody-mode-line-height 24)
-	(setq moody-slant-function #'moody-slant-apple-rgb)
-	(moody-replace-mode-line-buffer-identification)
-	(moody-replace-vc-mode)))
+(if (version< emacs-version "25.3")
+	(message "--> minions isn't supported in this version of Emacs")
+  (when window-system
+	(use-package moody
+	  :ensure t
+	  :config
+	  (setq x-underline-at-descent-line t)
+	  (setq moody-mode-line-height 24)
+	  (setq moody-slant-function #'moody-slant-apple-rgb)
+	  (moody-replace-mode-line-buffer-identification)
+	  (moody-replace-vc-mode))))
 
 (add-hook 'prog-mode-hook (lambda ()
                             (interactive)
@@ -191,10 +198,11 @@
   (setq sml/no-confirm-load-theme t)
   (sml/setup))
 
-
-(use-package minions
-  :ensure t
-  :config (minions-mode 1))
+(if (version< emacs-version "25.3")
+	(message "--> minions isn't supported in this version of Emacs")
+  (use-package minions
+	:ensure t
+	:config (minions-mode 1)))
 
 (provide 'appearance)
 

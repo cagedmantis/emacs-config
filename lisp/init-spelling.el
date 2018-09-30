@@ -15,8 +15,10 @@
 
 
 ;; Popup window for spellchecking
-(use-package flyspell-correct)
-(use-package flyspell-correct-popup)
+(use-package flyspell-correct
+  :ensure t)
+(use-package flyspell-correct-popup
+  :ensure t)
 
 
 ;; Enable spellcheck on the fly for all text modes. This includes org, latex and LaTeX.
@@ -38,12 +40,14 @@
 
 ;; Search for synonyms
 (use-package powerthesaurus
+  :ensure t
   :config
   (global-set-key (kbd "s-|") 'powerthesaurus-lookup-word-dwim)) ;; Cmd+Shift+\ search thesaurus
 
 
 ;; Word definition search
 (use-package define-word
+  :ensure t
   :config
   (global-set-key (kbd "M-\\") 'define-word-at-point))
 
