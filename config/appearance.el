@@ -191,6 +191,11 @@
   (setq sml/no-confirm-load-theme t)
   (sml/setup))
 
+
+(use-package minions
+  :ensure t
+  :config (minions-mode 1))
+
 (provide 'appearance)
 
 ;;; appearance.el ends here
