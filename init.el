@@ -44,6 +44,7 @@
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-saveplace)
+(require 'init-spelling)
 (require 'init-sudo-save)
 (require 'init-switch-window)
 (require 'init-utils)
