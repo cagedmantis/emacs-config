@@ -157,14 +157,6 @@
 ;; Save a list of recent files visited.
 (recentf-mode 1)
 
-;; Backup files go into a backup dir
-;; (setq backup-by-copying t                                       ; don't clobber symlinks
-;; 	  backup-directory-alist '(("." . "~/.emacs.d/backups"))    ; don't litter my fs tree
-;; 	  delete-old-versions t
-;; 	  kept-new-versions 6
-;; 	  kept-old-versions 2
-;; 	  version-control t)                                        ; use versioned backups
-
 (defvar --backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p --backup-directory))
     (make-directory --backup-directory t))
