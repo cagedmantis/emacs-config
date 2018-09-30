@@ -4,6 +4,8 @@
 
 ;;; Code:
 
+;;(package-initialize)
+
 (add-hook 'emacs-startup-hook
           (lambda ()
             (message "Emacs ready in %s with %d garbage collections."
