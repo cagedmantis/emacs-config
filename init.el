@@ -46,12 +46,12 @@
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-saveplace)
-(require 'init-spelling)
 (require 'init-sudo-save)
 (require 'init-switch-window)
 (require 'init-utils)
 (require 'init-yasnippet)
 ;;(require 'init-iedit)
+;;(require 'init-spelling)
 
 (require 'lang-go)
 (require 'lang-javascript)
