@@ -1,4 +1,4 @@
-;;; appearance.el --- appearance configuration
+`;;; appearance.el --- appearance configuration
 
 ;;; Commentary:
 
@@ -16,44 +16,42 @@
 (show-paren-mode 1)                            ; turn on paren match highlighting
 (global-visual-line-mode 1)                    ; Soft wrap lines
 
-;; (if (version<= "26.0.50" emacs-version )
-;;     (progn
-;; 	  (message "--> Using linum-mode")
-;; 	  (global-linum-mode 1)
-;; 	  (setq linum-format " %d ")
-;; 	  (setq linum-format (if (not window-system) "%4d " "%4d"))
+;; -- line numbers --
+;; ------------------
+(when (version< emacs-version "26.0.50")
+  (progn
+	(global-linum-mode 1)
+	(setq linum-format " %d ")
+	(setq linum-format (if (not window-system) " %4d " " %4d "))
 
-;; 	  (defun linum-on ()
-;; 		(unless (or (minibufferp) (member major-mode linum-disabled-modes))
-;; 		  (linum-mode 1)))
+	(defun linum-on ()
+	  (unless (or (minibufferp) (member major-mode linum-disabled-modes))
+		(linum-mode 1)))
 
-;; 	  ;;disable line mode for listed modes
-;; 	  (setq linum-disabled-modes-list
-;; 			'(ansi-term
-;; 			  compilation-mode
-;; 			  eshell-mode
-;; 			  fundamental-mode
-;; 			  help-mode
-;; 			  magit-status-mode
-;; 			  mu4e-headers-mode
-;; 			  mu4e-main-mode
-;; 			  mu4e-view-mode
-;; 			  nrepl-mode
-;; 			  shell-mode
-;; 			  slime-repl-mode
-;; 			  term-mode
-;; 			  term-mode
-;; 			  wl-summary-mode))
-;; 	  (defun linum-on ()
-;; 		(unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
-;; 		  (linum-mode 1))))
-;;   ;; emacs version is greater than 26
-;;   (message "--> linum-mode not supported"))
+	;;disable line mode for listed modes
+	(setq linum-disabled-modes-list
+		  '(ansi-term
+			compilation-mode
+			eshell-mode
+			fundamental-mode
+			help-mode
+			magit-status-mode
+			mu4e-headers-mode
+			mu4e-main-mode
+			mu4e-view-mode
+			nrepl-mode
+			shell-mode
+			slime-repl-mode
+			term-mode
+			term-mode
+			wl-summary-mode))
+	(defun linum-on ()
+	  (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
+		(linum-mode 1)))))
 
-(if (version<= "26.0.50" emacs-version )
-	(message "--> global-display-line-numbers-mode not supported")
-  ((global-display-line-numbers-mode t)
-   (setq display-line-numbers " %4d ")))
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode t)
+  (setq display-line-numbers " %4d "))
 
 (when window-system
   (tooltip-mode -1)
@@ -84,13 +82,9 @@
 (setq diff-switches "-u -w"
       magit-diff-options "-w")
 
-
 ;;store all autosave files
 (setq auto-save-file-name-transforms
       `((".*" ,"~/.emacs.d/auto-save-list" t)))
-
-(setq font-lock-maximum-decoration t
-      truncate-partial-width-windows nil)
 
 ;; Don't defer screen updates when performing operations
 (setq redisplay-dont-pause t)
@@ -129,8 +123,6 @@
 ;; https://emacs.stackexchange.com/questions/28736/emacs-pointcursor-movement-lag/28746
 (setq auto-window-vscroll nil)
 
-(setq font-lock-maximum-decoration t)
-
 (use-package whitespace
   :ensure t
   :config
@@ -147,7 +139,6 @@
 
 ;; -- Font --
 ;; ----------
-
 (defun font-existsp (font)
   (if (display-graphic-p)
 	  (if (null (x-list-fonts font))
@@ -167,13 +158,11 @@
 		(if (font-existsp "Ubuntu Mono")
 			(set-frame-font "Ubuntu Mono" nil t)
 		  (set-frame-font "Monaco" nil t))
-	  ;;(set-frame-font "Source Code Pro")
-	  (set-frame-font "Hack"))
+	  (set-frame-font "Source Code Pro"))
   )
 
 ;; -- Theme --
 ;; -----------
-
 (use-package color-theme
   :ensure t
   :config
