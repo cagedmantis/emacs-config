@@ -17,43 +17,43 @@
 (global-visual-line-mode 1)                    ; Soft wrap lines
 
 ;; (if (version<= "26.0.50" emacs-version )
-;;     ((message "Using linum-mode")
-;;      (global-linum-mode 1)
-;;      (setq linum-format " %d ")
-;;      (setq linum-format (if (not window-system) "%4d " "%4d"))
+;;     (progn
+;; 	  (message "--> Using linum-mode")
+;; 	  (global-linum-mode 1)
+;; 	  (setq linum-format " %d ")
+;; 	  (setq linum-format (if (not window-system) "%4d " "%4d"))
 
-;;      (defun linum-on ()
-;;        (unless (or (minibufferp) (member major-mode linum-disabled-modes))
-;;          (linum-mode 1)))
+;; 	  (defun linum-on ()
+;; 		(unless (or (minibufferp) (member major-mode linum-disabled-modes))
+;; 		  (linum-mode 1)))
 
-;;      ;;disable line mode for listed modes
-;;      (setq linum-disabled-modes-list
-;;            '(ansi-term
-;;              compilation-mode
-;;              eshell-mode
-;;              fundamental-mode
-;;              help-mode
-;;              magit-status-mode
-;;              mu4e-headers-mode
-;;              mu4e-main-mode
-;;              mu4e-view-mode
-;;              nrepl-mode
-;;              shell-mode
-;;              slime-repl-mode
-;;              term-mode
-;;              term-mode
-;;              wl-summary-mode))
-;;      (defun linum-on ()
-;;        (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
-;;          (linum-mode 1))))
+;; 	  ;;disable line mode for listed modes
+;; 	  (setq linum-disabled-modes-list
+;; 			'(ansi-term
+;; 			  compilation-mode
+;; 			  eshell-mode
+;; 			  fundamental-mode
+;; 			  help-mode
+;; 			  magit-status-mode
+;; 			  mu4e-headers-mode
+;; 			  mu4e-main-mode
+;; 			  mu4e-view-mode
+;; 			  nrepl-mode
+;; 			  shell-mode
+;; 			  slime-repl-mode
+;; 			  term-mode
+;; 			  term-mode
+;; 			  wl-summary-mode))
+;; 	  (defun linum-on ()
+;; 		(unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
+;; 		  (linum-mode 1))))
 ;;   ;; emacs version is greater than 26
-;;   ((message "Using line-numbers-mode")
-;;    (global-display-line-numbers-mode t)
-;;    (setq display-line-numbers " %4d ")))
+;;   (message "--> linum-mode not supported"))
 
-;; (when (not (version<= "26.0.50" emacs-version ))
-;;   (global-display-line-numbers-mode t)
-;;   (setq display-line-numbers " %4d "))
+(if (version<= "26.0.50" emacs-version )
+	(message "--> global-display-line-numbers-mode not supported")
+  ((global-display-line-numbers-mode t)
+   (setq display-line-numbers " %4d ")))
 
 (when window-system
   (tooltip-mode -1)
@@ -167,7 +167,8 @@
 		(if (font-existsp "Ubuntu Mono")
 			(set-frame-font "Ubuntu Mono" nil t)
 		  (set-frame-font "Monaco" nil t))
-	  (set-frame-font "Source Code Pro"))
+	  ;;(set-frame-font "Source Code Pro")
+	  (set-frame-font "Hack"))
   )
 
 ;; -- Theme --
@@ -187,6 +188,9 @@
 	(load-theme 'doom-vibrant t)
 	;;(load-theme 'doom-opera-light t)
     (doom-themes-org-config)
+
+	(use-package constant-theme
+	  :ensure t)
 
 	;; Enable flashing mode-line on errors
 	(doom-themes-visual-bell-config)))
