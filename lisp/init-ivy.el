@@ -6,7 +6,7 @@
 
 (use-package ivy
   :ensure t
-  :diminish ivy-mode
+  :diminish
   :bind (("C-c C-r" . ivy-resume)
          ("C-x b" . ivy-switch-buffer)
          ("C-x B" . ivy-switch-buffer-other-window))
@@ -41,7 +41,6 @@
   (setq ivy-wrap t)
   (setq ivy-re-builders-alist '((t . ivy--regex-plus)))
 
-  (setq ivy-use-virtual-buffers t)
   (setq ivy-display-style 'fancy)
   (setq ivy-initial-inputs-alist nil)
 
@@ -79,15 +78,23 @@
 ;; Let projectile use ivy
 ;;(setq projectile-completion-system 'ivy)
 
+(use-package ivy-rich
+  :ensure t
+  :after ivy
+  :custom
+  (ivy-virtual-abbreviate 'full
+                          ivy-rich-switch-buffer-align-virtual-buffer t
+                          ivy-rich-path-style 'abbrev)
+  :config
+  (ivy-set-display-transformer 'ivy-switch-buffer
+                               'ivy-rich-switch-buffer-transformer))
+
+;; ;; Make Ivy a bit more friendly by adding information to ivy buffers, e.g. description of commands in Alt-x, meta info when switching buffers, etc.
 ;; (use-package ivy-rich
-;;   :after ivy
-;;   :custom
-;;   (ivy-virtual-abbreviate 'full
-;;                           ivy-rich-switch-buffer-align-virtual-buffer t
-;;                           ivy-rich-path-style 'abbrev)
 ;;   :config
-;;   (ivy-set-display-transformer 'ivy-switch-buffer
-;;                                'ivy-rich-switch-buffer-transformer))
+;;   (ivy-rich-mode 1)
+;;   (setq ivy-rich-path-style 'abbrev)) ;; Abbreviate paths using abbreviate-file-name (e.g. replace “/home/username” with “~”)
+
 
 (provide 'init-ivy)
 

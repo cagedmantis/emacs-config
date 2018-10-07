@@ -4,7 +4,7 @@
 
 ;;; Code:
 
-(package-initialize)
+;;(package-initialize)
 
 (add-hook 'emacs-startup-hook
           (lambda ()
@@ -22,7 +22,7 @@
 (add-to-list 'load-path (concat dotfiles-dir "/lisp"))
 (add-to-list 'load-path (concat dotfiles-dir "/system_type"))
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
-(setq package-user-dir (concat dotfiles-dir "elpa"))
+(setq package-user-dir (concat dotfiles-dir "packages"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
 
 (require 'init-package)
@@ -38,11 +38,11 @@
 (require 'init-erc)
 (require 'init-exec-path-from-shell)
 (require 'init-flycheck)
-(require 'init-iedit)
 (require 'init-kubernetes)
 (require 'init-latex)
 (require 'init-magit)
 (require 'init-org)
+(require 'init-plantuml)
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-saveplace)
@@ -50,12 +50,25 @@
 (require 'init-switch-window)
 (require 'init-utils)
 (require 'init-yasnippet)
+;;(require 'init-iedit)
+;;(require 'init-spelling)
 
 (require 'lang-go)
 (require 'lang-javascript)
 (require 'lang-modes)
 (require 'lang-python)
+(require 'lang-ruby)
 (require 'lang-rust)
+
+;;Show changes in the gutter
+(use-package git-gutter
+  :ensure t
+  :diminish
+  :config
+  (global-git-gutter-mode 't)
+  (set-face-background 'git-gutter:modified 'nil)   ;; background color
+  (set-face-foreground 'git-gutter:added "green4")
+  (set-face-foreground 'git-gutter:deleted "red"))
 
 (cond
  ((eq system-type 'gnu/linux)
