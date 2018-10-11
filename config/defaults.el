@@ -186,6 +186,18 @@
   :config
   (turn-on-pbcopy))
 
+(use-package smartparens
+  :ensure t)
+
+(use-package smartparens-config
+  :ensure smartparens
+  :config
+  (progn
+    (show-smartparens-global-mode t)))
+
+(add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
+
 (provide 'defaults)
 
 ;;; defaults.el ends here
