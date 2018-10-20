@@ -21,6 +21,9 @@
   	(setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   	(add-hook 'elpy-mode-hook 'flycheck-mode)))
 
+(use-package django-snippets
+  :ensure t)
+
 ;; TODO: pip install elpy rope jedi flake8
 
 (provide 'lang-python)

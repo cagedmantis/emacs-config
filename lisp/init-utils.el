@@ -5,9 +5,9 @@
 ;;; Code:
 
 (use-package rg
-  :ensure t
-  :ensure-system-package
-  (rg . ripgrep))
+  :ensure t)
+  ;; :ensure-system-package
+  ;; (rg . ripgrep))
 
 (use-package restart-emacs
   :ensure t)

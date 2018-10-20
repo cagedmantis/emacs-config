@@ -171,54 +171,18 @@
   (setq color-theme-is-global t)
   (color-theme-initialize)
 
-  (use-package solarized-theme
+  (use-package doom-themes
     :ensure t
     :config
-    ;; make the fringe stand out from the background
-    (setq solarized-distinct-fringe-background t)
-
-    ;; Don't change the font for some headings and titles
-    (setq solarized-use-variable-pitch nil)
-
-    ;; make the modeline high contrast
-    (setq solarized-high-contrast-mode-line t)
-
-    ;; Use less bolding
-    (setq solarized-use-less-bold t)
-
-    ;; Use more italics
-    (setq solarized-use-more-italic t)
-
-    ;; Use less colors for indicators such as git:gutter, flycheck and similar
-    (setq solarized-emphasize-indicators nil)
-
-    ;; Don't change size of org-mode headlines (but keep other size-changes)
-    (setq solarized-scale-org-headlines nil)
-
-    ;; Avoid all font-size changes
-    (setq solarized-height-minus-1 1.0)
-    (setq solarized-height-plus-1 1.0)
-    (setq solarized-height-plus-2 1.0)
-    (setq solarized-height-plus-3 1.0)
-    (setq solarized-height-plus-4 1.0)
-
-    ;;(load-theme 'solarized-light t)
-	;;(load-theme 'doom-solarized-light t)
-	;;(load-theme 'doom-nord-light t)
+  	(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+  		  doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  	;;(load-theme 'doom-vibrant t)
 	(load-theme 'doom-molokai t)
-	)
+  	;;(load-theme 'doom-opera-light t)
+    (doom-themes-org-config)
 
-  ;; (use-package doom-themes
-  ;;   :ensure t
-  ;;   :config
-  ;; 	(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-  ;; 		  doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;; 	(load-theme 'doom-vibrant t)
-  ;; 	;;(load-theme 'doom-opera-light t)
-  ;;   (doom-themes-org-config)
-
-  ;; 	;; Enable flashing mode-line on errors
-  ;; 	(doom-themes-visual-bell-config))
+  	;; Enable flashing mode-line on errors
+  	(doom-themes-visual-bell-config))
   )
 
 (use-package smart-mode-line

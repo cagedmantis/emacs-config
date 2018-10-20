@@ -9,7 +9,7 @@
 
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives
-			   '("gnu" . "http://elpa.gnu.org/packages/")))
+			   '("gnu" . "https://elpa.gnu.org/packages/")))
 
 (setq package-user-dir "~/.emacs.d/packages")
 
@@ -19,11 +19,7 @@
   (package-refresh-contents))
 
 (defvar my-packages '(
-					  diminish
-					  django-snippets
-					  elpy
-					  gist
-					  google-c-style
+					  ;;google-c-style
 					  use-package
 					  use-package-ensure-system-package
 					  )
