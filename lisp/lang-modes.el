@@ -9,8 +9,9 @@
   :mode ("\\.proto\\'" . protobuf-mode)
   :config
   (defconst my-protobuf-style
-    '((c-basic-offset . 2)
-      (indent-tabs-mode . nil)))
+    '((c-basic-offset 2)
+	  (tab-width 8)
+      (indent-tabs-mode t)))
 
   (add-hook 'protobuf-mode-hook
 			(lambda () (c-add-style "my-style" my-protobuf-style t))))

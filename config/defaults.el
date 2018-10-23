@@ -173,10 +173,11 @@
       auto-save-interval 200            ; number of keystrokes between auto-saves (default: 300)
       )
 
-(use-package aggressive-indent
-  :ensure t
-  :config
-  (global-aggressive-indent-mode 1))
+;; TODO: not loving the behaviour this presents
+;; (use-package aggressive-indent
+;;   :ensure t
+;;   :config
+;;   (global-aggressive-indent-mode 1))
 
 (use-package autopair
   :ensure t)

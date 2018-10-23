@@ -4,10 +4,8 @@
 
 ;;; Code:
 
-(use-package rg
-  :ensure t)
-  ;; :ensure-system-package
-  ;; (rg . ripgrep))
+;; (use-package rg
+;;   :ensure t)
 
 (use-package restart-emacs
   :ensure t)
