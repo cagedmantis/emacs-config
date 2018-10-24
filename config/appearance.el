@@ -3,9 +3,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(menu-bar-mode -1)
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))  ; Disable the scrollbar
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))      ; Disable the toolbar
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))      ; Disable the menubar
