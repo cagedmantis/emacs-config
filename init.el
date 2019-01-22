@@ -39,6 +39,7 @@
 (require 'init-exec-path-from-shell)
 (require 'init-flycheck)
 (require 'init-kubernetes)
+(require 'init-language-server)
 (require 'init-latex)
 (require 'init-magit)
 (require 'init-org)
@@ -59,16 +60,6 @@
 (require 'lang-python)
 (require 'lang-ruby)
 (require 'lang-rust)
-
-;;Show changes in the gutter
-(use-package git-gutter
-  :ensure t
-  :diminish
-  :config
-  (global-git-gutter-mode 't)
-  (set-face-background 'git-gutter:modified 'nil)   ;; background color
-  (set-face-foreground 'git-gutter:added "green4")
-  (set-face-foreground 'git-gutter:deleted "red"))
 
 (cond
  ((eq system-type 'gnu/linux)

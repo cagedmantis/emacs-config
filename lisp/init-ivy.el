@@ -19,6 +19,9 @@
            ("M-x" . counsel-M-x)
            ("M-y" . counsel-yank-pop)))
 
+  (use-package ivy-explorer
+	:ensure t)
+
   (if (version< emacs-version "26")
 	  (message "version does not support ivy-posframe")
 	(use-package ivy-posframe
