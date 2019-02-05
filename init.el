@@ -54,6 +54,7 @@
 ;;(require 'init-iedit)
 ;;(require 'init-spelling)
 
+(require 'lang-cpp)
 (require 'lang-go)
 (require 'lang-javascript)
 (require 'lang-modes)
