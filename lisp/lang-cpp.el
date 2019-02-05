@@ -53,7 +53,12 @@
   (global-set-key (kbd "C-c i") 'clang-format-region)
   (global-set-key (kbd "C-c u") 'clang-format-buffer)
 
-  (setq clang-format-style-option "llvm"))
+  (setq clang-format-style-option "llvm")
+
+  (add-hook 'c-mode-common-hook
+			(function (lambda ()
+						(add-hook 'before-save-hook
+								  'clang-format-buffer)))))
 
 
 (provide 'lang-cpp)
