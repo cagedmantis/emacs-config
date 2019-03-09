@@ -14,6 +14,7 @@
 (size-indication-mode t)
 (show-paren-mode 1)                            ; turn on paren match highlighting
 (global-visual-line-mode 1)                    ; Soft wrap lines
+(setq-default cursor-type 'hollow)
 
 ;; -- line numbers --
 ;; ------------------

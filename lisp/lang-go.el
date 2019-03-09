@@ -9,7 +9,6 @@
   :config
 
   (setq gofmt-command "goimports")
-  ;;(setq gofmt-args "-local \"do\"")
   (setq gofmt-args '("-local" "do"))
 
   (use-package go-projectile
@@ -55,24 +54,24 @@
   (use-package go-direx
 	:ensure t)
 
-  (use-package company-go
-	:ensure company
-	:defer t
-	:config
+  ;; (use-package company-go
+  ;; 	:ensure company
+  ;; 	:defer t
+  ;; 	:config
 
-	(add-hook 'go-mode-hook 'company-mode)
-	(add-to-list 'company-backends 'company-go)
-	(global-set-key (kbd "C-c M-n") 'company-complete)
-	(global-set-key (kbd "C-c C-n") 'company-complete)
+  ;; 	(add-hook 'go-mode-hook 'company-mode)
+  ;; 	(add-to-list 'company-backends 'company-go)
+  ;; 	(global-set-key (kbd "C-c M-n") 'company-complete)
+  ;; 	(global-set-key (kbd "C-c C-n") 'company-complete)
 
-	(setq company-idle-delay .3)
-	(setq company-minimum-prefix-length 1)
-	(setq company-begin-commands '(self-insert-command))
+  ;; 	(setq company-idle-delay .3)
+  ;; 	(setq company-minimum-prefix-length 1)
+  ;; 	(setq company-begin-commands '(self-insert-command))
 
-	;; (add-hook 'go-mode-hook (lambda ()
-    ;;                           (set (make-local-variable 'company-backends) '(company-go))
-    ;;                           (company-mode)))
-	)
+  ;; 	;; (add-hook 'go-mode-hook (lambda ()
+  ;;   ;;                           (set (make-local-variable 'company-backends) '(company-go))
+  ;;   ;;                           (company-mode)))
+  ;; 	)
 
   (defun my-go-mode-hook ()
 	(subword-mode t)
@@ -113,6 +112,7 @@
 	(gounconvert   . "github.com/mdempsky/unconvert")
 	(guru          . "golang.org/x/tools/cmd/guru")
 	(impl          . "github.com/josharian/impl")
+	(bingo         . "github.com/saibing/bingo")
 	(tools         . "honnef.co/go/tools"))
   "Import paths for My Go tools.")
 
