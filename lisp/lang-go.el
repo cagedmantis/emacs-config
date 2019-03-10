@@ -11,67 +11,6 @@
   (setq gofmt-command "goimports")
   (setq gofmt-args '("-local" "do"))
 
-  (use-package go-projectile
-    :ensure t)
-
-  (use-package godoctor
-    :ensure t)
-
-  (use-package go-add-tags
-	:ensure t
-	:config
-	(global-set-key (kbd "C-c t") 'go-add-tags))
-
-  (use-package go-guru
-    :ensure t
-    :config
-    (add-hook `go-mode-hook `go-guru-hl-identifier-mode))
-
-  ;; (use-package go-eldoc
-  ;;   :ensure t
-  ;;   :config
-  ;;   (add-hook 'go-mode-hook 'go-eldoc-setup)
-  ;;   (set-face-attribute 'eldoc-highlight-function-argument nil
-  ;;                       :underline t
-  ;;                       :foreground "green"
-  ;;                       :weight 'bold))
-
-  (use-package go-fill-struct
-	:ensure t)
-
-  (use-package go-errcheck
-	:ensure t)
-
-  (use-package go-gen-test
-	:ensure t)
-
-  (use-package gotest
-	:ensure t)
-
-  (use-package go-stacktracer
-	:ensure t)
-
-  (use-package go-direx
-	:ensure t)
-
-  ;; (use-package company-go
-  ;; 	:ensure company
-  ;; 	:defer t
-  ;; 	:config
-
-  ;; 	(add-hook 'go-mode-hook 'company-mode)
-  ;; 	(add-to-list 'company-backends 'company-go)
-  ;; 	(global-set-key (kbd "C-c M-n") 'company-complete)
-  ;; 	(global-set-key (kbd "C-c C-n") 'company-complete)
-
-  ;; 	(setq company-idle-delay .3)
-  ;; 	(setq company-minimum-prefix-length 1)
-  ;; 	(setq company-begin-commands '(self-insert-command))
-
-  ;; 	;; (add-hook 'go-mode-hook (lambda ()
-  ;;   ;;                           (set (make-local-variable 'company-backends) '(company-go))
-  ;;   ;;                           (company-mode)))
-  ;; 	)
 
   (defun my-go-mode-hook ()
 	(subword-mode t)
@@ -82,10 +21,52 @@
 	  (require 'go-guru)
 	  (go-guru-hl-identifier-mode))
 
-	(add-hook 'go-mode-hook 'flycheck-mode)
-	)
-  (add-hook 'go-mode-hook 'my-go-mode-hook)
-  )
+	(add-hook 'go-mode-hook 'flycheck-mode))
+  (add-hook 'go-mode-hook 'my-go-mode-hook))
+
+(use-package go-fill-struct
+  :ensure t
+  :after go-mode)
+
+(use-package go-errcheck
+  :ensure t
+  :after go-mode)
+
+(use-package go-gen-test
+  :ensure t
+  :after go-mode)
+
+(use-package gotest
+  :ensure t
+  :after go-mode)
+
+(use-package go-stacktracer
+  :ensure t
+  :after go-mode)
+
+(use-package go-direx
+  :ensure t
+  :after go-mode)
+
+(use-package go-add-tags
+  :ensure t
+  :after go-mode
+  :config
+  (global-set-key (kbd "C-c t") 'go-add-tags))
+
+(use-package go-guru
+  :ensure t
+  :after go-mode
+  :config
+  (add-hook `go-mode-hook `go-guru-hl-identifier-mode))
+
+(use-package godoctor
+  :ensure t
+  :after go-mode)
+
+(use-package go-projectile
+  :ensure t
+  :after (go-mode projectile))
 
 ;; modified from github.com/dougm/go-projectile
 
@@ -93,7 +74,6 @@
   '((errcheck      . "github.com/kisielk/errcheck")
 	(asmfmt        . "github.com/klauspost/asmfmt/cmd/asmfmt")
 	(fillstruct    . "github.com/davidrjenni/reftools/cmd/fillstruct")
-	(go-langserver . "github.com/sourcegraph/go-langserver")
 	(gocode        . "github.com/mdempsky/gocode")
 	(godef         . "github.com/rogpeppe/godef")
 	(godoc         . "golang.org/x/tools/cmd/godoc")
