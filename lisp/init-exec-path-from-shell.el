@@ -1,6 +1,7 @@
 (when (memq window-system '(mac ns x))
   (use-package exec-path-from-shell
 	:ensure t
+	:after (direnv)
 	:config
 	(require 'exec-path-from-shell)
 	(exec-path-from-shell-initialize)
