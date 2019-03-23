@@ -6,11 +6,11 @@
 
 (use-package go-mode
   :ensure t
+  :bind ("c-c r" . go-rename)
   :config
 
   (setq gofmt-command "goimports")
   (setq gofmt-args '("-local" "do"))
-
 
   (defun my-go-mode-hook ()
 	(subword-mode t)
@@ -26,6 +26,7 @@
 
 (use-package go-fill-struct
   :ensure t
+  :bind ("c-c f" . go-fill-struct)
   :after go-mode)
 
 (use-package go-errcheck
@@ -68,6 +69,14 @@
   :ensure t
   :after (go-mode projectile))
 
+(use-package go-impl
+  :ensure t
+  :after go-mode)
+
+(use-package go-tag
+  :ensure t
+  :after go-mode)
+
 ;; modified from github.com/dougm/go-projectile
 
 (defvar go-tools
@@ -82,13 +91,13 @@
 	(gogetdoc      . "github.com/zmb3/gogetdoc")
 	(goimports     . "golang.org/x/tools/cmd/goimports")
 	(golint        . "github.com/golang/lint/golint")
-	(gomegacheck   . "honnef.co/go/tools/cmd/megacheck")
+	(go-tools      . "honnef.co/go/tools/cmd/...")
 	(gometalinter  . "github.com/alecthomas/gometalinter")
 	(gomodifytags  . "github.com/fatih/gomodifytags")
 	(gomvpkg       . "golang.org/x/tools/cmd/gomvpkg")
 	(gorename      . "golang.org/x/tools/cmd/gorename")
 	(gotags        . "github.com/jstemmer/gotags")
-	(gotests       . "go get -u github.com/cweill/gotests")
+	(gotests       . "github.com/cweill/gotests")
 	(gounconvert   . "github.com/mdempsky/unconvert")
 	(guru          . "golang.org/x/tools/cmd/guru")
 	(impl          . "github.com/josharian/impl")
