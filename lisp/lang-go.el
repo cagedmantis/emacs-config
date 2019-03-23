@@ -6,7 +6,7 @@
 
 (use-package go-mode
   :ensure t
-  :bind ("c-c r" . go-rename)
+  :bind ("C-c r" . go-rename)
   :config
 
   (setq gofmt-command "goimports")
