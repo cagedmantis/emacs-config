@@ -42,15 +42,15 @@
   (setq ivy-virtual-abbreviate 'full) ; Show the full virtual file paths
   (setq ivy-extra-directories 'nil) ; default value: ("../" "./")
   (setq ivy-wrap t)
-  (setq ivy-re-builders-alist '((t . ivy--regex-plus)))
 
-  (setq ivy-display-style 'fancy)
+  (setq ivy-display-style nil)
   (setq ivy-initial-inputs-alist nil)
 
   (setq ivy-re-builders-alist
-		'((ivy-switch-buffer . ivy--regex-plus)
-		  (swiper . ivy--regex-plus)
-		  (t . ivy--regex-fuzzy)))
+  		'((ivy-switch-buffer . ivy–regex-fuzzy)
+  		  (swiper . ivy–regex-fuzzy)
+  		  (t . ivy--regex-fuzzy)))
+
 
   ;; (setq enable-recursive-minibuffers t)
 
@@ -71,33 +71,12 @@
 
   (global-set-key (kbd "C-c C-r") 'ivy-resume))
 
-;; Let ivy use flx for fuzzy-matching
-;; (use-package flx
-;; 	:ensure t
-;; 	:config
-;; 	(require 'flx)
-;; 	(setq ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
-
-;; Let projectile use ivy
-;;(setq projectile-completion-system 'ivy)
-
-(use-package ivy-rich
+(use-package counsel-tramp
   :ensure t
-  :after ivy
-  :custom
-  (ivy-virtual-abbreviate 'full
-                          ivy-rich-switch-buffer-align-virtual-buffer t
-                          ivy-rich-path-style 'abbrev)
+  :after counsel
+  :bind ("C-c t" . counsel-tramp)
   :config
-  (ivy-set-display-transformer 'ivy-switch-buffer
-                               'ivy-rich-switch-buffer-transformer))
-
-;; ;; Make Ivy a bit more friendly by adding information to ivy buffers, e.g. description of commands in Alt-x, meta info when switching buffers, etc.
-;; (use-package ivy-rich
-;;   :config
-;;   (ivy-rich-mode 1)
-;;   (setq ivy-rich-path-style 'abbrev)) ;; Abbreviate paths using abbreviate-file-name (e.g. replace “/home/username” with “~”)
-
+  (setq tramp-default-method "ssh"))
 
 (provide 'init-ivy)
 
