@@ -21,6 +21,9 @@
 	  (require 'go-guru)
 	  (go-guru-hl-identifier-mode))
 
+	;;todo: cleanup
+	(lsp)
+
 	(add-hook 'go-mode-hook 'flycheck-mode))
   (add-hook 'go-mode-hook 'my-go-mode-hook))
 
