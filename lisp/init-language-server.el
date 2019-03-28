@@ -7,6 +7,7 @@
 (use-package lsp-mode
   :ensure t
   :after (direnv exec-path-from-shell)
+  :commands (lsp)
   :hook (prog-mode . (lambda ()
                        (direnv-update-environment)
                        (lsp)))
@@ -19,15 +20,29 @@
 ;;   ;; :init
 ;;   ;; (setq ...))
 
+;; (use-package lsp-ui
+;;   :ensure t
+;;   :after lsp-mode
+;;   :config
+;;   (setq lsp-ui-doc-header t
+;;         lsp-ui-doc-include-signature t
+;;         lsp-ui-doc-max-width 80
+;;         lsp-ui-doc-max-height 20
+;;         lsp-ui-doc-use-childframe nil))
+
 (use-package lsp-ui
   :ensure t
+  :hook (lsp-mode . lsp-ui-mode)
   :after lsp-mode
   :config
-  (setq lsp-ui-doc-header t
-        lsp-ui-doc-include-signature t
-        lsp-ui-doc-max-width 80
-        lsp-ui-doc-max-height 20
-        lsp-ui-doc-use-childframe nil))
+  (setq lsp-ui-sideline-ignore-duplicate t))
+  ;; :config
+  ;; (setq lsp-ui-doc-header t
+  ;;       lsp-ui-doc-include-signature t
+  ;;       lsp-ui-doc-max-width 80
+  ;;       lsp-ui-doc-max-height 20
+  ;;       lsp-ui-doc-use-childframe nil))
+
 
 ;; (use-package lsp-ui
 ;;   :ensure t
@@ -40,7 +55,10 @@
   :after (company lsp-mode)
   :commands company-lsp
   :config
-  (setq company-lsp-cache-candidates 'auto)
+  (setq company-lsp-cache-candidates 'auto
+		company-lsp-async t
+		company-lsp-enable-recompletion t)
+
   :init
   (push 'company-lsp company-backends))
 
