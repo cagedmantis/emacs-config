@@ -2,8 +2,12 @@
 .emacs.desktop*
 .envrc
 .gitconfig
+.last-package-update-day
 .newsrc-dribble
 .nnmail-cache
+\#!*
+\#*
+\.lsp-session*
 ac-comphist.dat
 auto-save-list
 backups/*
@@ -11,12 +15,12 @@ custom.el*
 ede-projects.el
 elim/
 elpa/*
-packages/*
 eshell/
 history
 ido.last
 image-dired/
 network-security.data
+packages/*
 places
 projectile-bookmarks.eld
 projectile.cache
@@ -25,10 +29,8 @@ semanticdb/
 session*
 thumbs/*
 tramp
+transient/
 url/cookies
-#*
-#!*
-.last-package-update-day
 
 # OS generated files #
 ######################
