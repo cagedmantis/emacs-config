@@ -39,7 +39,7 @@
 (require 'init-erc)
 (require 'init-exec-path-from-shell)
 (require 'init-flycheck)
-(require 'init-kubernetes)
+;;(require 'init-kubernetes)
 (require 'init-language-server)
 (require 'init-latex)
 (require 'init-magit)

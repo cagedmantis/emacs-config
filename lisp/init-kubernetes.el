@@ -4,12 +4,12 @@
 
 ;;; Code:
 
-(use-package kubernetes
-  :ensure t
-  :commands (kubernetes-overview))
+;; (use-package kubernetes
+;;   :ensure t
+;;   :commands (kubernetes-overview))
 
-(use-package kubernetes-tramp
-  :ensure t)
+;; (use-package kubernetes-tramp
+;;   :ensure t)
 
 (provide 'init-kubernetes)
 
