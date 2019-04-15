@@ -169,7 +169,7 @@
 ;;   (setq color-theme-is-global t)
 ;;   (color-theme-initialize))
 
-(use-package color-theme-modern)
+;; (use-package color-theme-modern)
 
 (use-package doom-themes
   :ensure t
