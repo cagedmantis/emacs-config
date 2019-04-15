@@ -163,25 +163,27 @@
 
 ;; -- Theme --
 ;; -----------
-(use-package color-theme
+;; (use-package color-theme
+;;   :ensure t
+;;   :config
+;;   (setq color-theme-is-global t)
+;;   (color-theme-initialize))
+
+(use-package color-theme-modern)
+
+(use-package doom-themes
   :ensure t
   :config
-  (setq color-theme-is-global t)
-  (color-theme-initialize)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+  		doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  ;;(load-theme 'doom-vibrant t)
+  (load-theme 'doom-molokai t)
+  ;;(load-theme 'doom-opera-light t)
+  (doom-themes-org-config)
 
-  (use-package doom-themes
-    :ensure t
-    :config
-  	(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-  		  doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  	;;(load-theme 'doom-vibrant t)
-	(load-theme 'doom-molokai t)
-  	;;(load-theme 'doom-opera-light t)
-    (doom-themes-org-config)
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config))
 
-  	;; Enable flashing mode-line on errors
-  	(doom-themes-visual-bell-config))
-  )
 
 (use-package smart-mode-line
   :ensure t
@@ -205,6 +207,16 @@
   (set-face-background 'git-gutter:modified 'nil)   ;; background color
   (set-face-foreground 'git-gutter:added "green4")
   (set-face-foreground 'git-gutter:deleted "red"))
+
+;; EXPERIMENT
+
+(set-face-attribute 'default nil :font "Hack")
+
+;;(message font-family-list)
+
+(if (member "Fira Code" (font-family-list))
+    (set-face-attribute 'default nil :font "Fira Code"))
+
 
 (provide 'appearance)
 

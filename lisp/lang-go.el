@@ -9,6 +9,7 @@
   :bind ("C-c r" . go-rename)
   :config
 
+  ;;(setq gofmt-command "gofumpt")
   (setq gofmt-command "goimports")
   (setq gofmt-args '("-local" "do"))
 

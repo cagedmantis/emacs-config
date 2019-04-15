@@ -43,6 +43,7 @@
   :config
   (setq company-lsp-cache-candidates nil
 		;;company-lsp-cache-candidates 'auto
+		company-transformers nil
 		company-lsp-async t
 		company-lsp-enable-recompletion t)
 

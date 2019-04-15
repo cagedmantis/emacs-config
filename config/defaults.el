@@ -187,6 +187,8 @@
   :config
   (turn-on-pbcopy))
 
+(setq auto-window-vscroll nil)
+
 (provide 'defaults)
 
 ;;; defaults.el ends here
