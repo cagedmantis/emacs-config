@@ -130,11 +130,11 @@
   (setq whitespace-style '(face tabs empty trailing lines-tail))
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
-(use-package dimmer
-  :ensure t
-  :config
-  (dimmer-mode)
-  (setq dimmer-fraction 0.50))
+;; (use-package dimmer
+;;   :ensure t
+;;   :config
+;;   (dimmer-mode)
+;;   (setq dimmer-fraction 0.50))
 
 
 ;; -- Font --
