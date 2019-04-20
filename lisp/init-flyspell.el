@@ -48,9 +48,7 @@
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
   )
 
-;; Improve flyspell responsiveness using idle timers.
-(use-package flyspell-lazy
-  :ensure t)
+;; Improve flyspell responsiveness using idle timers.(use - package flyspell - lazy
 
 ;; Tries to automatically detect the language of the buffer and setting the dictionary accordingly.
 (use-package auto-dictionary
@@ -60,7 +58,8 @@
   ;;(add-hook 'text-mode-hook 'auto-dictionary-mode)
   )
 
-
+(use-package flyspell-correct
+  :ensure t)
 
 (provide 'init-flyspell)
 

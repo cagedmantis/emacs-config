@@ -1,3 +1,4 @@
+
 ;;; init-ivy.el --- ivy configuration init
 
 ;;; Commentary:
@@ -22,13 +23,13 @@
   (use-package ivy-explorer
 	:ensure t)
 
-  (if (version< emacs-version "26")
-	  (message "version does not support ivy-posframe")
-	(use-package ivy-posframe
-	  :ensure t
-	  :config
-	  (require 'ivy-posframe)
-	  (setq ivy-display-function #'ivy-posframe-display)))
+  ;; (if (version< emacs-version "26")
+  ;; 	  (message "version does not support ivy-posframe")
+  ;; 	(use-package ivy-posframe
+  ;; 	  :ensure t
+  ;; 	  :config
+  ;; 	  (require 'ivy-posframe)
+  ;; 	  (setq ivy-display-function #'ivy-posframe-display)))
 
   (ivy-mode 1)
 
@@ -77,6 +78,10 @@
   :bind ("C-c t" . counsel-tramp)
   :config
   (setq tramp-default-method "ssh"))
+
+(use-package flyspell-correct-ivy
+  :ensure t
+  :after ivy)
 
 (provide 'init-ivy)
 
