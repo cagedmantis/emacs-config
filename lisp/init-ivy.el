@@ -48,9 +48,9 @@
   (setq ivy-initial-inputs-alist nil)
 
   (setq ivy-re-builders-alist
-  		'((ivy-switch-buffer . ivy--regex-fuzzy)
-  		  (swiper . ivy--regex-fuzzy)
-  		  (t . ivy--regex-fuzzy)))
+  		'((ivy-switch-buffer . ivy--regex-plus)
+  		  (swiper . ivy--regex-plus)
+  		  (t . ivy--regex-plus)))
 
 
   ;; (setq enable-recursive-minibuffers t)
