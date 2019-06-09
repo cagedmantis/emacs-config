@@ -209,8 +209,8 @@
   (set-face-foreground 'git-gutter:deleted "red"))
 
 ;; EXPERIMENT
-
-(set-face-attribute 'default nil :font "Hack")
+(if (member "Hack" (font-family-list))
+	(set-face-attribute 'default nil :font "Hack"))
 
 ;;(message font-family-list)
 
