@@ -39,7 +39,7 @@
 (require 'init-erc)
 (require 'init-exec-path-from-shell)
 (require 'init-flycheck)
-(require 'init-flyspell)
+;;(require 'init-flyspell)
 (require 'init-language-server)
 (require 'init-latex)
 (require 'init-magit)
@@ -53,7 +53,6 @@
 (require 'init-utils)
 (require 'init-yasnippet)
 ;;(require 'init-iedit)
-;;(require 'init-kubernetes)
 ;;(require 'init-spelling)
 
 (require 'lang-cpp)

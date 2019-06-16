@@ -179,9 +179,8 @@
   ;;(load-theme 'doom-vibrant t)
   ;;(load-theme 'doom-opera-light t)
   ;;(load-theme 'doom-molokai t)
-  (load-theme 'doom-dracula)
+  (load-theme 'doom-dracula t)
   (doom-themes-org-config)
-:config
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config))
 
@@ -217,7 +216,6 @@
 
 (if (member "Fira Code" (font-family-list))
     (set-face-attribute 'default nil :font "Fira Code"))
-
 
 (provide 'appearance)
 
