@@ -178,12 +178,17 @@
   		doom-themes-enable-italic t) ; if nil, italics is universally disabled
   ;;(load-theme 'doom-vibrant t)
   ;;(load-theme 'doom-opera-light t)
-  ;;(load-theme 'doom-molokai t)
-  (load-theme 'doom-dracula t)
+  (load-theme 'doom-molokai t)
+  ;;(load-theme 'doom-dracula t)
   (doom-themes-org-config)
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config))
 
+
+(use-package solarized-theme
+  :ensure t
+  :config
+  (load-theme 'solarized-light t))
 
 (use-package smart-mode-line
   :ensure t
