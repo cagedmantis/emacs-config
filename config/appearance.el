@@ -150,7 +150,7 @@
   ;;(load-theme 'doom-vibrant t)
 
   ;; preferred light theme
-  (load-theme 'doom-opera-light t)
+  ;;(load-theme 'doom-opera-light t)
 
   ;;(load-theme 'doom-molokai t)
   (load-theme 'doom-dracula t)
