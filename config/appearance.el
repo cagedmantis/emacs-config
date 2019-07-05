@@ -95,13 +95,6 @@
   :config
   (hlinum-activate))
 
-
-;; Indent guides
-;; (use-package highlight-indent-guides
-;;   :ensure t
-;;   :hook (prog-mode . highlight-indent-guides-mode)
-;;   :config (setq highlight-indent-guides-method 'column))
-
 ;; Modeline - hai2nan
 (if (version< emacs-version "25.3")
 	(message "--> minions isn't supported in this version of Emacs")
@@ -130,46 +123,24 @@
   (setq whitespace-style '(face tabs empty trailing lines-tail))
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
-;; (use-package dimmer
-;;   :ensure t
-;;   :config
-;;   (dimmer-mode)
-;;   (setq dimmer-fraction 0.50))
-
-
 ;; -- Font --
 ;; ----------
-(defun font-existsp (font)
-  (if (display-graphic-p)
-	  (if (null (x-list-fonts font))
-		  nil t))
-  )
 
-(defvar preferred-fonts '("Fira Mono"
-                          "Source Code Pro"
-                          "DejaVu Sans Mono"
-						  "Monaco"
-						  "Ubuntu Mono"
-						  "Hack"))
+(defvar preferred-fonts '("Source Code Pro" "Fira Mono" "DejaVu Sans Mono" "Monaco" "Ubuntu Mono" "Hack"))
 
-;; Set font for linux and misc.
-(if (eq system-type 'gnu/linux)
-	(if (display-graphic-p)
-		(if (font-existsp "Ubuntu Mono")
-			(set-frame-font "Ubuntu Mono" nil t)
-		  (set-frame-font "Monaco" nil t))
-	  (set-frame-font "Source Code Pro"))
-  )
+(defvar current-font-size 10)
+
+(if (display-graphic-p)
+    (dolist (font preferred-fonts)
+	  (if (member font (font-family-list))
+		  (progn
+			(set-frame-font (concat font " " (number-to-string current-font-size)) t)
+			(message "Font: %s" font)
+			(message "Font size: %d" current-font-size)
+			(return)))))
 
 ;; -- Theme --
 ;; -----------
-;; (use-package color-theme
-;;   :ensure t
-;;   :config
-;;   (setq color-theme-is-global t)
-;;   (color-theme-initialize))
-
-;; (use-package color-theme-modern)
 
 (use-package doom-themes
   :ensure t
@@ -177,23 +148,30 @@
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
   		doom-themes-enable-italic t) ; if nil, italics is universally disabled
   ;;(load-theme 'doom-vibrant t)
-  ;;(load-theme 'doom-opera-light t)
-  (load-theme 'doom-molokai t)
-  ;;(load-theme 'doom-dracula t)
+
+  ;; preferred light theme
+  (load-theme 'doom-opera-light t)
+
+  ;;(load-theme 'doom-molokai t)
+  (load-theme 'doom-dracula t)
   (doom-themes-org-config)
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config))
 
-
-(use-package solarized-theme
-  :ensure t
-  :config
-  (load-theme 'solarized-light t))
+;; preferred light theme
+;; (use-package material-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'material-light t))
 
 (use-package smart-mode-line
   :ensure t
   :config
   (setq sml/theme 'dark)
+
+  ;; preferred for light theme
+  ;;(setq sml/theme 'respectful)
+
   (setq sml/no-confirm-load-theme t)
   (sml/setup))
 
@@ -213,14 +191,6 @@
   (set-face-foreground 'git-gutter:added "green4")
   (set-face-foreground 'git-gutter:deleted "red"))
 
-;; EXPERIMENT
-(if (member "Hack" (font-family-list))
-	(set-face-attribute 'default nil :font "Hack"))
-
-;;(message font-family-list)
-
-(if (member "Fira Code" (font-family-list))
-    (set-face-attribute 'default nil :font "Fira Code"))
 
 (provide 'appearance)
 
