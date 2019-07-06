@@ -17,5 +17,8 @@
 (use-package deadgrep
   :ensure t)
 
+(use-package countdown
+  :ensure t)
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
