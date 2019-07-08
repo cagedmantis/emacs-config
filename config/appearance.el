@@ -147,13 +147,12 @@
   :config
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
   		doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;;(load-theme 'doom-vibrant t)
 
   ;; preferred light theme
   ;;(load-theme 'doom-opera-light t)
 
-  ;;(load-theme 'doom-molokai t)
-  (load-theme 'doom-dracula t)
+  (load-theme 'doom-molokai t)
+
   (doom-themes-org-config)
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config))
