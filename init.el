@@ -63,6 +63,7 @@
 (require 'lang-ruby)
 (require 'lang-rust)
 (require 'lang-sql)
+(require 'lang-swift)
 
 (cond
  ((eq system-type 'gnu/linux)
