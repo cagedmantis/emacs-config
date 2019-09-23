@@ -95,8 +95,6 @@
 	(gogetdoc      . "github.com/zmb3/gogetdoc")
 	(goimports     . "golang.org/x/tools/cmd/goimports")
 	(golint        . "github.com/golang/lint/golint")
-	;;(go-tools      . "honnef.co/go/tools/cmd/...")
-	(gometalinter  . "github.com/alecthomas/gometalinter")
 	(gomodifytags  . "github.com/fatih/gomodifytags")
 	(gomvpkg       . "golang.org/x/tools/cmd/gomvpkg")
 	(gorename      . "golang.org/x/tools/cmd/gorename")

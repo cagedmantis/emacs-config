@@ -61,12 +61,6 @@
 (use-package smarty-mode
   :defer t)
 
-(use-package sql-indent
-  :defer t
-  :config
-  (eval-after-load 'sql
-	'(load-library "sql-indent")))
-
 (provide 'lang-modes)
 
 ;;; lang-modes.el ends here
