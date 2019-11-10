@@ -62,6 +62,7 @@
 (require 'lang-python)
 (require 'lang-ruby)
 (require 'lang-rust)
+(require 'lang-sql)
 (require 'lang-swift)
 
 (cond
