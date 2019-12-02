@@ -4,87 +4,109 @@
 
 ;;; Code:
 
+;; TODO: replace go guru functionality
+;; lsp-goto-implementation
+;; lsp-goto-type-definition
+
 (use-package go-mode
   :ensure t
 
   :bind
-  ("C-c r" . go-rename)
-  ("C-c j" . lsp-find-definition)
-  ("C-c d" . lsp-describe-thing-at-point)
+  (:map go-mode-map
+        ("C-c g" . godoc)
+        ("C-i" . company-indent-or-complete-common)
+        ("C-M-i" . company-indent-or-complete-common)
+		("C-c r" . lsp-rename)
+		("C-c j" . lsp-find-definition)
+        ("C-c d" . lsp-describe-thing-at-point)
+		)
 
   :config
-  (add-hook 'go-mode-hook 'lsp-deferred)
+  ;;(require 'go-guru)
+  (add-hook 'go-mode-hook #'lsp)
+  ;; reformat code and add missing (or remove old) imports
+  (add-hook 'before-save-hook #'lsp-format-buffer)
+  (add-hook 'before-save-hook #'lsp-organize-imports))
 
-  ;;(setq gofmt-command "gofumpt")
-  (setq gofmt-command "goimports")
+;; (use-package go-mode
+;;   :ensure t
 
-  (defun my-go-mode-hook ()
-	(subword-mode t)
-	(setq tab-width 4)
-	(add-hook 'before-save-hook 'gofmt-before-save)
-	(with-eval-after-load 'go-mode
-	  (require 'godoctor)
-	  (require 'go-guru)
-	  (go-guru-hl-identifier-mode))
+;;   :bind
+;;   ("C-c j" . lsp-find-definition)
+;;   ("C-c d" . lsp-describe-thing-at-point)
 
-	;;todo: cleanup
-	(lsp)
+;;   :config
+;;   (add-hook 'go-mode-hook 'lsp-deferred)
 
-	(add-hook 'go-mode-hook 'flycheck-mode))
-  (add-hook 'go-mode-hook 'my-go-mode-hook))
+;;   ;;(setq gofmt-command "gofumpt")
 
-(use-package go-fill-struct
-  :ensure t
-  :bind ("C-c f" . go-fill-struct)
-  :after go-mode)
+;;   (defun my-go-mode-hook ()
+;; 	(subword-mode t)
+;; 	(setq tab-width 4)
+;; 	(add-hook 'before-save-hook 'gofmt-before-save)
+;; 	(with-eval-after-load 'go-mode
+;; 	  (require 'godoctor)
+;; 	  (require 'go-guru)
+;; 	  (go-guru-hl-identifier-mode))
 
-(use-package go-errcheck
-  :ensure t
-  :after go-mode)
+;; 	;;todo: cleanup
+;; 	(lsp)
 
-(use-package go-gen-test
-  :ensure t
-  :after go-mode)
+;; 	(add-hook 'go-mode-hook 'flycheck-mode))
+;;   (add-hook 'go-mode-hook 'my-go-mode-hook))
 
-(use-package gotest
-  :ensure t
-  :after go-mode)
+;; (use-package go-fill-struct
+;;   :ensure t
+;;   :bind ("C-c f" . go-fill-struct)
+;;   :after go-mode)
 
-(use-package go-stacktracer
-  :ensure t
-  :after go-mode)
+;; (use-package go-errcheck
+;;   :ensure t
+;;   :after go-mode)
 
-(use-package go-direx
-  :ensure t
-  :after go-mode)
+;; (use-package go-gen-test
+;;   :ensure t
+;;   :after go-mode)
 
-(use-package go-add-tags
-  :ensure t
-  :after go-mode
-  :config
-  (global-set-key (kbd "C-c t") 'go-add-tags))
+;; (use-package gotest
+;;   :ensure t
+;;   :after go-mode)
 
-(use-package go-guru
-  :ensure t
-  :after go-mode
-  :config
-  (add-hook `go-mode-hook `go-guru-hl-identifier-mode))
+;; (use-package go-stacktracer
+;;   :ensure t
+;;   :after go-mode)
 
-(use-package godoctor
-  :ensure t
-  :after go-mode)
+;; (use-package go-direx
+;;   :ensure t
+;;   :after go-mode)
 
-(use-package go-projectile
-  :ensure t
-  :after (go-mode projectile))
+;; (use-package go-add-tags
+;;   :ensure t
+;;   :after go-mode
+;;   :config
+;;   (global-set-key (kbd "C-c t") 'go-add-tags))
 
-(use-package go-impl
-  :ensure t
-  :after go-mode)
+;; (use-package go-guru
+;;   :ensure t
+;;   :after go-mode
+;;   :config
+;;   (add-hook `go-mode-hook `go-guru-hl-identifier-mode))
 
-(use-package go-tag
-  :ensure t
-  :after go-mode)
+;; (use-package godoctor
+;;   :ensure t
+;;   :after go-mode)
+
+;; (use-package go-projectile
+;;   :ensure t
+;;   :after (go-mode projectile))
+
+;; (use-package go-impl
+;;   :ensure t
+;;   :after go-mode)
+
+;; (use-package go-tag
+;;   :ensure t
+;;   :after go-mode)
 
 ;; TODO: add dap-mode, dap-go
 
@@ -99,12 +121,10 @@
 	(godoc         . "golang.org/x/tools/cmd/godoc")
 	(goflymake     . "github.com/dougm/goflymake")
 	(gogetdoc      . "github.com/zmb3/gogetdoc")
-	(goimports     . "golang.org/x/tools/cmd/goimports")
 	(golint        . "github.com/golang/lint/golint")
 	(gomodifytags  . "github.com/fatih/gomodifytags")
 	(gomvpkg       . "golang.org/x/tools/cmd/gomvpkg")
 	(gopls         . "golang.org/x/tools/gopls@latest") ;; enable modules
-	(gorename      . "golang.org/x/tools/cmd/gorename")
 	(gotags        . "github.com/jstemmer/gotags")
 	(gotests       . "github.com/cweill/gotests")
 	(gounconvert   . "github.com/mdempsky/unconvert")
