@@ -1,4 +1,4 @@
-;;; lang-go.el --- lang-go configuration
+;;; lang-go.el --- lang-go copnfiguration
 
 ;;; Commentary:
 
@@ -6,8 +6,14 @@
 
 (use-package go-mode
   :ensure t
-  :bind ("C-c r" . go-rename)
+
+  :bind
+  ("C-c r" . go-rename)
+  ("C-c j" . lsp-find-definition)
+  ("C-c d" . lsp-describe-thing-at-point)
+
   :config
+  (add-hook 'go-mode-hook 'lsp-deferred)
 
   ;;(setq gofmt-command "gofumpt")
   (setq gofmt-command "goimports")
@@ -80,6 +86,8 @@
   :ensure t
   :after go-mode)
 
+;; TODO: add dap-mode, dap-go
+
 ;; modified from github.com/dougm/go-projectile
 
 (defvar go-tools
@@ -87,7 +95,7 @@
 	(errcheck      . "github.com/kisielk/errcheck")
 	(fillstruct    . "github.com/davidrjenni/reftools/cmd/fillstruct")
 	(gocode        . "github.com/stamblerre/gocode")
-	(godef         . "github.com/rogpeppe/godef")
+	;;(godef         . "github.com/rogpeppe/godef")
 	(godoc         . "golang.org/x/tools/cmd/godoc")
 	(goflymake     . "github.com/dougm/goflymake")
 	(gogetdoc      . "github.com/zmb3/gogetdoc")
