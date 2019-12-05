@@ -18,106 +18,52 @@
         ("C-M-i" . company-indent-or-complete-common)
 		("C-c r" . lsp-rename)
 		("C-c j" . lsp-find-definition)
-        ("C-c d" . lsp-describe-thing-at-point)
-		)
+        ("C-c d" . lsp-describe-thing-at-point))
 
   :config
-  ;;(require 'go-guru)
   (add-hook 'go-mode-hook #'lsp)
-  ;; reformat code and add missing (or remove old) imports
   (add-hook 'before-save-hook #'lsp-format-buffer)
   (add-hook 'before-save-hook #'lsp-organize-imports))
 
-;; (use-package go-mode
-;;   :ensure t
+(use-package go-fill-struct
+  :ensure t
+  :bind ("C-c s" . go-fill-struct)
+  :after go-mode)
 
-;;   :bind
-;;   ("C-c j" . lsp-find-definition)
-;;   ("C-c d" . lsp-describe-thing-at-point)
+(use-package go-errcheck
+  :ensure t
+  :after go-mode)
 
-;;   :config
-;;   (add-hook 'go-mode-hook 'lsp-deferred)
+(use-package go-gen-test
+  :ensure t
+  :after go-mode)
 
-;;   ;;(setq gofmt-command "gofumpt")
+(use-package gotest
+  :ensure t
+  :after go-mode)
 
-;;   (defun my-go-mode-hook ()
-;; 	(subword-mode t)
-;; 	(setq tab-width 4)
-;; 	(add-hook 'before-save-hook 'gofmt-before-save)
-;; 	(with-eval-after-load 'go-mode
-;; 	  (require 'godoctor)
-;; 	  (require 'go-guru)
-;; 	  (go-guru-hl-identifier-mode))
+(use-package go-add-tags
+  :ensure t
+  :after go-mode
+  :config
+  (global-set-key (kbd "C-c t") 'go-add-tags))
 
-;; 	;;todo: cleanup
-;; 	(lsp)
+(use-package go-projectile
+  :ensure t
+  :after (go-mode projectile))
 
-;; 	(add-hook 'go-mode-hook 'flycheck-mode))
-;;   (add-hook 'go-mode-hook 'my-go-mode-hook))
+(use-package go-impl
+  :ensure t
+  :after go-mode)
 
-;; (use-package go-fill-struct
-;;   :ensure t
-;;   :bind ("C-c f" . go-fill-struct)
-;;   :after go-mode)
-
-;; (use-package go-errcheck
-;;   :ensure t
-;;   :after go-mode)
-
-;; (use-package go-gen-test
-;;   :ensure t
-;;   :after go-mode)
-
-;; (use-package gotest
-;;   :ensure t
-;;   :after go-mode)
-
-;; (use-package go-stacktracer
-;;   :ensure t
-;;   :after go-mode)
-
-;; (use-package go-direx
-;;   :ensure t
-;;   :after go-mode)
-
-;; (use-package go-add-tags
-;;   :ensure t
-;;   :after go-mode
-;;   :config
-;;   (global-set-key (kbd "C-c t") 'go-add-tags))
-
-;; (use-package go-guru
-;;   :ensure t
-;;   :after go-mode
-;;   :config
-;;   (add-hook `go-mode-hook `go-guru-hl-identifier-mode))
-
-;; (use-package godoctor
-;;   :ensure t
-;;   :after go-mode)
-
-;; (use-package go-projectile
-;;   :ensure t
-;;   :after (go-mode projectile))
-
-;; (use-package go-impl
-;;   :ensure t
-;;   :after go-mode)
-
-;; (use-package go-tag
-;;   :ensure t
-;;   :after go-mode)
-
-;; TODO: add dap-mode, dap-go
-
-;; modified from github.com/dougm/go-projectile
+(use-package go-tag
+  :ensure t
+  :after go-mode)
 
 (defvar go-tools
   '((asmfmt        . "github.com/klauspost/asmfmt/cmd/asmfmt")
 	(errcheck      . "github.com/kisielk/errcheck")
 	(fillstruct    . "github.com/davidrjenni/reftools/cmd/fillstruct")
-	(gocode        . "github.com/stamblerre/gocode")
-	;;(godef         . "github.com/rogpeppe/godef")
 	(godoc         . "golang.org/x/tools/cmd/godoc")
 	(goflymake     . "github.com/dougm/goflymake")
 	(gogetdoc      . "github.com/zmb3/gogetdoc")
@@ -128,7 +74,6 @@
 	(gotags        . "github.com/jstemmer/gotags")
 	(gotests       . "github.com/cweill/gotests")
 	(gounconvert   . "github.com/mdempsky/unconvert")
-	(guru          . "golang.org/x/tools/cmd/guru")
 	(impl          . "github.com/josharian/impl")
 	(tools         . "honnef.co/go/tools"))
   "Import paths for My Go tools.")

@@ -7,14 +7,10 @@
 (use-package lsp-mode
   :ensure t
   :after (direnv exec-path-from-shell)
-  :commands (lsp)
+  :commands (lsp lsp-deferred)
   :hook (go-mode . lsp)
-  ;; :hook (prog-mode . (lambda ()
-  ;;                      (direnv-update-environment)
-  ;;                      (lsp)))
   :config
   (add-hook 'c++-mode-hook #'lsp)
-  (add-hook 'go-mode-hook #'lsp)
   (add-hook 'python-mode-hook #'lsp)
   (add-hook 'rust-mode-hook #'lsp)
   (require 'lsp-clients))

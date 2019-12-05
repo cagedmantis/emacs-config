@@ -24,6 +24,7 @@
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "packages"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
+(setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/bin")))
 
 (require 'init-package)
 
