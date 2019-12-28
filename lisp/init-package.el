@@ -1,11 +1,20 @@
+;;; init-package.el --- init-package copnfiguration
+
+;;; Commentary:
+
+;;; Code:
+
 (require 'cl)
 (require 'package)
 
-(add-to-list 'package-archives
-			 '("melpa" . "https://melpa.milkbox.net/packages/") t)
-
 ;; (add-to-list 'package-archives
-;; 			 '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; 			 '("melpa" . "https://melpa.milkbox.net/packages/") t)
+
+(add-to-list 'package-archives
+			 '("melpa" . "https://melpa.org/packages/") t)
+
+(add-to-list 'package-archives
+			 '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives
@@ -19,10 +28,9 @@
   (package-refresh-contents))
 
 (defvar my-packages '(
-					  ;;google-c-style
-					  use-package
-					  use-package-ensure-system-package
-					  )
+		      use-package
+		      use-package-ensure-system-package
+		      )
   "A list of packages to ensure are installed at launch.")
 
 ;;grabbed from Emacs Prelude
