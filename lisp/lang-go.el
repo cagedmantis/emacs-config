@@ -7,10 +7,21 @@
 (use-package go-mode
   :ensure t
 
-  :bind
-  ("C-c r" . go-rename)
-  ("C-c j" . lsp-find-definition)
-  ("C-c d" . lsp-describe-thing-at-point)
+  :bind (:map go-mode-map
+			  ("C-c C-n" . go-run)
+			  ("C-c ."   . go-test-current-test)
+			  ("C-c f"   . go-test-current-file)
+			  ("C-c a"   . go-test-current-project)
+			  ("C-c r"   . lsp-rename)
+			  ("C-c j"   . lsp-find-definition)
+			  ("C-c d"   . lsp-describe-thing-at-point)
+
+			  ;; TODO: prove that these are useful
+			  ("C-c n" . flymake-goto-next-error)
+			  ("C-c p" . flymake-goto-prev-error)
+			  ("C-c ," . lsp-find-references)
+			  ("C-c i" . lsp-find-implementation)
+			  ("C-c t" . lsp-find-type-definition))
 
   :config
   (add-hook 'go-mode-hook 'lsp-deferred)
@@ -20,8 +31,8 @@
 	(setq tab-width 4)
 	(add-hook 'before-save-hook 'gofmt-before-save)
 	(with-eval-after-load 'go-mode
-	  (require 'godoctor)
-	  (require 'go-guru)
+	  ;; (require 'godoctor)
+	  ;; (require 'go-guru)
 	  (go-guru-hl-identifier-mode))
 
 	;;todo: cleanup
@@ -51,7 +62,7 @@
 
 (use-package gotest
   :ensure t
-  :after go-mode)
+  :defer t)
 
 (use-package go-stacktracer
   :ensure t
@@ -67,15 +78,15 @@
   :config
   (global-set-key (kbd "C-c t") 'go-add-tags))
 
-(use-package go-guru
-  :ensure t
-  :after go-mode
-  :config
-  (add-hook `go-mode-hook `go-guru-hl-identifier-mode))
+;; (use-package go-guru
+;;   :ensure t
+;;   :after go-mode
+;;   :config
+;;   (add-hook `go-mode-hook `go-guru-hl-identifier-mode))
 
-(use-package godoctor
-  :ensure t
-  :after go-mode)
+;; (use-package godoctor
+;;   :ensure t
+;;   :after go-mode)
 
 (use-package go-projectile
   :ensure t
@@ -97,21 +108,19 @@
   '((asmfmt        . "github.com/klauspost/asmfmt/cmd/asmfmt")
 	(errcheck      . "github.com/kisielk/errcheck")
 	(fillstruct    . "github.com/davidrjenni/reftools/cmd/fillstruct")
-	(gocode        . "github.com/stamblerre/gocode")
-	;;(godef         . "github.com/rogpeppe/godef")
+	;; (gocode        . "github.com/stamblerre/gocode")
 	(godoc         . "golang.org/x/tools/cmd/godoc")
 	(goflymake     . "github.com/dougm/goflymake")
 	(gogetdoc      . "github.com/zmb3/gogetdoc")
-	(goimports     . "golang.org/x/tools/cmd/goimports")
+	;; (goimports     . "golang.org/x/tools/cmd/goimports")
 	(golint        . "github.com/golang/lint/golint")
 	(gomodifytags  . "github.com/fatih/gomodifytags")
 	(gomvpkg       . "golang.org/x/tools/cmd/gomvpkg")
 	(gopls         . "golang.org/x/tools/gopls@latest") ;; enable modules
-	(gorename      . "golang.org/x/tools/cmd/gorename")
 	(gotags        . "github.com/jstemmer/gotags")
 	(gotests       . "github.com/cweill/gotests")
 	(gounconvert   . "github.com/mdempsky/unconvert")
-	(guru          . "golang.org/x/tools/cmd/guru")
+	;; (guru          . "golang.org/x/tools/cmd/guru")
 	(impl          . "github.com/josharian/impl")
 	(tools         . "honnef.co/go/tools"))
   "Import paths for My Go tools.")

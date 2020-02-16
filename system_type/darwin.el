@@ -1,4 +1,19 @@
-;; OS X specific configs
+;;; darwin.el --- macOS specific configuration
+
+;;; Commentary:
+
+;;; Code:
+
+(use-package exec-path-from-shell
+  :ensure t
+  :if (memq window-system '(mac ns))
+  :config
+  (setq exec-path-from-shell-arguments '("-l"))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-envs
+   '("GOPATH" "GO111MODULE" "GOPROXY"
+     "NPMBIN" "LC_ALL" "LANG" "LC_TYPE"
+     "SSH_AGENT_PID" "SSH_AUTH_SOCK" "SHELL")))
 
 ;convert fn key on macbook pro to ctl key
 (setq ns-function-modifier 'control)
@@ -6,20 +21,13 @@
 (setq mac-option-modifier 'meta)
 
 ;; Fonts
-;;(set-default-font "DejaVu Sans Mono")
-;;(set-default-font "Fira")
-
-;;(setq preferred-font "Fira Mono")
 (setq preferred-font "Source Code Pro")
-;;(setq preferred-font "ANONYMOUS PRO")
 
 ;; Does a font exist?
 (defun font-existsp (font)
   (if (window-system)
 	  (if (null (x-list-fonts font))
-		  nil t)
-	)
-  )
+		  nil t)))
 
 (if (font-existsp preferred-font)
     (set-default-font preferred-font)
@@ -27,13 +35,13 @@
 
 (set-face-attribute 'default nil :height 130)
 
+;; TODO: investigate why this config was here.
 ;; Latex hacks
-(getenv "PATH")
- (setenv "PATH"
-(concat
- "/usr/texbin" ":"
-
-(getenv "PATH")))
+;; (getenv "PATH")
+;; (setenv "PATH"
+;; 		(concat
+;; 		 "/usr/texbin" ":"
+;; 		 (getenv "PATH")))
 
 (setq default-directory "~/")
 
@@ -53,6 +61,7 @@ with a Windows external keyboard from time to time."
 
 (global-set-key (kbd "C-c w") 'swap-meta-and-super)
 
+;; TODO: Investigate what is really needed here.
 ;;utf-8
 (prefer-coding-system 'utf-8)
 (when (display-graphic-p)
@@ -65,5 +74,6 @@ with a Windows external keyboard from time to time."
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-
 (provide 'darwin)
+
+;;; darwin.el ends here
