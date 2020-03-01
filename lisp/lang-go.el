@@ -108,11 +108,9 @@
   '((asmfmt        . "github.com/klauspost/asmfmt/cmd/asmfmt")
 	(errcheck      . "github.com/kisielk/errcheck")
 	(fillstruct    . "github.com/davidrjenni/reftools/cmd/fillstruct")
-	;; (gocode        . "github.com/stamblerre/gocode")
 	(godoc         . "golang.org/x/tools/cmd/godoc")
 	(goflymake     . "github.com/dougm/goflymake")
 	(gogetdoc      . "github.com/zmb3/gogetdoc")
-	;; (goimports     . "golang.org/x/tools/cmd/goimports")
 	(golint        . "github.com/golang/lint/golint")
 	(gomodifytags  . "github.com/fatih/gomodifytags")
 	(gomvpkg       . "golang.org/x/tools/cmd/gomvpkg")
@@ -120,9 +118,8 @@
 	(gotags        . "github.com/jstemmer/gotags")
 	(gotests       . "github.com/cweill/gotests")
 	(gounconvert   . "github.com/mdempsky/unconvert")
-	;; (guru          . "golang.org/x/tools/cmd/guru")
 	(impl          . "github.com/josharian/impl")
-	(tools         . "honnef.co/go/tools"))
+	(staticcheck   . "honnef.co/go/gools/cmd/staticcheck"))
   "Import paths for My Go tools.")
 
 ;; TODO: consider adding a way to set GO111MODULE=on for individual commands.
