@@ -31,13 +31,9 @@
 	(setq tab-width 4)
 	(add-hook 'before-save-hook 'gofmt-before-save)
 	(with-eval-after-load 'go-mode
-	  ;; (require 'godoctor)
-	  ;; (require 'go-guru)
 	  (go-guru-hl-identifier-mode))
 
-	;;todo: cleanup
 	(lsp)
-
 	(add-hook 'go-mode-hook 'flycheck-mode))
 
   (defun lsp-go-before-save-hooks ()
@@ -78,16 +74,6 @@
   :config
   (global-set-key (kbd "C-c t") 'go-add-tags))
 
-;; (use-package go-guru
-;;   :ensure t
-;;   :after go-mode
-;;   :config
-;;   (add-hook `go-mode-hook `go-guru-hl-identifier-mode))
-
-;; (use-package godoctor
-;;   :ensure t
-;;   :after go-mode)
-
 (use-package go-projectile
   :ensure t
   :after (go-mode projectile))
@@ -106,20 +92,18 @@
 
 (defvar go-tools
   '((asmfmt        . "github.com/klauspost/asmfmt/cmd/asmfmt")
-	(errcheck      . "github.com/kisielk/errcheck")
 	(fillstruct    . "github.com/davidrjenni/reftools/cmd/fillstruct")
 	(godoc         . "golang.org/x/tools/cmd/godoc")
-	(goflymake     . "github.com/dougm/goflymake")
-	(gogetdoc      . "github.com/zmb3/gogetdoc")
-	(golint        . "github.com/golang/lint/golint")
+	(golint        . "golang.org/x/lint/golint")        ;==
 	(gomodifytags  . "github.com/fatih/gomodifytags")
 	(gomvpkg       . "golang.org/x/tools/cmd/gomvpkg")
 	(gopls         . "golang.org/x/tools/gopls@latest") ;; enable modules
 	(gotags        . "github.com/jstemmer/gotags")
 	(gotests       . "github.com/cweill/gotests")
-	(gounconvert   . "github.com/mdempsky/unconvert")
+	(gounconvert   . "github.com/mdempsky/unconvert")  ;;==
 	(impl          . "github.com/josharian/impl")
-	(staticcheck   . "honnef.co/go/gools/cmd/staticcheck"))
+	(errcheck      . "github.com/kisielk/errcheck")    ;;==
+	(staticcheck   . "honnef.co/go/tools/cmd/staticcheck")) ;;===
   "Import paths for My Go tools.")
 
 ;; TODO: consider adding a way to set GO111MODULE=on for individual commands.
@@ -130,7 +114,7 @@
     (let* ((url (cdr tool))
            (cmd (concat "go get -u " url))
            (result (shell-command-to-string cmd)))
-      (message "Go tool %s: %s" (car tool) cmd))))
+      (message "Go tool %s: %s -> %s" (car tool) cmd (string-trim result)))))
 
 (defun go-update-tools ()
   "Update go related tools via go get."
