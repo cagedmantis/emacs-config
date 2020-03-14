@@ -15,6 +15,9 @@
      "NPMBIN" "LC_ALL" "LANG" "LC_TYPE"
      "SSH_AGENT_PID" "SSH_AUTH_SOCK" "SHELL")))
 
+(use-package osx-plist
+  :ensure t)
+
 ;convert fn key on macbook pro to ctl key
 (setq ns-function-modifier 'control)
 (setq mac-command-modifier 'super)
