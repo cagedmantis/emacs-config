@@ -31,6 +31,8 @@ thumbs/*
 tramp
 transient/
 url/cookies
+go.mod
+go.sum
 
 # OS generated files #
 ######################
