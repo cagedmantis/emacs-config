@@ -28,9 +28,8 @@
   (package-refresh-contents))
 
 (defvar my-packages '(
-		      use-package
-		      use-package-ensure-system-package
-		      )
+					  use-package
+					  use-package-ensure-system-package)
   "A list of packages to ensure are installed at launch.")
 
 ;;grabbed from Emacs Prelude
@@ -48,13 +47,6 @@
   (dolist (p my-packages)
     (when (not (package-installed-p p))
       (package-install p))))
-
-(use-package auto-package-update
-  :ensure t
-  :config
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-hide-results t)
-  (auto-package-update-maybe))
 
 (provide 'init-package)
 ;;; init-package ends here
