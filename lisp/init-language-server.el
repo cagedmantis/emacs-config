@@ -8,9 +8,6 @@
   :ensure t
   :after (direnv exec-path-from-shell)
   :commands (lsp)
-  ;; :hook (prog-mode . (lambda ()
-  ;;                      (direnv-update-environment)
-  ;;                      (lsp)))
   :config
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)

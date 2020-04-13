@@ -6,7 +6,6 @@
 
 (use-package go-mode
   :ensure t
-
   :bind (:map go-mode-map
 			  ("C-c C-n" . go-run)
 			  ("C-c ."   . go-test-current-test)
@@ -22,14 +21,12 @@
 			  ("C-c ," . lsp-find-references)
 			  ("C-c i" . lsp-find-implementation)
 			  ("C-c t" . lsp-find-type-definition))
-
   :config
   (add-hook 'go-mode-hook 'lsp-deferred)
-
   (defun my-go-mode-hook ()
 	(subword-mode t)
 	(setq tab-width 4)
-	(add-hook 'before-save-hook 'gofmt-before-save)
+	;;(add-hook 'before-save-hook 'gofmt-before-save)
 	(with-eval-after-load 'go-mode
 	  (go-guru-hl-identifier-mode))
 
@@ -86,6 +83,9 @@
   :ensure t
   :after go-mode)
 
+(use-package golint
+  :ensure t)
+
 ;; TODO: add dap-mode, dap-go
 
 ;; modified from github.com/dougm/go-projectile
@@ -94,16 +94,16 @@
   '((asmfmt        . "github.com/klauspost/asmfmt/cmd/asmfmt")
 	(fillstruct    . "github.com/davidrjenni/reftools/cmd/fillstruct")
 	(godoc         . "golang.org/x/tools/cmd/godoc")
-	(golint        . "golang.org/x/lint/golint")        ;==
+	(golint        . "golang.org/x/lint/golint")
 	(gomodifytags  . "github.com/fatih/gomodifytags")
 	(gomvpkg       . "golang.org/x/tools/cmd/gomvpkg")
-	(gopls         . "golang.org/x/tools/gopls@latest") ;; enable modules
+	(gopls         . "golang.org/x/tools/gopls@latest")
 	(gotags        . "github.com/jstemmer/gotags")
 	(gotests       . "github.com/cweill/gotests")
-	(gounconvert   . "github.com/mdempsky/unconvert")  ;;==
+	(gounconvert   . "github.com/mdempsky/unconvert")
 	(impl          . "github.com/josharian/impl")
-	(errcheck      . "github.com/kisielk/errcheck")    ;;==
-	(staticcheck   . "honnef.co/go/tools/cmd/staticcheck")) ;;===
+	(errcheck      . "github.com/kisielk/errcheck")
+	(staticcheck   . "honnef.co/go/tools/cmd/staticcheck"))
   "Import paths for My Go tools.")
 
 ;; TODO: consider adding a way to set GO111MODULE=on for individual commands.
