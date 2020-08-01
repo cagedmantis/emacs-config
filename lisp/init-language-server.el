@@ -6,13 +6,13 @@
 
 (use-package lsp-mode
   :ensure t
-  :after (direnv exec-path-from-shell)
+  :after (direnv exec-path-from-shell company)
   :commands (lsp)
   :config
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
 	 ("gopls.staticcheck" t t)))
-
+  (setq lsp-completion-provider :capf) ;; company-lsp is not longer supported
   (add-hook 'c++-mode-hook #'lsp)
   (add-hook 'go-mode-hook #'lsp)
   (add-hook 'python-mode-hook #'lsp)
@@ -37,20 +37,6 @@
 		lsp-ui-peek-peek-height 25
 		;;lsp-ui-sideline-enable nil
 		lsp-ui-sideline-ignore-duplicate t))
-
-(use-package company-lsp
-  :ensure t
-  :after (company lsp-mode)
-  :commands company-lsp
-  :config
-  (setq company-lsp-cache-candidates nil
-		;;company-lsp-cache-candidates 'auto
-		company-transformers nil
-		company-lsp-async t
-		company-lsp-enable-recompletion t)
-
-  :init
-  (push 'company-lsp company-backends))
 
 ;; https://github.com/emacs-lsp/lsp-mode
 ;; pip install ‘python-language-server[all]’
