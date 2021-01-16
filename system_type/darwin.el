@@ -33,8 +33,8 @@
 		  nil t)))
 
 (if (font-existsp preferred-font)
-    (set-default-font preferred-font)
-  (set-default-font "Monaco"))
+    (set-frame-font preferred-font)
+  (set-frame-font "Monaco"))
 
 (set-face-attribute 'default nil :height 130)
 

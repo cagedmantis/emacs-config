@@ -37,6 +37,9 @@
 	(add-hook 'before-save-hook #'lsp-format-buffer t t)
 	(add-hook 'before-save-hook #'lsp-organize-imports t t))
 
+  (setq lsp-gopls-server-args '("-rpc.trace" "serve" "--debug=localhost:6060"))
+  ;;(setq lsp-go-gopls-server-args '("-rpc.trace" "serve" "--debug=localhost:6060"))
+
   (add-hook 'go-mode-hook 'my-go-mode-hook)
   (add-hook 'before-save-hook #'lsp-go-before-save-hooks))
 

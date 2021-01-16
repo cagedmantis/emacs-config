@@ -9,6 +9,9 @@
   :after (direnv exec-path-from-shell)
   :commands (lsp)
   :config
+
+  (setq lsp-gopls-server-args '("-rpc.trace" "serve" "--debug=localhost:6060" ))
+  ;;(setq lsp-go-gopls-server-args '("-rpc.trace" "serve" "--debug=localhost:6060"))
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
 	 ("gopls.staticcheck" t t)))
@@ -17,6 +20,9 @@
   (add-hook 'go-mode-hook #'lsp)
   (add-hook 'python-mode-hook #'lsp)
   (add-hook 'rust-mode-hook #'lsp)
+
+
+
   (require 'lsp-clients))
 
 (use-package lsp-ui
