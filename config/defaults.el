@@ -179,7 +179,7 @@
 ;;   :config
 ;;   (global-aggressive-indent-mode 1))
 
-(use-package autopair
+(use-package smartparens
   :ensure t)
 
 (use-package pbcopy
