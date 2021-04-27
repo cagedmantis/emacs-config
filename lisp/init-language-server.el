@@ -38,12 +38,8 @@
 		;;lsp-ui-sideline-enable nil
 		lsp-ui-sideline-ignore-duplicate t))
 
-;; https://github.com/emacs-lsp/lsp-mode
-;; pip install ‘python-language-server[all]’
-;; gem install solargraph
-;; rls
-;; npm i -g bash-language-server
-;; ccls, clangd, cquery
+(use-package lsp-ivy
+  :ensure t)
 
 (provide 'init-language-server)
 ;;; init-language-server.el ends here
