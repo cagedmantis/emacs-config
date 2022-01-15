@@ -9,8 +9,8 @@
   :mode ("\\.proto\\'" . protobuf-mode)
   :config
   (defconst my-protobuf-style
-    '((c-basic-offset 2)
-	  (tab-width 8)
+    '((c-basic-offset . 2)
+	  (tab-width . 8)
       (indent-tabs-mode t)))
 
   (add-hook 'protobuf-mode-hook
@@ -60,6 +60,9 @@
 
 (use-package smarty-mode
   :defer t)
+
+(use-package racket-mode
+  :ensure t)
 
 (provide 'lang-modes)
 
