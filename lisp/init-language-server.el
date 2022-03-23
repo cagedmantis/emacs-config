@@ -41,5 +41,8 @@
 (use-package lsp-ivy
   :ensure t)
 
+(use-package dap-mode
+  :ensure t)
+
 (provide 'init-language-server)
 ;;; init-language-server.el ends here

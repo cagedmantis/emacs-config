@@ -86,8 +86,6 @@
 (use-package golint
   :ensure t)
 
-;; TODO: add dap-mode, dap-go
-
 ;; modified from github.com/dougm/go-projectile
 
 (defvar go-tools
@@ -121,5 +119,4 @@
   (go-install-toolset))
 
 (provide 'lang-go)
-
 ;;; lang-go.el ends here
