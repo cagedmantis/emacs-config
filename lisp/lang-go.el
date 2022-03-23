@@ -97,29 +97,28 @@
 	(golint        . "golang.org/x/lint/golint")
 	(gomodifytags  . "github.com/fatih/gomodifytags")
 	(gomvpkg       . "golang.org/x/tools/cmd/gomvpkg")
-	(gopls         . "golang.org/x/tools/gopls@latest")
+	(gopls         . "golang.org/x/tools/gopls")
 	(gotags        . "github.com/jstemmer/gotags")
-	(gotests       . "github.com/cweill/gotests")
+	(gotests       . "github.com/cweill/gotests/...")
 	(gounconvert   . "github.com/mdempsky/unconvert")
 	(impl          . "github.com/josharian/impl")
 	(errcheck      . "github.com/kisielk/errcheck")
 	(staticcheck   . "honnef.co/go/tools/cmd/staticcheck"))
   "Import paths for My Go tools.")
 
-;; TODO: consider adding a way to set GO111MODULE=on for individual commands.
-
-(defun go-get-tools ()
-  "Install go related tools via go get."
+(defun go-install-toolset ()
+  "Install the latest versions of Go related tools via go install."
   (dolist (tool go-tools)
     (let* ((url (cdr tool))
-           (cmd (concat "go get -u " url))
+           (cmd (concat "go install " url "@latest"))
            (result (shell-command-to-string cmd)))
-      (message "Go tool %s: %s -> %s" (car tool) cmd (string-trim result)))))
+      (message "Go tool %s: %s -> %s" (car tool) cmd (string-trim result))))
+  (message "Done installing/updating Go Tools"))
 
-(defun go-update-tools ()
-  "Update go related tools via go get."
+(defun go-install-tools ()
+  "Update/install Go related tools."
   (interactive)
-  (go-get-tools))
+  (go-install-toolset))
 
 (provide 'lang-go)
 
