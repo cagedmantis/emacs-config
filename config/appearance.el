@@ -14,40 +14,6 @@
 (size-indication-mode t)
 (show-paren-mode 1)                            ; turn on paren match highlighting
 (global-visual-line-mode 1)                    ; Soft wrap lines
-;;(setq-default cursor-type 'hollow)
-
-;; -- line numbers --
-;; ------------------
-(when (version< emacs-version "26.0.50")
-  (progn
-	(global-linum-mode 1)
-	(setq linum-format " %d ")
-	(setq linum-format (if (not window-system) " %4d " " %4d "))
-
-	(defun linum-on ()
-	  (unless (or (minibufferp) (member major-mode linum-disabled-modes))
-		(linum-mode 1)))
-
-	;;disable line mode for listed modes
-	(setq linum-disabled-modes-list
-		  '(ansi-term
-			compilation-mode
-			eshell-mode
-			fundamental-mode
-			help-mode
-			magit-status-mode
-			mu4e-headers-mode
-			mu4e-main-mode
-			mu4e-view-mode
-			nrepl-mode
-			shell-mode
-			slime-repl-mode
-			term-mode
-			term-mode
-			wl-summary-mode))
-	(defun linum-on ()
-	  (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
-		(linum-mode 1)))))
 
 (when (version<= "26.0.50" emacs-version )
   (global-display-line-numbers-mode t)
