@@ -89,12 +89,6 @@
 ;; Don't defer screen updates when performing operations
 (setq redisplay-dont-pause t)
 
-;; Highlight the line number of the current line.
-(use-package hlinum
-  :ensure t
-  :config
-  (hlinum-activate))
-
 ;; Modeline - hai2nan
 (if (version< emacs-version "25.3")
 	(message "--> minions isn't supported in this version of Emacs")
