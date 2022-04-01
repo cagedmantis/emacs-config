@@ -33,7 +33,7 @@
 
 (require 'init-autoinsert)
 (require 'init-cc)
-(require 'init-columnmarker)
+;;(require 'init-columnmarker)
 (require 'init-company)
 ;;(require 'init-direnv)
 ;;(require 'init-erc)
@@ -44,7 +44,7 @@
 (require 'init-latex)
 (require 'init-magit)
 (require 'init-org)
-(require 'init-plantuml)
+;;(require 'init-plantuml)
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-saveplace)
