@@ -96,8 +96,7 @@
 		  (progn
 			(set-frame-font (concat font " " (number-to-string current-font-size)) t)
 			(message "Font: %s" font)
-			(message "Font size: %d" current-font-size)
-			(return)))))
+			(message "Font size: %d" current-font-size)))))
 
 ;; -- Theme --
 ;; -----------
