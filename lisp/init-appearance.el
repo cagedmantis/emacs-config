@@ -1,4 +1,4 @@
-;;; appearance.el --- appearance configuration
+;;; init-appearance.el --- appearance configuration
 
 ;;; Commentary:
 
@@ -112,5 +112,5 @@
 		  (accent . (telephone-line-major-mode-segment))
 		  (evil   . (telephone-line-airline-position-segment)))))
 
-(provide 'appearance)
-;;; appearance.el ends here
+(provide 'init-appearance)
+;;; init-appearance.el ends here

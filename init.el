@@ -20,7 +20,7 @@
 (require 'init-package)
 
 (require 'defaults)
-(require 'appearance)
+(require 'init-appearance)
 (require 'init-ivy)
 
 (require 'init-autoinsert)
