@@ -55,19 +55,6 @@
 ;; Don't defer screen updates when performing operations
 (setq redisplay-dont-pause t)
 
-;; Modeline - hai2nan
-(if (version< emacs-version "25.3")
-	(message "--> minions isn't supported in this version of Emacs")
-  (when window-system
-	(use-package moody
-	  :ensure t
-	  :config
-	  (setq x-underline-at-descent-line t)
-	  (setq moody-mode-line-height 24)
-	  (setq moody-slant-function #'moody-slant-apple-rgb)
-	  (moody-replace-mode-line-buffer-identification)
-	  (moody-replace-vc-mode))))
-
 (add-hook 'prog-mode-hook (lambda ()
                             (interactive)
                             (setq show-trailing-whitespace 1)))
@@ -83,9 +70,8 @@
   (setq whitespace-style '(face tabs empty trailing lines-tail))
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
-;; -- Font --
-;; ----------
-
+;; Add the powerline version of fonts to local machine.
+;; Set the terminals to use the powerline version of the fonts.
 (defvar preferred-fonts '("Source Code Pro" "Fira Mono" "DejaVu Sans Mono" "Monaco" "Ubuntu Mono" "Hack"))
 
 (defvar current-font-size 10)
@@ -95,50 +81,36 @@
 	  (if (member font (font-family-list))
 		  (progn
 			(set-frame-font (concat font " " (number-to-string current-font-size)) t)
+			(set-frame-font font nil t)
 			(message "Font: %s" font)
 			(message "Font size: %d" current-font-size)
 			(return)))))
 
-;; -- Theme --
-;; -----------
-
 (use-package doom-themes
   :ensure t
   :config
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-  		doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (setq doom-themes-enable-bold t         ; if nil, bold is universally disabled
+  		doom-themes-enable-italic t       ; if nil, italics is universally disabled
+		doom-themes-org-config t
+		doom-themes-visual-bell-config t)
+  (load-theme 'doom-molokai t))   ; Enable flashing mode-line on errors
 
-  ;; preferred light theme
-  ;;(load-theme 'doom-opera-light t)
-
-  (load-theme 'doom-molokai t)
-
-  (doom-themes-org-config)
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config))
-
-;; preferred light theme
-;; (use-package material-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'material-light t))
-
-(use-package smart-mode-line
+(use-package telephone-line
   :ensure t
-  :config
-  (setq sml/theme 'dark)
-
-  ;; preferred for light theme
-  ;;(setq sml/theme 'respectful)
-
-  (setq sml/no-confirm-load-theme t)
-  (sml/setup))
-
-(if (version< emacs-version "25.3")
-	(message "--> minions isn't supported in this version of Emacs")
-  (use-package minions
-	:ensure t
-	:config (minions-mode 1)))
+  :init
+  (telephone-line-mode 1)
+  :custom
+  (setq telephone-line-lhs
+		'((evil   . (telephone-line-evil-tag-segment))
+		  (accent . (telephone-line-vc-segment
+					 telephone-line-erc-modified-channels-segment
+					 telephone-line-process-segment))
+		  (nil    . (telephone-line-minor-mode-segment
+					 telephone-line-buffer-segment))))
+  (setq telephone-line-rhs
+		'((nil    . (telephone-line-misc-info-segment))
+		  (accent . (telephone-line-major-mode-segment))
+		  (evil   . (telephone-line-airline-position-segment)))))
 
 (provide 'appearance)
 ;;; appearance.el ends here
