@@ -42,7 +42,6 @@
 ;;(require 'init-flyspell)
 (require 'init-language-server)
 (require 'init-latex)
-(require 'init-magit)
 (require 'init-org)
 (require 'init-plantuml)
 (require 'init-projectile)
@@ -54,6 +53,8 @@
 (require 'init-yasnippet)
 ;;(require 'init-iedit)
 ;;(require 'init-spelling)
+
+(require 'init-git)
 
 (require 'lang-cpp)
 (require 'lang-go)
