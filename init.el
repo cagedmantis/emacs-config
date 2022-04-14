@@ -33,7 +33,7 @@
 
 (require 'init-autoinsert)
 (require 'init-cc)
-(require 'init-columnmarker)
+;;(require 'init-columnmarker)
 (require 'init-company)
 ;;(require 'init-direnv)
 (require 'init-erc)
