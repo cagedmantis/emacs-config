@@ -10,7 +10,6 @@
                     (or (buffer-file-name) load-file-name)))
 
 (add-to-list 'load-path "~/bin/")
-(add-to-list 'load-path (concat dotfiles-dir "/config"))
 (add-to-list 'load-path (concat dotfiles-dir "/lisp"))
 (add-to-list 'load-path (concat dotfiles-dir "/system_type"))
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
@@ -19,7 +18,7 @@
 
 (require 'init-package)
 
-(require 'defaults)
+(require 'init-defaults)
 (require 'init-appearance)
 (require 'init-ivy)
 

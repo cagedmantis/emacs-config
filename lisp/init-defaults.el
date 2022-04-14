@@ -1,4 +1,4 @@
-;;; defaults.el --- default configuration
+;;; init-defaults.el --- default configuration
 
 ;;; Commentary:
 
@@ -189,6 +189,6 @@
 
 (setq auto-window-vscroll nil)
 
-(provide 'defaults)
+(provide 'init-defaults)
 
-;;; defaults.el ends here
+;;; init-defaults.el ends here
