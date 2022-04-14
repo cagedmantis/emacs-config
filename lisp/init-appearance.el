@@ -83,8 +83,7 @@
 			(set-frame-font (concat font " " (number-to-string current-font-size)) t)
 			(set-frame-font font nil t)
 			(message "Font: %s" font)
-			(message "Font size: %d" current-font-size)
-			(return)))))
+			(message "Font size: %d" current-font-size)))))
 
 (use-package doom-themes
   :ensure t

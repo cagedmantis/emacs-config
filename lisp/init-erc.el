@@ -1,6 +1,7 @@
 ;; Load erc
 (require 'erc)
-(require 'tls)
+;; TODO tls is depricated. find a secure solution
+;;(require 'tls)
 
 
 (custom-set-variables
@@ -62,7 +63,7 @@
                   (car bounds) (cdr bounds)))
       (when (or (and (erc-server-buffer-p) (erc-get-server-user word))
                 (and erc-channel-users (erc-get-channel-user word)))
-        (put-text-property (car bounds) (cdr bounds) 
+        (put-text-property (car bounds) (cdr bounds)
                            'face (cons 'foreground-color
                                        (erc-get-color-for-nick word)))))))
 

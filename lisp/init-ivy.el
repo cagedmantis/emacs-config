@@ -83,6 +83,9 @@
   :ensure t
   :after ivy)
 
+(use-package ivy-hydra
+  :ensure t)
+
 (provide 'init-ivy)
 
 ;;; init-ivy.el ends here
