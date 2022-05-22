@@ -59,9 +59,6 @@
   :config
   (add-hook 'ruby-mode-hook #'rubocop-mode))
 
-(use-package chef-mode
-  :ensure t)
-
 (use-package inf-ruby
   :ensure t)
 
