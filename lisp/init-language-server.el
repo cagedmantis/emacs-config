@@ -44,5 +44,8 @@
 (use-package dap-mode
   :ensure t)
 
+(use-package which-key
+  :ensure t)
+
 (provide 'init-language-server)
 ;;; init-language-server.el ends here

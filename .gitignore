@@ -33,6 +33,7 @@ transient/
 url/cookies
 go.mod
 go.sum
+var/
 
 # OS generated files #
 ######################

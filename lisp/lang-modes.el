@@ -16,22 +16,10 @@
   (add-hook 'protobuf-mode-hook
 			(lambda () (c-add-style "my-style" my-protobuf-style t))))
 
-(use-package fish-mode
-  :ensure t)
-
-(use-package terraform-mode
-  :ensure t)
-
 (use-package dockerfile-mode
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
-
-;; (use-package python-mode
-;;   :ensure t)
-
-;; (use-package web-mode
-;;   :ensure t)
 
 (use-package haskell-mode
   :ensure t)

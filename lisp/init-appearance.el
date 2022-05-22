@@ -70,6 +70,14 @@
   (setq whitespace-style '(face tabs empty trailing lines-tail))
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
+;; Vertical window divider
+(setq window-divider-default-right-width 3)
+(setq window-divider-default-places 'right-only)
+(window-divider-mode)
+
+(use-package diminish
+  :ensure t)
+
 ;; Add the powerline version of fonts to local machine.
 ;; Set the terminals to use the powerline version of the fonts.
 (defvar preferred-fonts '("Source Code Pro" "Fira Mono" "DejaVu Sans Mono" "Monaco" "Ubuntu Mono" "Hack"))
