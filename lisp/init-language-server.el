@@ -17,6 +17,7 @@
   (add-hook 'go-mode-hook #'lsp)
   (add-hook 'python-mode-hook #'lsp)
   (add-hook 'rust-mode-hook #'lsp)
+  (lsp-enable-which-key-integration t)
   (require 'lsp-clients))
 
 (use-package lsp-ui

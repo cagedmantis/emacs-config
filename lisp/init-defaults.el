@@ -189,6 +189,12 @@
 
 (setq auto-window-vscroll nil)
 
+;; =============================================================================
+
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
+
 (provide 'init-defaults)
 
 ;;; init-defaults.el ends here
