@@ -102,22 +102,13 @@
 		doom-themes-visual-bell-config t)
   (load-theme 'doom-molokai t))   ; Enable flashing mode-line on errors
 
-(use-package telephone-line
+(use-package doom-modeline
   :ensure t
-  :init
-  (telephone-line-mode 1)
-  :custom
-  (setq telephone-line-lhs
-		'((evil   . (telephone-line-evil-tag-segment))
-		  (accent . (telephone-line-vc-segment
-					 telephone-line-erc-modified-channels-segment
-					 telephone-line-process-segment))
-		  (nil    . (telephone-line-minor-mode-segment
-					 telephone-line-buffer-segment))))
-  (setq telephone-line-rhs
-		'((nil    . (telephone-line-misc-info-segment))
-		  (accent . (telephone-line-major-mode-segment))
-		  (evil   . (telephone-line-airline-position-segment)))))
+  :init (doom-modeline-mode 1)
+  :config
+  (setq doom-modeline-project-detection 'auto)
+  (setq doom-modeline-buffer-file-name-style 'auto)
+  (setq doom-modeline-time t))
 
 (provide 'init-appearance)
 ;;; init-appearance.el ends here
