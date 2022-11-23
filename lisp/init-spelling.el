@@ -13,11 +13,24 @@
 ;; Spellchecking requires an external command to be available. Install aspell on your Mac, then make it the default checker for Emacs' ispell. Note that personal dictionary is located at ~/.aspell.LANG.pws by default.
 (setq ispell-program-name "aspell")
 
+(use-package flyspell
+  :ensure t
+  :hook ((text-mode . flyspell-mode)
+		 (org-mode . flyspell-mode)
+		 (git-commit-mode . flyspell-mode)
+		 (prog-mode . flyspell-prog-mode)))
 
-;; Popup window for spellchecking
 (use-package flyspell-correct
+  :after flyspell
+  :ensure t
+  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+
+(use-package flyspell-correct-ivy
+  :after flyspell-correct
   :ensure t)
+
 (use-package flyspell-correct-popup
+  :after flyspell
   :ensure t)
 
 
@@ -50,6 +63,9 @@
   :ensure t
   :config
   (global-set-key (kbd "M-\\") 'define-word-at-point))
+
+
+
 
 (provide 'init-spelling)
 

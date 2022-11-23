@@ -43,7 +43,7 @@
 (require 'init-utils)
 (require 'init-yasnippet)
 ;;(require 'init-iedit)
-;;(require 'init-spelling)
+(require 'init-spelling)
 
 (require 'init-git)
 
