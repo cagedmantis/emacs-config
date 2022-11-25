@@ -78,20 +78,31 @@
 (use-package diminish
   :ensure t)
 
-;; Add the powerline version of fonts to local machine.
-;; Set the terminals to use the powerline version of the fonts.
-(defvar preferred-fonts '("Source Code Pro" "Fira Mono" "DejaVu Sans Mono" "Monaco" "Ubuntu Mono" "Hack"))
-
 (defvar current-font-size 10)
 
+(defun set-font (font)
+  "Set the FONT and size."
+  (set-frame-font (concat font " " (number-to-string current-font-size)) t)
+  (set-frame-font font nil t)
+  (message "Font: %s Size: %d" font current-font-size))
+
+;; needs cleanup
 (if (display-graphic-p)
-    (dolist (font preferred-fonts)
-	  (if (member font (font-family-list))
-		  (progn
-			(set-frame-font (concat font " " (number-to-string current-font-size)) t)
-			(set-frame-font font nil t)
-			(message "Font: %s" font)
-			(message "Font size: %d" current-font-size)))))
+    (cond
+     ((member "Source Code Pro" (font-family-list))
+      (set-font "Source Code Pro"))
+     ((member "Fira Mono" (font-family-list))
+      (set-font "Fira Mono"))
+     ((member "DejaVu Sans Mono" (font-family-list))
+      (set-font "DejaVu Sans Mono"))
+     ((member "Monaco" (font-family-list))
+      (set-font "Monaco"))
+     ((member "Ubuntu Mono" (font-family-list))
+      (set-font "Ubuntu Mono"))
+     ((member "Hack" (font-family-list))
+      (set-font "Hack"))
+     ((t)
+      (message "Using default system font"))))
 
 (use-package doom-themes
   :ensure t
