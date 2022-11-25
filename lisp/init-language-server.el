@@ -6,19 +6,25 @@
 
 (use-package lsp-mode
   :ensure t
-  :after (direnv exec-path-from-shell company)
-  :commands (lsp)
+  :after (exec-path-from-shell company)
+  :hook ((c++-mode
+		  c-mode
+		  go-mode
+		  js-mode
+		  python-mode
+		  rust-mode) . lsp-deferred)
+  :commands lsp
   :config
+  (defun lsp-go-install-save-hooks ()
+	(add-hook 'before-save-hook #'lsp-format-buffer t t)
+	(add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
 	 ("gopls.staticcheck" t t)))
-  (setq lsp-completion-provider :capf) ;; company-lsp is not longer supported
-  (add-hook 'c++-mode-hook #'lsp)
-  (add-hook 'go-mode-hook #'lsp)
-  (add-hook 'python-mode-hook #'lsp)
-  (add-hook 'rust-mode-hook #'lsp)
-  (lsp-enable-which-key-integration t)
-  (require 'lsp-clients))
+
+  (setq lsp-enable-which-key-integration t))
 
 (use-package lsp-ui
   :ensure t
@@ -27,7 +33,7 @@
   :commands lsp-ui-mode
   :config
   (setq lsp-ui-doc-enable t
-		lsp-ui-doc-include-signature t
+   		lsp-ui-doc-include-signature t
 		lsp-ui-doc-position 'top
 		lsp-ui-doc-use-childframe t
 		lsp-ui-flycheck-enable t

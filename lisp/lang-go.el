@@ -30,7 +30,7 @@
 	(with-eval-after-load 'go-mode
 	  (go-guru-hl-identifier-mode))
 
-	(lsp)
+	 (lsp)
 	(add-hook 'go-mode-hook 'flycheck-mode))
 
   (defun lsp-go-before-save-hooks ()
