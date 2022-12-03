@@ -7,12 +7,13 @@
 (use-package lsp-mode
   :ensure t
   :after (exec-path-from-shell company)
-  :hook ((c++-mode
-		  c-mode
-		  go-mode
+  :hook ((c++-mode  ;; clangd
+		  c-mode    ;; clangd
+		  go-mode   ;; gopls
 		  js-mode
 		  python-mode
-		  rust-mode) . lsp-deferred)
+		  rust-mode ;; rust-analyzer
+		  ) . lsp-deferred)
   :commands lsp
   :config
   (defun lsp-go-install-save-hooks ()
