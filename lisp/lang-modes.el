@@ -21,8 +21,8 @@
   :config
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
-(use-package haskell-mode
-  :ensure t)
+;; (use-package haskell-mode
+;;   :ensure t)
 
 ;; https://jblevins.org/projects/markdown-mode/
 (use-package markdown-mode

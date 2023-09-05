@@ -35,6 +35,7 @@ go.mod
 go.sum
 var/
 .dap-breakpoints
+org-persist/
 
 # OS generated files #
 ######################

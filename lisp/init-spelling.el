@@ -20,10 +20,10 @@
 		 (git-commit-mode . flyspell-mode)
 		 (prog-mode . flyspell-prog-mode)))
 
-(use-package flyspell-correct
-  :after flyspell
-  :ensure t
-  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+;; (use-package flyspell-correct
+;;   :after flyspell
+;;   :ensure t
+;;   :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
 
 (use-package flyspell-correct-ivy
   :after flyspell-correct
@@ -40,22 +40,22 @@
 
 
 ;; Enable right mouse click on macOS to see the list of suggestions.
-(eval-after-load "flyspell"
-  '(progn
-     (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
-     (define-key flyspell-mouse-map [mouse-3] #'undefined)))
+;; (eval-after-load "flyspell"
+;;   '(progn
+;;      (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
+;;      (define-key flyspell-mouse-map [mouse-3] #'undefined)))
 
 
-;; Spellcheck current word
-(define-key flyspell-mode-map (kbd "s-\\") 'flyspell-correct-previous-word-generic) ;; Cmd+\ spellcheck word with popup
-(define-key flyspell-mode-map (kbd "C-s-\\") 'ispell-word)                          ;; Ctrl+Cmd+\ spellcheck word using built UI
+;; ;; Spellcheck current word
+;; (define-key flyspell-mode-map (kbd "s-\\") 'flyspell-correct-previous-word-generic) ;; Cmd+\ spellcheck word with popup
+;; (define-key flyspell-mode-map (kbd "C-s-\\") 'ispell-word)                          ;; Ctrl+Cmd+\ spellcheck word using built UI
 
 
 ;; Search for synonyms
-(use-package powerthesaurus
-  :ensure t
-  :config
-  (global-set-key (kbd "s-|") 'powerthesaurus-lookup-word-dwim)) ;; Cmd+Shift+\ search thesaurus
+;; (use-package powerthesaurus
+;;   :ensure t
+;;   :config
+;;   (global-set-key (kbd "s-|") 'powerthesaurus-lookup-word-dwim)) ;; Cmd+Shift+\ search thesaurus
 
 
 ;; Word definition search

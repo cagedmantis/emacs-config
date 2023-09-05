@@ -4,6 +4,9 @@
 
 ;;; Code:
 
+;; (use-package go-mode
+;;   :ensure t)
+
 (use-package go-mode
   :ensure t
   :bind (:map go-mode-map
@@ -27,11 +30,13 @@
 	(subword-mode t)
 	(setq tab-width 4)
 	;;(add-hook 'before-save-hook 'gofmt-before-save)
-	(with-eval-after-load 'go-mode
-	  (go-guru-hl-identifier-mode))
+	;; (with-eval-after-load 'go-mode
+	;;   (go-guru-hl-identifier-mode))
 
 	 (lsp)
-	(add-hook 'go-mode-hook 'flycheck-mode))
+	;;(add-hook 'go-mode-hook 'flycheck-mode))
+        ;;(add-hook 'go-mode-hook 'flycheck))
+         )
 
   (defun lsp-go-before-save-hooks ()
 	(add-hook 'before-save-hook #'lsp-format-buffer t t)
@@ -49,21 +54,23 @@
   :ensure t
   :after go-mode)
 
-(use-package go-gen-test
-  :ensure t
-  :after go-mode)
+;; nis
+;; (use-package go-gen-test
+;;   :ensure t
+;;   :after go-mode)
 
 (use-package gotest
   :ensure t
   :defer t)
 
-(use-package go-stacktracer
-  :ensure t
-  :after go-mode)
+;; nis
+;; (use-package go-stacktracer
+;;   :ensure t
+;;   :after go-mode)
 
-(use-package go-direx
-  :ensure t
-  :after go-mode)
+;; (use-package go-direx
+;;   :ensure t
+;;   :after go-mode)
 
 (use-package go-add-tags
   :ensure t
@@ -71,9 +78,10 @@
   :config
   (global-set-key (kbd "C-c t") 'go-add-tags))
 
-(use-package go-projectile
-  :ensure t
-  :after (go-mode projectile))
+;; nis
+;; (use-package go-projectile
+;;   :ensure t
+;;   :after (go-mode projectile))
 
 (use-package go-impl
   :ensure t
@@ -83,8 +91,9 @@
   :ensure t
   :after go-mode)
 
-(use-package golint
-  :ensure t)
+;; nis
+;; (use-package golint
+;;   :ensure t)
 
 ;; modified from github.com/dougm/go-projectile
 

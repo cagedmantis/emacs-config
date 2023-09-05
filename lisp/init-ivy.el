@@ -23,14 +23,6 @@
   (use-package ivy-explorer
 	:ensure t)
 
-  ;; (if (version< emacs-version "26")
-  ;; 	  (message "version does not support ivy-posframe")
-  ;; 	(use-package ivy-posframe
-  ;; 	  :ensure t
-  ;; 	  :config
-  ;; 	  (require 'ivy-posframe)
-  ;; 	  (setq ivy-display-function #'ivy-posframe-display)))
-
   (ivy-mode 1)
 
   ;; Add recent files and bookmarks to the ivy-switch-buffer
@@ -83,11 +75,6 @@
   :ensure t
   :after ivy)
 
-(use-package ivy-hydra
-  :ensure t)
-
-;; Experimental
-
 (use-package ivy-rich
   :ensure t
   :init
@@ -130,7 +117,6 @@
   :after prescient
   :config
   (ivy-prescient-mode 1))
-
 
 (provide 'init-ivy)
 ;;; init-ivy.el ends here

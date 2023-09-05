@@ -19,15 +19,15 @@
   (global-display-line-numbers-mode t)
   (setq display-line-numbers " %4d "))
 
-(when window-system
-  (tooltip-mode -1)
-  (blink-cursor-mode -1)
-  (mouse-wheel-mode t)
-  (progn (fringe-mode 5)
-         (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-         (add-to-list 'default-frame-alist '(ns-appearance . dark))
-           ;;;(add-to-list 'default-frame-alist '(ns-appearance . light))
-         (setq frame-title-format nil)))
+;; (when window-system
+;;   (tooltip-mode -1)
+;;   (blink-cursor-mode -1)
+;;   (mouse-wheel-mode t)
+;;   (progn (fringe-mode 5)
+;;          (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+;;          (add-to-list 'default-frame-alist '(ns-appearance . dark))
+;;            ;;;(add-to-list 'default-frame-alist '(ns-appearance . light))
+;;          (setq frame-title-format nil)))
 
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)
@@ -108,18 +108,26 @@
   :ensure t
   :config
   (setq doom-themes-enable-bold t         ; if nil, bold is universally disabled
-  		doom-themes-enable-italic t       ; if nil, italics is universally disabled
-		doom-themes-org-config t
-		doom-themes-visual-bell-config t)
+  	doom-themes-enable-italic t       ; if nil, italics is universally disabled
+	doom-themes-org-config t
+	doom-themes-visual-bell-config t)
   (load-theme 'doom-molokai t))   ; Enable flashing mode-line on errors
 
-(use-package doom-modeline
+;; (use-package doom-modeline
+;;   :ensure t
+;;   :init (doom-modeline-mode 1)
+;;   :config
+;;   (setq doom-modeline-project-detection 'auto)
+;;   (setq doom-modeline-buffer-file-name-style 'auto)
+;;   (setq doom-modeline-time t))
+
+(use-package moody
   :ensure t
-  :init (doom-modeline-mode 1)
   :config
-  (setq doom-modeline-project-detection 'auto)
-  (setq doom-modeline-buffer-file-name-style 'auto)
-  (setq doom-modeline-time t))
+  (setq x-underline-at-descent-line t)
+  (moody-replace-mode-line-buffer-identification)
+  (moody-replace-vc-mode)
+  (moody-replace-eldoc-minibuffer-message-function))
 
 (provide 'init-appearance)
 ;;; init-appearance.el ends here

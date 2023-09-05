@@ -46,11 +46,11 @@
 		;;lsp-ui-sideline-enable nil
 		lsp-ui-sideline-ignore-duplicate t))
 
-(use-package lsp-ivy
-  :ensure t)
+;; (use-package lsp-ivy
+;;   :ensure t)
 
-(use-package dap-mode
-  :ensure t)
+;; (use-package dap-mode
+;;   :ensure t)
 
 (use-package which-key
   :ensure t)

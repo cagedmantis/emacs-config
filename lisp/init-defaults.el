@@ -9,7 +9,7 @@
 	  select-enable-clipboard t)
 
 ;; Auto refresh buffers
-(global-auto-revert-mode 1)
+(global-auto-revert-mode t)
 
 ;; Also auto refresh dired, but be quiet about it
 (setq global-auto-revert-non-file-buffers t)
@@ -63,9 +63,6 @@
 
 ;; Undo/redo window configuration with C-c <left>/<right>
 (winner-mode 1)
-
-;; ;; Never insert tabs
-;; (set-default 'indent-tabs-mode nil)
 
 ;; Show me empty lines after buffer end
 (set-default 'indicate-empty-lines t)
@@ -140,8 +137,6 @@
 
 (add-to-list 'find-file-not-found-functions 'my-create-non-existent-directory)
 
-;; ======================================================================
-
 (setq shell-file-name "/bin/bash")             ; Set Shell for M-| command
 (setq sentence-end-double-space nil)           ; Sentences end with one space
 (setq-default indent-tabs-mode nil)            ; Use spaces instead of tabs
@@ -173,23 +168,10 @@
       auto-save-interval 200            ; number of keystrokes between auto-saves (default: 300)
       )
 
-;; TODO: not loving the behaviour this presents
-;; (use-package aggressive-indent
-;;   :ensure t
-;;   :config
-;;   (global-aggressive-indent-mode 1))
-
 (use-package smartparens
   :ensure t)
 
-(use-package pbcopy
-  :ensure t
-  :config
-  (turn-on-pbcopy))
-
 (setq auto-window-vscroll nil)
-
-;; =============================================================================
 
 (use-package which-key
   :ensure t
