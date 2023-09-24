@@ -61,10 +61,6 @@
   :ensure t
   :after go-mode)
 
-(use-package go-direx
-  :ensure t
-  :after go-mode)
-
 (use-package go-add-tags
   :ensure t
   :after go-mode
@@ -105,8 +101,6 @@
 	(errcheck      . "github.com/kisielk/errcheck")
 	(staticcheck   . "honnef.co/go/tools/cmd/staticcheck"))
   "Import paths for My Go tools.")
-
-;; TODO: consider adding a way to set GO111MODULE=on for individual commands.
 
 (defun go-get-tools ()
   "Install go related tools via go get."
