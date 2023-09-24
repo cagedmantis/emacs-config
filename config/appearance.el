@@ -127,17 +127,17 @@
 ;; ----------
 
 (defvar preferred-fonts '("Source Code Pro" "Fira Mono" "DejaVu Sans Mono" "Monaco" "Ubuntu Mono" "Hack"))
-
 (defvar current-font-size 10)
+(defvar is-font-set nil)
 
 (if (display-graphic-p)
-    (dolist (font preferred-fonts)
-	  (if (member font (font-family-list))
+	(dolist (font preferred-fonts)
+	  (if (and (not is-font-set) (member font (font-family-list)))
 		  (progn
 			(set-frame-font (concat font " " (number-to-string current-font-size)) t)
 			(message "Font: %s" font)
 			(message "Font size: %d" current-font-size)
-			(return)))))
+			(setq is-font-set t)))))
 
 ;; -- Theme --
 ;; -----------
