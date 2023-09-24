@@ -23,8 +23,9 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+(dolist (package '(use-package))
+  (unless (package-installed-p package)
+    (package-install package)))
 
 (provide 'init-package)
 ;;; init-package ends here
