@@ -6,14 +6,6 @@
 
 ;;(package-initialize)
 
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            (message "Emacs ready in %s with %d garbage collections."
-                     (format "%.2f seconds"
-                             (float-time
-                              (time-subtract after-init-time before-init-time)))
-                     gcs-done)))
-
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
@@ -43,11 +35,9 @@
 (require 'init-latex)
 (require 'init-magit)
 (require 'init-org)
-(require 'init-plantuml)
 (require 'init-projectile)
 (require 'init-rainbow-delimiters)
 (require 'init-saveplace)
-(require 'init-sudo-save)
 (require 'init-switch-window)
 (require 'init-utils)
 (require 'init-yasnippet)
