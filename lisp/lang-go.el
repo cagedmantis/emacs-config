@@ -68,10 +68,6 @@
 ;;   :ensure t
 ;;   :after go-mode)
 
-;; (use-package go-direx
-;;   :ensure t
-;;   :after go-mode)
-
 (use-package go-add-tags
   :ensure t
   :after go-mode
