@@ -16,9 +16,6 @@
   (add-hook 'protobuf-mode-hook
 			(lambda () (c-add-style "my-style" my-protobuf-style t))))
 
-(use-package fish-mode
-  :ensure t)
-
 (use-package terraform-mode
   :ensure t)
 
@@ -26,12 +23,6 @@
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
-
-;; (use-package python-mode
-;;   :ensure t)
-
-;; (use-package web-mode
-;;   :ensure t)
 
 (use-package haskell-mode
   :ensure t)
@@ -58,8 +49,8 @@
     (eval-after-load 'flycheck
       '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))))
 
-(use-package smarty-mode
-  :defer t)
+(use-package bazel
+  :ensure t)
 
 (provide 'lang-modes)
 

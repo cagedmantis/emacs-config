@@ -190,6 +190,8 @@
   (set-face-foreground 'git-gutter:added "green4")
   (set-face-foreground 'git-gutter:deleted "red"))
 
+(use-package smarty-mode
+  :ensure t)
 
 (provide 'appearance)
 
