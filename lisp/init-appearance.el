@@ -121,13 +121,26 @@
 ;;   (setq doom-modeline-buffer-file-name-style 'auto)
 ;;   (setq doom-modeline-time t))
 
-(use-package moody
+;; (use-package moody
+;;   :ensure t
+;;   :config
+;;   (setq x-underline-at-descent-line t)
+;;   (moody-replace-mode-line-buffer-identification)
+;;   (moody-replace-vc-mode)
+;;   (moody-replace-eldoc-minibuffer-message-function))
+
+(use-package nerd-icons
+  :ensure t)
+
+(use-package doom-modeline
   :ensure t
-  :config
-  (setq x-underline-at-descent-line t)
-  (moody-replace-mode-line-buffer-identification)
-  (moody-replace-vc-mode)
-  (moody-replace-eldoc-minibuffer-message-function))
+  :init (doom-modeline-mode 1)
+  :config (setq doom-modeline-unicode-fallback t)
+  )
+
+(use-package solaire-mode
+  :ensure t
+  :init (solaire-global-mode +1))
 
 (provide 'init-appearance)
 ;;; init-appearance.el ends here

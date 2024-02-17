@@ -17,11 +17,16 @@
 
 (require 'init-defaults)
 (require 'init-appearance)
-(require 'init-ivy)
+;;(require 'init-ivy)
 
 ;; (require 'init-autoinsert)
 ;; (require 'init-cc)
-(require 'init-company)
+;; (require 'init-company)
+
+(require 'init-orderless)
+(require 'init-corfu)
+(require 'init-vertico)
+
 ;;(require 'init-direnv)
 ;;require 'init-exec-path-from-shell)
 (require 'init-flycheck)

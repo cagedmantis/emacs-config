@@ -8,12 +8,12 @@
   :ensure t
   :after (exec-path-from-shell company)
   :hook ((c++-mode  ;; clangd
-		  c-mode    ;; clangd
-		  go-mode   ;; gopls
-		  js-mode
-		  python-mode
-		  rust-mode ;; rust-analyzer
-		  ) . lsp-deferred)
+	  c-mode    ;; clangd
+	  go-mode   ;; gopls
+	  js-mode
+	  python-mode
+	  rust-mode ;; rust-analyzer
+	  ) . lsp-deferred)
   :commands lsp
   :config
   (defun lsp-go-install-save-hooks ()
