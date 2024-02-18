@@ -26,6 +26,7 @@
 (require 'init-orderless)
 (require 'init-corfu)
 (require 'init-vertico)
+(require 'init-treemacs)
 
 ;;(require 'init-direnv)
 ;;require 'init-exec-path-from-shell)

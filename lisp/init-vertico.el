@@ -23,6 +23,18 @@
   ;; (setq vertico-cycle t)
   )
 
+;; Configure directory extension.
+(use-package vertico-directory
+  :after vertico
+  :ensure nil
+  ;; More convenient directory navigation commands
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word))
+  ;; Tidy shadowed file names
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
   :ensure t
@@ -177,6 +189,13 @@
   ;;;; 5. No project support
   ;; (setq consult-project-function nil)
 )
+
+(use-package consult-lsp
+  :ensure t
+  :after lsp-mode
+  :config
+  (define-key lsp-mode-map [remap xref-find-apropos] #'consult-lsp-symbols))
+
 
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia

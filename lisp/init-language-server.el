@@ -46,6 +46,11 @@
 		;;lsp-ui-sideline-enable nil
 		lsp-ui-sideline-ignore-duplicate t))
 
+(use-package lsp-treemacs
+  :ensure t
+  :config
+  (lsp-treemacs-sync-mode 1))
+
 ;; (use-package lsp-ivy
 ;;   :ensure t)
 
