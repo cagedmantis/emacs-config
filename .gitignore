@@ -1,5 +1,6 @@
 *.smex-items
 .emacs.desktop*
+.cache
 .envrc
 .gitconfig
 .last-package-update-day
