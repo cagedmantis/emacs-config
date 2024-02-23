@@ -41,7 +41,7 @@
 ;; (require 'init-switch-window)
 ;; (require 'init-utils)
 (require 'init-yasnippet)
-;; (require 'init-spelling)
+(require 'init-spelling)
 
 (require 'init-git)
 
