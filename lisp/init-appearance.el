@@ -68,7 +68,7 @@
 (use-package diminish
   :ensure t)
 
-(defvar current-font-size 10)
+(defvar current-font-size 11)
 
 (defun set-font (font)
   "Set the FONT and size."
@@ -97,11 +97,17 @@
 (use-package doom-themes
   :ensure t
   :config
-  (setq doom-themes-enable-bold t         ; if nil, bold is universally disabled
-  	doom-themes-enable-italic t       ; if nil, italics is universally disabled
-	doom-themes-org-config t
-	doom-themes-visual-bell-config t)
-  (load-theme 'doom-molokai t))   ; Enable flashing mode-line on errors
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-acario-dark t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-colors") ; use "doom-colors" for less minimal icon theme
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 (use-package nerd-icons
   :ensure t)
@@ -114,6 +120,7 @@
   (setq doom-modeline-env-version t)
   (setq doom-modeline-lsp t)
   (setq doom-modeline-modal-modern-icon t)
+  (setq doom-modeline-vcs-max-length 30)
   (unless (display-graphic-p)
     (setq doom-modeline-icon nil))
   )
