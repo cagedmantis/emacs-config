@@ -30,6 +30,12 @@
   :init
   (global-corfu-mode))
 
+(unless (display-graphic-p)
+  (use-package corfu-terminal
+    :ensure t
+    :after corfu
+    :config
+    (corfu-terminal-mode 1)))
 
 ;; Add extensions
 (use-package cape
