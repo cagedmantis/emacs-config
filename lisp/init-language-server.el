@@ -15,8 +15,8 @@
 	  rust-mode ;; rust-analyzer
 	  ) . lsp-deferred)
   :commands lsp
-  :after
-  (setq lsp-file-watch-threshold 15000)
+  :custom
+  (lsp-file-watch-threshold 15000) ;; go has ~12000
   :config
   (defun lsp-go-install-save-hooks ()
 	(add-hook 'before-save-hook #'lsp-format-buffer t t)
