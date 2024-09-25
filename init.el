@@ -31,9 +31,13 @@
 (require 'init-flycheck)
 (require 'init-language-server)
 ;; (require 'init-latex)
+;; (require 'init-magit)
 ;; (require 'init-org)
 (require 'init-projectile)
+;; (require 'init-rainbow-delimiters)
+;; (require 'init-saveplace)
 ;; (require 'init-switch-window)
+;; (require 'init-utils)
 (require 'init-yasnippet)
 (require 'init-spelling)
 

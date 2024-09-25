@@ -17,17 +17,18 @@
 	    (lambda () (c-add-style "my-style" my-protobuf-style t)))
   (require 'protobuf-mode))
 
-;; (use-package terraform-mode
-;;   :ensure t)
+(use-package terraform-mode
+  :ensure t)
 
 (use-package dockerfile-mode
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
-;; (use-package haskell-mode
-;;   :ensure t)
+(use-package haskell-mode
+  :ensure t)
 
+;; https://jblevins.org/projects/markdown-mode/
 (use-package markdown-mode
   :ensure t
   :mode (("README\\.md\\'" . gfm-mode)
@@ -49,10 +50,7 @@
 ;;     (eval-after-load 'flycheck
 ;;       '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))))
 
-;; (use-package bazel
-;;   :ensure t)
-
-(use-package racket-mode
+(use-package bazel
   :ensure t)
 
 (provide 'lang-modes)

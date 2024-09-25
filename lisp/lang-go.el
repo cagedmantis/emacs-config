@@ -64,10 +64,9 @@
   :ensure t
   :defer t)
 
-;; nis
-;; (use-package go-stacktracer
-;;   :ensure t
-;;   :after go-mode)
+(use-package go-stacktracer
+  :ensure t
+  :after go-mode)
 
 (use-package go-add-tags
   :ensure t
