@@ -43,7 +43,8 @@
 	(add-hook 'before-save-hook #'lsp-organize-imports t t))
 
   (add-hook 'go-mode-hook 'my-go-mode-hook)
-  (add-hook 'before-save-hook #'lsp-go-before-save-hooks))
+  (add-hook 'go-mode-hook 'lsp-go-before-save-hooks))
+  ;;(add-hook 'before-save-hook #'lsp-go-before-save-hooks))
 
 (use-package go-fill-struct
   :ensure t
@@ -63,10 +64,9 @@
   :ensure t
   :defer t)
 
-;; nis
-;; (use-package go-stacktracer
-;;   :ensure t
-;;   :after go-mode)
+(use-package go-stacktracer
+  :ensure t
+  :after go-mode)
 
 (use-package go-add-tags
   :ensure t

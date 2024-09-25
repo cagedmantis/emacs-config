@@ -8,13 +8,15 @@
   :ensure t
   :after (exec-path-from-shell company)
   :hook ((c++-mode  ;; clangd
-		  c-mode    ;; clangd
-		  go-mode   ;; gopls
-		  js-mode
-		  python-mode
-		  rust-mode ;; rust-analyzer
-		  ) . lsp-deferred)
+	  c-mode    ;; clangd
+	  go-mode   ;; gopls
+	  js-mode
+	  python-mode
+	  rust-mode ;; rust-analyzer
+	  ) . lsp-deferred)
   :commands lsp
+  :custom
+  (lsp-file-watch-threshold 15000) ;; go has ~12000
   :config
   (defun lsp-go-install-save-hooks ()
 	(add-hook 'before-save-hook #'lsp-format-buffer t t)
@@ -45,6 +47,11 @@
 		lsp-ui-peek-peek-height 25
 		;;lsp-ui-sideline-enable nil
 		lsp-ui-sideline-ignore-duplicate t))
+
+(use-package lsp-treemacs
+  :ensure t
+  :config
+  (lsp-treemacs-sync-mode 1))
 
 ;; (use-package lsp-ivy
 ;;   :ensure t)

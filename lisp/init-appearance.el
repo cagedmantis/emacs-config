@@ -19,16 +19,6 @@
   (global-display-line-numbers-mode t)
   (setq display-line-numbers " %4d "))
 
-;; (when window-system
-;;   (tooltip-mode -1)
-;;   (blink-cursor-mode -1)
-;;   (mouse-wheel-mode t)
-;;   (progn (fringe-mode 5)
-;;          (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-;;          (add-to-list 'default-frame-alist '(ns-appearance . dark))
-;;            ;;;(add-to-list 'default-frame-alist '(ns-appearance . light))
-;;          (setq frame-title-format nil)))
-
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)
 
@@ -78,7 +68,7 @@
 (use-package diminish
   :ensure t)
 
-(defvar current-font-size 10)
+(defvar current-font-size 11)
 
 (defun set-font (font)
   "Set the FONT and size."
@@ -107,27 +97,37 @@
 (use-package doom-themes
   :ensure t
   :config
-  (setq doom-themes-enable-bold t         ; if nil, bold is universally disabled
-  	doom-themes-enable-italic t       ; if nil, italics is universally disabled
-	doom-themes-org-config t
-	doom-themes-visual-bell-config t)
-  (load-theme 'doom-molokai t))   ; Enable flashing mode-line on errors
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-acario-dark t)
 
-;; (use-package doom-modeline
-;;   :ensure t
-;;   :init (doom-modeline-mode 1)
-;;   :config
-;;   (setq doom-modeline-project-detection 'auto)
-;;   (setq doom-modeline-buffer-file-name-style 'auto)
-;;   (setq doom-modeline-time t))
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-colors") ; use "doom-colors" for less minimal icon theme
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
-(use-package moody
+(use-package nerd-icons
+  :ensure t)
+
+(use-package doom-modeline
   :ensure t
+  :init (doom-modeline-mode 1)
   :config
-  (setq x-underline-at-descent-line t)
-  (moody-replace-mode-line-buffer-identification)
-  (moody-replace-vc-mode)
-  (moody-replace-eldoc-minibuffer-message-function))
+  (setq doom-modeline-unicode-fallback t)
+  (setq doom-modeline-env-version t)
+  (setq doom-modeline-lsp t)
+  (setq doom-modeline-modal-modern-icon t)
+  (setq doom-modeline-vcs-max-length 30)
+  (unless (display-graphic-p)
+    (setq doom-modeline-icon nil))
+  )
+
+(use-package solaire-mode
+  :ensure t
+  :init (solaire-global-mode +1))
 
 (provide 'init-appearance)
 ;;; init-appearance.el ends here

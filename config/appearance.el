@@ -58,17 +58,17 @@
 (setq redisplay-dont-pause t)
 
 ;; Modeline - hai2nan
-(if (version< emacs-version "25.3")
-	(message "--> minions isn't supported in this version of Emacs")
-  (when window-system
-	(use-package moody
-	  :ensure t
-	  :config
-	  (setq x-underline-at-descent-line t)
-	  (setq moody-mode-line-height 24)
-	  (setq moody-slant-function #'moody-slant-apple-rgb)
-	  (moody-replace-mode-line-buffer-identification)
-	  (moody-replace-vc-mode))))
+;; (if (version< emacs-version "25.3")
+;;     (message "--> minions isn't supported in this version of Emacs")
+;;   (when window-system
+;;     (use-package moody
+;;       :ensure t
+;;       :config
+;;       (setq x-underline-at-descent-line t)
+;;       (setq moody-mode-line-height 24)
+;;       (setq moody-slant-function #'moody-slant-apple-rgb)
+;;       (moody-replace-mode-line-buffer-identification)
+;;       (moody-replace-vc-mode))))
 
 (add-hook 'prog-mode-hook (lambda ()
                             (interactive)
@@ -125,16 +125,25 @@
 ;;   :config
 ;;   (load-theme 'material-light t))
 
-(use-package smart-mode-line
-  :ensure t
-  :config
-  (setq sml/theme 'dark)
+;; (use-package smart-mode-line-atom-one-dark-theme
+;;   :ensure t)
 
-  ;; preferred for light theme
-  ;;(setq sml/theme 'respectful)
+;; (use-package smart-mode-line
+;;   :config
+;;   (setq sml/theme 'atom-one-dark)
+;;   (setq sml/no-confirm-load-theme t)
+;;   (sml/setup))
 
-  (setq sml/no-confirm-load-theme t)
-  (sml/setup))
+;; (use-package smart-mode-line
+;;   :ensure t
+;;   :config
+;;   (setq sml/theme 'dark)
+
+;;   ;; preferred for light theme
+;;   ;;(setq sml/theme 'respectful)
+
+;;   (setq sml/no-confirm-load-theme t)
+;;   (sml/setup))
 
 (if (version< emacs-version "25.3")
 	(message "--> minions isn't supported in this version of Emacs")

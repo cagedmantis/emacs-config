@@ -28,6 +28,13 @@
   (use-package cargo
 	:ensure t))
 
+;; (use-package tree-sitter
+;;   :ensure t
+;;   :config
+;;   (require 'tree-sitter-langs)
+;;   (global-tree-sitter-mode)
+;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
 (provide 'lang-rust)
 
 ;;; lang-rust.el ends here

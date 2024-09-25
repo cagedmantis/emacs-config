@@ -1,4 +1,6 @@
 *.smex-items
+.cache
+.dap-breakpoints
 .emacs.desktop*
 .envrc
 .gitconfig
@@ -14,12 +16,16 @@ backups/*
 custom.el*
 ede-projects.el
 elim/
+eln-cache/
 elpa/*
 eshell/
+go.mod
+go.sum
 history
 ido.last
 image-dired/
 network-security.data
+org-persist/
 packages/*
 places
 projectile-bookmarks.eld
@@ -31,11 +37,7 @@ thumbs/*
 tramp
 transient/
 url/cookies
-go.mod
-go.sum
 var/
-.dap-breakpoints
-org-persist/
 
 # OS generated files #
 ######################
