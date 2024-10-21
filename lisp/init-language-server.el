@@ -6,7 +6,8 @@
 
 (use-package lsp-mode
   :ensure t
-  :after (exec-path-from-shell company)
+  ;;:after (exec-path-from-shell company)
+  :after (exec-path-from-shell)
   :hook ((c++-mode  ;; clangd
 	  c-mode    ;; clangd
 	  go-mode   ;; gopls

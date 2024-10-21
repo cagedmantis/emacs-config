@@ -33,6 +33,8 @@
 ;; (require 'init-latex)
 ;; (require 'init-magit)
 ;; (require 'init-org)
+
+;; TODO work to migrate to project.el
 (require 'init-projectile)
 ;; (require 'init-rainbow-delimiters)
 ;; (require 'init-saveplace)
@@ -45,7 +47,7 @@
 
 (require 'lang-go)
 (require 'lang-modes)
-(require 'lang-rust)
+;; (require 'lang-rust)
 ;; (require 'lang-cpp)
 ;; (require 'lang-javascript)
 ;; (require 'lang-python)
