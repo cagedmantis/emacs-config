@@ -31,7 +31,6 @@
 (require 'init-flycheck)
 (require 'init-language-server)
 ;; (require 'init-latex)
-;; (require 'init-magit)
 ;; (require 'init-org)
 
 ;; TODO work to migrate to project.el

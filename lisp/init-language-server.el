@@ -6,7 +6,6 @@
 
 (use-package lsp-mode
   :ensure t
-  ;;:after (exec-path-from-shell company)
   :after (exec-path-from-shell)
   :hook ((c++-mode  ;; clangd
 	  c-mode    ;; clangd
@@ -16,8 +15,6 @@
 	  rust-mode ;; rust-analyzer
 	  ) . lsp-deferred)
   :commands lsp
-  :custom
-  (lsp-file-watch-threshold 15000) ;; go has ~12000
   :config
   (defun lsp-go-install-save-hooks ()
 	(add-hook 'before-save-hook #'lsp-format-buffer t t)
@@ -26,9 +23,12 @@
 
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
-	 ("gopls.staticcheck" t t)))
+     ("gopls.staticcheck" t t)))
 
-  (setq lsp-enable-which-key-integration t))
+  (setq lsp-enable-file-watchers t
+        lsp-file-watch-threshold 15000 ;; go has ~12000
+        lsp-enable-which-key-integration t))
+
 
 (use-package lsp-ui
   :ensure t
