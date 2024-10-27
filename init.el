@@ -21,7 +21,7 @@
 
 ;; (require 'init-autoinsert)
 ;; (require 'init-cc)
-;; (require 'init-company)
+(require 'init-company)
 
 (require 'init-orderless)
 (require 'init-corfu)
