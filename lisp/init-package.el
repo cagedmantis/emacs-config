@@ -6,6 +6,8 @@
 
 (require 'package)
 
+(setq package-user-dir (concat user-emacs-directory "packages"))
+
 (unless (assoc-default "melpa" package-archives)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
 ;; (unless (assoc-default "melpa-stable" package-archives)
@@ -15,8 +17,6 @@
 (when (< emacs-major-version 24)
   (unless (assoc-default "gnu" package-archives)
 	(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))))
-
-(setq package-user-dir "~/.emacs.d/packages")
 
 (package-initialize)
 
