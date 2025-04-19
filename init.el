@@ -50,6 +50,9 @@
 ;; (require 'lang-sql)
 ;; (require 'lang-swift)
 
+;; Experimental
+(require 'init-treesit)
+
 (cond
  ((eq system-type 'gnu/linux)
   (require 'gnu_linux))

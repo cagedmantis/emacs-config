@@ -38,6 +38,7 @@ tramp
 transient/
 url/cookies
 var/
+tree-sitter/
 
 # OS generated files #
 ######################
