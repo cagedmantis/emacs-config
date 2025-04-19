@@ -36,6 +36,7 @@ session*
 thumbs/*
 tramp
 transient/
+tree-sitter/
 url/cookies
 var/
 

@@ -3,15 +3,12 @@
 ;;; Commentary:
 
 ;;; Code:
-(setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
-
 (add-to-list 'load-path "~/bin/")
-(add-to-list 'load-path (concat dotfiles-dir "/lisp"))
-(add-to-list 'load-path (concat dotfiles-dir "/system_type"))
-(setq autoload-file (concat dotfiles-dir "loaddefs.el"))
-(setq package-user-dir (concat dotfiles-dir "packages"))
-(setq custom-file (concat dotfiles-dir "custom.el"))
+(add-to-list 'load-path (concat user-emacs-directory "/lisp"))
+(add-to-list 'load-path (concat user-emacs-directory "/system_type"))
+(setq autoload-file (concat user-emacs-directory "loaddefs.el"))
+(setq package-user-dir (concat user-emacs-directory "packages"))
+(setq custom-file (concat user-emacs-directory "custom.el"))
 
 (require 'init-package)
 

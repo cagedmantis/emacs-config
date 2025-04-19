@@ -16,8 +16,6 @@
   (unless (assoc-default "gnu" package-archives)
 	(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))))
 
-(setq package-user-dir "~/.emacs.d/packages")
-
 (package-initialize)
 
 (when (not package-archive-contents)
