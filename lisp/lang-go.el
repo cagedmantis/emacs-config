@@ -96,6 +96,9 @@
 (defvar go-tools
   '((asmfmt        . "github.com/klauspost/asmfmt/cmd/asmfmt")
 	(fillstruct    . "github.com/davidrjenni/reftools/cmd/fillstruct")
+        (stress2       . "github.com/aclements/go-misc/stress2")
+        (toolstash     . "golang.org/x/tools/cmd/toolstash")
+        (stringer      . "golang.org/x/tools/cmd/stringer")
 	(godoc         . "golang.org/x/tools/cmd/godoc")
 	(golint        . "golang.org/x/lint/golint")
 	(gomodifytags  . "github.com/fatih/gomodifytags")
