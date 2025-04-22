@@ -3,15 +3,11 @@
 ;;; Commentary:
 
 ;;; Code:
-(setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
-
 (add-to-list 'load-path "~/bin/")
-(add-to-list 'load-path (concat dotfiles-dir "/lisp"))
-(add-to-list 'load-path (concat dotfiles-dir "/system_type"))
-(setq autoload-file (concat dotfiles-dir "loaddefs.el"))
-(setq package-user-dir (concat dotfiles-dir "packages"))
-(setq custom-file (concat dotfiles-dir "custom.el"))
+(add-to-list 'load-path (concat user-emacs-directory "/lisp"))
+(add-to-list 'load-path (concat user-emacs-directory "/system_type"))
+(setq autoload-file (concat user-emacs-directory "loaddefs.el"))
+(setq custom-file (concat user-emacs-directory "custom.el"))
 
 (require 'init-package)
 
@@ -21,7 +17,7 @@
 
 ;; (require 'init-autoinsert)
 ;; (require 'init-cc)
-;; (require 'init-company)
+(require 'init-company)
 
 (require 'init-orderless)
 (require 'init-corfu)
@@ -31,8 +27,9 @@
 (require 'init-flycheck)
 (require 'init-language-server)
 ;; (require 'init-latex)
-;; (require 'init-magit)
 ;; (require 'init-org)
+
+;; TODO work to migrate to project.el
 (require 'init-projectile)
 ;; (require 'init-rainbow-delimiters)
 ;; (require 'init-saveplace)
@@ -45,13 +42,16 @@
 
 (require 'lang-go)
 (require 'lang-modes)
-(require 'lang-rust)
+;; (require 'lang-rust)
 ;; (require 'lang-cpp)
 ;; (require 'lang-javascript)
 ;; (require 'lang-python)
 ;; (require 'lang-ruby)
 ;; (require 'lang-sql)
 ;; (require 'lang-swift)
+
+;; Experimental
+(require 'init-treesit)
 
 (cond
  ((eq system-type 'gnu/linux)
