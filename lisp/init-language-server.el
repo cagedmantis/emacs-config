@@ -26,9 +26,11 @@
      ("gopls.staticcheck" t t)))
 
   (setq lsp-enable-file-watchers t
-        lsp-file-watch-threshold 15000 ;; go has ~12000
+        lsp-file-watch-threshold 20000 ;; go has ~12000
         lsp-enable-which-key-integration t))
 
+;; for some reason this isn't registering above.
+(setq lsp-file-watch-threshold 20000 ;; go has ~12000)
 
 (use-package lsp-ui
   :ensure t
