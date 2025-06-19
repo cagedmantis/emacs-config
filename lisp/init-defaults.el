@@ -1,76 +1,116 @@
-;;; init-defaults.el --- default configuration
+;;; init-defaults.el --- Core Emacs defaults and behavior configuration
 
 ;;; Commentary:
+;;
+;; This file contains fundamental Emacs configuration settings that establish
+;; the basic behavior and user experience. It covers essential settings that
+;; most users would want regardless of their specific use case.
+;;
+;; Key Areas:
+;; - Clipboard and selection behavior
+;; - File handling (auto-revert, backups, compression)
+;; - UTF-8 encoding setup (centralized configuration)
+;; - Buffer and window management
+;; - User interaction improvements (y/n prompts, recent files)
+;; - Performance optimizations (GC threshold, scrolling)
+;; - Text editing behavior (indentation, line wrapping)
+;; - Backup and auto-save configuration
+;;
+;; This module serves as the foundation that other modules build upon.
 
 ;;; Code:
 
-;; Share the clipboard with X
+;; ============================================================================
+;; CLIPBOARD AND SELECTION
+;; ============================================================================
+
+;; Share the clipboard with X Window System and other GUI environments
 (setq x-select-enable-clipboard t
 	  select-enable-clipboard t)
 
-;; Auto refresh buffers
-(global-auto-revert-mode t)
-
-;; Also auto refresh dired, but be quiet about it
-(setq global-auto-revert-non-file-buffers t)
-(setq auto-revert-verbose nil)
-
-;; Move files to trash when deleting
-(setq delete-by-moving-to-trash t)
-
-;; Real emacs knights don't use shift to mark things
+;; Real emacs knights don't use shift to mark things (use C-SPC instead)
 (setq shift-select-mode nil)
-
-;; Transparently open compressed files
-(auto-compression-mode t)
-
-;; Enable syntax highlighting for older Emacsen that have it off
-(global-font-lock-mode t)
-
-;; Answering just 'y' or 'n' will do
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-;; UTF-8 please
-(setq locale-coding-system 'utf-8) ; pretty
-(set-terminal-coding-system 'utf-8) ; pretty
-(set-keyboard-coding-system 'utf-8) ; pretty
-(set-selection-coding-system 'utf-8) ; please
-(prefer-coding-system 'utf-8) ; with sugar on top
-
-;; Show active region
-(transient-mark-mode 1)
-(make-variable-buffer-local 'transient-mark-mode)
-(put 'transient-mark-mode 'permanent-local t)
-(setq-default transient-mark-mode t)
 
 ;; Remove text in active region if inserting text
 (delete-selection-mode 1)
 
-;; Always display line and column numbers
-(setq line-number-mode t)
-(setq column-number-mode t)
+;; ============================================================================
+;; FILE HANDLING
+;; ============================================================================
 
-;; Lines should be 80 characters wide, not 72
-(setq fill-column 80)
+;; Auto refresh buffers when files change on disk
+(global-auto-revert-mode t)
 
-;; Save a list of recent files visited. (open recent file with C-x f)
+;; Also auto refresh dired and other non-file buffers, but be quiet about it
+(setq global-auto-revert-non-file-buffers t)
+(setq auto-revert-verbose nil)
+
+;; Move files to trash when deleting instead of permanent deletion
+(setq delete-by-moving-to-trash t)
+
+;; Transparently open compressed files (.gz, .bz2, etc.)
+(auto-compression-mode t)
+
+;; Enable syntax highlighting for older Emacs versions that have it off
+(global-font-lock-mode t)
+
+;; ============================================================================
+;; USER INTERACTION IMPROVEMENTS
+;; ============================================================================
+
+;; Answering just 'y' or 'n' will do instead of 'yes' or 'no'
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Save a list of recent files visited (open recent file with C-x f)
 (recentf-mode 1)
-(setq recentf-max-saved-items 100) ;; just 20 is too recent
+(setq recentf-max-saved-items 100) ; 20 is too few for active development
 
-;; Save minibuffer history
+;; Save minibuffer history across sessions
 (savehist-mode 1)
 (setq history-length 1000)
 
 ;; Undo/redo window configuration with C-c <left>/<right>
 (winner-mode 1)
 
-;; Show me empty lines after buffer end
+;; ============================================================================
+;; UTF-8 ENCODING (CENTRALIZED CONFIGURATION)
+;; ============================================================================
+
+;; Set UTF-8 as the default encoding for all systems
+(setq locale-coding-system 'utf-8)       ; System locale
+(set-terminal-coding-system 'utf-8)      ; Terminal communication
+(set-keyboard-coding-system 'utf-8)      ; Keyboard input
+(set-selection-coding-system 'utf-8)     ; Clipboard/selection
+(prefer-coding-system 'utf-8)            ; Default for new files
+
+;; ============================================================================
+;; DISPLAY AND VISUAL BEHAVIOR
+;; ============================================================================
+
+;; Show active region with highlighting
+(transient-mark-mode 1)
+(make-variable-buffer-local 'transient-mark-mode)
+(put 'transient-mark-mode 'permanent-local t)
+(setq-default transient-mark-mode t)
+
+;; Always display line and column numbers in mode line
+(setq line-number-mode t)
+(setq column-number-mode t)
+
+;; Show empty lines after buffer end
 (set-default 'indicate-empty-lines t)
 
-;; Easily navigate sillycased words
+;; ============================================================================
+;; TEXT EDITING BEHAVIOR
+;; ============================================================================
+
+;; Lines should be 80 characters wide, not 72
+(setq fill-column 80)
+
+;; Easily navigate camelCase and snake_case words
 (global-subword-mode 1)
 
-;; Don't break lines for me, please
+;; Don't break lines automatically (prefer horizontal scrolling)
 (setq-default truncate-lines t)
 
 ;; Keep cursor away from edges when scrolling up/down

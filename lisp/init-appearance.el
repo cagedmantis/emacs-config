@@ -1,23 +1,52 @@
-;;; init-appearance.el --- appearance configuration
+;;; init-appearance.el --- Visual appearance and UI configuration
 
 ;;; Commentary:
+;;
+;; This file configures the visual appearance and user interface of Emacs.
+;; It handles themes, fonts, UI elements, and visual enhancements to create
+;; a modern, clean, and functional editing environment.
+;;
+;; Key Features:
+;; - Clean UI (removes toolbars, scrollbars, menu bars)
+;; - Line numbers and visual indicators
+;; - Font selection with automatic fallbacks
+;; - Modern Doom themes with modeline
+;; - Whitespace management and visualization
+;; - Window dividers and visual enhancements
+;; - Performance optimizations for display
+;;
+;; Dependencies:
+;; - doom-themes: Modern theme collection
+;; - doom-modeline: Enhanced modeline
+;; - nerd-icons: Icon support
+;; - solaire-mode: Better buffer distinction
+;; - whitespace: Whitespace visualization
 
 ;;; Code:
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))  ; Disable the scrollbar
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))      ; Disable the toolbar
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))      ; Disable the menubar
+;; ============================================================================
+;; CLEAN UI - REMOVE UNNECESSARY GUI ELEMENTS
+;; ============================================================================
 
-(setq inhibit-startup-message t)               ; No message at startup
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))  ; Remove scrollbar
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))      ; Remove toolbar
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))      ; Remove menu bar
+
+;; ============================================================================
+;; BASIC DISPLAY SETTINGS
+;; ============================================================================
+
+(setq inhibit-startup-message t)               ; Skip Emacs startup screen
 (column-number-mode t)                         ; Show column number in mode-line
-(line-number-mode 1)                           ; show line number the cursor is on, in status bar (the mode line)
-(global-font-lock-mode t)		               ; fonts are automatically highlighted
-(size-indication-mode t)
-(show-paren-mode 1)                            ; turn on paren match highlighting
-(global-visual-line-mode 1)                    ; Soft wrap lines
+(line-number-mode 1)                           ; Show line number in mode-line
+(global-font-lock-mode t)                      ; Enable syntax highlighting
+(size-indication-mode t)                       ; Show buffer size in mode-line
+(show-paren-mode 1)                            ; Highlight matching parentheses
+(global-visual-line-mode 1)                    ; Soft wrap long lines
 
-(when (version<= "26.0.50" emacs-version )
+;; Enable line numbers for Emacs 26+ (better than linum-mode)
+(when (version<= "26.0.50" emacs-version)
   (global-display-line-numbers-mode t)
-  (setq display-line-numbers " %4d "))
+  (setq display-line-numbers " %4d "))         ; Format with padding
 
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)

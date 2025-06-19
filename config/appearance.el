@@ -1,6 +1,23 @@
-;;; appearance.el --- appearance configuration
+;;; appearance.el --- Appearance and UI configuration
 
 ;;; Commentary:
+;;
+;; This file contains comprehensive appearance and user interface
+;; configuration for Emacs. It handles themes, fonts, UI elements,
+;; and visual enhancements.
+;;
+;; Key Features:
+;; - Clean UI (removes toolbar, menubar, scrollbar)
+;; - Line numbers and column indicators
+;; - Syntax highlighting and parentheses matching
+;; - Font selection with fallbacks
+;; - Dark theme (doom-molokai)
+;; - Git gutter integration
+;; - Whitespace management
+;; - Performance optimizations for scrolling
+;;
+;; Note: This appears to be an older appearance configuration
+;; that may overlap with lisp/init-appearance.el
 
 ;;; Code:
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))  ; Disable the scrollbar
