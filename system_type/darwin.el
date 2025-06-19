@@ -75,12 +75,7 @@ with a Windows external keyboard from time to time."
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
-;;utf-8
-(setq locale-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
+;;utf-8 configuration is handled in init-defaults.el
 
 (provide 'darwin)
 

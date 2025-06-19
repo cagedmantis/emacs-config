@@ -16,10 +16,10 @@
 	  ) . lsp-deferred)
   :commands lsp
   :config
-  (defun lsp-go-install-save-hooks ()
+  (defun lsp-install-save-hooks ()
+	"Install LSP before-save hooks for formatting and organizing imports."
 	(add-hook 'before-save-hook #'lsp-format-buffer t t)
 	(add-hook 'before-save-hook #'lsp-organize-imports t t))
-  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
