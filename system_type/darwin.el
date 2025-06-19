@@ -64,6 +64,11 @@ with a Windows external keyboard from time to time."
 
 (global-set-key (kbd "C-c w") 'swap-meta-and-super)
 
+;; Spell checking configuration for macOS
+(setq ispell-program-name "/opt/homebrew/bin/aspell")
+(setq ispell-dictionary "american")
+(setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
+
 ;; TODO: Investigate what is really needed here.
 ;;utf-8
 (prefer-coding-system 'utf-8)

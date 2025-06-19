@@ -11,7 +11,21 @@
   :hook ((text-mode . flyspell-mode)
 	 (org-mode . flyspell-mode)
 	 (git-commit-mode . flyspell-mode)
-	 (prog-mode . flyspell-prog-mode)))
+	 (prog-mode . flyspell-prog-mode))
+  :config
+  ;; Enable flyspell for comments and strings in programming modes
+  (setq flyspell-prog-text-faces
+        (delq 'font-lock-string-face
+              (delq 'font-lock-comment-face
+                    flyspell-prog-text-faces)))
+  
+  ;; Improve performance
+  (setq flyspell-issue-message-flag nil)
+  (setq flyspell-large-region 1000)
+  
+  ;; Better highlighting
+  (setq flyspell-highlight-flag t)
+  (setq flyspell-issue-welcome-flag nil))
 
 (use-package flyspell-correct
   :after flyspell
