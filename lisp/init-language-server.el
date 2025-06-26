@@ -1,6 +1,44 @@
-;;; init-language-server.el --- init-language-server configuration
+;;; init-language-server.el --- Language Server Protocol (LSP) configuration
 
 ;;; Commentary:
+;;
+;; This file configures the Language Server Protocol (LSP) integration for Emacs.
+;; LSP provides advanced IDE-like features including intelligent code completion,
+;; real-time error checking, symbol navigation, and refactoring capabilities
+;; across multiple programming languages.
+;;
+;; Key Features:
+;; - Multi-language support (C/C++, Go, JavaScript, Python, Rust)
+;; - Real-time syntax checking and error reporting
+;; - Intelligent code completion with context awareness
+;; - Symbol navigation (find definition, references, implementations)
+;; - Code formatting and import organization on save
+;; - Hover documentation and signature help
+;; - Workspace symbol search and project-wide operations
+;;
+;; Language Server Support:
+;; - C/C++: clangd (requires clang installation)
+;; - Go: gopls (Go language server)
+;; - JavaScript: Various JS language servers
+;; - Python: Python language servers (pylsp, pyright)
+;; - Rust: rust-analyzer (Rust language server)
+;;
+;; UI Components:
+;; - lsp-ui: Enhanced UI with sideline info, documentation popups
+;; - lsp-treemacs: Tree view integration for symbols and errors
+;; - Flycheck integration for error display
+;;
+;; Automatic Actions:
+;; - Format buffer on save
+;; - Organize imports on save
+;; - File watching for project changes (up to 20,000 files)
+;;
+;; Dependencies:
+;; - lsp-mode: Core LSP client
+;; - lsp-ui: Enhanced UI components
+;; - lsp-treemacs: Treemacs integration
+;; - flycheck: Syntax checking integration
+;; - which-key: Help system integration
 
 ;;; Code:
 
@@ -62,8 +100,7 @@
 ;; (use-package dap-mode
 ;;   :ensure t)
 
-(use-package which-key
-  :ensure t)
+;; which-key configuration moved to init-defaults.el
 
 (provide 'init-language-server)
 ;;; init-language-server.el ends here

@@ -1,7 +1,44 @@
 
-;;; init-ivy.el --- ivy configuration init
+;;; init-ivy.el --- Ivy completion framework configuration
 
 ;;; Commentary:
+;;
+;; This file configures Ivy, a generic completion mechanism for Emacs.
+;; Ivy is a completion framework that provides a clean, minimal interface
+;; for various completion tasks. This is a legacy configuration maintained
+;; alongside the modern Vertico stack.
+;;
+;; Key Components:
+;; - Ivy: Core completion framework with vertical candidate display
+;; - Counsel: Collection of Ivy-enhanced commands (M-x, find-file, etc.)
+;; - Swiper: Ivy-based isearch replacement with overview
+;; - Ivy-rich: Enhanced candidate annotations with additional information
+;; - Various extensions for improved functionality
+;;
+;; Features:
+;; - Virtual buffers integration (recent files, bookmarks)
+;; - Fuzzy matching with flx and prescient
+;; - Rich annotations showing buffer info, project context
+;; - Tramp integration for remote file editing
+;; - Spell checking integration
+;; - Extensive key bindings for common operations
+;;
+;; Key Bindings:
+;; - C-s: swiper (search in buffer)
+;; - M-x: counsel-M-x (enhanced command palette)
+;; - C-x C-f: counsel-find-file (enhanced file finder)
+;; - C-x b: ivy-switch-buffer (enhanced buffer switcher)
+;; - C-c g: counsel-git (search git files)
+;; - C-c j: counsel-git-grep (search in git repository)
+;; - C-c k: counsel-ag (search with ag/the_silver_searcher)
+;;
+;; Dependencies:
+;; - ivy: Core completion framework
+;; - counsel: Ivy-enhanced commands
+;; - ivy-rich: Enhanced candidate information
+;; - flx: Fuzzy matching algorithm
+;; - prescient: Frequency/recency-based candidate sorting
+;; - counsel-tramp: Remote server connection support
 
 ;;; Code:
 

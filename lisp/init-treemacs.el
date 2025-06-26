@@ -1,6 +1,59 @@
-;;; init-treemacs.el --- init-treemacs configuration
+;;; init-treemacs.el --- Treemacs file tree explorer configuration
 
 ;;; Commentary:
+;;
+;; This file configures Treemacs, a tree layout file explorer for Emacs.
+;; Treemacs provides a modern, VS Code-like file browser sidebar with
+;; comprehensive project navigation, Git integration, and extensibility.
+;;
+;; Key Features:
+;; - Hierarchical file and directory tree view
+;; - Project-aware workspace management
+;; - Git status integration with visual indicators
+;; - Icon support with Nerd Icons theme
+;; - Follow mode for automatic file tracking
+;; - Extensive customization options
+;;
+;; Interface Elements:
+;; - Sidebar position: Left side of frame
+;; - Width: 35 characters (expandable to 70)
+;; - Icons: Nerd Icons for enhanced visual appeal
+;; - Git indicators: Modified, staged, untracked files
+;; - Collapsible directory structure
+;;
+;; Navigation Features:
+;; - File following: Automatically highlights current file
+;; - Project jumping: Quick navigation between projects
+;; - Tag following: Integration with code navigation
+;; - Bookmark support for favorite locations
+;;
+;; Integration Packages:
+;; - treemacs-projectile: Project management integration
+;; - treemacs-magit: Enhanced Git operations
+;; - treemacs-icons-dired: Consistent icons in dired
+;; - treemacs-persp: Perspective/workspace integration
+;; - treemacs-tab-bar: Tab bar scope integration
+;;
+;; Key Bindings:
+;; - M-0: treemacs-select-window
+;; - C-x t t: treemacs (toggle)
+;; - C-x t 1: treemacs-delete-other-windows
+;; - C-x t d: treemacs-select-directory
+;; - C-x t B: treemacs-bookmark
+;; - C-x t C-t: treemacs-find-file
+;;
+;; Performance Features:
+;; - Filewatch mode for automatic updates
+;; - Git status caching for large repositories
+;; - Deferred git operations for responsiveness
+;; - Configurable refresh intervals
+;;
+;; Dependencies:
+;; - treemacs: Core file explorer
+;; - treemacs-projectile: Project integration
+;; - treemacs-magit: Git integration
+;; - treemacs-icons-dired: Dired icon consistency
+;; - treemacs-nerd-icons: Modern icon theme
 
 ;;; Code:
 

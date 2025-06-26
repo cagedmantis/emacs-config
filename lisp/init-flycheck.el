@@ -1,6 +1,32 @@
-;;; init-flycheck.el --- Flycheck configuration init
+;;; init-flycheck.el --- On-the-fly syntax checking configuration
 
 ;;; Commentary:
+;;
+;; This file configures Flycheck, an on-the-fly syntax checking framework
+;; for Emacs. Flycheck provides real-time feedback on syntax errors,
+;; warnings, and other issues while you write code.
+;;
+;; Key Features:
+;; - Global flycheck mode for all supported modes
+;; - Custom error display styling with colored underlines
+;; - Dedicated error buffer with smart positioning
+;; - Tooltip error messages for better user experience
+;; - Shell script specific error checking
+;;
+;; Visual Styling:
+;; - Errors: Red wavy underlines with red text
+;; - Warnings: Yellow wavy underlines with yellow text  
+;; - Info: Green wavy underlines with green text
+;;
+;; Error Buffer:
+;; - Displays in bottom side window
+;; - Takes up 33% of frame height
+;; - Reuses existing window when possible
+;;
+;; Dependencies:
+;; - flycheck: Core syntax checking framework
+;; - flycheck-pos-tip: Tooltip error display
+;; - diminish: Hide minor mode from modeline
 
 ;;; Code:
 

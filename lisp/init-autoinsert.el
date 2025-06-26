@@ -1,6 +1,32 @@
-;;; init-autoinsert.el --- Auto insert configuration init
+;;; init-autoinsert.el --- Automatic template insertion configuration
 
 ;;; Commentary:
+;;
+;; This file configures Emacs auto-insert mode to automatically insert
+;; predefined templates when creating new files based on file extensions.
+;; It integrates with yasnippet to expand template placeholders dynamically.
+;;
+;; Key Features:
+;; - Automatic template insertion for common file types
+;; - Integration with yasnippet for dynamic template expansion
+;; - Template directory configuration
+;; - Support for Python, C++, Elisp, C headers, Makefiles, and shell scripts
+;;
+;; Templates Directory:
+;; - Templates are stored in ~/.emacs.d/templates/
+;; - Template files: insert.py, insert.cpp, insert.el, insert.h,
+;;   insert.mk, insert.sh
+;;
+;; Supported File Types:
+;; - .py files: Python script templates
+;; - .cpp files: C++ source file templates  
+;; - .el files: Emacs Lisp file templates
+;; - .h files: C/C++ header file templates
+;; - .mk files: Makefile templates
+;; - .sh files: Shell script templates
+;;
+;; Dependencies:
+;; - yasnippet: Template expansion system
 
 ;;; Code:
 

@@ -1,6 +1,67 @@
-;;; lang-ruby.el --- lang-ruby configuration
+;;; lang-ruby.el --- Ruby development environment configuration
 
 ;;; Commentary:
+;;
+;; This file configures a comprehensive Ruby development environment for Emacs.
+;; It provides enhanced syntax highlighting, intelligent code completion,
+;; testing support, and Ruby ecosystem integration.
+;;
+;; Key Features:
+;; - Enhanced Ruby mode with advanced syntax support
+;; - RSpec testing framework integration
+;; - Ruby version management (RVM, rbenv, chruby)
+;; - Code quality tools (RuboCop integration)
+;; - Interactive Ruby shell (IRB) support
+;; - Comprehensive file type associations
+;;
+;; File Type Support:
+;; - Standard Ruby files (.rb)
+;; - Ruby on Rails files (Gemfile, Rakefile, etc.)
+;; - Configuration files (Capfile, Guardfile, etc.)
+;; - Template files (.rabl, .jbuilder)
+;; - Deployment files (Vagrant, Docker)
+;; - Package files (.gemspec, .podspec)
+;;
+;; Development Tools:
+;; - Enhanced Ruby mode for better syntax handling
+;; - RSpec mode for behavior-driven development
+;; - Ruby tools for code manipulation
+;; - Electric mode for automatic paired characters
+;; - Interactive documentation with YARI
+;;
+;; Version Management:
+;; - RVM: Ruby Version Manager support
+;; - rbenv: Simple Ruby version management
+;; - chruby: Minimal Ruby version switcher
+;; - Automatic version detection and switching
+;;
+;; Code Quality:
+;; - RuboCop integration for style enforcement
+;; - Real-time linting and style suggestions
+;; - Automatic code formatting capabilities
+;; - Best practices enforcement
+;;
+;; Testing Support:
+;; - RSpec mode for test-driven development
+;; - Test runner integration
+;; - Spec file navigation and execution
+;; - Behavior-driven development workflow
+;;
+;; File Associations:
+;; - Ruby application files: Gemfile, Rakefile, Capfile
+;; - Configuration files: Guardfile, Vagrantfile
+;; - Template files: .rabl, .jbuilder, .podspec
+;; - Build files: .rake, .thor, .ru (Rack)
+;;
+;; Dependencies:
+;; - enh-ruby-mode: Enhanced Ruby editing
+;; - rspec-mode: Testing framework support
+;; - ruby-tools: Code manipulation utilities
+;; - ruby-electric: Automatic character pairing
+;; - rvm, rbenv, chruby: Version managers
+;; - rubocop: Code style enforcement
+;; - inf-ruby: Interactive Ruby shell
+;; - yari: Ruby documentation
 
 ;;; Code:
 

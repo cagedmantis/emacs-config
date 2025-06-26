@@ -189,8 +189,7 @@
 (setq ispell-dictionary "english")             ; Set ispell dictionary
 (setq make-backup-files t)                     ; backup files ~
 
-;; Save a list of recent files visited.
-(recentf-mode 1)
+;; Recent files configuration already set above (line 65-66)
 
 (defvar --backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p --backup-directory))

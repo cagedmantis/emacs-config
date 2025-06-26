@@ -1,6 +1,37 @@
-;;; init-ido.el --- Flycheck configuration init
+;;; init-ido.el --- Interactive DO completion system configuration
 
 ;;; Commentary:
+;;
+;; This file configures IDO (Interactively DO things), a completion system
+;; for Emacs that provides interactive selection for files, buffers, and
+;; commands. This is a legacy completion system kept for compatibility.
+;;
+;; Note: Consider migrating to the modern Vertico + Orderless completion
+;; stack for better performance and features.
+;;
+;; Key Features:
+;; - Interactive buffer and file selection
+;; - Flexible fuzzy matching with flx-ido
+;; - Vertical completion layout
+;; - Visual highlighting and face customization
+;; - Ubiquitous mode for completing-read functions
+;;
+;; Components:
+;; - ido: Core completion system
+;; - ido-completing-read+: Enhanced completing-read support
+;; - ido-vertical-mode: Vertical candidate layout
+;; - flx-ido: Advanced fuzzy matching algorithm
+;;
+;; Visual Customization:
+;; - First match: Pink background (#e5b7c0)
+;; - Only match: Red background (#e52b50) with white text
+;; - Other matches: Dark red text (#b00000)
+;;
+;; Dependencies:
+;; - ido: Built-in completion system
+;; - ido-completing-read+: Enhanced completing-read
+;; - ido-vertical-mode: Vertical layout
+;; - flx-ido: Fuzzy matching
 
 ;;; Code:
 

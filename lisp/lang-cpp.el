@@ -1,6 +1,58 @@
-;;; lang-cpp.el --- lang-cpp configuration
+;;; lang-cpp.el --- C++ development environment configuration
 
 ;;; Commentary:
+;;
+;; This file configures a comprehensive C++ development environment for Emacs.
+;; It provides intelligent code completion, syntax checking, formatting, and
+;; documentation features through Irony mode and related packages.
+;;
+;; Key Features:
+;; - Intelligent code completion via libclang
+;; - Real-time syntax checking and error reporting
+;; - Automatic code formatting with clang-format
+;; - Function signature help in echo area
+;; - Integration with compilation databases
+;;
+;; Core Components:
+;; - Irony: C++ completion and syntax analysis using libclang
+;; - Company-irony: Code completion integration
+;; - Flycheck-irony: Real-time error checking
+;; - Irony-eldoc: Function signature documentation
+;; - Clang-format: Code formatting and style enforcement
+;;
+;; Setup Requirements:
+;; - macOS: brew install cmake llvm
+;; - Linux: Install clang, cmake, and development headers
+;; - Irony server compilation (automatic on first use)
+;;
+;; Code Completion:
+;; - Context-aware suggestions from libclang
+;; - Member completion for classes and structs
+;; - Template parameter suggestions
+;; - Standard library completion
+;;
+;; Syntax Checking:
+;; - Real-time error and warning reporting
+;; - Integration with compilation databases
+;; - Support for complex build configurations
+;; - Customizable error display
+;;
+;; Code Formatting:
+;; - LLVM style formatting by default
+;; - Format on save for consistent code style
+;; - Region and buffer formatting commands
+;; - Customizable formatting rules
+;;
+;; Key Bindings:
+;; - C-c i: clang-format-region (format selected region)
+;; - C-c u: clang-format-buffer (format entire buffer)
+;;
+;; Dependencies:
+;; - irony: Core C++ analysis engine
+;; - company-irony: Completion integration
+;; - flycheck-irony: Syntax checking
+;; - irony-eldoc: Documentation display
+;; - clang-format: Code formatting tool
 
 ;;; Code:
 

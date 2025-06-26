@@ -1,6 +1,58 @@
-;;; lang-modes.el --- various language mode configurations
+;;; lang-modes.el --- Various programming language mode configurations
 
 ;;; Commentary:
+;;
+;; This file configures support for various programming languages and
+;; file formats that don't require dedicated configuration files.
+;; It provides syntax highlighting, editing modes, and basic tooling
+;; for multiple languages and formats.
+;;
+;; Supported Languages and Formats:
+;; - Protocol Buffers (.proto files)
+;; - Terraform infrastructure as code (.tf files)
+;; - Docker containerization (Dockerfile)
+;; - Haskell functional programming (.hs files)
+;; - Markdown documentation (.md, .markdown files)
+;; - YAML data serialization (.yml, .yaml files)
+;; - Bazel build system configuration
+;;
+;; Protocol Buffers Support:
+;; - Syntax highlighting for .proto files
+;; - Custom indentation style (2 spaces, tabs for alignment)
+;; - Google's Protocol Buffer format support
+;;
+;; Infrastructure and DevOps:
+;; - Terraform: HashiCorp's infrastructure as code
+;; - Docker: Container definition and management
+;; - Bazel: Google's build and test tool
+;;
+;; Documentation and Data:
+;; - Markdown: GitHub Flavored Markdown for README files
+;; - YAML: Configuration files and data serialization
+;; - Table of contents generation for Markdown
+;;
+;; Functional Programming:
+;; - Haskell: Pure functional programming language
+;; - Basic syntax highlighting and editing support
+;;
+;; File Associations:
+;; - .proto -> protobuf-mode
+;; - .tf -> terraform-mode
+;; - Dockerfile -> dockerfile-mode
+;; - .hs -> haskell-mode
+;; - .md, .markdown -> markdown-mode
+;; - README.md -> gfm-mode (GitHub Flavored)
+;; - .yml, .yaml -> yaml-mode
+;;
+;; Dependencies:
+;; - protobuf-mode: Protocol Buffers support
+;; - terraform-mode: Terraform configuration
+;; - dockerfile-mode: Docker container definitions
+;; - haskell-mode: Haskell programming
+;; - markdown-mode: Markdown documentation
+;; - markdown-toc: Table of contents generation
+;; - yaml-mode: YAML file support
+;; - bazel: Bazel build system
 
 ;;; Code:
 

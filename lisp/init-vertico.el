@@ -1,6 +1,66 @@
-;;; init-vertico.el
+;;; init-vertico.el --- Vertico completion UI and modern completion stack
 
 ;;; Commentary:
+;;
+;; This file configures Vertico and the modern Emacs completion stack.
+;; Vertico provides a performant and minimalistic vertical completion UI
+;; that works seamlessly with Emacs' built-in completion system.
+;;
+;; Modern Completion Stack Components:
+;; - Vertico: Vertical completion UI (replaces Ivy/Helm)
+;; - Consult: Collection of useful commands with preview
+;; - Marginalia: Rich annotations for completion candidates
+;; - Orderless: Flexible completion matching (configured separately)
+;; - Savehist: Persist completion history across sessions
+;;
+;; Vertico Features:
+;; - Fast vertical completion interface
+;; - Minimal design with maximum functionality
+;; - Works with built-in completion system
+;; - Customizable candidate display and navigation
+;; - Directory navigation extensions
+;;
+;; Consult Features:
+;; - Enhanced buffer/file/command selection
+;; - Live preview for many operations
+;; - Integrated search commands (grep, ripgrep)
+;; - Navigation commands (outline, imenu)
+;; - Register and bookmark management
+;; - Project-aware operations
+;;
+;; Key Bindings (Consult):
+;; - C-x b: consult-buffer (enhanced buffer switching)
+;; - M-g g: consult-goto-line (with preview)
+;; - M-s l: consult-line (search current buffer)
+;; - M-s r: consult-ripgrep (project search)
+;; - C-x p b: consult-project-buffer (project buffers)
+;; - M-y: consult-yank-pop (kill ring with preview)
+;;
+;; Marginalia Features:
+;; - Rich annotations for completion candidates
+;; - File information, command descriptions
+;; - Buffer modes, sizes, and modification status
+;; - Customizable annotation styles
+;; - Cycling between annotation levels
+;;
+;; Performance Benefits:
+;; - Faster than Ivy/Helm for large candidate sets
+;; - Efficient incremental updates
+;; - Minimal memory footprint
+;; - Native Emacs completion integration
+;;
+;; Configuration Features:
+;; - History persistence across sessions
+;; - Directory navigation improvements
+;; - Minibuffer enhancements
+;; - LSP integration for code navigation
+;;
+;; Dependencies:
+;; - vertico: Vertical completion UI
+;; - consult: Enhanced completion commands
+;; - marginalia: Rich completion annotations
+;; - savehist: History persistence
+;; - consult-lsp: LSP integration
 
 ;;; Code:
 

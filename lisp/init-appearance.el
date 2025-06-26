@@ -36,9 +36,7 @@
 ;; ============================================================================
 
 (setq inhibit-startup-message t)               ; Skip Emacs startup screen
-(column-number-mode t)                         ; Show column number in mode-line
-(line-number-mode 1)                           ; Show line number in mode-line
-(global-font-lock-mode t)                      ; Enable syntax highlighting
+;; Column/line numbers and syntax highlighting configured in init-defaults.el
 (size-indication-mode t)                       ; Show buffer size in mode-line
 (show-paren-mode 1)                            ; Highlight matching parentheses
 (global-visual-line-mode 1)                    ; Soft wrap long lines
@@ -51,10 +49,10 @@
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)
 
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;; Ediff configuration moved to init-defaults.el
 (setq echo-keystrokes 0.1)
 (setq font-lock-maximum-decoration t)
-(setq transient-mark-mode t)
+;; Transient mark mode configured in init-defaults.el
 (setq mouse-yank-at-point t)
 (setq require-final-newline t)
 (setq truncate-partial-width-windows nil)
@@ -78,9 +76,7 @@
                             (interactive)
                             (setq show-trailing-whitespace 1)))
 
-;; Reduce scroll lag
-;; https://emacs.stackexchange.com/questions/28736/emacs-pointcursor-movement-lag/28746
-(setq auto-window-vscroll nil)
+;; Scroll lag reduction configured in init-defaults.el
 
 (use-package whitespace
   :ensure t

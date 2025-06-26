@@ -1,6 +1,65 @@
-;;; lang-go.el --- lang-go copnfiguration
+;;; lang-go.el --- Go programming language development configuration
 
 ;;; Commentary:
+;;
+;; This file configures a comprehensive Go development environment for Emacs.
+;; It provides intelligent code completion, testing, debugging, and development
+;; tools integration through go-mode and LSP (Language Server Protocol).
+;;
+;; Key Features:
+;; - Full LSP integration with gopls (Go language server)
+;; - Comprehensive testing support with go-test integration
+;; - Code generation and refactoring tools
+;; - Import management and formatting
+;; - Project-aware development workflow
+;;
+;; Core Components:
+;; - go-mode: Primary Go editing mode
+;; - LSP integration: gopls language server support
+;; - Testing: gotest package for test execution
+;; - Code generation: go-fill-struct, go-add-tags
+;; - Error checking: go-errcheck integration
+;; - Development tools: Comprehensive Go toolchain
+;;
+;; Key Bindings:
+;; - C-c C-n: go-run (run current file)
+;; - C-c .: go-test-current-test (run test at point)
+;; - C-c f: go-test-current-file (run tests in file)
+;; - C-c a: go-test-current-project (run all project tests)
+;; - C-c r: lsp-rename (rename symbol)
+;; - C-c j: lsp-find-definition (jump to definition)
+;; - C-c d: lsp-describe-thing-at-point (documentation)
+;; - C-c ,: lsp-find-references (find references)
+;; - C-c i: lsp-find-implementation (find implementation)
+;; - C-c t: lsp-find-type-definition (type definition)
+;;
+;; Development Tools:
+;; - Automatic formatting and import organization on save
+;; - Struct field generation and tag management
+;; - Stack trace analysis with go-stacktracer
+;; - Interface implementation generation
+;; - Comprehensive error checking
+;;
+;; Go Tools Installation:
+;; - Provides go-install-tools command for tool management
+;; - Installs/updates essential Go development tools
+;; - Includes gopls, staticcheck, errcheck, and more
+;;
+;; LSP Features:
+;; - Real-time error checking and diagnostics
+;; - Code completion with context awareness
+;; - Symbol navigation and reference finding
+;; - Hover documentation and signature help
+;; - Workspace symbol search
+;;
+;; Dependencies:
+;; - go-mode: Core Go editing support
+;; - lsp-mode: Language server integration
+;; - gotest: Testing framework integration
+;; - go-fill-struct: Struct field generation
+;; - go-add-tags: Struct tag management
+;; - go-errcheck: Error checking tools
+;; - go-stacktracer: Stack trace analysis
 
 ;;; Code:
 
