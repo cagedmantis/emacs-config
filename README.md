@@ -143,31 +143,126 @@ This configuration provides a clean, modern Emacs experience with emphasis on:
 
 ## Key Bindings
 
-### Completion
-- `C-c p p` - Completion at point
+This configuration provides many custom key bindings organized by functionality. All bindings preserve standard Emacs conventions while adding modern enhancements.
+
+### 📋 Completion System (Cape/Corfu)
+- `C-c p p` - Completion at point (default)
 - `C-c p f` - File path completion
 - `C-c p d` - Dynamic abbreviation completion
+- `C-c p h` - Command history completion
+- `C-c p k` - Programming keyword completion
+- `C-c p s` - Elisp symbol completion
+- `C-c p e` - Elisp code block completion
+- `C-c p a` - Abbreviation completion
+- `C-c p l` - Line completion
+- `C-c p w` - Dictionary word completion
+- `C-c p :` - Emoji completion
+- `C-c p \` - TeX symbol completion
+- `C-c p &` - SGML/HTML entity completion
+- `C-c p r` - RFC1345 character mnemonics
 
-### Go Development
-- `C-c C-n` - Run Go program
+### 🔍 Search and Navigation (Vertico/Consult)
+- `C-x b` - Buffer switching with live preview
+- `C-x C-r` - Recent files with preview
+- `M-s r` - Ripgrep project search
+- `M-s l` - Search current buffer lines
+- `M-s i` - Imenu symbol navigation
+- `M-s o` - Multi-occur across buffers
+- `M-g g` - Go to line with preview
+- `M-g i` - Imenu with completion
+- `M-g o` - Go to outline heading
+- `M-y` - Enhanced yank-pop with preview
+
+### 🏗️ Project Management (Projectile)
+- `C-c p f` - Find file in project
+- `C-c p s g` - Grep in project
+- `C-c p s r` - Search/replace in project
+- `C-c p p` - Switch project
+- `C-c p c` - Compile project
+- `C-c p !` - Run shell command in project root
+- `C-c p &` - Run async shell command in project
+- `C-c p b` - Switch to project buffer
+- `C-c p k` - Kill project buffers
+- `C-c p D` - Open project root in dired
+
+### 🐹 Go Development
+- `C-c C-n` - Run Go program (`go run`)
 - `C-c .` - Test current function
 - `C-c f` - Test current file
 - `C-c a` - Test entire project
-- `C-c r` - LSP rename
-- `C-c j` - Go to definition
+- `C-c r` - LSP rename symbol
+- `C-c j` - Go to definition (LSP)
+- `C-c d` - Describe symbol at point
+- `C-c ,` - Find references (LSP)
+- `C-c i` - Find implementation (LSP)
+- `C-c t` - Find type definition (LSP)
+- `C-c n` - Next error (Flymake)
+- `C-c p` - Previous error (Flymake)
 
-### Navigation and Search
-- `C-x b` - Buffer switching (Consult)
-- `M-s r` - Ripgrep search
-- `M-g g` - Go to line
-- `M-g i` - Imenu navigation
+### 🌐 Web/Remote Development
+- `C-c t` - Connect to remote server (TRAMP)
+- `C-x C-f` - Enhanced file finding with remote support
 
-### Project Management
-- `C-c p` - Projectile prefix
-- `C-c left/right` - Undo/redo window configuration
+### 🎨 Window and Frame Management
+- `C-c <left>` - Undo window configuration (Winner mode)
+- `C-c <right>` - Redo window configuration (Winner mode)
+- `C-x o` - Switch to other window
+- `C-x 1` - Delete other windows
+- `C-x 2` - Split window below  
+- `C-x 3` - Split window right
+- `C-x 0` - Delete current window
 
-### macOS Specific
+### 📝 Text Editing and Snippets
+- `TAB` - YASnippet expand or indent
+- `M-/` - Dynamic abbreviation expansion
+- `C-;` - Comment/uncomment region or line
+- `C-x C-;` - Comment/uncomment line
+- `M-;` - Insert comment
+
+### 🔧 Development Tools
+- `M-x go-install-tools` - Install/update Go development tools
+- `M-x lsp-restart-workspace` - Restart language server
+- `M-x flycheck-list-errors` - Show error list
+- `M-x magit-status` - Open Git status (default: `C-x g`)
+
+### 🎯 Language Server Protocol (LSP)
+- `M-.` - Go to definition (xref)
+- `M-,` - Pop back from definition
+- `M-?` - Find references
+- `C-c C-r` - Rename symbol
+- `C-c C-a` - Apply code action
+- `C-c l` - LSP prefix (mode-specific commands)
+
+### 📱 macOS Specific
 - `C-c w` - Swap meta and super keys (useful with external keyboards)
+- `Cmd+C/V/X` - Standard clipboard operations (when GUI)
+- `Fn` key - Configured as Hyper key for additional bindings
+
+### 🚀 Quick Access Functions
+- `F1 f` - Describe function
+- `F1 v` - Describe variable  
+- `F1 k` - Describe key binding
+- `F1 m` - Describe current modes
+- `F2 i` - Info lookup symbol
+- `F2 u` - Insert Unicode character
+
+### 🔄 Package and Configuration Management
+- `M-x package-refresh-contents` - Update package archives
+- `M-x package-list-packages` - Browse available packages
+- `M-x use-package-report` - Show use-package statistics
+
+### 💡 Tips for Key Binding Discovery
+- `C-h k` - Describe any key binding
+- `C-h m` - Show all active mode key bindings
+- `C-h b` - Show all current key bindings
+- `which-key` shows available completions when you pause after a prefix key
+- Many packages provide their own `C-h` help within their keymaps
+
+### 🎛️ Customization Notes
+- Most bindings can be customized in their respective `init-*.el` files
+- Language-specific bindings are in `lang-*.el` files
+- Platform-specific bindings are in `system_type/*.el` files
+- Use `M-x describe-personal-keybindings` to see all custom bindings
 
 ## Customization
 
