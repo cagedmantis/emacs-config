@@ -13,6 +13,7 @@
 	  js-mode
 	  python-mode
 	  rust-mode ;; rust-analyzer
+          LaTex-mode
 	  ) . lsp-deferred)
   :commands lsp
   :config
