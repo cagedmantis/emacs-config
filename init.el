@@ -13,7 +13,6 @@
 
 (require 'init-defaults)
 (require 'init-appearance)
-;;(require 'init-ivy)
 
 ;; (require 'init-autoinsert)
 ;; (require 'init-cc)
@@ -29,8 +28,7 @@
 (require 'init-latex)
 ;; (require 'init-org)
 
-;; TODO work to migrate to project.el
-(require 'init-projectile)
+(require 'init-project)
 ;; (require 'init-rainbow-delimiters)
 ;; (require 'init-saveplace)
 ;; (require 'init-switch-window)

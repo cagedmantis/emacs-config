@@ -68,8 +68,12 @@
 (use-package diminish
   :ensure t)
 
-(defvar current-font-size 14
+(defvar current-font-size 18
   "Default font size, in points.")
+
+(defvar preferred-fonts
+  '("Source Code Pro" "Fira Mono" "DejaVu Sans Mono" "Monaco" "Ubuntu Mono" "Hack")
+  "Fonts to use, in order of preference.")
 
 (defun set-font (font)
   "Set the default FONT family at `current-font-size'.
@@ -83,23 +87,22 @@ tiny fallback font.  Also seed `default-frame-alist' so new frames
         (format "%s-%d" font current-font-size))
   (message "Font: %s Size: %d" font current-font-size))
 
-;; needs cleanup
-(if (display-graphic-p)
-    (cond
-     ((member "Source Code Pro" (font-family-list))
-      (set-font "Source Code Pro"))
-     ((member "Fira Mono" (font-family-list))
-      (set-font "Fira Mono"))
-     ((member "DejaVu Sans Mono" (font-family-list))
-      (set-font "DejaVu Sans Mono"))
-     ((member "Monaco" (font-family-list))
-      (set-font "Monaco"))
-     ((member "Ubuntu Mono" (font-family-list))
-      (set-font "Ubuntu Mono"))
-     ((member "Hack" (font-family-list))
-      (set-font "Hack"))
-     ((t)
-      (message "Using default system font"))))
+(defun set-preferred-font (&optional frame)
+  "Apply the first available `preferred-fonts' entry to FRAME.
+Runs per-frame via `after-make-frame-functions' so that emacsclient
+and `emacs --daemon' frames get the font too -- the font can only be
+chosen once a graphical frame exists, which for a daemon is not at
+startup but when the first client frame is created."
+  (with-selected-frame (or frame (selected-frame))
+    (when (display-graphic-p)
+      (let ((font (seq-find (lambda (f) (member f (font-family-list)))
+                            preferred-fonts)))
+        (if font
+            (set-font font)
+          (message "Using default system font"))))))
+
+(add-hook 'after-make-frame-functions #'set-preferred-font)
+(set-preferred-font)  ; covers the non-daemon (direct GUI) startup frame
 
 (use-package doom-themes
   :ensure t
