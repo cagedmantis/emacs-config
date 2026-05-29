@@ -68,12 +68,19 @@
 (use-package diminish
   :ensure t)
 
-(defvar current-font-size 11)
+(defvar current-font-size 14
+  "Default font size, in points.")
 
 (defun set-font (font)
-  "Set the FONT and size."
-  (set-frame-font (concat font " " (number-to-string current-font-size)) t)
-  (set-frame-font font nil t)
+  "Set the default FONT family at `current-font-size'.
+Use `set-face-attribute' with separate :family and :height rather than
+`set-frame-font', because a string like \"Source Code Pro 14\" is parsed
+as a single family name (multi-word names swallow the size), leaving a
+tiny fallback font.  Also seed `default-frame-alist' so new frames
+\(e.g. emacsclient frames) inherit the same font."
+  (set-face-attribute 'default nil :family font :height (* current-font-size 10))
+  (setf (alist-get 'font default-frame-alist)
+        (format "%s-%d" font current-font-size))
   (message "Font: %s Size: %d" font current-font-size))
 
 ;; needs cleanup

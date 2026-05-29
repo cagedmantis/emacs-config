@@ -27,5 +27,14 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+;; package.el recompiles the package you upgrade, but not its dependents, so a
+;; dependent's `.elc' can go stale against a newer dependency.  A concrete case:
+;; `compat-call' resolves the compat shim vs. built-in at byte-compile time, so
+;; upgrading `compat' after `marginalia' was compiled froze a call to the 1-arg
+;; built-in `seconds-to-string', breaking file annotations in the minibuffer.
+;; Recompiling everything after an upgrade rebuilds against the loaded versions.
+(dolist (cmd '(package-upgrade package-upgrade-all))
+  (advice-add cmd :after (lambda (&rest _) (package-recompile-all))))
+
 (provide 'init-package)
 ;;; init-package ends here

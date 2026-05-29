@@ -23,20 +23,8 @@
 (setq mac-command-modifier 'super)
 (setq mac-option-modifier 'meta)
 
-;; Fonts
-(setq preferred-font "Source Code Pro")
-
-;; Does a font exist?
-(defun font-existsp (font)
-  (if (window-system)
-	  (if (null (x-list-fonts font))
-		  nil t)))
-
-(if (font-existsp preferred-font)
-    (set-frame-font preferred-font)
-  (set-frame-font "Monaco"))
-
-(set-face-attribute 'default nil :height 130)
+;; Font selection/sizing is handled cross-platform in init-appearance.el
+;; (`set-font'); don't override it here or it clobbers the family + size.
 
 ;; TODO: investigate why this config was here.
 ;; Latex hacks
