@@ -1,11 +1,11 @@
-;;; init-tramp.el --- Tramp configuration init
+;;; init-tramp.el --- Tramp configuration init  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
 ;;; Code:
 
 (use-package tramp
-  :ensure t
+  :ensure nil  ; built-in
   :config
   (require 'tramp nil t)
 

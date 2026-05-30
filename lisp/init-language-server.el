@@ -1,4 +1,4 @@
-;;; init-language-server.el --- init-language-server configuration
+;;; init-language-server.el --- init-language-server configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

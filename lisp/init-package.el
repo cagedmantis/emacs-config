@@ -1,4 +1,4 @@
-;;; init-package.el --- init-package copnfiguration
+;;; init-package.el --- init-package copnfiguration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

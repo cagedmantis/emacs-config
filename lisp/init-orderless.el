@@ -1,4 +1,4 @@
-;;; init-orderless
+;;; init-orderless  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

@@ -1,4 +1,4 @@
-;;; init-ido.el --- Flycheck configuration init
+;;; init-ido.el --- Flycheck configuration init  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

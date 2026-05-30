@@ -1,4 +1,4 @@
-;;; lang-swift.el --- lang-swift configuration
+;;; lang-swift.el --- lang-swift configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

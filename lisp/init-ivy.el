@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 
 ;;; init-ivy.el --- ivy configuration init
 

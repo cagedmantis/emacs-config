@@ -1,4 +1,4 @@
-;;; lang-go.el --- lang-go copnfiguration
+;;; lang-go.el --- lang-go copnfiguration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

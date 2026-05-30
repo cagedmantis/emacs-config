@@ -1,4 +1,4 @@
-;;; lang-cpp.el --- lang-cpp configuration
+;;; lang-cpp.el --- lang-cpp configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

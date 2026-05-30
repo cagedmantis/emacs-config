@@ -1,4 +1,4 @@
-;;; init-latex.el --- Latex editing copnfiguration
+;;; init-latex.el --- Latex editing copnfiguration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

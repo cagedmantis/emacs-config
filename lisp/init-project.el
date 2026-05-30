@@ -1,4 +1,4 @@
-;;; init-project.el --- project.el configuration
+;;; init-project.el --- project.el configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

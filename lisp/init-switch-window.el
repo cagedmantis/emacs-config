@@ -1,4 +1,4 @@
-;;; init-switch-window.el --- switch-window configuration
+;;; init-switch-window.el --- switch-window configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

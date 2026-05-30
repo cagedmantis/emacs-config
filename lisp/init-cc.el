@@ -1,4 +1,4 @@
-;;; init-cc.el --- C configuration init
+;;; init-cc.el --- C configuration init  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

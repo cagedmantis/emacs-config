@@ -1,4 +1,4 @@
-;;; init-org.el --- Org configuration init
+;;; init-org.el --- Org configuration init  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

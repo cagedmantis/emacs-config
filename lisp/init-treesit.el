@@ -1,4 +1,4 @@
-;;; init-treesit.el
+;;; init-treesit.el  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

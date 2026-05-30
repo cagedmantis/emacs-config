@@ -1,4 +1,4 @@
-;;; lang-modes.el --- various language mode configurations
+;;; lang-modes.el --- various language mode configurations  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

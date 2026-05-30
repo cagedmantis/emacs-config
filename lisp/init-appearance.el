@@ -1,4 +1,4 @@
-;;; init-appearance.el --- appearance configuration
+;;; init-appearance.el --- appearance configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -54,11 +54,18 @@
 (setq auto-window-vscroll nil)
 
 (use-package whitespace
-  :ensure t
+  :ensure nil  ; built-in
   :config
   (setq whitespace-line-column 80) ;; limit line length
-  (setq whitespace-style '(face tabs empty trailing lines-tail))
-  (add-hook 'before-save-hook 'delete-trailing-whitespace))
+  (setq whitespace-style '(face tabs empty trailing lines-tail)))
+
+;; Trim trailing whitespace on save, but only on lines actually edited, so
+;; saving a file with pre-existing whitespace doesn't create noisy unrelated
+;; diffs (replaces a global `delete-trailing-whitespace' before-save hook).
+(use-package ws-butler
+  :ensure t
+  :config
+  (ws-butler-global-mode 1))
 
 ;; Vertical window divider
 (setq window-divider-default-right-width 3)

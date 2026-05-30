@@ -1,4 +1,4 @@
-;;; init-vertico.el
+;;; init-vertico.el  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -37,13 +37,13 @@
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
-  :ensure t
+  :ensure nil  ; built-in
   :init
   (savehist-mode))
 
 ;; A few more useful configurations...
 (use-package emacs
-  :ensure t
+  :ensure nil  ; pseudo-package for core settings; nothing to install
   :init
   ;; Add prompt indicator to `completing-read-multiple'.
   ;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.

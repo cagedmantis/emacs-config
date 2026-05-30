@@ -1,4 +1,4 @@
-;;; lang-sql.el --- lang-sql configuration
+;;; lang-sql.el --- lang-sql configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

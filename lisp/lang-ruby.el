@@ -1,4 +1,4 @@
-;;; lang-ruby.el --- lang-ruby configuration
+;;; lang-ruby.el --- lang-ruby configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

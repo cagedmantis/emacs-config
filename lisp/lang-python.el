@@ -1,4 +1,4 @@
-;;; lang-python.el --- Python configuration
+;;; lang-python.el --- Python configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

@@ -1,4 +1,4 @@
-;;; lang-rust.el --- lang-rust configuration
+;;; lang-rust.el --- lang-rust configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

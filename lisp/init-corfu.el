@@ -1,4 +1,4 @@
-;;; init-corfu.el
+;;; init-corfu.el  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

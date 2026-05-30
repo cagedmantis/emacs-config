@@ -1,4 +1,4 @@
-;;; init-spelling.el --- init-spelling configuration
+;;; init-spelling.el --- init-spelling configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -7,7 +7,7 @@
 ;; ===========================
 
 (use-package flyspell
-  :ensure t
+  :ensure nil  ; built-in
   :hook ((text-mode . flyspell-mode)
 	 (org-mode . flyspell-mode)
 	 (git-commit-mode . flyspell-mode)

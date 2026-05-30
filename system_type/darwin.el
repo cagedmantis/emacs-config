@@ -1,4 +1,4 @@
-;;; darwin.el --- macOS specific configuration
+;;; darwin.el --- macOS specific configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

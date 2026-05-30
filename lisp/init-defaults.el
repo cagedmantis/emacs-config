@@ -1,4 +1,4 @@
-;;; init-defaults.el --- default configuration
+;;; init-defaults.el --- default configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -28,7 +28,7 @@
 (global-font-lock-mode t)
 
 ;; Answering just 'y' or 'n' will do
-(defalias 'yes-or-no-p 'y-or-n-p)
+(setq use-short-answers t)  ; Emacs 28+; replaces (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; UTF-8 please
 (setq locale-coding-system 'utf-8) ; pretty
@@ -114,16 +114,18 @@
 ;; that you can always see what's happening.
 (setq eval-expression-print-level nil)
 
-;; When popping the mark, continue popping until the cursor actually moves
+;; When popping the mark, continue popping until the cursor actually moves.
 ;; Also, if the last command was a copy - skip past all the expand-region cruft.
-(defadvice pop-to-mark-command (around ensure-new-position activate)
+(defun init--pop-to-mark-ensure-new-position (orig-fn &rest args)
+  "Keep popping the mark (calling ORIG-FN with ARGS) until point actually moves."
   (let ((p (point)))
     (when (eq last-command 'save-region-or-current-line)
-      ad-do-it
-      ad-do-it
-      ad-do-it)
-    (dotimes (i 10)
-      (when (= p (point)) ad-do-it))))
+      (apply orig-fn args)
+      (apply orig-fn args)
+      (apply orig-fn args))
+    (dotimes (_ 10)
+      (when (= p (point)) (apply orig-fn args)))))
+(advice-add 'pop-to-mark-command :around #'init--pop-to-mark-ensure-new-position)
 
 (setq set-mark-command-repeat-pop t)
 
@@ -137,20 +139,16 @@
 
 (add-to-list 'find-file-not-found-functions 'my-create-non-existent-directory)
 
-(setq shell-file-name "/bin/bash")             ; Set Shell for M-| command
-(setq sentence-end-double-space nil)           ; Sentences end with one space
+(setq shell-file-name (or (executable-find "bash") shell-file-name)) ; Prefer bash for M-|, but only if present (portable)
 (setq-default indent-tabs-mode nil)            ; Use spaces instead of tabs
-(setq visible-bell t)                          ; No beep when reporting errors
 
-;;El Capitan fix
-(setq visible-bell nil) ;; The default
+;; Silence the bell entirely: no audible beep, no visual flash.
+(setq visible-bell nil)
 (setq ring-bell-function 'ignore)
 
 (setq ispell-dictionary "english")             ; Set ispell dictionary
-(setq make-backup-files t)                     ; backup files ~
-
-;; Save a list of recent files visited.
-(recentf-mode 1)
+;; Note: sentence-end-double-space, recentf-mode, and make-backup-files are
+;; each configured once elsewhere (above, line ~57/96, and the backup block).
 
 (defvar --backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p --backup-directory))

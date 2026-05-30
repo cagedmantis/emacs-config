@@ -1,4 +1,4 @@
-;;; init-company.el --- appearance configuration
+;;; init-company.el --- appearance configuration  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
