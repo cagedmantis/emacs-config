@@ -49,10 +49,12 @@ should not prevent the rest of the configuration from loading."
 
 (init-require 'init-git)
 
+(init-require 'init-agent)
+
 (init-require 'lang-go)
 (init-require 'lang-modes)
+(init-require 'lang-cpp)
 ;; (require 'lang-rust)
-;; (require 'lang-cpp)
 ;; (require 'lang-javascript)
 ;; (require 'lang-python)
 ;; (require 'lang-ruby)

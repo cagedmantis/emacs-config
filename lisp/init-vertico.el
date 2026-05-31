@@ -39,7 +39,17 @@
 (use-package savehist
   :ensure nil  ; built-in
   :init
-  (savehist-mode))
+  (savehist-mode)
+  :config
+  ;; Also persist the kill ring and search rings across sessions.
+  (dolist (v '(kill-ring search-ring regexp-search-ring))
+    (add-to-list 'savehist-additional-variables v))
+  ;; Strip text properties from saved kill-ring entries to keep the file small.
+  (add-hook 'savehist-save-hook
+            (lambda ()
+              (setq kill-ring
+                    (mapcar #'substring-no-properties
+                            (seq-filter #'stringp kill-ring))))))
 
 ;; A few more useful configurations...
 (use-package emacs

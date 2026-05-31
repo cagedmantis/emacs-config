@@ -200,6 +200,46 @@
 (when (fboundp 'pixel-scroll-precision-mode)
   (pixel-scroll-precision-mode 1))
 
+;; -- Good defaults (perf + ergonomics) --
+;; ---------------------------------------
+;; Collected from widely-shared configs (emacsredux).  All available at the
+;; minimum supported Emacs (28.2), so no version gating is needed.
+
+;; Performance.
+(setq redisplay-skip-fontification-on-input t) ; defer font-lock while typing
+(setq read-process-output-max (* 4 1024 1024)) ; bigger reads from LSP servers (default 64K)
+(setq-default cursor-in-non-selected-windows nil) ; don't draw cursors in other windows
+(setq highlight-nonselected-windows nil)
+
+;; Kill ring / clipboard.
+(setq save-interprogram-paste-before-kill t)   ; keep the system clipboard when killing
+(setq kill-do-not-save-duplicates t)           ; drop consecutive duplicate kills
+
+;; Window management.
+(setq window-combination-resize t)             ; split proportionally, not by halving one window
+(setq help-window-select t)                    ; focus help buffers when they open
+
+;; Editing niceties.
+(setq reb-re-syntax 'string)                   ; readable regexps in M-x re-builder
+(add-hook 'after-save-hook
+          #'executable-make-buffer-file-executable-if-script-p) ; chmod +x shebang scripts
+
+;; Recenter after `save-place' restores a file's last position.
+(advice-add 'save-place-find-file-hook :after
+            (lambda (&rest _)
+              (when buffer-file-name (ignore-errors (recenter)))))
+
+;; Make `C-x 1' reversible: toggle single-window vs. the previous layout
+;; (winner-mode is enabled above).
+(defun init-toggle-delete-other-windows ()
+  "Delete other windows, or restore the previous layout if already alone."
+  (interactive)
+  (if (and (bound-and-true-p winner-mode)
+           (eq (selected-window) (next-window)))
+      (winner-undo)
+    (delete-other-windows)))
+(global-set-key (kbd "C-x 1") #'init-toggle-delete-other-windows)
+
 (provide 'init-defaults)
 
 ;;; init-defaults.el ends here

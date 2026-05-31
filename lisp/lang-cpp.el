@@ -1,65 +1,71 @@
-;;; lang-cpp.el --- lang-cpp configuration  -*- lexical-binding: t; -*-
+;;; lang-cpp.el --- C/C++ configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
+;; Modern C/C++ setup built on clangd (LLVM), aligned with lang-go.el:
+;;   - completion, navigation and diagnostics via clangd + lsp-mode
+;;   - clang-tidy linting (through clangd's --clang-tidy flag)
+;;   - format-on-save via clangd (LLVM / .clang-format style)
+;;   - debugging via dap-mode + LLDB (dap-lldb)
+;;
+;; Replaces the previous irony-mode / company-irony / flycheck-irony stack.
+;; Requires LLVM tools on PATH: `clangd' (completion/lint/format) and, for
+;; debugging, `lldb-dap' (older LLVM ships it as `lldb-vscode').
+;; exec-path-from-shell makes them discoverable in GUI/daemon sessions.
 
 ;;; Code:
 
-;; osx: brew install cmake llvm
+(declare-function lsp-deferred "lsp-mode")
+(defvar lsp-clients-clangd-args)        ; defined in lsp-clangd
+(defvar dap-lldb-debug-program)         ; defined in dap-lldb
 
-(use-package irony
-  :ensure t
+;; clangd invocation: enable clang-tidy linting, richer completion and a
+;; background index.  Set before clangd starts; a defcustom won't clobber it.
+(setq lsp-clients-clangd-args
+      '("--clang-tidy"
+        "--header-insertion=never"
+        "--completion-style=detailed"
+        "--background-index"))
+
+(use-package cc-mode
+  :ensure nil  ; built-in
+  ;; c-mode-base-map is the common ancestor of c-mode-map / c++-mode-map, so
+  ;; these bindings (mirroring lang-go.el) apply to both C and C++.
+  :bind (:map c-mode-base-map
+              ("C-c r" . lsp-rename)
+              ("C-c j" . lsp-find-definition)
+              ("C-c d" . lsp-describe-thing-at-point)
+              ("C-c ," . lsp-find-references)
+              ("C-c i" . lsp-find-implementation)
+              ("C-c t" . lsp-find-type-definition)
+              ("C-c s" . lsp-execute-code-action)
+              ;; Switch between header and implementation (clangd extension).
+              ("C-c o" . lsp-clangd-find-other-file))
   :config
-  (progn
-    ;; If irony server was never installed, install it.
-    ;;(unless (irony--find-server-executable) (call-interactively #'irony-install-server))
+  ;; Start clangd in C/C++ buffers (unconditional, daemon-safe -- same
+  ;; rationale as lang-go.el).
+  (defun lang-cpp--setup ()
+    "Buffer-local C/C++ editing settings."
+    (subword-mode 1)
+    (setq-local c-basic-offset 4
+                indent-tabs-mode nil))
 
-    (add-hook 'c++-mode-hook 'irony-mode)
-    (add-hook 'c-mode-hook 'irony-mode)
+  (defun lang-cpp-before-save-hooks ()
+    "Format C/C++ buffers on save, via clangd."
+    (add-hook 'before-save-hook #'lsp-format-buffer t t))
 
-    ;; Use compilation database first, clang_complete as fallback.
-    (setq-default irony-cdb-compilation-databases '(irony-cdb-libclang
-						    irony-cdb-clang-complete))
+  (dolist (hook '(c-mode-hook c++-mode-hook))
+    (add-hook hook #'lsp-deferred)
+    (add-hook hook #'lang-cpp--setup)
+    (add-hook hook #'lang-cpp-before-save-hooks))
 
-    (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-    ))
-
-;; I use irony with company to get code completion.
-(use-package company-irony
-  :ensure t
-  :requires company irony
-  :config
-  (progn
-    (eval-after-load 'company '(add-to-list 'company-backends 'company-irony))))
-
-;; I use irony with flycheck to get real-time syntax checking.
-(use-package flycheck-irony
-  :ensure t
-  :requires flycheck irony
-  :config
-  (progn
-    (eval-after-load 'flycheck '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))))
-
-;; Eldoc shows argument list of the function you are currently writing in the echo area.
-(use-package irony-eldoc
-  :ensure t
-  :requires eldoc irony
-  :config
-  (progn
-    (add-hook 'irony-mode-hook #'irony-eldoc)))
-
-(use-package clang-format
-  :ensure t
-  :config
-  (global-set-key (kbd "C-c i") 'clang-format-region)
-  (global-set-key (kbd "C-c u") 'clang-format-buffer)
-
-  (setq clang-format-style-option "llvm")
-
-  (add-hook 'c-mode-common-hook
-	    (function (lambda ()
-			(add-hook 'before-save-hook
-				  'clang-format-buffer)))))
-
+  ;; Debugging: load the LLDB adapter once dap-mode is available and point it
+  ;; at LLVM's lldb-dap (older LLVM names it lldb-vscode).  M-x dap-debug.
+  (with-eval-after-load 'dap-mode
+    (require 'dap-lldb)
+    (setq dap-lldb-debug-program
+          (list (or (executable-find "lldb-dap")
+                    (executable-find "lldb-vscode")
+                    "lldb-dap")))))
 
 (provide 'lang-cpp)
 ;;; lang-cpp.el ends here
