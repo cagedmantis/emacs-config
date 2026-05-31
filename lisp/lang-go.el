@@ -34,7 +34,12 @@
     "Format the buffer and organize imports on save, via gopls."
     (add-hook 'before-save-hook #'lsp-format-buffer t t)
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
-  (add-hook 'go-mode-hook #'lsp-go-before-save-hooks))
+  (add-hook 'go-mode-hook #'lsp-go-before-save-hooks)
+
+  ;; Debugging via dap-mode: load the Delve adapter once dap-mode is available.
+  ;; Needs `dlv' on PATH (see `go-tools'); start a session with M-x dap-debug.
+  (with-eval-after-load 'dap-mode
+    (require 'dap-dlv-go)))
 
 (use-package go-fill-struct
   :ensure t
@@ -79,6 +84,7 @@
     (gomodifytags  . "github.com/fatih/gomodifytags")
     (gomvpkg       . "golang.org/x/tools/cmd/gomvpkg")
     (gopls         . "golang.org/x/tools/gopls")
+    (dlv           . "github.com/go-delve/delve/cmd/dlv")
     (gotags        . "github.com/jstemmer/gotags")
     (gotests       . "github.com/cweill/gotests/...")
     (gounconvert   . "github.com/mdempsky/unconvert")

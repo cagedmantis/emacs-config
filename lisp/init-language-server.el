@@ -60,8 +60,18 @@
 ;; (use-package lsp-ivy
 ;;   :ensure t)
 
-;; (use-package dap-mode
-;;   :ensure t)
+;; Debug Adapter Protocol client (emacs-lsp family, integrates with lsp-mode).
+;; Language-specific adapters are loaded from the lang-*.el files (e.g.
+;; dap-dlv-go in lang-go.el, which drives Delve/dlv).
+(use-package dap-mode
+  :ensure t
+  :after lsp-mode
+  :commands (dap-debug dap-debug-edit-template)
+  :config
+  ;; Show the debug UI (locals, breakpoints, stack, REPL) automatically and
+  ;; enable the on-hover value tooltips while a session is running.
+  (dap-auto-configure-mode)
+  (dap-tooltip-mode 1))
 
 (use-package which-key
   :ensure t)
