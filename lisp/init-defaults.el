@@ -80,8 +80,14 @@
   (smooth-scrolling-mode 1)
   (setq smooth-scroll-margin 5))
 
-;; Allow recursive minibuffers
-(setq enable-recursive-minibuffers t)
+;; (enable-recursive-minibuffers + minibuffer-depth-indicate-mode are set in
+;; init-vertico.el, alongside the rest of the minibuffer configuration.)
+
+;; Disable bidirectional text scanning for a small redisplay win on long
+;; lines.  Safe unless you edit right-to-left scripts.  bidi-inhibit-bpa is
+;; Emacs 27+, which is below the supported floor (28.2), so no gate needed.
+(setq-default bidi-paragraph-direction 'left-to-right)
+(setq bidi-inhibit-bpa t)
 
 ;; Don't be so stingy on the memory, we have lots now. It's the distant future.
 (setq gc-cons-threshold 20000000)

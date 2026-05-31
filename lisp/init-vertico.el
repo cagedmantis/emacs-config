@@ -63,11 +63,13 @@
 
   ;; Emacs 28: Hide commands in M-x which do not work in the current mode.
   ;; Vertico commands are hidden in normal buffers.
-  ;; (setq read-extended-command-predicate
-  ;;       #'command-completion-default-include-p)
+  (setq read-extended-command-predicate
+        #'command-completion-default-include-p)
 
-  ;; Enable recursive minibuffers
-  (setq enable-recursive-minibuffers t))
+  ;; Enable recursive minibuffers, and indicate the recursion depth (e.g.
+  ;; "[2]") so nested minibuffers don't get confusing.
+  (setq enable-recursive-minibuffers t)
+  (minibuffer-depth-indicate-mode 1))
 
 ;; Example configuration for Consult
 (use-package consult
