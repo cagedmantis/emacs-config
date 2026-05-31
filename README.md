@@ -125,44 +125,67 @@ bindings under the `s-l` prefix when a language server is installed.
 ## Installing external tools
 
 Most language features (LSP, linting, formatting, debugging) stay silently off
-until their external tool is installed. Commands below are macOS / Homebrew
-first, with cross-platform notes. After installing, **restart Emacs (or the
-daemon)** so `exec-path-from-shell` picks up the new `PATH`. Make sure the
-relevant bin dirs are on `PATH`: `~/.local/bin` (uv/pipx), `~/.cargo/bin`
-(cargo), your npm global prefix, and `/opt/homebrew/opt/llvm/bin` (LLVM).
+until their external tool is installed. Each tool lists **macOS** (Homebrew) and
+**Linux** commands; Linux uses Debian/Ubuntu `apt` as the example (dnf/pacman are
+analogous). After installing, **restart Emacs (or the daemon)** so
+`exec-path-from-shell` picks up the new `PATH`. Make sure the relevant bin dirs
+are on `PATH`: `~/.local/bin` (uv/pipx), `~/.cargo/bin` (cargo), your npm global
+prefix, and (macOS) `/opt/homebrew/opt/llvm/bin` (LLVM).
+
+### Prerequisites (cross-platform installers used below)
+
+Once these runtimes are present, the `uv`/`cargo`/`npm -g` commands further down
+run identically on macOS and Linux.
+
+```sh
+# uv (Python tooling)
+#   macOS:  brew install uv
+#   Linux:  curl -LsSf https://astral.sh/uv/install.sh | sh
+# Node + npm
+#   macOS:  brew install node
+#   Linux:  sudo apt install nodejs npm
+# Rust + cargo
+#   macOS:  brew install rust
+#   Linux:  sudo apt install cargo      # or rustup: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
 
 ### General (search, spelling)
 
 ```sh
-brew install ripgrep      # consult-ripgrep (M-s r)
-brew install aspell        # flyspell  (Linux: apt install aspell aspell-en)
+# ripgrep — consult-ripgrep (M-s r)
+#   macOS:  brew install ripgrep
+#   Linux:  sudo apt install ripgrep
+# aspell — flyspell
+#   macOS:  brew install aspell
+#   Linux:  sudo apt install aspell aspell-en
 ```
 
 ### Go
 
 ```sh
-brew install go
-brew install golangci-lint                              # linter (errcheck/staticcheck/…)
-# gopls, dlv (Delve) and the rest of `go-tools`:
+# Go toolchain
+#   macOS:  brew install go
+#   Linux:  sudo apt install golang-go      # or the tarball from https://go.dev/dl
+# golangci-lint (linter: errcheck/staticcheck/…)
+#   macOS:  brew install golangci-lint
+#   Linux:  curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b $(go env GOPATH)/bin
+# gopls (LSP) + dlv (debugger) + the rest of `go-tools` (cross-platform):
 #   in Emacs:  M-x go-install-tools
-# or individually:
-go install golang.org/x/tools/gopls@latest              # LSP
-go install github.com/go-delve/delve/cmd/dlv@latest     # debugger (dap-mode)
+#   or:  go install golang.org/x/tools/gopls@latest
+#        go install github.com/go-delve/delve/cmd/dlv@latest
 ```
 
-### C / C++ (LLVM)
+### C / C++ (LLVM — clangd LSP, clang-tidy lint, lldb-dap debug)
 
 ```sh
-brew install llvm          # provides clangd (LSP), clang-tidy (lint), lldb-dap (debug)
-# add LLVM to PATH (zsh):
-echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
-# Linux: apt install clangd clang-tidy lldb   (or the llvm packages)
+#   macOS:  brew install llvm
+#           echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
+#   Linux:  sudo apt install clangd clang-tidy lldb      # or the llvm.org apt packages
 ```
 
-### Python
+### Python (cross-platform via uv)
 
 ```sh
-brew install uv                                         # if not already present
 uv tool install ruff                                    # format-on-save + lint
 uv tool install "python-lsp-server[all]" --with python-lsp-ruff   # LSP (pylsp) + ruff lint
 # debugging (dap-debug) — install into the PROJECT venv, not globally:
@@ -172,18 +195,21 @@ uv pip install debugpy        # or: pip install debugpy
 ### Assembly (amd64 / arm64)
 
 ```sh
-brew install rust          # for cargo (or use rustup)
-cargo install asm-lsp      # LSP for x86-64 + AArch64
-brew install nasm          # assembler, for building .asm sources (optional)
+cargo install asm-lsp        # LSP for x86-64 + AArch64 (cross-platform; needs Rust)
+# nasm — assembler for building .asm sources (optional)
+#   macOS:  brew install nasm
+#   Linux:  sudo apt install nasm
 ```
 
 ### WebAssembly
 
 ```sh
-# wat_server — WAT language server (g-plane/wasm-language-tools); see its
-# README for the current install (e.g. `cargo install wasm-language-tools`).
-brew install wasmtime      # run/debug compiled wasm (no Emacs DAP adapter for wasm)
-# tree-sitter grammars (needs a C compiler, e.g. clang):
+# wat_server — WAT language server (g-plane/wasm-language-tools); cross-platform
+#   via cargo. See its README for the current command (e.g. cargo install wasm-language-tools).
+# wasmtime — run/debug compiled wasm (no Emacs DAP adapter for wasm)
+#   macOS:  brew install wasmtime
+#   Linux:  curl https://wasmtime.dev/install.sh -sSf | bash
+# tree-sitter grammars (needs a C compiler, e.g. clang/gcc):
 #   in Emacs:  M-x treesit-install-language-grammar RET wat
 #              M-x treesit-install-language-grammar RET wast
 ```
@@ -191,8 +217,14 @@ brew install wasmtime      # run/debug compiled wasm (no Emacs DAP adapter for w
 ### Infrastructure / config modes (LSP autostarts only if the server is present)
 
 ```sh
-brew install terraform-ls                               # terraform
-brew install cmake && uv tool install cmake-language-server   # cmake
+# terraform-ls
+#   macOS:  brew install terraform-ls
+#   Linux:  HashiCorp apt repo, then sudo apt install terraform-ls  (https://developer.hashicorp.com/terraform/install)
+# cmake + cmake-language-server
+#   macOS:  brew install cmake
+#   Linux:  sudo apt install cmake
+#   both:   uv tool install cmake-language-server
+# yaml / json / dockerfile servers (cross-platform via npm; need Node):
 npm install -g yaml-language-server                     # yaml
 npm install -g vscode-langservers-extracted             # json (vscode-json-language-server)
 npm install -g dockerfile-language-server-nodejs        # dockerfile (docker-langserver)
@@ -201,13 +233,16 @@ npm install -g dockerfile-language-server-nodejs        # dockerfile (docker-lan
 ### Markdown
 
 ```sh
-brew install pandoc        # markdown-command (preview/export)
+# pandoc — markdown-command (preview/export)
+#   macOS:  brew install pandoc
+#   Linux:  sudo apt install pandoc
 ```
 
 ### Coding agents (init-agent.el)
 
-Install whichever you use; `agent-start` launches any of them. (Verify package
-names against each project — they change.)
+Install whichever you use; `agent-start` launches any of them. These are
+cross-platform (npm needs Node, aider uses uv). Verify package names against
+each project — they change.
 
 ```sh
 npm install -g @anthropic-ai/claude-code   # claude
