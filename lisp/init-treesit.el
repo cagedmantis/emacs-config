@@ -5,7 +5,10 @@
 ;;; Code:
 
 ;; from https://www.masteringemacs.org/article/how-to-get-started-tree-sitter
-(setq treesit-language-source-alist
+;; Tree-sitter is Emacs 29+; on the minimum supported Emacs (28.2) this is
+;; skipped so the variable is never set on a version that lacks tree-sitter.
+(when (fboundp 'treesit-available-p)
+  (setq treesit-language-source-alist
       '((bash "https://github.com/tree-sitter/tree-sitter-bash")
         (cmake "https://github.com/uyha/tree-sitter-cmake")
         (css "https://github.com/tree-sitter/tree-sitter-css")
@@ -20,7 +23,7 @@
         (toml "https://github.com/tree-sitter/tree-sitter-toml")
         (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
         (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
-        (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+        (yaml "https://github.com/ikatyang/tree-sitter-yaml"))))
 
 
 (provide 'init-treesit)

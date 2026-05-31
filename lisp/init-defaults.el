@@ -175,6 +175,25 @@
   :ensure t
   :config (which-key-mode))
 
+;; -- Modern conveniences --
+;; -------------------------
+;; All built-in.  The first three exist at the minimum supported Emacs (28.2);
+;; pixel-scroll-precision-mode is 29+ so it is gated (see README / CLAUDE.md).
+
+;; Repeatable command chords, e.g. `C-x o o o' or `C-x { } }' (Emacs 28.1+).
+(repeat-mode 1)
+
+;; Right-click context menus in GUI frames (Emacs 28.1+).
+(when (fboundp 'context-menu-mode)
+  (context-menu-mode 1))
+
+;; Reopen files at the cursor position they were last left at.
+(save-place-mode 1)
+
+;; Smooth pixel-level scrolling for the mouse/trackpad (Emacs 29+).
+(when (fboundp 'pixel-scroll-precision-mode)
+  (pixel-scroll-precision-mode 1))
+
 (provide 'init-defaults)
 
 ;;; init-defaults.el ends here

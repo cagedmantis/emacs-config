@@ -24,10 +24,28 @@
   ;; Go-specific format/organize-imports save hooks live in lang-go.el.
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
-     ("gopls.staticcheck" t t)))
+     ("gopls.staticcheck" t t)
+     ("gopls.usePlaceholders" t t)   ;; tab through function-parameter placeholders
+     ("gopls.gofumpt" t t)           ;; stricter gofumpt formatting on save
+     ("gopls.semanticTokens" t t)    ;; richer server-driven highlighting
+     ;; Extra analyzers (all off by default in gopls)
+     ("gopls.analyses.shadow" t t)
+     ("gopls.analyses.nilness" t t)
+     ("gopls.analyses.unusedparams" t t)
+     ("gopls.analyses.unusedwrite" t t)
+     ;; Inlay hints (off by default)
+     ("gopls.hints.assignVariableTypes" t t)
+     ("gopls.hints.compositeLiteralFields" t t)
+     ("gopls.hints.compositeLiteralTypes" t t)
+     ("gopls.hints.constantValues" t t)
+     ("gopls.hints.functionTypeParameters" t t)
+     ("gopls.hints.parameterNames" t t)
+     ("gopls.hints.rangeVariableTypes" t t)))
 
   (setq lsp-enable-file-watchers t
         lsp-file-watch-threshold 20000 ;; go has ~12000
+        lsp-inlay-hint-enable t          ;; render the gopls inlay hints above
+        lsp-semantic-tokens-enable t     ;; render gopls semantic tokens
         lsp-enable-which-key-integration t))
 
 ;; for some reason this isn't registering above.

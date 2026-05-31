@@ -16,7 +16,9 @@
               ("C-c d"   . lsp-describe-thing-at-point)
               ("C-c ,"   . lsp-find-references)
               ("C-c i"   . lsp-find-implementation)
-              ("C-c t"   . lsp-find-type-definition))
+              ("C-c t"   . lsp-find-type-definition)
+              ;; gopls code actions, incl. "Fill struct" (replaces go-fill-struct)
+              ("C-c s"   . lsp-execute-code-action))
   :config
   ;; Go-specific LSP wiring.  gopls also starts via init-language-server.el's
   ;; lsp-deferred :hook (go-mode is in it); this explicit add-hook de-dups and
@@ -41,14 +43,28 @@
   (with-eval-after-load 'dap-mode
     (require 'dap-dlv-go)))
 
-(use-package go-fill-struct
+;; Linting via golangci-lint (bundles errcheck, staticcheck and ~50 more),
+;; surfaced continuously through flycheck -- replaces the old on-demand
+;; go-errcheck package.  Needs the `golangci-lint' binary on PATH (see
+;; `go-tools').
+(use-package flycheck-golangci-lint
   :ensure t
-  :after go-mode
-  :bind (:map go-mode-map ("C-c s" . go-fill-struct)))
-
-(use-package go-errcheck
-  :ensure t
-  :after go-mode)
+  :after flycheck
+  :config
+  (flycheck-golangci-lint-setup)
+  ;; lsp owns the primary flycheck checker, and its `lsp' checker is only
+  ;; registered once lsp starts managing a buffer -- so chain golangci-lint
+  ;; after it from `lsp-managed-mode-hook' (not at load time), guarded so the
+  ;; entry is added only once.
+  (defun lang-go--chain-golangci-lint ()
+    "Run golangci-lint after the lsp checker in Go buffers."
+    (when (and (derived-mode-p 'go-mode)
+               (flycheck-valid-checker-p 'lsp)
+               (not (member '(t . golangci-lint)
+                            (flycheck-checker-get 'lsp 'next-checkers))))
+      (flycheck-add-next-checker 'lsp '(t . golangci-lint))))
+  (with-eval-after-load 'lsp-mode
+    (add-hook 'lsp-managed-mode-hook #'lang-go--chain-golangci-lint)))
 
 (use-package gotest
   :ensure t
@@ -75,22 +91,20 @@
 
 (defvar go-tools
   '((asmfmt        . "github.com/klauspost/asmfmt/cmd/asmfmt")
-    (fillstruct    . "github.com/davidrjenni/reftools/cmd/fillstruct")
     (stress2       . "github.com/aclements/go-misc/stress2")
     (toolstash     . "golang.org/x/tools/cmd/toolstash")
     (stringer      . "golang.org/x/tools/cmd/stringer")
-    (godoc         . "golang.org/x/tools/cmd/godoc")
-    (golint        . "golang.org/x/lint/golint")
     (gomodifytags  . "github.com/fatih/gomodifytags")
-    (gomvpkg       . "golang.org/x/tools/cmd/gomvpkg")
     (gopls         . "golang.org/x/tools/gopls")
     (dlv           . "github.com/go-delve/delve/cmd/dlv")
-    (gotags        . "github.com/jstemmer/gotags")
     (gotests       . "github.com/cweill/gotests/...")
     (gounconvert   . "github.com/mdempsky/unconvert")
     (impl          . "github.com/josharian/impl")
     (errcheck      . "github.com/kisielk/errcheck")
-    (staticcheck   . "honnef.co/go/tools/cmd/staticcheck"))
+    (staticcheck   . "honnef.co/go/tools/cmd/staticcheck")
+    ;; golangci-lint bundles errcheck/staticcheck/etc.  Upstream prefers its
+    ;; official installer over `go install', but this keeps it in one place.
+    (golangci-lint . "github.com/golangci/golangci-lint/v2/cmd/golangci-lint"))
   "Import paths for My Go tools.")
 
 (defun go-install-toolset ()
