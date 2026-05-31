@@ -6,7 +6,11 @@
 
 (use-package lsp-mode
   :ensure t
-  :after (exec-path-from-shell)
+  ;; NOTE: deliberately NOT `:after exec-path-from-shell'.  That package is
+  ;; loaded only on macOS GUI/daemon (see darwin.el) and not at all on Linux,
+  ;; so gating lsp behind it left lsp completely unconfigured under
+  ;; `emacs --daemon' and on Linux.  exec-path-from-shell runs at startup,
+  ;; well before any deferred lsp server starts, so the ordering is fine.
   :hook ((c++-mode  ;; clangd
 	  c-mode    ;; clangd
 	  go-mode   ;; gopls
@@ -17,11 +21,7 @@
 	  ) . lsp-deferred)
   :commands lsp
   :config
-  (defun lsp-go-install-save-hooks ()
-	(add-hook 'before-save-hook #'lsp-format-buffer t t)
-	(add-hook 'before-save-hook #'lsp-organize-imports t t))
-  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-
+  ;; Go-specific format/organize-imports save hooks live in lang-go.el.
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)))

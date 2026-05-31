@@ -4,61 +4,46 @@
 
 ;;; Code:
 
-;; (use-package go-mode
-;;   :ensure t)
-
 (use-package go-mode
   :ensure t
   :bind (:map go-mode-map
-			  ("C-c C-n" . go-run)
-			  ("C-c ."   . go-test-current-test)
-			  ("C-c f"   . go-test-current-file)
-			  ("C-c a"   . go-test-current-project)
-			  ("C-c r"   . lsp-rename)
-			  ("C-c j"   . lsp-find-definition)
-			  ("C-c d"   . lsp-describe-thing-at-point)
-
-			  ;; TODO: prove that these are useful
-			  ("C-c n" . flymake-goto-next-error)
-			  ("C-c p" . flymake-goto-prev-error)
-			  ("C-c ," . lsp-find-references)
-			  ("C-c i" . lsp-find-implementation)
-			  ("C-c t" . lsp-find-type-definition))
+              ("C-c C-n" . go-run)
+              ("C-c ."   . go-test-current-test)
+              ("C-c f"   . go-test-current-file)
+              ("C-c a"   . go-test-current-project)
+              ("C-c r"   . lsp-rename)
+              ("C-c j"   . lsp-find-definition)
+              ("C-c d"   . lsp-describe-thing-at-point)
+              ("C-c ,"   . lsp-find-references)
+              ("C-c i"   . lsp-find-implementation)
+              ("C-c t"   . lsp-find-type-definition))
   :config
-  (add-hook 'go-mode-hook 'lsp-deferred)
-  (defun my-go-mode-hook ()
-	(subword-mode t)
-	(setq tab-width 4)
-	;;(add-hook 'before-save-hook 'gofmt-before-save)
-	;; (with-eval-after-load 'go-mode
-	;;   (go-guru-hl-identifier-mode))
+  ;; Go-specific LSP wiring.  gopls also starts via init-language-server.el's
+  ;; lsp-deferred :hook (go-mode is in it); this explicit add-hook de-dups and
+  ;; keeps intent local.  Use `lsp-deferred', never a direct `(lsp)', so
+  ;; startup stays deferred and isn't triggered twice.
+  (add-hook 'go-mode-hook #'lsp-deferred)
 
-	 (lsp)
-	;;(add-hook 'go-mode-hook 'flycheck-mode))
-        ;;(add-hook 'go-mode-hook 'flycheck))
-         )
+  (defun my-go-mode-hook ()
+    "Buffer-local Go editing settings."
+    (subword-mode t)
+    (setq tab-width 4))
+  (add-hook 'go-mode-hook #'my-go-mode-hook)
 
   (defun lsp-go-before-save-hooks ()
-	(add-hook 'before-save-hook #'lsp-format-buffer t t)
-	(add-hook 'before-save-hook #'lsp-organize-imports t t))
-
-  (add-hook 'go-mode-hook 'my-go-mode-hook)
-  (add-hook 'go-mode-hook 'lsp-go-before-save-hooks))
-  ;;(add-hook 'before-save-hook #'lsp-go-before-save-hooks))
+    "Format the buffer and organize imports on save, via gopls."
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook #'lsp-go-before-save-hooks))
 
 (use-package go-fill-struct
   :ensure t
-  :bind ("C-c f" . go-fill-struct)
-  :after go-mode)
+  :after go-mode
+  :bind (:map go-mode-map ("C-c s" . go-fill-struct)))
 
 (use-package go-errcheck
   :ensure t
   :after go-mode)
-
-;; nis
-;; (use-package go-gen-test
-;;   :ensure t
-;;   :after go-mode)
 
 (use-package gotest
   :ensure t
@@ -71,13 +56,7 @@
 (use-package go-add-tags
   :ensure t
   :after go-mode
-  :config
-  (global-set-key (kbd "C-c t") 'go-add-tags))
-
-;; nis
-;; (use-package go-projectile
-;;   :ensure t
-;;   :after (go-mode projectile))
+  :bind (:map go-mode-map ("C-c T" . go-add-tags)))
 
 (use-package go-impl
   :ensure t
@@ -87,29 +66,25 @@
   :ensure t
   :after go-mode)
 
-;; nis
-;; (use-package golint
-;;   :ensure t)
-
 ;; modified from github.com/dougm/go-projectile
 
 (defvar go-tools
   '((asmfmt        . "github.com/klauspost/asmfmt/cmd/asmfmt")
-	(fillstruct    . "github.com/davidrjenni/reftools/cmd/fillstruct")
-        (stress2       . "github.com/aclements/go-misc/stress2")
-        (toolstash     . "golang.org/x/tools/cmd/toolstash")
-        (stringer      . "golang.org/x/tools/cmd/stringer")
-	(godoc         . "golang.org/x/tools/cmd/godoc")
-	(golint        . "golang.org/x/lint/golint")
-	(gomodifytags  . "github.com/fatih/gomodifytags")
-	(gomvpkg       . "golang.org/x/tools/cmd/gomvpkg")
-	(gopls         . "golang.org/x/tools/gopls")
-	(gotags        . "github.com/jstemmer/gotags")
-	(gotests       . "github.com/cweill/gotests/...")
-	(gounconvert   . "github.com/mdempsky/unconvert")
-	(impl          . "github.com/josharian/impl")
-	(errcheck      . "github.com/kisielk/errcheck")
-	(staticcheck   . "honnef.co/go/tools/cmd/staticcheck"))
+    (fillstruct    . "github.com/davidrjenni/reftools/cmd/fillstruct")
+    (stress2       . "github.com/aclements/go-misc/stress2")
+    (toolstash     . "golang.org/x/tools/cmd/toolstash")
+    (stringer      . "golang.org/x/tools/cmd/stringer")
+    (godoc         . "golang.org/x/tools/cmd/godoc")
+    (golint        . "golang.org/x/lint/golint")
+    (gomodifytags  . "github.com/fatih/gomodifytags")
+    (gomvpkg       . "golang.org/x/tools/cmd/gomvpkg")
+    (gopls         . "golang.org/x/tools/gopls")
+    (gotags        . "github.com/jstemmer/gotags")
+    (gotests       . "github.com/cweill/gotests/...")
+    (gounconvert   . "github.com/mdempsky/unconvert")
+    (impl          . "github.com/josharian/impl")
+    (errcheck      . "github.com/kisielk/errcheck")
+    (staticcheck   . "honnef.co/go/tools/cmd/staticcheck"))
   "Import paths for My Go tools.")
 
 (defun go-install-toolset ()

@@ -6,7 +6,10 @@
 
 (use-package exec-path-from-shell
   :ensure t
-  :if (memq window-system '(mac ns))
+  ;; Also load under `emacs --daemon': a launchd-started daemon inherits a
+  ;; minimal PATH and has no window-system at startup, so without this gopls
+  ;; / clangd / etc. would not be found in daemon sessions.
+  :if (or (memq window-system '(mac ns)) (daemonp))
   :config
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize)
