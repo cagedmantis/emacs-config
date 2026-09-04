@@ -42,7 +42,7 @@ arguments (e.g. \"aider --model sonnet\")."
 
 (defun agent--project-root ()
   "Return the current project root, or `default-directory' if none."
-  (if-let ((proj (project-current)))
+  (if-let* ((proj (project-current)))
       (project-root proj)
     default-directory))
 
