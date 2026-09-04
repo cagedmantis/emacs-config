@@ -119,7 +119,8 @@ Same LSP bindings as Go/C++ (server auto-detected; format-on-save via ruff).
 ### Assembly / WebAssembly
 
 No custom key bindings — Assembly (`asm-mode`/`nasm-mode`, via `asm-lsp`) and
-WebAssembly (`wat-ts-mode`, via `wat_server`) use the standard `lsp-mode`
+WebAssembly (`wat-ts-mode`, or the `wat-mode` fallback when the tree-sitter
+grammar is not installed; both via `wat_server`) use the standard `lsp-mode`
 bindings under the `s-l` prefix when a language server is installed.
 
 ## Installing external tools
@@ -203,15 +204,25 @@ cargo install asm-lsp        # LSP for x86-64 + AArch64 (cross-platform; needs R
 
 ### WebAssembly
 
+`.wat`/`.wast` files always open in a WebAssembly mode: `wat-ts-mode` when the
+tree-sitter grammar is installed, otherwise the built-in `wat-mode` fallback.
+Everything below is optional — the fallback mode and, separately, the language
+server each work without the other.
+
 ```sh
-# wat_server — WAT language server (g-plane/wasm-language-tools); cross-platform
-#   via cargo. See its README for the current command (e.g. cargo install wasm-language-tools).
+# wat_server — WAT language server (g-plane/wasm-language-tools)
+#   macOS/Linux (cargo):  cargo install wat_server
+#   or prebuilt binaries: https://github.com/g-plane/wasm-language-tools/releases
+#     (wat_server-{arm64,x86_64}-{macos,linux}.zip — unzip and put it on PATH)
 # wasmtime — run/debug compiled wasm (no Emacs DAP adapter for wasm)
 #   macOS:  brew install wasmtime
 #   Linux:  curl https://wasmtime.dev/install.sh -sSf | bash
-# tree-sitter grammars (needs a C compiler, e.g. clang/gcc):
-#   in Emacs:  M-x treesit-install-language-grammar RET wat
-#              M-x treesit-install-language-grammar RET wast
+# tree-sitter grammars — optional, upgrades wat-mode to wat-ts-mode.
+# Needs a WORKING C toolchain; `treesit-install-language-grammar` shells out to `cc`:
+#   macOS:  xcode-select --install    (verify with: cc --version && xcrun --find ld)
+#   Linux:  sudo apt install build-essential
+#   then in Emacs:  M-x treesit-install-language-grammar RET wat
+#                   M-x treesit-install-language-grammar RET wast
 ```
 
 ### Infrastructure / config modes (LSP autostarts only if the server is present)

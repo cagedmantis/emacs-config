@@ -7,6 +7,16 @@
 (use-package flycheck
   :ensure t
   :diminish
+  :custom
+  ;; Keep Flycheck out of `lisp-interaction-mode' (*scratch*).  `global-flycheck-mode'
+  ;; would otherwise enable it there, and the only checker registered for that
+  ;; mode is `emacs-lisp' -- which since Emacs 30 is disabled in buffers whose
+  ;; contents aren't trusted (`trusted-content', mitigating CVE-2024-53920:
+  ;; byte-compilation macro-expands, i.e. executes, the buffer).  `*scratch*'
+  ;; visits no file, so it is never trusted, no checker can run, and Flycheck
+  ;; complains "no syntax checker for lisp-interaction-mode can run here" on
+  ;; every startup.  A scratch REPL buffer isn't worth linting anyway.
+  (flycheck-global-modes '(not lisp-interaction-mode))
   :init (global-flycheck-mode)
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode)
