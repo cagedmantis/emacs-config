@@ -30,7 +30,12 @@
   :init
   (global-corfu-mode))
 
-(unless (display-graphic-p)
+;; `corfu-terminal' renders the popup with overlays for TTY frames.  Emacs 31
+;; supports child frames on TTYs (feature `tty-child-frames'), so Corfu draws
+;; its own popup there and warns if `corfu-terminal' is loaded anyway.  Only
+;; pull it in on older Emacsen running in a terminal.
+(when (and (not (display-graphic-p))
+           (not (featurep 'tty-child-frames)))
   (use-package corfu-terminal
     :ensure t
     :after corfu
