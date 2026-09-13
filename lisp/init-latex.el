@@ -58,13 +58,26 @@
 (use-package auctex
   :ensure t)
 
+;; texlab drives both LaTeX and BibTeX buffers.  Loaded eagerly so the
+;; lsp-mode client is registered before any buffer asks for it.
 (use-package lsp-latex
-  ;; this uses texlab
-  :ensure t
-  :config
-  (progn
-    (add-hook 'bibtex-mode-hook 'lsp)
-    )
-  )
+  :ensure t)
+
+(declare-function lsp-deferred "lsp-mode")
+
+;; Start texlab only when it is actually installed, so a machine without it
+;; opens .tex/.bib files normally instead of prompting to install a server.
+;; Same guarded pattern as lang-modes.el / lang-asm.el / lang-wasm.el, and the
+;; reason LaTeX is not in the unconditional :hook list in
+;; init-language-server.el.
+(defun init-latex--maybe-lsp ()
+  "Start `lsp-deferred' when the texlab language server is on PATH."
+  (when (executable-find "texlab")
+    (lsp-deferred)))
+
+(dolist (hook '(LaTeX-mode-hook bibtex-mode-hook))
+  (add-hook hook #'init-latex--maybe-lsp))
 
 (provide 'init-latex)
+
+;;; init-latex.el ends here

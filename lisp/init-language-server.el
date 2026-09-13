@@ -17,11 +17,12 @@
 	  js-mode
 	  python-mode
 	  rust-mode ;; rust-analyzer
-          LaTex-mode
 	  ) . lsp-deferred)
   :commands lsp
   :config
   ;; Go-specific format/organize-imports save hooks live in lang-go.el.
+  ;; LaTeX/BibTeX (texlab) is deliberately absent from the :hook list above --
+  ;; it starts from init-latex.el, guarded on the server being installed.
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)

@@ -249,6 +249,25 @@ npm install -g dockerfile-language-server-nodejs        # dockerfile (docker-lan
 #   Linux:  sudo apt install pandoc
 ```
 
+### LaTeX (AUCTeX + texlab)
+
+`.tex` and `.bib` buffers use AUCTeX and start the `texlab` language server **when
+`texlab` is installed** — without it they open normally, with no prompt. `latexmk` is
+the default build command (`C-c C-c`). On macOS the PDF viewer is wired to
+[Skim](https://skim-app.sourceforge.io) for forward/inverse search — on Linux, set
+`TeX-view-program-selection` to your viewer (e.g. zathura) in `system_type/gnu_linux.el`.
+
+```sh
+# texlab — LaTeX language server
+#   macOS:  brew install texlab
+#   Linux:  sudo apt install texlab        # or: cargo install --locked texlab
+#           (or a prebuilt binary: https://github.com/latex-lsp/texlab/releases)
+# TeX distribution + latexmk
+#   macOS:  brew install --cask mactex      # or basictex for a small install
+#           brew install --cask skim        # PDF viewer used for SyncTeX
+#   Linux:  sudo apt install texlive-full latexmk   # or texlive-latex-recommended
+```
+
 ### Coding agents (init-agent.el)
 
 Install whichever you use; `agent-start` launches any of them. These are
