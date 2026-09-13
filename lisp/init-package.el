@@ -27,5 +27,12 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+(defun my-upgrade-packages ()
+  "Refresh, upgrade all packages, then recompile to fix compat macro expansion."
+  (interactive)
+  (package-refresh-contents)
+  (package-upgrade-all)
+  (package-recompile-all))
+
 (provide 'init-package)
 ;;; init-package ends here

@@ -64,6 +64,9 @@
 ;; Undo/redo window configuration with C-c <left>/<right>
 (winner-mode 1)
 
+;; After a prefixed command (e.g. C-x o), repeat with just the bare key (o).
+(repeat-mode 1)
+
 ;; Show me empty lines after buffer end
 (set-default 'indicate-empty-lines t)
 
@@ -83,8 +86,8 @@
 ;; Allow recursive minibuffers
 (setq enable-recursive-minibuffers t)
 
-;; Don't be so stingy on the memory, we have lots now. It's the distant future.
-(setq gc-cons-threshold 20000000)
+;; early-init.el sets gc-cons-threshold to max during startup; restore here.
+(setq gc-cons-threshold (* 20 1024 1024))
 
 ;; org-mode: Don't ruin S-arrow to switch windows please (use M-+ and M-- instead to toggle)
 (setq org-replace-disputed-keys t)

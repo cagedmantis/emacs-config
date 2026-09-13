@@ -28,7 +28,10 @@
   ;; be used globally (M-/).  See also the customization variable
   ;; `global-corfu-modes' to exclude certain modes.
   :init
-  (global-corfu-mode))
+  (global-corfu-mode)
+  :config
+  (corfu-popupinfo-mode 1)
+  (setq corfu-popupinfo-delay '(0.5 . 0.2)))
 
 (unless (display-graphic-p)
   (use-package corfu-terminal

@@ -34,7 +34,9 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "multimarkdown")
+  :hook ((markdown-mode . auto-fill-mode)
+         (gfm-mode . auto-fill-mode)))
 
 (use-package markdown-toc
   :ensure t)
