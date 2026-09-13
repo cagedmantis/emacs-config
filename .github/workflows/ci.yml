@@ -1,0 +1,113 @@
+# Verifies that the configuration actually loads on every supported Emacs, on
+# both platforms it targets.
+#
+# Why this exists: init.el loads modules through `init-require', which
+# downgrades a load failure to a warning and keeps going, so
+# `emacs --batch -l init.el' exits 0 even when modules are broken.  The exit
+# status proves nothing; the log has to be inspected.  See CLAUDE.md.
+#
+# Why the symlink step: `user-emacs-directory' is ~/.emacs.d, not the
+# checkout, and init.el builds `load-path' from it.  Without linking the
+# checkout into place, every module fails to load and the run tests nothing.
+#
+# Note no external tools (aspell, gopls, clangd, texlab, ...) are installed
+# here.  That is deliberate: a bare runner also proves the configuration
+# degrades gracefully on a machine that has none of them, which is the
+# `executable-find' guard convention described in CLAUDE.md.  Verified: the
+# config loads with zero module failures on a PATH containing no spell
+# checker.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  # MELPA moves under us: a weekly run catches a package update that breaks
+  # the config before it is discovered by hand.
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  load:
+    name: Emacs ${{ matrix.emacs }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    continue-on-error: ${{ matrix.experimental || false }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # The declared minimum in README.md.  If this job goes red, either
+          # the floor is wrong or a gate is missing -- do not ignore it.
+          - { os: ubuntu-latest, emacs: '28.2' }
+          - { os: macos-latest,  emacs: '28.2' }
+          - { os: ubuntu-latest, emacs: '29.4' }
+          - { os: ubuntu-latest, emacs: '30.2' }
+          # The version actually used day to day.
+          - { os: ubuntu-latest, emacs: '31.1' }
+          - { os: macos-latest,  emacs: '31.1' }
+          # Early warning for the next release; allowed to fail.
+          - { os: ubuntu-latest, emacs: 'snapshot', experimental: true }
+
+    steps:
+      - name: Check out the configuration
+        uses: actions/checkout@v4
+
+      - name: Install Emacs ${{ matrix.emacs }}
+        uses: purcell/setup-emacs@master
+        with:
+          version: ${{ matrix.emacs }}
+
+      - name: Use the checkout as user-emacs-directory
+        run: |
+          rm -rf "$HOME/.emacs.d"
+          ln -s "$GITHUB_WORKSPACE" "$HOME/.emacs.d"
+          ls -l "$HOME/.emacs.d/init.el"
+
+      # Keyed on the Emacs version as well as the sources: .elc files are not
+      # portable between Emacs versions.
+      - name: Cache installed packages
+        uses: actions/cache@v4
+        with:
+          path: packages
+          key: >-
+            ${{ runner.os }}-emacs${{ matrix.emacs }}-packages-${{
+            hashFiles('init.el', 'early-init.el', 'lisp/**.el',
+                      'system_type/**.el') }}
+          restore-keys: |
+            ${{ runner.os }}-emacs${{ matrix.emacs }}-packages-
+
+      - name: Report the Emacs under test
+        run: emacs --version
+
+      - name: Load the configuration
+        shell: bash
+        run: |
+          set -eo pipefail
+          emacs --batch -l "$HOME/.emacs.d/init.el" 2>&1 | tee load.log
+
+      - name: Fail if any module failed to load
+        shell: bash
+        run: |
+          if grep -n 'Failed to load' load.log; then
+            echo "::error::One or more modules failed to load. init-require turns these into warnings, so Emacs still exits 0 -- the log above is the real result."
+            exit 1
+          fi
+          echo "All modules loaded cleanly."
+
+      - name: Upload the load log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: load-log-${{ runner.os }}-emacs-${{ matrix.emacs }}
+          path: load.log
+          if-no-files-found: warn

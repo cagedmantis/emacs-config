@@ -186,7 +186,8 @@ run identically on macOS and Linux.
 # ripgrep — consult-ripgrep (M-s r)
 #   macOS:  brew install ripgrep
 #   Linux:  sudo apt install ripgrep
-# aspell — flyspell
+# aspell — flyspell (optional: without a spell checker flyspell simply
+#   stays off, rather than erroring on every buffer)
 #   macOS:  brew install aspell
 #   Linux:  sudo apt install aspell aspell-en
 ```
