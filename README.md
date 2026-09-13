@@ -89,6 +89,36 @@ buffers.
 | `C-c s` | `lsp-execute-code-action` | gopls code actions (e.g. Fill struct). |
 | `C-c T` | `go-add-tags` | Add struct field tags. |
 
+### Developing Go itself (`go-std-mode`, prefix `C-c G`)
+
+Active only in buffers inside a golang/go checkout or a `golang.org/x/*`
+module, where it makes commands use **that tree's** toolchain (`$GOROOT/bin/go`)
+instead of the system `go`. The mode line shows `go/std`. The prefix avoids
+`C-g`, which terminal multiplexers commonly intercept.
+
+| Key | Command | Description |
+|-----|---------|-------------|
+| `C-c G e` | `go-std-describe-environment` | Show which `go`, GOROOT, GOBIN and tools this buffer will use. Start here when something looks wrong. |
+| `C-c G b` | `go-std-build-toolchain` | Build the toolchain (`src/make.bash`), no tests. |
+| `C-c G B` | `go-std-build-all` | Build and run the full test suite (`src/all.bash`). Minutes. |
+| `C-c G c` | `go-std-install-compiler` | `go install cmd/compile` — the fast compiler edit loop. `C-u` for another target. |
+| `C-c G t` | `go-std-test-package` | `go test .` for the current package. |
+| `C-c G T` | `go-std-test-run` | `go test -run PATTERN -v .` |
+| `C-c G r` | `go-std-test-runtime` | Run the runtime package tests. |
+| `C-c G n` | `go-std-build-unoptimised` | Build with `-N -l` for debugger stepping. |
+| `C-c G m` | `go-std-escape-analysis` | Escape-analysis and inlining decisions (`-gcflags=-m`), with inline annotations. |
+| `C-c G M` | `go-std-clear-annotations` | Remove those annotations. |
+| `C-c G s` | `go-std-ssa-at-point` | Dump compiler SSA for the function at point (`GOSSAFUNC`) and open it. |
+| `C-c G k` | `go-std-toolstash-save` | Snapshot a known-good toolchain. |
+| `C-c G K` | `go-std-toolstash-compare` | Prove a compiler change generates identical object code. |
+| `C-c G 1` | `go-std-bench-baseline` | Capture a benchmark baseline for this package. |
+| `C-c G 2` | `go-std-bench-compare` | Re-run and compare against the baseline via benchstat. |
+| `C-c G d` | `go-std-benchstat` | Compare two saved benchmark files. |
+| `C-c G y` | `go-std-stringer` | Regenerate a `String()` method with stringer. |
+| `C-c G i` | `go-std-install-tools` | Install the helper tools (`C-u` includes optional ones). |
+| `C-c G u` | `go-std-upgrade-tools` | Re-install every tool at latest. |
+| `C-c G F` | `go-std-flush-cache` | Forget cached repository detection. |
+
 ### C / C++ (`cc-mode`, clangd)
 
 | Key | Command | Description |
@@ -174,6 +204,44 @@ run identically on macOS and Linux.
 #   in Emacs:  M-x go-install-tools
 #   or:  go install golang.org/x/tools/gopls@latest
 #        go install github.com/go-delve/delve/cmd/dlv@latest
+```
+
+### Go toolchain development (`go-std-mode`)
+
+Only needed if you work on the Go tree itself. The helper tools are installed
+**by Emacs** into an isolated directory (`~/.emacs.d/go-std-tools/bin`) so they
+never overwrite the binaries in your normal `GOBIN`:
+
+```
+M-x go-std-install-tools        # required tools
+C-u M-x go-std-install-tools    # also the optional ones
+M-x go-std-upgrade-tools        # re-install all at @latest
+```
+
+The equivalent by hand, cross-platform (needs a released Go on PATH):
+
+```sh
+GOBIN=~/.emacs.d/go-std-tools/bin go install golang.org/x/perf/cmd/benchstat@latest
+GOBIN=~/.emacs.d/go-std-tools/bin go install golang.org/x/tools/cmd/toolstash@latest
+GOBIN=~/.emacs.d/go-std-tools/bin go install golang.org/x/tools/cmd/stringer@latest
+# optional
+GOBIN=~/.emacs.d/go-std-tools/bin go install golang.org/x/tools/cmd/compilebench@latest
+GOBIN=~/.emacs.d/go-std-tools/bin go install golang.org/x/tools/cmd/stress@latest
+```
+
+Building the Go tree also needs a C toolchain and a bootstrap Go:
+
+```sh
+# C toolchain (cgo, assembly tests)
+#   macOS:  xcode-select --install
+#   Linux:  sudo apt install build-essential
+# Bootstrap Go — a released toolchain used to compile the tree.
+#   make.bash finds one automatically (~/sdk/goN.M, ~/go1.4); override with
+#   the `go-std-goroot-bootstrap' variable if yours lives elsewhere.
+#   macOS:  brew install go
+#   Linux:  sudo apt install golang-go     # or the tarball from https://go.dev/dl
+# perflock — stable benchmark timings (LINUX ONLY; no macOS equivalent)
+#   Linux:  go install github.com/aclements/perflock/cmd/perflock@latest
 ```
 
 ### C / C++ (LLVM — clangd LSP, clang-tidy lint, lldb-dap debug)

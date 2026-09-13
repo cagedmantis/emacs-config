@@ -1,3 +1,4 @@
+TODO.md
 *.smex-items
 .cache
 .dap-breakpoints
@@ -20,6 +21,7 @@ elim/
 eln-cache/
 elpa/*
 eshell/
+go-std-tools/
 go.mod
 go.sum
 history

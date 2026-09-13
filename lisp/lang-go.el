@@ -121,5 +121,14 @@
   (interactive)
   (go-install-toolset))
 
+;; Working *on* Go itself -- cmd/compile, the runtime and the standard
+;; library -- rather than writing programs in Go.  `go-std-mode' makes buffers
+;; inside a Go checkout use that tree's own toolchain instead of the system
+;; `go'.  Enabled globally: the per-buffer mode activates only when a buffer
+;; actually lives in the Go tree or a golang.org/x module, so it costs nothing
+;; elsewhere.  Comment these two lines out to disable it.
+(when (require 'go-std-mode nil t)
+  (go-std-global-mode 1))
+
 (provide 'lang-go)
 ;;; lang-go.el ends here
