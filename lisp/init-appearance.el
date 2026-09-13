@@ -38,10 +38,6 @@
 (setq diff-switches "-u -w"
       magit-diff-options "-w")
 
-;;store all autosave files
-(setq auto-save-file-name-transforms
-      `((".*" ,"~/.emacs.d/auto-save-list" t)))
-
 ;; Don't defer screen updates when performing operations
 (setq redisplay-dont-pause t)
 

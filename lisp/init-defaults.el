@@ -160,6 +160,18 @@
 (if (not (file-exists-p --backup-directory))
     (make-directory --backup-directory t))
 (setq backup-directory-alist `(("." . ,--backup-directory)))
+
+;; Store every auto-save file in one directory instead of next to the visited
+;; file.  The trailing slash matters: with UNIQUIFY (the third element) set,
+;; Emacs keeps only the *directory part* of the replacement and appends the
+;; visited file name with "/" turned into "!".  Without the slash the last
+;; component is read as a file name and dropped, so the "#!Users!...#" files
+;; end up directly in `user-emacs-directory'.
+(defvar --auto-save-directory (expand-file-name "auto-saves/" user-emacs-directory))
+(unless (file-exists-p --auto-save-directory)
+  (make-directory --auto-save-directory t))
+(setq auto-save-file-name-transforms
+      `((".*" ,--auto-save-directory t)))
 (setq make-backup-files t               ; backup of a file the first time it is saved.
       backup-by-copying t               ; don't clobber symlinks
       version-control t                 ; version numbers for backup files

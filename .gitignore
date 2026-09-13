@@ -12,6 +12,7 @@
 \.lsp-session*
 ac-comphist.dat
 auto-save-list
+auto-saves/
 backups/*
 custom.el*
 ede-projects.el
