@@ -253,7 +253,10 @@ npm install -g dockerfile-language-server-nodejs        # dockerfile (docker-lan
 
 `.tex` and `.bib` buffers use AUCTeX and start the `texlab` language server **when
 `texlab` is installed** — without it they open normally, with no prompt. `latexmk` is
-the default build command (`C-c C-c`). On macOS the PDF viewer is wired to
+the default build command (`C-c C-c`). Each file is treated as its own master
+(`TeX-master` defaults to `t`, so there is no prompt on open); for a multi-file
+document, add a file-local `%%% TeX-master: "main.tex"` block to the child files
+(`C-c _` writes it for you). On macOS the PDF viewer is wired to
 [Skim](https://skim-app.sourceforge.io) for forward/inverse search — on Linux, set
 `TeX-view-program-selection` to your viewer (e.g. zathura) in `system_type/gnu_linux.el`.
 

@@ -26,7 +26,15 @@
 ;; AucTeX
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
-(setq-default TeX-master nil)
+;; Each file is its own master.  `nil' means "ask", which prompts
+;; "Master file (default this file):" on every single .tex visit (and makes
+;; .tex files unopenable headlessly).  For a multi-file document, point the
+;; child files at the real master with a file-local variable instead --
+;; `C-c _' (`TeX-master-file-ask') writes the block for you:
+;;     %%% Local Variables:
+;;     %%% TeX-master: "main.tex"
+;;     %%% End:
+(setq-default TeX-master t)
 (add-hook 'LaTeX-mode-hook 'visual-line-mode)
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
