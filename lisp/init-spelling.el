@@ -31,21 +31,26 @@
   "Return the first `init-spelling-programs' entry on PATH, or nil."
   (seq-find #'executable-find init-spelling-programs))
 
-(defun init-spelling--enable (mode)
-  "Enable MODE when a spell checker is installed."
+(defun init-spelling--ready ()
+  "Point ispell at an installed checker.  Return non-nil on success."
   (let ((program (init-spelling-program)))
     (when program
       (require 'ispell)
       (setq ispell-program-name program)
-      (funcall mode 1))))
+      program)))
 
+;; The two entry points are spelled out rather than funcall\'d through a
+;; common helper: `flyspell-mode\' is a real minor mode taking an argument,
+;; but `flyspell-prog-mode\' is a plain command of arity (0 . 0).  Passing it
+;; the usual 1 signals "Wrong number of arguments: (0 . 0), 1" in every
+;; prog-mode buffer.
 (defun init-spelling-flyspell ()
   "Enable `flyspell-mode' when a spell checker is installed."
-  (init-spelling--enable #'flyspell-mode))
+  (when (init-spelling--ready) (flyspell-mode 1)))
 
 (defun init-spelling-flyspell-prog ()
   "Enable `flyspell-prog-mode' when a spell checker is installed."
-  (init-spelling--enable #'flyspell-prog-mode))
+  (when (init-spelling--ready) (flyspell-prog-mode)))
 
 (use-package flyspell
   :ensure nil  ; built-in
